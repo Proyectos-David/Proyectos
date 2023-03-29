@@ -1,0 +1,24 @@
+\subsect{Primer resultado}
+
+\begin{proofbox}{Obtención}
+    \begin{itemize}
+        \item[(i)] Sabemos que al tomar naturales para generar los rectángulos, su base es de magnitud $1$, y si altura está definida por el valor de la función en el mayor de los naturales de la base. De esta forma, tenemos que:
+        \begin{center}
+            \begin{derivation}<1.6>
+                    \res{ R(n) = A - \displaystyle\int_{n-1}^{n}x^P dx }\\
+                \why{ Desarrollo del área $A$ y la integral }\\
+                    \res{ R(n) = n^P - \dfrac{1}{P+1}\left[n^{P+1} - (n-1)^{P+1}\right] }\\
+                \why*{}\\
+                    \res{ R(n) = \dfrac{1}{P+1}\left[(P+1)n^P - n^{P+1} + (n-1)^{P+1}\right] }
+            \end{derivation}
+        \end{center}
+        \item[(ii)] Se sabe que hasta $x=n$ hay $n$ rectángulos, por lo que el sumatorio se puede expresar mediante la suma de todos los restantes y la integral:
+        \begin{center}
+            \begin{derivation}<1.6>
+                    \res{ \displaystyle\sum_{k=1}^{n} k^P = \displaystyle\int_{0}^{n} x^P dx + \displaystyle\sum_{k=1}^{n} R(k) }\\
+                \why*{}\\
+                    \res{ \displaystyle\sum_{k=1}^{n}k^P = n^{P+1} + \dfrac{1}{P+1}\displaystyle\sum_{k=1}^{n} (P+1)k^P - k^{P+1} + (k-1)^{P+1} }
+            \end{derivation}
+        \end{center}
+    \end{itemize}
+\end{proofbox}

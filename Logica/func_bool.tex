@@ -1,0 +1,45 @@
+\sect{Funciones booleanas}
+
+Las funciones booleanas son una forma de entender los conectores lógicos, y los valores que toman. La idea en este documento es poder salir del lenguaje de la lógica, y poder manejar dichas funciones como si se tratara de números, de forma que llegar a un resultado sea muy lineal.
+
+Las definiciones de estas funciones, como se expresa en el libro \emph{Lógica para Informática y Matemáticas} \cite{rocha-2022}
+
+\begin{proofbox}{Funciones booleanas}
+    Se toma $\mathbb{B} = \{\texttt{T}, \texttt{F}\}$ el conjunto de valores de verdad, donde $\texttt{T}$ corresponde a \emph{verdadero} y $\texttt{F}$ corresponde a \emph{falso}.
+
+    Y ya que los conectivos lógicos se interpretan dependiendo de el valor que tomen las variables sobre las que se opera, es posible definir funciones para cada conectivo de la siguiente manera:
+    \begin{center}
+        \begin{derivation}
+            \hbool*{\textit{true}}{}{} = \texttt{T}\\
+            \hbool*{\textit{false}}{}{} = \texttt{F}\\[10pt]
+            \left\{\begin{aligned}
+                \hbool*{\neg}{F}{} &= \texttt{T}\\
+                \hbool*{\neg}{T}{} &= \texttt{F}
+            \end{aligned}\right\}\\[20pt]
+            \left\{\begin{aligned}
+                H_{\equiv}(\texttt{F}, \texttt{F}) &= H_{\equiv}(\texttt{T}, \texttt{T}) = \texttt{T}\\
+                H_{\equiv}(\texttt{F}, \texttt{T}) &= H_{\equiv}(\texttt{T}, \texttt{F}) = \texttt{F}
+            \end{aligned}\right\}\\[20pt]
+            \left\{\begin{aligned}
+                H_{\lor}(\texttt{F}, \texttt{F}) &= \texttt{F}\\
+                H_{\lor}(\texttt{T}, \texttt{F}) &= H_{\lor}(\texttt{T}, \texttt{F}) = H_{\lor}(\texttt{T}, \texttt{T}) = \texttt{T}
+            \end{aligned}\right\}\\[20pt]
+            \left\{
+            \begin{aligned}
+                H_{\land}(\texttt{F}, \texttt{F}) &= H_{\land}(\texttt{F}, \texttt{T}) = H_{\land}(\texttt{T}, \texttt{F}) = \texttt{F}\\
+                H_{\land}(\texttt{T}, \texttt{T}) &= \texttt{T}
+            \end{aligned}    
+            \right\}\\[20pt]
+            \left\{\begin{aligned}
+                \hbool{\To}{F}{F} &= \hbool{\To}{F}{T} = \hbool{\To}{T}{T} = \texttt{T}\\
+                \hbool{\To}{T}{F} &= \texttt{F}
+            \end{aligned}\right\}\\[20pt]
+            \left\{\begin{aligned}
+                \hbool{\Gets}{F}{F} &= \hbool{\Gets}{T}{F} = \hbool{\Gets}{T}{T} = \texttt{T}\\
+                \hbool{\Gets}{F}{T} &= \mathtt{F}
+            \end{aligned}\right\}
+        \end{derivation}
+    \end{center}
+
+\end{proofbox}
+
