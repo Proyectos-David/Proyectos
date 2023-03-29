@@ -4,18 +4,12 @@
 
 !README.md
 
-!/*
+!/**
 
-!/Logica
-!/Logica/*.tex
-!/Logica/build/*.pdf
+!**/*.tex
 
-!/Sucesiones
-!/Sucesiones/*.tex
-/Sucesiones/build/*
-!/Sucesiones/build/*.pdf
+**/*.bib
 
-!/Sumatorio
-!/Sumatorio/*.tex
-/Sumatorio/build/*
-!/Sumatorio/build/*.pdf
+**/build/*
+
+!**/build/*.pdf
