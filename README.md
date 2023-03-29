@@ -2,7 +2,13 @@
 
 ## Término general de una sucesión
 
+Mini resumen
+
+PDF: [Link](Sucesiones/build/proyecto_sucesiones.pdf)
+
 ## Sumatorios de k^P
+
+PDF: [Link](Sumatorio/build/proyecto_sumas.pdf)
 
 ## Funciones Lógicas
 
