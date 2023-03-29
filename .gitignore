@@ -4,9 +4,10 @@
 
 !README.md
 
+!/*
+
 !/Logica
 !/Logica/*.tex
-/Logica/build/*
 !/Logica/build/*.pdf
 
 !/Sucesiones
