@@ -5,16 +5,16 @@
 !README.md
 
 !/Logica
-/Logica/*
 !/Logica/*.tex
+/Logica/build/*
 !/Logica/build/*.pdf
 
 !/Sucesiones
-/Sucesiones/*
 !/Sucesiones/*.tex
+/Sucesiones/build/*
 !/Sucesiones/build/*.pdf
 
 !/Sumatorio
-/Sumatorio/*
 !/Sumatorio/*.tex
+/Sumatorio/build/*
 !/Sumatorio/build/*.pdf
