@@ -5,4 +5,7 @@
 ## Sumatorios de k^P
 
 ## Funciones Lógicas
-PDF -> [Link](Logica/build/Proyecto_log.pdf)
+
+Mini resumen
+
+PDF: [Link](Logica/build/Proyecto_log.pdf)
