@@ -8,6 +8,8 @@ PDF: [Link](Sucesiones/build/proyecto_sucesiones.pdf)
 
 ## Sumatorios de k^P
 
+Mini resumen
+
 PDF: [Link](Sumatorio/build/proyecto_sumas.pdf)
 
 ## Funciones Lógicas
