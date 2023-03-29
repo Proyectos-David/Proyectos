@@ -7,14 +7,14 @@
 !/Logica
 /Logica/*
 !/Logica/*.tex
-!/Logica/**/*.pdf
+!/Logica/*/*.pdf
 
 !/Sucesiones
 /Sucesiones/*
 !/Sucesiones/*.tex
-!/Sucesiones/**/*.pdf
+!/Sucesiones/*/*.pdf
 
 !/Sumatorio
 /Sumatorio/*
 !/Sumatorio/*.tex
-!/Sumatorio/**/*.pdf
+!/Sumatorio/*/*.pdf
