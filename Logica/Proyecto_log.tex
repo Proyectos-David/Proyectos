@@ -28,7 +28,7 @@
     bottom = 2.5cm,
     headheight = 72pt
 }
-\newcommand{\logo}{"C:/Users/usuario/OneDrive/Documentos/U/logo-eci.jpg"}
+\newcommand{\logo}{"C:/Users/usuario/OneDrive/Documentos/U/logo-eci.png"}
 \renewcommand{\author}{David Gómez, Daniel Pérez, Laura Rincón, Juanita Rubiano}
 \renewcommand{\title}{Funciones lógicas}
 
@@ -58,6 +58,17 @@
 
 % Colores
 \definecolor{rojoEci}{RGB}{225, 70, 49}
+
+%flechita
+
+\usepackage{scalerel}
+
+\NewDocumentCommand{\flechita}{}{\scalerel*{\includegraphics{C:/Users/usuario/OneDrive/Documentos/U/flechita}}{X}}
+
+\NewDocumentCommand{\vdflechita}{}{\rotatebox[origin=c]{270}{\flechita}}
+
+\NewDocumentCommand{\vuflechita}{}{\rotatebox[origin=c]{90}{\flechita}}
+
 
 % Documento
 
@@ -100,6 +111,7 @@
 
 \include{func_bool.tex}
 
+\include{func_log.tex}
 
 \printbibliography
 \end{document}

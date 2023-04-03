@@ -1,0 +1,186 @@
+\sect{Nuestras funciones}
+
+Como se mencionó, se quiere dar una extensión de la lógica que permita el uso de operaciones aritméticas en la misma.
+
+De forma análoga a las  \hyperref[func_bool]{funciones booleanas}, se toma un conjunto sobre el que se emplean estas funciones: $\mathbb{V} = \{0, 1\}$ , en donde $0$ corresponde al valor \emph{falso} y $1$ al de \emph{verdadero}
+
+A partir de esto hacemos la siguiente analogía para entender las funciones que debemos encontrar:
+
+\begin{proofbox}{Conectores lógicos a funciones}
+    \begin{center}
+        $
+        \begin{matrix}
+            \textit{true} & \flechita & 1\\
+            \textit{false} & \flechita & 0\\
+            \neg p & \flechita & N(p)\\
+            p \To q & \flechita & I(p, q)\\
+            p \Gets q & \flechita & C(p, q)\\
+            p \land q & \flechita & \&(p, q)\\
+            p \lor q & \flechita & O(p, q)\\
+            p \equiv q & \flechita & E(p, q)\\
+            p \not\equiv q & \flechita & D(p, q)\\
+        \end{matrix}
+        $
+    \end{center}
+
+    Y, evidentemente:
+    \begin{center}
+        $
+        \begin{matrix}
+            N: \mathbb{V} \longrightarrow \mathbb{V}\\
+            I: \mathbb{V}^2 \longrightarrow \mathbb{V}\\
+            C: \mathbb{V}^2 \longrightarrow \mathbb{V}\\
+            \&: \mathbb{V}^2 \longrightarrow \mathbb{V}\\
+            O: \mathbb{V}^2 \longrightarrow \mathbb{V}\\
+            E: \mathbb{V}^2 \longrightarrow \mathbb{V}\\
+            D: \mathbb{V}^2 \longrightarrow \mathbb{V}
+        \end{matrix}
+        $
+    \end{center}
+\end{proofbox}
+
+Ahora, falta definir cada una de estas funciones. La forma en la que se definen, aprovechando que $\mathbb{V} \subseteq \mathbb{N}$, será obteniendo sucesiones a partir de tomar una de las variables como constante en ambos valores posibles. Dado que los posibles valores son únicamente dos, se puede asumir dichas sucesiones como aritméticas, lo que hace la obtención de su descripción bastante sencilla.
+
+Cabe aclarar, que el resultado previo a obtener la descripción aritmética de cada función está dado por el comportamiento de la función booleana correspondiente. Como ejemplo, la negación: 
+\[\hbool*{\neg}{T}{} = \texttt{F} \ \flechita\  N(1) = 0\]
+
+\begin{proofbox}{Obtención de las funciones} \label{obtencion_func}
+    \begin{itemize}
+        \item[(i)] $N(p)$
+        
+        Esta función, se comporta de la siguiente manera:
+        \begin{center}
+            \begin{derivation}<1>
+                    & \left\{
+                        \begin{matrix}
+                            N(0) = 1\\
+                            N(1) = 0
+                        \end{matrix}
+                    \right\}\\
+                \why*{}\\
+                    & N(p) = 1 - p
+            \end{derivation}
+        \end{center}
+
+        \item[(ii)] $I(p, q)$
+        
+        De igual manera:
+        \begin{center}
+            \begin{derivation}<1>
+                    & \left\{
+                        \begin{matrix}
+                            I(0, q) = 1\\
+                            I(1, q) = q
+                        \end{matrix}
+                    \right\}\\
+                \why*{}\\
+                    & I(p, q) = (q - 1)p + 1        
+            \end{derivation}
+        \end{center}
+
+        Procediendo de igual manera con las demás funciones\dots
+        \item[(iii)] $C(p, q)$
+        
+        \begin{center}
+            \begin{derivation}<1>
+                    & \left\{
+                        \begin{matrix}
+                            C(0, q) = N(q) = 1 - q\\
+                            C(1, q) = 1
+                        \end{matrix}
+                    \right\}\\
+                \why*{}\\
+                    & C(p, q) = pq + 1 - q
+            \end{derivation}
+        \end{center}
+
+        \item[(iv)] $\&(p, q)$
+        \begin{center}
+            \begin{derivation}<1>
+                    & \left\{
+                        \begin{matrix}
+                            \&(0, q) = 0\\
+                            \&(1, q) = q
+                        \end{matrix}
+                    \right\}\\
+                \why*{}\\
+                    & \&(p, q) = pq        
+            \end{derivation}
+        \end{center}
+
+        \item[(v)] $O(p, q)$
+        \begin{center}
+            \begin{derivation}<1>
+                    & \left\{
+                        \begin{matrix}
+                            O(0, q) = q\\
+                            O(1, q) = 1
+                        \end{matrix}
+                    \right\}\\
+                \why*{}\\
+                    & O(p, q) = (1 - q)p + q        
+            \end{derivation}
+        \end{center}
+
+        \item[(vi)] $E(p, q)$
+        \begin{center}
+            \begin{derivation}<1>
+                    & \left\{
+                        \begin{matrix}
+                            E(0, q) = N(q) = 1-q\\
+                            E(1, q) = q
+                        \end{matrix}
+                    \right\}\\
+                \why*{}\\
+                    & E(p, q) = (2q + 1)p + 1 - q
+            \end{derivation}
+        \end{center}
+
+        \item[(vii)] $D(p, q)$
+        \begin{center}
+            \begin{derivation}<1>
+                    & \left\{
+                        \begin{matrix}
+                            D(0, q) = q\\
+                            D(1, q) = N(q) = 1 - q
+                        \end{matrix}
+                    \right\}\\
+                \why*{}\\
+                    & D(p, q) = (1 - 2q)p + q
+            \end{derivation}
+        \end{center}
+    \end{itemize}
+
+    La propiedad, la cual llamaremos ``Propiedad fundamental'', más importante a tener en cuenta es la siguiente:
+    \[p\in \mathbb{V} \To p^n = p\]
+
+    Esto debido a que los valores de dicho conjunto, al elevarse a cualquier potencia no cambian su resultado. Y por otro lado, este resultado se obtiene de la propiedad del conector $\land$: idempotencia.
+
+\end{proofbox}
+
+
+Un ejemplo del uso de estas funciones sería evaluar la siguiente proposición:
+
+\begin{proofbox}{Ejemplo}
+    \begin{center}
+        \begin{derivation}
+                \res{ \neg (p \land q) \equiv \neg p \lor \neg q }\\
+            \why[\vdflechita]{definición de funciones}\\
+                \res{ E(N(\&(p, q)), O(N(p), N(q))) }\\
+            \why*[=]{}\\
+                \res{ E(1 - \&(p, q), (1 - N(q))N(p) + N(q)) }\\
+            \why*[=]{}\\
+                \res{ E(1 - pq), (1 - (1 - q))(1 - p) + 1 - q }\\
+            \why*[=]{}\\
+                \res{ E(1 - pq, 1 - pq) }\\
+            \why*[=]{}\\
+                \res{ (2(1 - pq) + 1)(1 - pq)  + 1 - (1 - pq) }\\
+            \why*[=]{}
+                \res{ 1 - pq - 2pq + 2(pq)^2 + pq }\\
+            \why[=]{ Propiedad fundamental }\\
+                \res{ 1 - pq - 2pq + 2pq + pq }\\
+            \why*[=]{}\\
+                \res{1}
+        \end{derivation}
+    \end{center}
+\end{proofbox}
