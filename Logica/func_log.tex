@@ -1,4 +1,5 @@
 \sect{Nuestras funciones}
+
 Como se mencionó, se quiere dar una extensión de la lógica que permita el uso de operaciones aritméticas en la misma.
 
 De forma análoga a las  \hyperref[func_bool]{funciones booleanas}, se toma un conjunto sobre el que se emplean estas funciones: $\mathbb{V} = \{0, 1\}$ , en donde $0$ corresponde al valor \emph{falso} y $1$ al de \emph{verdadero}
@@ -155,12 +156,12 @@ Cabe aclarar, que el resultado previo a obtener la descripción aritmética de c
 
         Por otra parte, están los cuantificadores, que se pueden expresar en términos de dos conectores: el cuantificador universal, es una forma de expresar una conjunción de varios términos; y el cuantificador existencial, es una forma de expresar una disyunción de varios términos.
 
-        \item[(viii)] $(\forall x \sthat r(x) : p(x))$
+        \item[(viii)] $(\forall x \sthat r(x) : p(x))$\\
         Al ser una conjunción de muchos términos, usando la función para la conjunción, se puede ver que se puede expresar como un productorio. Adoptaremos la siguiente notación:
         
         \[(\forall x \sthat r(x) : p(x)) \ \flechita\  \prod_{x\sthat r(x)} p(x)\]
 
-        \item[(iv)] $(\exists x \sthat r(x) : p(x))$
+        \item[(ix)] $(\exists x \sthat r(x) : p(x))$\\
         Debido a la definición de la conjunción como función, tomamos la siguiente equivalencia, y se define el cuantificador existencial como el universal.
 
         \[(\exists x \sthat r(x) : p(x)) \equiv \neg (\forall x \sthat r(x) : \neg p(x))\ \flechita \ 1 - \prod_{x\sthat r(x)} (1 - p(x))\]
