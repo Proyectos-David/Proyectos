@@ -6,6 +6,7 @@
 \usepackage{setspace}
 \usepackage{mathtools}
 \usepackage{logicDG}
+\usepackage{blkarray}
 \usepackage[spanish, es-noshorthands, es-noquoting]{babel}
 
 
@@ -40,6 +41,16 @@
 \definecolor{rojoEci}{RGB}{225, 70, 49}
 
 \doublespacing
+
+%flechita
+
+\usepackage{scalerel}
+
+\NewDocumentCommand{\flechita}{}{\scalerel*{\includegraphics{C:/Users/usuario/OneDrive/Documentos/U/flechita}}{X}}
+
+\NewDocumentCommand{\vdflechita}{}{\rotatebox[origin=c]{270}{\flechita}}
+
+\NewDocumentCommand{\vuflechita}{}{\rotatebox[origin=c]{90}{\flechita}}
 
 \begin{document}
 \begin{titlepage}
@@ -76,5 +87,7 @@
 \input{ejemplo_introd.tex}
 
 \include{formula_algor.tex}
+
+\include{elim_rec.tex}
 
 \end{document}

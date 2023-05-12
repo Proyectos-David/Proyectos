@@ -1,0 +1,75 @@
+\sect{Eliminación de la recursión}
+
+El algoritmo es fácil e incluso rápido de usar para pocos números. Sin embargo
+a medida que los valores deseados aumenten, hace que el proceso sea mucho más lento,
+pues para cada iteración, es necesario tener el paso anterior y operar con este en un
+$n$ específico. Fuera de ese detalle es sencillo eliminar la recursión, pues tenemos un
+número $y_k$, el cual multiplica un polinomio que varía junto con la iteración.
+Esto nos dice que entonces, si se tiene una forma general de estos coeficientes, se podría dar
+el resultado de una iteración $k$ de la siguiente forma:
+\[a_{K}(n)\sum_{i=0}^{k} y_i \prod_{c=0}^{i-1}(n - c)\]
+El único inconveniente para escribirlo de esta forma, es precisamente $y_k$. Pues este valor depende
+de la iteración anterior evaluada en $k+1$. Por lo que se debe encontrar una sucesión
+la cual represente el valor de $y_k$.
+
+Veamos algunos de los valores de $y_k$ con $S = \left\langle x_0, x_1, \dots \right\rangle$
+
+$$
+    \begin{matrix*}[l]
+        a_0(n) = x_0                &\flechita& y_0 = x_0\\
+        a_1(n) = (x_1 - x_0)n + x_0 &\flechita& y_1 = x_1 - x_0\\
+        a_2(n) = \dfrac{1}{2} [x_2 - 2x_1 + x_0]n(n-1) + (x_1 - x_0)n + x_0
+        & \flechita &y_2 = x_2 - 2x_1  + x_0\\
+        \vdots&\vdots&\vdots
+    \end{matrix*}
+$$
+
+Sabemos desde antes que
+\[y_{k + 1} = \dfrac{1}{(k + 1)!}\left[x_{k + 1} - a_{k}(k+1)\right]\]
+De esto, el valor que se debe generalizar, es lo que se encuentra entre corchetes. Para visualizar
+mejor el resultado de esto, se omitirá la fracción con el factorial.
+
+\begin{proofbox}{Valores desde $k=0$ hasta $k=5$}
+    $
+    \begin{matrix*}[l]
+        k = 0 & \flechita& x_0\\
+        k = 1 & \flechita& -x_0 + x_1\\
+        k = 2 & \flechita& x_0 - 2x_1 + x_2\\
+        k = 3 & \flechita& -x_0 + 3x_1 - 3x_2 + x_3\\
+        k = 4 & \flechita& x_0 - 4x_1 + 6x_2 - 4x_3 + x_4\\
+        k = 5 & \flechita& -x_0 + 5x_1 - 10x_2 + 10x_3 - 5x_4 + x_5\\
+        k = 6 & \flechita& x_0 -6x_1 + 15x_2 - 20x_3 + 15x_4 - 6x_5 + x_6
+    \end{matrix*}
+    $
+\end{proofbox}
+
+Ahora, como los valores de $S$ no deben afectar el comportamiento de cada $y$, y para visualizar
+aún mejor el comportamiento de estos valores, vamos a organizar los valores en una matriz,
+la cual tenga por columna el índice de cada $x$ y como fila los valores de $k$. De esta forma,
+podremos ver los coeficientes de los valores deseados en cada $y_k$
+
+\[
+\begin{blockarray}{cccccccc}
+        & x_0     & x_1   & x_2   & x_3   & x_4   & x_5   & x_6\\
+    \begin{block}{c(ccccccc)}
+    0   &   1     & 0     & 0     & 0     & 0     & 0     & 0\\
+    1   &   -1    & 1     & 0     & 0     & 0     & 0     & 0\\
+    2   &   1     & -2    & 1     & 0     & 0     & 0     & 0\\
+    3   &   -1    & 3     & -3    & 1     & 0     & 0     & 0\\
+    4   &   1     & -4    & 6     & -4    & 1     & 0     & 0\\
+    5   &   -1    & 5     & -10   & 10    & -5    & 1     & 0\\
+    6   &   1     & -6    & 15    & -15   & 15    & -6    & 1\\
+    \end{block}
+\end{blockarray}
+\]
+
+Fijándonos en cada columna por separado, podemos ver que hay cierto
+patrón. Para hallarlo, usamos la fórmula recursiva, ya demostrada.
+
+Llamaremos $\phi_j(n)$ a la sucesión la cual relaciona $k$ con los valores
+de una columna $j$.
+
+Tras llegar a un punto en el que las siguientes iteraciones resultan iguales a una
+anterior, se halló entonces que:
+
+\[\phi_j(i) = \dfrac{(-1)^{i + j}}{j!}\prod_{c=0}^{j-1}(i - c)\]
