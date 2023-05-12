@@ -7,9 +7,9 @@ $n$ específico. Fuera de ese detalle es sencillo eliminar la recursión, pues t
 número $y_k$, el cual multiplica un polinomio que varía junto con la iteración.
 Esto nos dice que entonces, si se tiene una forma general de estos coeficientes, se podría dar
 el resultado de una iteración $k$ de la siguiente forma:
-\[a_{K}(n)\sum_{i=0}^{k} y_i \prod_{c=0}^{i-1}(n - c)\]
-El único inconveniente para escribirlo de esta forma, es precisamente $y_k$. Pues este valor depende
-de la iteración anterior evaluada en $k+1$. Por lo que se debe encontrar una sucesión
+\[a_{k}(n) = \sum_{i=0}^{k} y_i \prod_{c=0}^{i-1}(n - c)\]
+El único inconveniente para escribirlo de esta forma, es precisamente $y_i$. Pues este valor depende
+de la iteración anterior evaluada en $i$. Por lo que se debe encontrar una sucesión
 la cual represente el valor de $y_k$.
 
 Veamos algunos de los valores de $y_k$ con $S = \left\langle x_0, x_1, \dots \right\rangle$
