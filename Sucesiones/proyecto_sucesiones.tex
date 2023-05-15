@@ -36,7 +36,7 @@
 \setlength{\parindent}{0pt}
 
 \newcommand{\titlename}{Sucesiones}%
-\renewcommand{\author}{{David Gómez, Laura Rincón}}
+\renewcommand{\author}{{David Gómez, Laura Rincón, Daniel Pérez}}
 
 \definecolor{rojoEci}{RGB}{225, 70, 49}
 
@@ -51,6 +51,26 @@
 \NewDocumentCommand{\vdflechita}{}{\rotatebox[origin=c]{270}{\flechita}}
 
 \NewDocumentCommand{\vuflechita}{}{\rotatebox[origin=c]{90}{\flechita}}
+
+\NewDocumentCommand{\dsum}{%
+    e{^_}
+}{%
+  {% 
+    \displaystyle\sum
+    \IfValueT{#1}{^{#1}}
+    \IfValueT{#2}{_{#2}}
+  }
+}%
+
+\NewDocumentCommand{\dprod}{%
+    e{^_}
+}{%
+  {% 
+    \displaystyle\prod
+    \IfValueT{#1}{^{#1}}
+    \IfValueT{#2}{_{#2}}
+  }
+}%
 
 \begin{document}
 \begin{titlepage}
@@ -87,6 +107,8 @@
 \input{ejemplo_introd.tex}
 
 \include{formula_algor.tex}
+
+\input{Ejemplo_gene.tex}
 
 \include{elim_rec.tex}
 

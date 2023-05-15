@@ -1,0 +1,28 @@
+\sect{Ejemplo de uso}
+Se puede ver del algoritmo, que el uso de este algoritmo viene bastante
+bien para la obtención de expresiones polinómicas.
+
+Un caso particular de esto sería la suma de $n$ números naturales elevados
+al cuadrado. Partimos de unos cuantos términos, hallados manualmente:
+
+\[S = \left<0, 1, 5, 14, 30, 55, \dots \right>\]
+
+Entonces, hacemos iteraciones hasta poder conjeturar un resultado:
+
+\begin{center}
+    \begin{derivation}<1.5>
+        a_0(n) &=& 0\\
+        a_1(n) &=& (1-0)n = n\\
+        a_2(n) &=& \dfrac{1}{2}(5 - 2)n(n-1) + n = \dfrac{n(3n - 1)}{2}\\
+        a_3(n) &=& \dfrac{1}{6}(14 - 12)n(n-1)(n-2) + \dfrac{n(3n - 1)}{2} 
+        = \dfrac{n(n+1)(2n+1)}{6}\\
+        a_4(n) &=& \dfrac{1}{24}(30 - 30)n(n-1)(n-2)(n-3) + \dfrac{n(n+1)(2n+1)}{6}
+        = a_3(n)
+    \end{derivation}
+\end{center}
+
+En el momento en el que una iteración $k$ funciona para el término deseado en $k+1$,
+es momento de detenerse. Es bueno ver si en siguientes valores también cumple, y de ser
+el caso, establecer la conjetura. Posteriormente, usar lo obtenido y demostrar la validez
+de la fórmula hallada. En nuestro ejemplo, la iteración $a_3$ efectivamente corresponde
+al resultado de sumar $n$ números naturales al cuadrado.

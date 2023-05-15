@@ -2,8 +2,8 @@
 
 Suponga ahora la siguiente sucesión $S$ y sus índices $I$:
 \begin{align*}
-    S &= \langle x_0, x_1, x_2, \dots x_n\rangle\\
-    I &= \langle 0, 1, 2, \dots n \rangle
+    S &= \langle x_0, x_1, x_2, \dots , x_n\rangle\\
+    I &= \langle 0, 1, 2, \dots , n \rangle
 \end{align*}
 
 El objetivo es obtener el término general de $S$ con índices $I$ .
@@ -68,40 +68,45 @@ A partir de esta información, se conjetura lo siguiente:
     Por su puesto, hace falta demostrarlo:
 \end{proofbox}
 \clearpage
-\begin{proofbox}*{demostración}
-    Por medio de la inducción, se toma un caso base, el cual será $k=0$. Esto significa que la expresión obtenida funciona para la sucesión $S = \langle x_0\rangle$
-    y usando la fórmula conjeturada, se obtiene que
-    \[a_0(n) = x_0 \]
-    Que efectivamente, cumple.
-    Ahora se supone que existe un $b$ tal que la fórmula se cumple para todo número natural menor que o igual a $b$. Queremos ver qué sucede si queremos hallar una sucesión que también pueda seguir el valor de $x_{b+1}$
 
-    Tenemos $S = \langle x_0, x_1, \dots x_b, x_{b+1}\rangle$
-    y que $a_b(n)$ relaciona a los naturales con los $x_i$ de $S$ hasta $x_b$
 
-    Queremos hallar una sucesión que pueda relacionar desde $x_0$ hasta $x_{b+1}$, a los naturales. Tomando la información anterior, suponemos que hay un $y_{b+1}$ tal que:
+Por medio de la inducción, se toma un caso base, el cual será $k=0$. Esto significa que la expresión obtenida funciona para la sucesión $S = \langle x_0\rangle$
+y usando la fórmula conjeturada, se obtiene que
+\[a_0(n) = x_0 \]
+Que efectivamente, cumple.
+Ahora se supone que existe un $b$ tal que la fórmula se cumple para todo número natural menor que o igual a $b$. Queremos ver qué sucede si queremos hallar una sucesión que también pueda seguir el valor de $x_{b+1}$
 
-    \begin{equation*}
-        \left\{
-            \begin{aligned}
-                a_{b+1}(n) &= y_{b+1} \displaystyle\prod_{c=0}^{b}(n-c) + a_b(n)\\
-                x_{b+1} &= y_{b+1} \displaystyle\prod_{c=0}^{b}(b+1 - c) + a_b(b + 1)                
-            \end{aligned}
-        \right\}
-    \end{equation*}
-    Se define de esta manera por la misma razón que se mencionó al principio. Sabemos que $a_b(n)$ sirve para todos los naturales antes que $b+1$ y relaciona cada uno respectivamente con un elemento de $S$. Entonces añadimos un nuevo término el cual se anule en todos los valores de $n$ hasta $b$ de forma que podamos seguir usando $a_b$ y forzando a que en $n=b+1$ el valor obtenido sea $x_{b+1}$ usando $y_{b+1}$ .
+Tenemos $S = \langle x_0, x_1, \dots x_b, x_{b+1}\rangle$
+y que $a_b(n)$ relaciona a los naturales con los $x_i$ de $S$ hasta $x_b$
 
-    Desarrollando la segunda igualdad.
+Queremos hallar una sucesión que pueda relacionar desde $x_0$ hasta $x_{b+1}$, a los naturales. Tomando la información anterior, suponemos que hay un $y_{b+1}$ tal que:
 
-    \begin{align*}
-        y_{b+1} \displaystyle\prod_{c=0}^{b}(b+1 - c) &= x_{b+1} - a_b(b+1)\\
-        y_{b+1} (b+1)(b)(b-1)\cdots 1 &= x_{b+1} - a_b(b+1)\\
-        y_{b+1} (b+1)! &= x_{b+1} - a_b(b+1)\\
-        y_{b+1} &= \dfrac{1}{(b+1)!}[x_{b+1} - a_b(b+1)]
-    \end{align*}
+\begin{equation*}
+    \left\{
+        \begin{aligned}
+            a_{b+1}(n) &= y_{b+1} \displaystyle\prod_{c=0}^{b}(n-c) + a_b(n)\\
+            x_{b+1} &= y_{b+1} \displaystyle\prod_{c=0}^{b}(b+1 - c) + a_b(b + 1)                
+        \end{aligned}
+    \right\}
+\end{equation*}
+Se define de esta manera por la misma razón que se mencionó al principio. Sabemos que $a_b(n)$ sirve para todos los naturales antes que $b+1$ y relaciona cada uno respectivamente con un elemento de $S$. Entonces añadimos un nuevo término el cual se anule en todos los valores de $n$ hasta $b$ de forma que podamos seguir usando $a_b$ y forzando a que en $n=b+1$ el valor obtenido sea $x_{b+1}$ usando $y_{b+1}$ .
 
-    Reemplazando en la primera igualdad, se obtiene lo siguiente:
+Desarrollando la segunda igualdad.
+\begin{center}
+    \begin{derivation}
+            \res{ y_{b+1} \displaystyle\prod_{c=0}^{b}(b+1 - c) = 
+            x_{b+1} - a_b(b+1) }\\
+        \why{Notación}\\
+            \res{ y_{b+1} (b+1)(b)(b-1)\cdots 1 = x_{b+1} - a_b(b+1) }\\
+        \why{Notación}\\
+            \res{ y_{b+1} (b+1)! = x_{b+1} - a_b(b+1) }\\
+        \why{Aritmética}\\
+            \res{ y_{b+1} = \dfrac{1}{(b+1)!}[x_{b+1} - a_b(b+1)] }
+    \end{derivation}
+\end{center}
+\vspace*{10pt}
+Reemplazando en la primera igualdad, se obtiene lo siguiente:
 
-    \[a_{b+1}(n) = \dfrac{1}{(b+1)!}[x_{b+1} - a_b(b+1)]\displaystyle\prod_{c=0}^{b}(n-c) + a_b(n)\]
+\[a_{b+1}(n) = \dfrac{1}{(b+1)!}[x_{b+1} - a_b(b+1)]\displaystyle\prod_{c=0}^{b}(n-c) + a_b(n)\]
 
-    Con este resultado se demuestra la validez de la fórmula.
-\end{proofbox}
+Con este resultado se demuestra la validez de la fórmula.
