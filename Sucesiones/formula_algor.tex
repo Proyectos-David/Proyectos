@@ -52,14 +52,15 @@ A partir de esta información, se conjetura lo siguiente:
         \begin{derivation}<1.5>
                 \res{ \left\{
                     \begin{aligned}
-                        a_k(n) &= \dfrac{1}{k!}[x_k - a_{k-1}(k)]n(n-1)(n-2)\dots(n-(k-1)) + a_{k-1}(n)\\
+                        a_{k+1}(n) &= \dfrac{1}{(k+1)!}[x_k - a_{k}(k+1)]n(n-1)(n-2)\dots(n-k) + a_{k}(n)\\
                         a_0 &= x_0
                     \end{aligned}
                 \right\} }\\
             \why{Notación}\\
                 \res{ \left\{
                     \begin{aligned}
-                        a_k(n) &= \dfrac{1}{k!}[x_k - a_{k-1}(k)]\displaystyle\prod_{c=0}^{k-1}(n-c) + a_{k-1}(n)\\
+                        a_{k+1}(n) &= \dfrac{1}{(k+1)!}[x_k - a_{k-1}(k)]\displaystyle\prod_{c=0}^{k}(n-c)
+                        + a_{k}(n)\\
                         a_0 &= x_0
                     \end{aligned}
                 \right\} }

@@ -104,6 +104,96 @@ Por ejemplo, si los valores de la matriz son válidos, se podría expresar la it
     \end{derivation}
 \end{center}
 
-Entonces lo que hace falta demostrar es la siguiente igualdad (el de $a_0(n)$ es inmediato):
+Entonces lo que hace falta demostrar es la siguiente igualdad (el caso base, de $a_0(n)$, es inmediato):
 
 \[a_{k+1}(n) = \dsum_{i=0}^{k}y_i\dprod_{c=0}^{i-1}(n-c)\]
+
+Antes de seguir con dicha demostración, cabe mencionar que se facilita la lectura\\
+de ambas expresiones, en términos de binomios:
+
+\begin{proofbox}{Expresiones con binomios}
+    \begin{enumerate}[label=(\Roman*)]
+        \item Recursiva
+        
+        \[\left\{
+            \begin{aligned}
+                a_0(n)      &= x_0\\
+                a_{k+1}(n)  &= \binom{n}{k+1}\left(x_{k+1} - a_k(k+1)\right) + a_k(k+1)
+            \end{aligned}
+        \right\}\]
+
+        \item Conjetura
+        
+        \begin{align*}
+            a_k(n)  &= \sum_{i=0}^{k}\binom{n}{i}
+            \left(x_0\binom{i}{0}(-1)^i + \cdots x_k \binom{i}{k}(-1)^{i+k}\right)\\
+                    &= \sum_{i=0}^{k}\binom{n}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j            
+        \end{align*}
+
+        La expresión obtenida para la conjetura viene de que el valor de las funciones $\phi$
+        solo son diferentes a $0$ desde que son evaluadas en un valor superior a su subíndice,
+        y este coincide con el binomio entre ambos valores. A su vez, desde la presentación de
+        la matriz, se puede ver la relación directa entre los coeficientes y el triángulo
+        de pascal alternado.
+    \end{enumerate}
+\end{proofbox}
+
+Procediendo con la demostración, llamaremos $a^{(r)}$ a la función bajo la recursión,
+y $a^{(c)}$ a la función bajo la conjetura y siendo este un paso inductivo, suponiendo
+que la conjetura se cumple para $a_k(n)$:
+
+\begin{center}
+    \begin{derivation}<2>
+            \res{ a_{k+1}^{(c)}(n) = a_{k+1}^{(r)}(n) }\\
+        \why{ Igualdad con binomios }\\
+            \res{ \sum_{i=0}^{k+1}\binom{n}{k+1}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j
+            = \binom{n}{k+1}(x_{k+1} - a_k(k+1)) + a_k(n) }\\
+        \why{ (izq.) La suma hasta $k$ es $a_k(n)$, Hipótesis de inducción }\\
+            \res{ \binom{n}{k+1} \sum_{j=0}^{k+1}\binom{k+1}{j}(-1)^{k+1+j}x_j
+            =  \binom{n}{k+1}\left(x_{k+1} 
+            - \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j\right)}\\
+        \why*{}\\
+            \res{ (-1)^{k+1}\sum_{j=0}^{k+1}\binom{k+1}{j}(-1)^{j}x_j
+            = x_{k+1} - \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j}\\
+        \why{ (izq.) El último término de la suma, es $x_{k+1}$ }\\
+            \res{ (-1)^{k+1}\sum_{j=0}^{k}\binom{k+1}{j}(-1)^{j}x_j
+            = - \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j }\\
+        \why*{}\\
+            \res{ (-1)^{k}\sum_{j=0}^{k}\binom{k+1}{j}(-1)^{j}x_j
+            = \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j }
+    \end{derivation}
+
+    \vspace{1cm}
+    Dado que todo $x_i$ es un valor arbitrario, y su coeficiente no depende en lo absoluto
+    del valor que tome este, el problema se reduce a igualar los coeficientes de un $x_m$
+    donde $0 \leq m \leq k$.
+    Para la suma de sumas en $a_k^{(c)}$, se puede ver que
+    \begin{enumerate}[label=(\Roman*)]
+        \item $x_m$ empieza a acumular coeficientes desde $i=m$
+        \item Los demás elementos de la segunda suma no afectan el resultado para $x_m$
+    \end{enumerate}
+    Por estos resultados, la igualdad de coeficientes queda de la siguiente manera:
+    \vspace{1cm}
+    \begin{center}
+        \begin{derivation}<2>
+                \res{ (-1)^{k + m}\binom{k+1}{m}
+                = \sum_{i=m}^{k}\binom{k+1}{i}\binom{i}{m} (-1)^{i + m}}\\
+            \why{$\binom{a}{b}\binom{b}{c} = \binom{a}{c}\binom{a-c}{b - c}$}\\
+                \res{ (-1)^{k+m}\binom{k+1}{m}
+                = \sum_{i=m}^{k}\binom{k+1}{m}\binom{k+1-m}{i-m}(-1)^{i+m} }\\
+            \why*{}\\
+                \res{ (-1)^{k+m} = \sum_{i=m}^{k}\binom{k+1-m}{i-m}(-1)^{i+m}}\\
+            \why{ Cambio de límites en la suma, $(-1)^{a + 2b} = (-1)^a$ }\\
+                \res{ (-1)^{k+m} = \sum_{i=0}^{k-m}\binom{k+1-m}{i}(-1)^i }\\
+            \why{ Añadiendo y restando la expresión de la suma en $i=k+1$}\\
+                \res{ (-1)^{k+m} = -\binom{k+1-m}{k+1-m}(-1)^{k+1+m}
+                + \sum_{i=0}^{k+1-m}\binom{k+1-m}{i}(-1)^{i} }\\
+            \why{ Teorema del binomio: $(1 - 1)^{k+1-m}$, $(-1)^a = (-1)^{a - 2}$}\\
+                \res{ (-1)^{k+m} = (-1)^{k+m} + (1-1)^{k+1-m} }\\
+            \why*{}\\
+                \res{ (-1)^{k+m} = (-1)^{k+m} }\\
+            \why*{}\\
+                \res{ \textit{true} }
+        \end{derivation}
+    \end{center}
+\end{center}
