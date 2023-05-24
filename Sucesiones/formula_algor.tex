@@ -48,7 +48,7 @@ A partir de esta información, se conjetura lo siguiente:
 
 \begin{proofbox}[10]{Algorítmo}
     El término general de una sucesión de $k$ términos, está dada por
-    \begin{center}
+    \[
         \begin{derivation}<1.5>
                 \res{ \left\{
                     \begin{aligned}
@@ -65,7 +65,7 @@ A partir de esta información, se conjetura lo siguiente:
                     \end{aligned}
                 \right\} }
         \end{derivation}
-    \end{center}
+    \]
     Por su puesto, hace falta demostrarlo:
 \end{proofbox}
 \clearpage
@@ -93,9 +93,9 @@ Queremos hallar una sucesión que pueda relacionar desde $x_0$ hasta $x_{b+1}$, 
 Se define de esta manera por la misma razón que se mencionó al principio. Sabemos que $a_b(n)$ sirve para todos los naturales antes que $b+1$ y relaciona cada uno respectivamente con un elemento de $S$. Entonces añadimos un nuevo término el cual se anule en todos los valores de $n$ hasta $b$ de forma que podamos seguir usando $a_b$ y forzando a que en $n=b+1$ el valor obtenido sea $x_{b+1}$ usando $y_{b+1}$ .
 
 Desarrollando la segunda igualdad.
-\begin{center}
+\[
     \begin{derivation}
-            \res{ y_{b+1} \displaystyle\prod_{c=0}^{b}(b+1 - c) = 
+            \res{ y_{b+1} \prod_{c=0}^{b}(b+1 - c) = 
             x_{b+1} - a_b(b+1) }\\
         \why{Notación}\\
             \res{ y_{b+1} (b+1)(b)(b-1)\cdots 1 = x_{b+1} - a_b(b+1) }\\
@@ -104,7 +104,7 @@ Desarrollando la segunda igualdad.
         \why{Aritmética}\\
             \res{ y_{b+1} = \dfrac{1}{(b+1)!}[x_{b+1} - a_b(b+1)] }
     \end{derivation}
-\end{center}
+\]
 \vspace*{10pt}
 Reemplazando en la primera igualdad, se obtiene lo siguiente:
 

@@ -11,23 +11,22 @@
 \usepackage[spanish, es-noshorthands, es-noquoting]{babel}
 
 
-\ExplSyntaxOn
 
 \NewDocumentCommand{\sect}{m}{\addcontentsline{toc}{section}{#1} \section*{#1}}%
 
 \NewDocumentCommand{\subsect}{m}{\addcontentsline{toc}{subsection}{#1} \subsection*{#1}}%
 
 \NewDocumentCommand{\subsubsect}{m}{\addcontentsline{toc}{subsubsection}{#1} \subsection*{#1}}%
-\ExplSyntaxOff
 
+% Página
 
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\headheight}{70.38103pt}
-\rhead{\textit{\author}}
+\rhead{\textit{David G., Laura R., Daniel P.}}
 \lhead{\includegraphics[width = 4cm]{\logo}}
 \lfoot{Página \thepage}
-\rfoot{\titlename}
+\rfoot{Sucesiones Arbitrarias}
 \renewcommand{\headrule}{\hbox to \headwidth{\color{rojoEci}\leaders\hrule height \headrulewidth\hfill}}
 \renewcommand{\footrulewidth}{0.4pt}
 
@@ -36,10 +35,11 @@
 \newcommand{\logo}{"C:/Users/usuario/OneDrive/Documentos/U/logo-eci.png"}
 \setlength{\parindent}{0pt}
 
-\newcommand{\titlename}{Sucesiones}%
+\newcommand{\titlename}{Sucesiones \\[10pt] Arbitrarias}%
 \renewcommand{\author}{{David Gómez, Laura Rincón, Daniel Pérez}}
 
 \definecolor{rojoEci}{RGB}{225, 70, 49}
+
 
 \doublespacing
 
@@ -47,31 +47,14 @@
 
 \usepackage{scalerel}
 
-\NewDocumentCommand{\flechita}{}{\scalerel*{\includegraphics{C:/Users/usuario/OneDrive/Documentos/U/flechita}}{X}}
+\NewDocumentCommand{\flechita}{}{\scalerel*{
+    \includegraphics{C:/Users/usuario/OneDrive/Documentos/U/flechita}
+    }{X}}
 
 \NewDocumentCommand{\vdflechita}{}{\rotatebox[origin=c]{270}{\flechita}}
 
 \NewDocumentCommand{\vuflechita}{}{\rotatebox[origin=c]{90}{\flechita}}
 
-\NewDocumentCommand{\dsum}{%
-    e{^_}
-}{%
-  {% 
-    \displaystyle\sum
-    \IfValueT{#1}{^{#1}}
-    \IfValueT{#2}{_{#2}}
-  }
-}%
-
-\NewDocumentCommand{\dprod}{%
-    e{^_}
-}{%
-  {% 
-    \displaystyle\prod
-    \IfValueT{#1}{^{#1}}
-    \IfValueT{#2}{_{#2}}
-  }
-}%
 
 \begin{document}
 \begin{titlepage}
@@ -82,13 +65,13 @@
 
         \vspace{1.5cm}
 
-        \textbf{{\author}}
+        \textbf{\Large{\author}}
 
         \vspace{3cm}
 
         \includegraphics[width=0.8\textwidth]{\logo}
 
-        \vspace{3cm}
+        \vfill
 
         Matemáticas\linebreak
         Escuela Colombiana de Ingeniería Julio Garavito\linebreak
@@ -97,15 +80,14 @@
 
     \end{center}
 \end{titlepage}
+
 \clearpage
 \tableofcontents
 \clearpage
 
 \input{Intro.tex}
 
-\include{obt_algoritmo.tex}
-
-\input{ejemplo_introd.tex}
+\include{ejemplo_introd.tex}
 
 \include{formula_algor.tex}
 

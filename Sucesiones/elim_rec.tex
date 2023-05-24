@@ -81,7 +81,7 @@ a la iteración.
 
 Por ejemplo:
 
-\begin{center}
+\[
     \begin{derivation}<1.5>
             \res{ y_3 = 
             \dfrac{1}{3!}(\,x_0\,\phi_0(3) + x_1\,\phi_1(3)  + x_2\,\phi_2(3) + x_3\,\phi_3(3)\,) }\\
@@ -89,24 +89,24 @@ Por ejemplo:
             \res{ y_3 = 
             \dfrac{1}{3!}(-x_0 + 3x_1 - 3x_2 + x_3) }
     \end{derivation}
-\end{center}
+\]
 
 Por ejemplo, si los valores de la matriz son válidos, se podría expresar la iteración $a_3(n)$ de la siguiente forma:
 
-\begin{center}
+\[
     \begin{derivation}
-            \res{ a_3(n) = \dsum_{i = 0}^{3} y_i \dprod_{c=0}^{i-1}(n-c)}\\
+            \res{ a_3(n) = \sum_{i = 0}^{3} y_i \prod_{c=0}^{i-1}(n-c)}\\
         \why*{}\\
             \res{ a_3(n) = y_0 + y_1\,n + y_2\,n(n-1) + y_3\,n(n-1)(n-2) }\\
         \why{ Conjetura de $y_k$ }\\
             \res{ a_3(n) = x_0 + (-x_0 + x_1)\,n + \dfrac{1}{2}(x_0 -2x_1 + x_2)\,n(n-1) }\\
             &\qquad\qquad + \dfrac{1}{3!}(-x_0 + 3x_1 - 3x_2 + x_3)\,n(n-1)(n-2)
     \end{derivation}
-\end{center}
+\]
 
 Entonces lo que hace falta demostrar es la siguiente igualdad (el caso base, de $a_0(n)$, es inmediato):
 
-\[a_{k+1}(n) = \dsum_{i=0}^{k}y_i\dprod_{c=0}^{i-1}(n-c)\]
+\[a_{k+1}(n) = \sum_{i=0}^{k}y_i\prod_{c=0}^{i-1}(n-c)\]
 
 Antes de seguir con dicha demostración, cabe mencionar que se facilita la lectura\\
 de ambas expresiones, en términos de binomios:
@@ -142,7 +142,7 @@ Procediendo con la demostración, llamaremos $a^{(r)}$ a la función bajo la rec
 y $a^{(c)}$ a la función bajo la conjetura y siendo este un paso inductivo, suponiendo
 que la conjetura se cumple para $a_k(n)$:
 
-\begin{center}
+\[
     \begin{derivation}<2>
             \res{ a_{k+1}^{(c)}(n) = a_{k+1}^{(r)}(n) }\\
         \why{ Igualdad con binomios }\\
@@ -162,6 +162,7 @@ que la conjetura se cumple para $a_k(n)$:
             \res{ (-1)^{k}\sum_{j=0}^{k}\binom{k+1}{j}(-1)^{j}x_j
             = \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j }
     \end{derivation}
+\]
 
     \vspace{1cm}
     Dado que todo $x_i$ es un valor arbitrario, y su coeficiente no depende en lo absoluto
@@ -174,8 +175,7 @@ que la conjetura se cumple para $a_k(n)$:
     \end{enumerate}
     Por estos resultados, la igualdad de coeficientes queda de la siguiente manera:
     \vspace{1cm}
-    \begin{center}
-        \begin{derivation}<2>
+        \begin{longderivation}<2>
                 \res{ (-1)^{k + m}\binom{k+1}{m}
                 = \sum_{i=m}^{k}\binom{k+1}{i}\binom{i}{m} (-1)^{i + m}}\\
             \why{$\binom{a}{b}\binom{b}{c} = \binom{a}{c}\binom{a-c}{b - c}$}\\
@@ -194,6 +194,28 @@ que la conjetura se cumple para $a_k(n)$:
                 \res{ (-1)^{k+m} = (-1)^{k+m} }\\
             \why*{}\\
                 \res{ \textit{true} }
-        \end{derivation}
-    \end{center}
-\end{center}
+        \end{longderivation}
+
+Esto nos demuestra que para cualquier sucesión arbitraria, el término general está dado
+por la suma presentada como conjetura.
+
+Veamos, el mismo ejemplo presentado anteriormente, la suma de cuadrados.
+
+\[S = \left<0,1,5,14,30,55,\dots\right>\]
+
+Tomando hasta $a_4$, deberíamos obtener un polinomio de grado $4$, por lo que
+si el polinomio resultante es de grado menor, podemos dar pausa al algoritmo.
+
+\[
+    \begin{derivation}
+            \res{ a_4(n) = \sum_{i=0}^{4}\binom{n}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j }\\
+        \why{ Los valores de $x$ corresponden a $S$ }\\
+            \res{ a_4(n) = 0 + n(-0 + 1) + \frac{n(n-1)}{2}(0 - 2(1) + 5)\\
+            &\displaystyle\qquad+ \frac{n(n-1)(n-2)}{6}(-0 + 3(1) - 3(5) + 14)\\
+            &\displaystyle\qquad + \frac{n(n-1)(n-2)}{24}(0 - 4(1) + 6(5) - 4(14) + 30)}\\
+        \why*{}\\
+            \res{ n + \frac{3n(n-1)}{2} + \frac{2n(n-1)(n-2)}{3} + 0 }\\
+        \why*{}\\
+            \res{ \frac{n(n+1)(2n+1)}{6} }
+    \end{derivation}
+\]
