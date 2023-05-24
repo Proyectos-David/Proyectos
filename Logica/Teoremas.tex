@@ -1,6 +1,7 @@
 \sect{Teoremas}
-
-El desarrollo para la distribución de la negación en la conjunción se ve bastante saturado, en comparación al uso de las herramientas de la lógica `normal'. Sin embargo, con el uso de algunos teoremas, se puede facilitar bastante la forma de demostrar usando estas funciones lógicas.
+El desarrollo para la distribución de la negación en la conjunción se ve bastante saturado,
+en comparación al uso de las herramientas de la lógica `normal'. Sin embargo, con el uso de
+algunos teoremas, se puede facilitar bastante la forma de demostrar usando estas funciones lógicas.
 
 \begin{proofbox}[10]{\textbf{Teorema: Igualdad}}\label{Teo_igualdad}
     \emph{
@@ -8,11 +9,11 @@ El desarrollo para la distribución de la negación en la conjunción se ve bast
     }    
 \end{proofbox}
 
-\begin{subproofbox}[10]{\emph{Demostración}}
+\begin{proofbox}*[10]{\emph{Demostración}}
     \begin{itemize}
         \item[(i)] Suponiendo que $h_0 = h_1$
         
-        \begin{center}
+        \[
             \begin{derivation}<.9>
                     \res{ E(h_0, h_1) }\\
                 \why*[=]{}\\
@@ -22,11 +23,11 @@ El desarrollo para la distribución de la negación en la conjunción se ve bast
                 \why*[=]{}\\
                     \res{ 1 }
             \end{derivation}
-        \end{center}
+        \]
 
         \item[(ii)] Suponiendo que $E(h_0, h_1) = 1$
         
-        \begin{center}
+        \[
             \begin{derivation}[5pt]
                     \res{ E(h_0, h_1) = 1 }\\
                 \why*{}\\
@@ -45,20 +46,20 @@ El desarrollo para la distribución de la negación en la conjunción se ve bast
                         \right\}
                     }
             \end{derivation}
-        \end{center}
+        \]
     \end{itemize}
-\end{subproofbox}
+\end{proofbox}
 
 \begin{proofbox}[10]{\textbf{Teorema: implicación}}
     \emph{
         Dadas dos proposiciones $\phi_1$ `y' $\phi_2$, las cuales se pueden representar como funciones lógicas (compuestas o simples) $h_0$ `y' $h_1$ , respectivamente y $\phi_1 \To \phi_2$. $h_0h_1 = h_0$ si y solo si $I(h_0, h_1) = 1$
     }
 \end{proofbox}
-\begin{subproofbox}[10]{\emph{Demostración}}
+\begin{proofbox}*[10]{\emph{Demostración}}
     \begin{itemize}
         \item[(i)] Suponiendo $h_0h_1 = h_0$
         
-        \begin{center}
+        \[
             \begin{derivation}<.9>
                     \res{ I(h_0, h_1) }\\
                 \why*[=]{}\\
@@ -70,11 +71,11 @@ El desarrollo para la distribución de la negación en la conjunción se ve bast
                 \why*[=]{}\\
                     \res{ 1 }
             \end{derivation}
-        \end{center}
+        \]
 
         \item[(ii)] Suponiendo $I(h_0, h_1) = 1$
         
-        \begin{center}
+        \[
             \begin{derivation}<.9>
                     \res{ I(h_0, h_1) = 1 }\\
                 \why*{}\\
@@ -84,7 +85,7 @@ El desarrollo para la distribución de la negación en la conjunción se ve bast
                 \why*{}\\
                     \res{ h_0h_1 = h_0 }
             \end{derivation}
-        \end{center}
+        \]
 
     \end{itemize}
-\end{subproofbox}
+\end{proofbox}
