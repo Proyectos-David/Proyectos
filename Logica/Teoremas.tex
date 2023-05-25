@@ -1,17 +1,20 @@
 \sect{Teoremas}
-El desarrollo para la distribución de la negación en la conjunción se ve bastante saturado,
+
+El desarrollo para la distribución de la negación en la conjunción se ve bastante saturado,\\
 en comparación al uso de las herramientas de la lógica `normal'. Sin embargo, con el uso de
 algunos teoremas, se puede facilitar bastante la forma de demostrar usando estas funciones lógicas.
 
-\begin{proofbox}[10]{\textbf{Teorema: Igualdad}}\label{Teo_igualdad}
-    \emph{
-        Dadas proposiciones $\phi_1$ `y' $\phi_2$, las cuales se pueden representar como funciones lógicas (compuestas o simples) $h_0$ `y' $h_1$ , respectivamente y $\phi_1 \equiv \phi_2$. $E(h_0, h_1) = 1$ si y solo si $h_0 = h_1$ 
-    }    
-\end{proofbox}
+\textbf{ Teorema: Igualdad}
 
+\begin{adjustbox}{minipage=0.6\textwidth,margin=5pt, center}
+    \textit{
+        Dadas $h_0$, $h_1$ funciones lógicas (compuestas o simples).\\
+        $E(h_0, h_1) = 1$ si y solo si $h_0 = h_1$
+    }
+\end{adjustbox}
 \begin{proofbox}*[10]{\emph{Demostración}}
-    \begin{itemize}
-        \item[(i)] Suponiendo que $h_0 = h_1$
+    \begin{enumerate}[label=(\roman*)]
+        \item Suponiendo que $h_0 = h_1$
         
         \[
             \begin{derivation}<.9>
@@ -25,7 +28,7 @@ algunos teoremas, se puede facilitar bastante la forma de demostrar usando estas
             \end{derivation}
         \]
 
-        \item[(ii)] Suponiendo que $E(h_0, h_1) = 1$
+        \item Suponiendo que $E(h_0, h_1) = 1$
         
         \[
             \begin{derivation}[5pt]
@@ -47,17 +50,21 @@ algunos teoremas, se puede facilitar bastante la forma de demostrar usando estas
                     }
             \end{derivation}
         \]
-    \end{itemize}
+    \end{enumerate}
 \end{proofbox}
 
-\begin{proofbox}[10]{\textbf{Teorema: implicación}}
-    \emph{
-        Dadas dos proposiciones $\phi_1$ `y' $\phi_2$, las cuales se pueden representar como funciones lógicas (compuestas o simples) $h_0$ `y' $h_1$ , respectivamente y $\phi_1 \To \phi_2$. $h_0h_1 = h_0$ si y solo si $I(h_0, h_1) = 1$
-    }
-\end{proofbox}
+\textbf{ Teorema: Implicación}
+
+\begin{adjustbox}{minipage=0.6\textwidth,margin=5pt, center}
+\textit{
+    Dadas $\ h_0, h_1\ $ funciones lógicas (compuestas o simples).\\
+    $I(h_0,h_1) = 1$ si y solo si $h_0\,h_1 = h_0$
+}
+\end{adjustbox}
+
 \begin{proofbox}*[10]{\emph{Demostración}}
-    \begin{itemize}
-        \item[(i)] Suponiendo $h_0h_1 = h_0$
+    \begin{enumerate}[label=(\roman*)]
+        \item Suponiendo $h_0h_1 = h_0$
         
         \[
             \begin{derivation}<.9>
@@ -73,7 +80,7 @@ algunos teoremas, se puede facilitar bastante la forma de demostrar usando estas
             \end{derivation}
         \]
 
-        \item[(ii)] Suponiendo $I(h_0, h_1) = 1$
+        \item Suponiendo $I(h_0, h_1) = 1$
         
         \[
             \begin{derivation}<.9>
@@ -87,5 +94,5 @@ algunos teoremas, se puede facilitar bastante la forma de demostrar usando estas
             \end{derivation}
         \]
 
-    \end{itemize}
+    \end{enumerate}
 \end{proofbox}
