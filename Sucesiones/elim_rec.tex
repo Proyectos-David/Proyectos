@@ -154,7 +154,7 @@ inductivo, suponiendo que la conjetura se cumple para $a_k(n)$:
     \begin{derivation}<2>
             \res{ a_{k+1}^{(c)}(n) = a_{k+1}^{(r)}(n) }\\
         \why{ Igualdad con binomios }\\
-            \res{ \sum_{i=0}^{k+1}\binom{n}{k+1}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j
+            \res{ \sum_{i=0}^{k+1}\binom{n}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j
             = \binom{n}{k+1}(x_{k+1} - a_k(k+1)) + a_k(n) }\\
         \why{ (izq.) La suma hasta $k$ es $a_k(n)$, Hipótesis de inducción }\\
             \res{ \binom{n}{k+1} \sum_{j=0}^{k+1}\binom{k+1}{j}(-1)^{k+1+j}x_j
@@ -179,7 +179,8 @@ inductivo, suponiendo que la conjetura se cumple para $a_k(n)$:
     Para la suma de sumas en $a_k^{(c)}$, se puede ver que
     \begin{enumerate}[label=(\Roman*)]
         \item $x_m$ empieza a acumular coeficientes desde $i=m$
-        \item Los demás elementos de la segunda suma no afectan el resultado para $x_m$
+        \item Los demás elementos de la segunda suma no afectan el resultado para $x_m$, pues
+        corresponden a los siguientes $x_i$
     \end{enumerate}
     Por estos resultados, la igualdad de coeficientes queda de la siguiente manera:
     \vspace{1cm}
@@ -193,7 +194,7 @@ inductivo, suponiendo que la conjetura se cumple para $a_k(n)$:
                 \res{ (-1)^{k+m} = \sum_{i=m}^{k}\binom{k+1-m}{i-m}(-1)^{i+m}}\\
             \why{ Cambio de límites en la suma, $(-1)^{a + 2b} = (-1)^a$ }\\
                 \res{ (-1)^{k+m} = \sum_{i=0}^{k-m}\binom{k+1-m}{i}(-1)^i }\\
-            \why{ Añadiendo y restando la expresión de la suma en $i=k+1$}\\
+            \why{ Añadiendo y restando la expresión de la suma en $i=k+1 - m$}\\
                 \res{ (-1)^{k+m} = -\binom{k+1-m}{k+1-m}(-1)^{k+1+m}
                 + \sum_{i=0}^{k+1-m}\binom{k+1-m}{i}(-1)^{i} }\\
             \why{ Teorema del binomio: $(1 - 1)^{k+1-m}$, $(-1)^a = (-1)^{a - 2}$}\\
