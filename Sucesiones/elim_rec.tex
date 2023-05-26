@@ -8,9 +8,9 @@ número $y_k$, el cual multiplica un polinomio que varía junto con la iteració
 Esto nos dice que entonces, si se tiene una forma general de estos coeficientes, se podría dar
 el resultado de una iteración $k$ de la siguiente forma:
 \[a_{k}(n) = \sum_{i=0}^{k} y_i \prod_{c=0}^{i-1}(n - c)\]
-El único inconveniente para escribirlo de esta forma, es precisamente $y_i$. Pues este valor depende
+El único inconveniente para escribirlo de esta forma es precisamente $y_i\ $, pues este valor depende
 de la iteración anterior evaluada en $i$. Por lo que se debe encontrar una sucesión
-la cual represente el valor de $y_k$.
+la cual represente el valor de $y$.
 
 Veamos algunos de los valores de $y_k$ con $S = \left\langle x_0, x_1, \dots \right\rangle$
 
@@ -27,7 +27,8 @@ $$
 Sabemos desde antes que
 \[y_{k + 1} = \dfrac{1}{(k + 1)!}\left[x_{k + 1} - a_{k}(k+1)\right]\]
 De esto, el valor que se debe generalizar, es lo que se encuentra entre corchetes. Para visualizar
-mejor el resultado de esto, se omitirá la fracción con el factorial.
+mejor el resultado de lo anterior, se omitirá la fracción con el factorial y se alinearán
+los $x$ correspondientes a su subíndice.
 
 \begin{proofbox}{Valores desde $k=0$ hasta $k=6$}
     $
@@ -44,7 +45,7 @@ mejor el resultado de esto, se omitirá la fracción con el factorial.
 \end{proofbox}
 
 Ahora, como los valores de $S$ no deben afectar el comportamiento de cada $y$, y para visualizar
-aún mejor el comportamiento de estos valores, vamos a organizar los valores en una matriz,
+aún mejor el comportamiento de estos valores, vamos a organizarlos en una matriz,
 la cual tenga por columna el índice de cada $x$ y como fila los valores de $k$. De esta forma,
 podremos ver los coeficientes de los valores deseados en cada $y_k$
 
@@ -63,14 +64,13 @@ podremos ver los coeficientes de los valores deseados en cada $y_k$
 \end{blockarray}
 \]
 
+\newpage
+
 Fijándonos en cada columna por separado, podemos ver que hay cierto
-patrón. Para hallarlo, usamos la fórmula recursiva, ya demostrada.
-
+patrón. Para hallarlo, usamos la fórmula recursiva, ya demostrada.\\
 Llamaremos $\phi_j(n)$ a la sucesión la cual relaciona $k$ con los valores
-de una columna $j$.
-
-Tras llegar a un punto en el que las siguientes iteraciones resultan iguales a una
-anterior, se halló entonces que:
+de una columna $j$. Tras llegar a un punto en el que las siguientes
+iteraciones resultan iguales a una anterior, se halló entonces que:
 
 \[\phi_j(i) = \dfrac{(-1)^{i + j}}{j!}\prod_{c=0}^{j-1}(i - c)\]
 
@@ -99,12 +99,18 @@ Por ejemplo, si los valores de la matriz son válidos, se podría expresar la it
         \why*{}\\
             \res{ a_3(n) = y_0 + y_1\,n + y_2\,n(n-1) + y_3\,n(n-1)(n-2) }\\
         \why{ Conjetura de $y_k$ }\\
-            \res{ a_3(n) = x_0 + (-x_0 + x_1)\,n + \dfrac{1}{2}(x_0 -2x_1 + x_2)\,n(n-1) }\\
-            &\qquad\qquad + \dfrac{1}{3!}(-x_0 + 3x_1 - 3x_2 + x_3)\,n(n-1)(n-2)
+            \res{
+                \begin{aligned}
+                    a_3(n) = &x_0 + (-x_0 + x_1)\,n 
+                    + \dfrac{1}{2}(x_0 -2x_1 + x_2)\,n(n-1)\\
+                    & + \dfrac{1}{3!}(-x_0 + 3x_1 - 3x_2 + x_3)\,n(n-1)(n-2)
+                \end{aligned}
+            }
     \end{derivation}
 \]
 
-Entonces lo que hace falta demostrar es la siguiente igualdad (el caso base, de $a_0(n)$, es inmediato):
+Entonces lo que hace falta demostrar es la siguiente igualdad\\
+(el caso base, de $a_0(n)$, es inmediato):
 
 \[a_{k+1}(n) = \sum_{i=0}^{k}y_i\prod_{c=0}^{i-1}(n-c)\]
 
@@ -130,17 +136,19 @@ de ambas expresiones, en términos de binomios:
                     &= \sum_{i=0}^{k}\binom{n}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j            
         \end{align*}
 
-        La expresión obtenida para la conjetura viene de que el valor de las funciones $\phi$
-        solo son diferentes a $0$ desde que son evaluadas en un valor superior a su subíndice,
-        y este coincide con el binomio entre ambos valores. A su vez, desde la presentación de
-        la matriz, se puede ver la relación directa entre los coeficientes y el triángulo
-        de pascal alternado.
     \end{enumerate}
 \end{proofbox}
 
-Procediendo con la demostración, llamaremos $a^{(r)}$ a la función bajo la recursión,
-y $a^{(c)}$ a la función bajo la conjetura y siendo este un paso inductivo, suponiendo
-que la conjetura se cumple para $a_k(n)$:
+La expresión obtenida para la conjetura viene de que el valor de las
+funciones $\phi$ solo son diferentes a $0$ desde que son evaluadas
+en un valor superior a su subíndice, y este coincide con el binomio
+entre ambos valores. A su vez, desde la presentación de la matriz, se puede
+ver la relación directa entre los coeficientes y el triángulo de pascal
+alternado.
+
+Procediendo con la demostración, llamaremos $a^{(r)}$ a la función bajo la
+recursión, y $a^{(c)}$ a la función bajo la conjetura y siendo este un paso
+inductivo, suponiendo que la conjetura se cumple para $a_k(n)$:
 
 \[
     \begin{derivation}<2>
@@ -199,6 +207,8 @@ que la conjetura se cumple para $a_k(n)$:
 Esto nos demuestra que para cualquier sucesión arbitraria, el término general está dado
 por la suma presentada como conjetura.
 
+\newpage
+
 Veamos, el mismo ejemplo presentado anteriormente, la suma de cuadrados.
 
 \[S = \left<0,1,5,14,30,55,\dots\right>\]
@@ -206,16 +216,20 @@ Veamos, el mismo ejemplo presentado anteriormente, la suma de cuadrados.
 Tomando hasta $a_4$, deberíamos obtener un polinomio de grado $4$, por lo que
 si el polinomio resultante es de grado menor, podemos dar pausa al algoritmo.
 
-\[
-    \begin{derivation}
+
+    \begin{longderivation}
             \res{ a_4(n) = \sum_{i=0}^{4}\binom{n}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j }\\
         \why{ Los valores de $x$ corresponden a $S$ }\\
-            \res{ a_4(n) = 0 + n(-0 + 1) + \frac{n(n-1)}{2}(0 - 2(1) + 5)\\
-            &\displaystyle\qquad+ \frac{n(n-1)(n-2)}{6}(-0 + 3(1) - 3(5) + 14)\\
-            &\displaystyle\qquad + \frac{n(n-1)(n-2)}{24}(0 - 4(1) + 6(5) - 4(14) + 30)}\\
+            \res{
+                \begin{aligned}
+                    a_4(n) =    & 0 + n(-0 + 1) + \frac{n(n-1)}{2}(0 - 2(1) + 5)\\[5pt]
+                                & + \frac{n(n-1)(n-2)}{6}(-0 + 3(1) - 3(5) + 14)\\[5pt]
+                                & + \frac{n(n-1)(n-2)}{24}(0 - 4(1) + 6(5) - 4(14) + 30)
+                \end{aligned}
+            }\\
         \why*{}\\
-            \res{ n + \frac{3n(n-1)}{2} + \frac{2n(n-1)(n-2)}{3} + 0 }\\
+            \res{ a_4(n) = n + \frac{3n(n-1)}{2} + \frac{2n(n-1)(n-2)}{3} + 0 }\\
         \why*{}\\
-            \res{ \frac{n(n+1)(2n+1)}{6} }
-    \end{derivation}
-\]
+            \res{ a_4(n) = \frac{n(n+1)(2n+1)}{6} }
+    \end{longderivation}
+

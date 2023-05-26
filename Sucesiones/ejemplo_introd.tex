@@ -3,22 +3,23 @@
 En esta sección se mostrará la idea del algoritmo y como se puede expresar en una forma más formal. Posteriormente, se estudiará para poder reducir su complejidad a la hora de usarse.
 
 \subsect{Ejemplo introductorio}
-Suponga que tiene los siguientes números: $36, 28, 15$
-
-Suponga que se les asignan respectivamente los siguientes índices: $0, 1, 2$
-
-¿Cómo se relacionan estos índices con los números dados?
+Suponga que tiene los siguientes números: $36, 28, 15$\\
+Suponga que se les asignan respectivamente los siguientes índices: $0, 1, 2$\\
+¿Cómo se relacionan estos índices con los números dados?\\
 ¿Existe una expresión que represente esta relación?
 
 Para esto, hacemos iteraciones sobre cómo debería ser el término general hasta un índice específico, de la siguiente manera:
 
-Llamemos $a_0(n)$ el término general que relaciona los índices hasta el $0$ con los números dados.
-
+\vspace{10pt}
+Llamemos $a_0(n)$ el término general que relaciona los índices hasta el $0$ con los números dados.\\
 Lo más sencillo es hacer
-\[a_0(n) = 36\]
-Ahora veamos cómo podríamos obtener $a_1(n)$
 
-Tenemos información de que $a_0(n)$ funciona para $n = 0$, entonces forzamos un término nuevo junto a este, que no altere a $a_0$ cuando $n=0$ pero que en $n=1$ nos dé el resultado deseado.
+\[a_0(n) = 36\]
+
+Ahora veamos cómo podríamos obtener $a_1(n)$: tenemos información de que
+$a_0(n)$ funciona para $n = 0$, entonces forzamos un término nuevo junto
+a este, que no altere a $a_0$ cuando $n=0$ pero que en $n=1$ nos dé el
+resultado deseado.
 Suponemos un $y$ tal que se cumpla el siguiente sistema:
 \begin{equation*}
     \left\{
@@ -42,5 +43,5 @@ De igual forma, para el siguiente valor, tenemos información de que en $n=0$ y 
     \right\}
 \end{equation*}
 
-Resolviendo, se obtiene que $y = -2.5$ y
+{\noindent Resolviendo, se obtiene que $y = -2.5$ y}
 \[a_2(n) = -2.5n(n-1) - 8n + 36\]

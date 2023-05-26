@@ -1,5 +1,34 @@
 \sect{Introducción}
 
-El siguiente trabajo trata el tema de sucesiones, específicamente un algoritmo para representarlas con una expresión general.
+Para la extrapolación polinómica, se toma en cuenta como variable tanto el
+dominio como el rango del polinomio en cuestión. Esto es, los algoritmos
+están diseñados para poder usar un conjunto arbitrario de parejas ordenadas.
+Sin embargo, en muchos casos se necesita que el dominio esté contenido con
+los naturales, o se obtenga linealmente de los naturales
+(ej.: $\{0.1,\ 0.2,\ 0.3,\ \dots\}$). 
 
-Se piensa estudiar el comportamiento del algoritmo, con el fin de simplificar su uso y, a su vez, dar avances sobre el alcance que tiene.
+En el presente artículo, se pretende proponer un algoritmo para extrapolar
+conjuntos de puntos cuya primera coordenada esté en un conjunto como los
+mencionados al final del anterior párrafo. Inicialmente, se plantea una
+función recursiva para posteriormente, presentar una solución directa (sin recursión).\\
+Este algoritmo, con una pequeña variación, fue presentado de manera informal
+por el matemático Eduardo Sáenz de Cabezón, a modo de divulgación.
+Este algoritmo, no es más que una aplicación de la interpolación de Lagrange.\\
+
+\begin{center}
+    Recordando que la interpolación de Lagrange se define de la siguiente manera:\\[20pt]
+$
+\left\{
+\begin{aligned}
+    f_n(x) &= \sum_{i=0}^{n-1}f(x_1)L_i(x)\\
+    L_i(x) &= \prod_{j = 0 \land j \not= i}^{n} \frac{x - x_j}{x_i - x_j}
+\end{aligned}
+\right\}
+$
+
+    Donde $f_n$ es la función que interpola $n$ puntos
+\end{center}
+
+Tras explorar el funcionamiento de este algoritmo, se encontró una relación
+con el triángulo de Pascal, bajo el cual se logró eliminar la recursión de
+este caso particular de la interpolación de Lagrange. 
