@@ -45,9 +45,10 @@ los $x$ correspondientes a su subíndice.
 \end{proofbox}
 
 Ahora, como los valores de $S$ no deben afectar el comportamiento de cada $y$, y para visualizar
-aún mejor el comportamiento de estos valores, vamos a organizarlos en una matriz,
-la cual tenga por columna el índice de cada $x$ y como fila los valores de $k$. De esta forma,
-podremos ver los coeficientes de los valores deseados en cada $y_k$
+aún mejor el comportamiento de estos resultados, vamos a organizarlos en una matriz,
+la cual tenga por columna el índice de cada $x$ y como fila el número de la iteración
+correspondiente de $k$. De esta forma, podremos ver los coeficientes que toma cada $x_i$
+en su respectivo $y_k$
 
 \[
 \begin{blockarray}{cccccccc}
@@ -143,12 +144,11 @@ La expresión obtenida para la conjetura viene de que el valor de las
 funciones $\phi$ solo son diferentes a $0$ desde que son evaluadas
 en un valor superior a su subíndice, y este coincide con el binomio
 entre ambos valores. A su vez, desde la presentación de la matriz, se puede
-ver la relación directa entre los coeficientes y el triángulo de pascal
-alternado.
+ver la relación entre los coeficientes y el triángulo de pascal.
 
 Procediendo con la demostración, llamaremos $a^{(r)}$ a la función bajo la
-recursión, y $a^{(c)}$ a la función bajo la conjetura y siendo este un paso
-inductivo, suponiendo que la conjetura se cumple para $a_k(n)$:
+recursión, y $a^{(c)}$ a la función bajo la conjetura. Siendo este un paso
+inductivo (suponiendo que la conjetura se cumple para $a_k(n)$):
 
 \[
     \begin{derivation}<2>
@@ -156,7 +156,7 @@ inductivo, suponiendo que la conjetura se cumple para $a_k(n)$:
         \why{ Igualdad con binomios }\\
             \res{ \sum_{i=0}^{k+1}\binom{n}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j
             = \binom{n}{k+1}(x_{k+1} - a_k(k+1)) + a_k(n) }\\
-        \why{ (izq.) La suma hasta $k$ es $a_k(n)$, Hipótesis de inducción }\\
+        \why{ (izq.) La suma hasta $i=k$ es $a_k(n)$, Hipótesis de inducción }\\
             \res{ \binom{n}{k+1} \sum_{j=0}^{k+1}\binom{k+1}{j}(-1)^{k+1+j}x_j
             =  \binom{n}{k+1}\left(x_{k+1} 
             - \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j\right)}\\
@@ -223,7 +223,7 @@ si el polinomio resultante es de grado menor, podemos dar pausa al algoritmo.
         \why{ Los valores de $x$ corresponden a $S$ }\\
             \res{
                 \begin{aligned}
-                    a_4(n) =    & 0 + n(-0 + 1) + \frac{n(n-1)}{2}(0 - 2(1) + 5)\\[5pt]
+                    a_4(n) =\   & 0 + n(-0 + 1) + \frac{n(n-1)}{2}(0 - 2(1) + 5)\\[5pt]
                                 & + \frac{n(n-1)(n-2)}{6}(-0 + 3(1) - 3(5) + 14)\\[5pt]
                                 & + \frac{n(n-1)(n-2)}{24}(0 - 4(1) + 6(5) - 4(14) + 30)
                 \end{aligned}
