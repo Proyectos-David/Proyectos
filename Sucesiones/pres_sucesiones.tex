@@ -56,7 +56,7 @@
             \only<2>{\item $a_1(n) = y_1 \cdot n + a_0(n)$}
             \only<3->{\item $a_1(n) = -7n + 7$}
 
-            \only<3>{\item $a_2(n) = y_2\cdot n(n-1) + a_2(n)$}
+            \only<3>{\item $a_2(n) = y_2\cdot n(n-1) + a_1(n)$}
             \only<4>{\item $a_2(n) = 11n(n-1) - 7n + 7$}
         \end{itemize}
         \column{0.5\textwidth}
@@ -72,7 +72,7 @@
         \only<3>{
             $
             \begin{derivation}
-                \res{ 15 = y_2\cdot 2(2-1) + a_2(2)}\\
+                \res{ 15 = y_2\cdot 2(2-1) + a_1(2)}\\
             \why*{}\\
                 \res{ y_2 = 11 }
             \end{derivation}
@@ -86,7 +86,7 @@
     \begin{align*}
         \onslide<1->{a_0(n) &= x_0}\\
         \onslide<2->{a_1(n) &= (x_1 - x_0)n + x_0}\\
-        \onslide<3>{a_2(n) &= (x_2 - 2x_1 + x_0)n(n-1) + (x_1 - x_0)n + x_0}
+        \onslide<3>{a_2(n) &= \frac{1}{2}(x_2 - 2x_1 + x_0)n(n-1) + (x_1 - x_0)n + x_0}
     \end{align*}
 \end{frame}
 
@@ -107,7 +107,7 @@
 \begin{frame}{ ¿Qué hay que solucionar? }
     \begin{align*}
         \onslide<1->{a_k(n) &= \sum_{i=0}^{k}y_i \prod_{c=0}^{i-1}(n-c)}\\
-        \onslide<2->{y_{b+1} &= \frac{1}{(k+1)!}[x_k+1 - a_k(k+1)]}
+        \onslide<2->{y_{b+1} &= \frac{1}{(b+1)!}[x_{b+1} - a_b(b+1)]}
     \end{align*}
     
     \onslide<3>{
