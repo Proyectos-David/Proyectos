@@ -47,6 +47,7 @@
 
 \begin{frame}{Ejemplo}
     \[S = \left<7, 0, 15\right>\]
+    $a(n)$ es una función tal que:
     \[a(0) = 7\ ; a(1) = 0\ ; a(2) = 15\]
     \begin{columns}
         \column{0.5\textwidth}
@@ -105,6 +106,7 @@
 \section[Algor. no recursivo]{Eliminación de recursión}
 
 \begin{frame}{ ¿Qué hay que solucionar? }
+    Forma general del algoritmo
     \begin{align*}
         \onslide<1->{a_k(n) &= \sum_{i=0}^{k}y_i \prod_{c=0}^{i-1}(n-c)}\\
         \onslide<2->{y_{b+1} &= \frac{1}{(b+1)!}[x_{b+1} - a_b(b+1)]}
@@ -112,7 +114,7 @@
     
     \onslide<3>{
         \begin{proofbox}{Valor a generalizar}
-        \[x_{k+1} - a_k(k+1)\]
+        \[x_{b+1} - a_b(b+1)\]
         \end{proofbox}
         }
 \end{frame}
@@ -150,6 +152,7 @@
 \end{frame}
 
 \begin{frame}{Conjetura}
+    \only<2->{Expresiones con binomios}
     \only<1>{
         \begin{gather*}
             \phi_j(i) = \dfrac{(-1)^{i + j}}{j!}\prod_{c=0}^{j-1}(i - c)\\
@@ -179,9 +182,11 @@
 \section[Extensión]{Extensión a otros dominios}
 
 \begin{frame}{Extrapolación deseada}
+    Siendo $f$ un conjunto de puntos finito para una extrapolación
     \only<1>{\[f:\Lambda \to \Upsilon\]
     \[|f| = k, k \in \mathbb{N}\]}
     \only<2>{
+        Se definen sucesiones para las primeras y segundas coordenadas
         \[S_\Lambda\ ,\ S_\Upsilon\]
     }
 \end{frame}
@@ -189,16 +194,17 @@
 \begin{frame}{Ejemplo rápido}
     \[    
         \begin{aligned}
-            f &= \left\{(0.1, 34), (2, -10), (12, 34)\right\}\\
+            f &= \left\{(0.1; 34); (2; -10); (12; 34)\right\}\\
             &\vdflechita\\
-            S_\Lambda &= \left<0.1, 2, 12\right>\\
-            S_\Upsilon &= \left<34, -10, 34\right>
+            S_\Lambda &= \left<0.1; 2; 12\right>\\
+            S_\Upsilon &= \left<34; -10; 34\right>
         \end{aligned}
     \]
 \end{frame}
 
 \begin{frame}{Función general de las sucesiones}
     \onslide<1->{
+        Definición de $S_\Lambda(n)$ y $S_\Upsilon(n)$
         \[
 \left\{
     \begin{aligned}
@@ -216,9 +222,10 @@
 \end{frame}
 
 \begin{frame}{Extrapolación para cualquier función finita}
+    Composición para obtener la extrapolación deseada
         \begin{gather*}
             x \in \texttt{dom}(f)\\
-            f^{~}(x) = S_\Upsilon\left(S_\Lambda^{-1}(x)\right) 
+            f^{*}(x) = S_\Upsilon\left(S_\Lambda^{-1}(x)\right) 
         \end{gather*}
 \end{frame}
 \end{document}
