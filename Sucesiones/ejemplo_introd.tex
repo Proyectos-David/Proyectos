@@ -1,7 +1,5 @@
 \sect{Obtención del algoritmo}
 
-En esta sección se mostrará la idea del algoritmo y como se puede expresar en una forma más formal. Posteriormente, se estudiará para poder reducir su complejidad a la hora de usarse.
-
 \subsect{Ejemplo introductorio}
 Suponga que tiene los siguientes números: $36, 28, 15$\\
 Suponga que se les asignan respectivamente los siguientes índices: $0, 1, 2$\\
@@ -20,7 +18,7 @@ Ahora veamos cómo podríamos obtener $a_1(n)$: tenemos información de que
 $a_0(n)$ funciona para $n = 0$, entonces forzamos un término nuevo junto
 a este, que no altere a $a_0$ cuando $n=0$ pero que en $n=1$ nos dé el
 resultado deseado.
-Suponemos un $y$ tal que se cumpla el siguiente sistema:
+Suponemos un $y$ que cumpla el siguiente sistema:
 \begin{equation*}
     \left\{
         \begin{aligned}
@@ -29,7 +27,7 @@ Suponemos un $y$ tal que se cumpla el siguiente sistema:
         \end{aligned}
     \right\}
 \end{equation*}
-Nuevamente, ¿Por qué?, $a_1$ se define de esta manera debido a que en $n=0$ el término añadido es nulo, y queda únicamente lo que ya servía ($a_0$) y en $n=1$ queremos que $y$ sea tal que se fuerce el valor de $28$
+Nuevamente, ¿Por qué?, $a_1$ se define de esta manera debido a que en $n=0$ el término añadido es nulo, y queda únicamente lo que ya servía ($a_0$) y en $n=1$ queremos que $y$ sea tal que se fuerce el valor de $28$.
 Resolviendo, se obtiene que $y = -8$ y
 \[a_1(n) = -8n + 36\]
 

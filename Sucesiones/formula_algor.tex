@@ -2,7 +2,7 @@
 
 Suponga ahora la siguiente sucesión $S$
 \[
-    S = \langle x_0, x_1, x_2, \dots , x_n\rangle    
+    S = \left< x_0, x_1, x_2, \dots , x_m\right>
 \]
 
 El objetivo es obtener el término general de $S$.
@@ -10,9 +10,9 @@ Procedemos de igual forma que en el ejemplo:
 
 \[a_0(n) = x_0\]
 
-Se tomará la Notación $y_k$ para representar el coeficiente
+Se tomará la notación $y_k$ para representar el coeficiente
 de la iteración $k$ al resolver la\\ ecuación que se mostró en el
-ejemplo evitando hacer mención de la suposición de dicho $y$ en cada
+ejemplo, evitando hacer mención de la suposición de dicho $y$ en cada
 procedimiento.
 
 \begin{equation*}
@@ -48,27 +48,27 @@ Para $a_3(n)$
 A partir de esta información, se conjetura lo siguiente:
 
 \begin{proofbox}[10]{Algorítmo}
-    El término general de una sucesión de $k$ términos, está dada por
+    El término general de una sucesión de $k+1$ términos, está dada por
     \[
         \begin{derivation}<1.5>
                 \res{ \left\{
                     \begin{aligned}
-                        a_{k+1}(n) &= \dfrac{1}{(k+1)!}[x_k - a_{k}(k+1)]n(n-1)(n-2)\dots(n-k) + a_{k}(n)\\
+                        a_{k+1}(n) &= \dfrac{1}{(k+1)!}[x_{k+1} - a_{k}(k+1)]n(n-1)(n-2)\dots(n-k) + a_{k}(n)\\
                         a_0 &= x_0
                     \end{aligned}
                 \right\} }\\
             \why{Notación}\\
                 \res{ \left\{
                     \begin{aligned}
-                        a_{k+1}(n) &= \dfrac{1}{(k+1)!}[x_k - a_{k-1}(k)]\displaystyle\prod_{c=0}^{k}(n-c)
+                        a_{k+1}(n) &= \dfrac{1}{(k+1)!}[x_{k+1} - a_{k}(k)]\prod_{c=0}^{k}(n-c)
                         + a_{k}(n)\\
                         a_0 &= x_0
                     \end{aligned}
                 \right\} }
         \end{derivation}
     \]
-    Por su puesto, hace falta demostrarlo:
 \end{proofbox}
+Por supuesto, hace falta demostrarlo:
 \clearpage
 
 

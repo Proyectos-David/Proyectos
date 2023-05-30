@@ -1,0 +1,33 @@
+\sect{Extensión a otros dominios}
+
+El algoritmo presentado, sirve para obtener el término general de una
+secuencia finita y extrapolarla. Sin embargo, el alcance de este
+no se limita a funciones con dominio en los naturales.
+
+Suponga que se tiene una función finita $f: \Lambda \to \Upsilon$, y $|f| = k$
+% con $k \in \mathbb{N}$.
+Ahora se generan dos sucesiones $S_\Lambda$ y $S_\Upsilon$ a partir de $f$:
+
+Defínase $S_\Lambda$ recursivamente como:
+\[
+\left\{
+    \begin{aligned}
+        S_\Lambda(0) &= \texttt{min}(\Lambda)\\
+        S_\Lambda(n + 1) &= 
+        \texttt{min}\left(\Lambda - \bigcup_{i=0}^{n}\left\{S_\Lambda(i)\right\} \right)
+    \end{aligned}
+\right\}
+\]
+
+Y a partir de esta se define $S_\Upsilon$ de la siguiente forma:
+
+\[S_\Upsilon(n) = f(S_\Lambda(n))\]
+
+Al ser finitas, ambas sucesiones pueden trabajarse bajo el algoritmo presentado.
+Dado que $f$ es función, $S_\Lambda$ es una función inyectiva, y por ende, invertible.\\
+Por otro lado, se puede ver que ambas sucesiones tienen el mismo número de parejas, esto es:
+$\left|S_\Lambda \right| = \left|S_\Upsilon \right|$.
+A partir de esto, se puede hacer que la extrapolación se pueda trabajar con cualquier conjunto
+de parejas (siempre y cuando este conjunto sea una función): tomando el término general de $S_\Upsilon$ y el de $S_\Lambda$ como $S_\Upsilon(n)$ y $S_\Lambda(n)$ respectivamente, la extrapolación será:
+
+\[S_\Upsilon\left(S_\Lambda^{-1}(x)\right)\]

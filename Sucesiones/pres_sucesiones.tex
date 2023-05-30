@@ -1,0 +1,224 @@
+\documentclass{beamer}
+\usepackage{logicDG}
+\usepackage{blkarray}
+\usepackage[spanish, es-noquoting]{babel}
+\usetheme{PaloAlto}
+\setbeamercovered{transparent}
+
+%  -- Beamer colors --
+
+\definecolor{coso}{HTML}{0038a5}
+\setbeamercolor{logo}{bg=white}
+\setbeamercolor{frametitle}{bg=coso} 
+\setbeamercolor{sidebar}{bg=coso} 
+
+
+\logo{\includegraphics[height=1.585cm]{"C:/Users/usuario/OneDrive/Documentos/U/logo-eci-azulito.png"}}
+
+
+% -- Titlepage --
+
+\title{Extrapolación de secuencias finitas}
+
+\author[{David G. Laura R. Daniel P.}]{{David Gómez, Laura Rincón, Daniel Pérez}}
+
+\institute[ECI]{
+    Escuela Colombiana de Ingeniería\\
+    Matemáticas
+    }
+\date[30/05/2023]{30 de Mayo del 2023}
+
+% ---
+
+\usepackage{scalerel}
+
+\NewDocumentCommand{\flechita}{}{\scalerel*{
+    \includegraphics{C:/Users/usuario/OneDrive/Documentos/U/flechita}
+    }{X}}
+
+\NewDocumentCommand{\vdflechita}{}{\rotatebox[origin=c]{270}{\flechita}}
+
+\begin{document}
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section[Algor. recursivo]{Obtención general}
+
+\begin{frame}{Ejemplo}
+    \[S = \left<7, 0, 15\right>\]
+    \[a(0) = 7\ ; a(1) = 0\ ; a(2) = 15\]
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{itemize}
+            \item<1-> $a_0(n) = 7$
+            
+            \only<2>{\item $a_1(n) = y_1 \cdot n + a_0(n)$}
+            \only<3->{\item $a_1(n) = -7n + 7$}
+
+            \only<3>{\item $a_2(n) = y_2\cdot n(n-1) + a_2(n)$}
+            \only<4>{\item $a_2(n) = 11n(n-1) - 7n + 7$}
+        \end{itemize}
+        \column{0.5\textwidth}
+        \only<2>{
+            $
+            \begin{derivation}
+                \res{ 0 = y_1(1) + 7 }\\
+            \why*{}\\
+                \res{ y_1 = -7 }
+            \end{derivation}
+            $
+        }
+        \only<3>{
+            $
+            \begin{derivation}
+                \res{ 15 = y_2\cdot 2(2-1) + a_2(2)}\\
+            \why*{}\\
+                \res{ y_2 = 11 }
+            \end{derivation}
+            $
+        }
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Si $S$ es arbitraria}
+    \[S = \left<x_0, x_1, \dots , x_m\right>\]
+    \begin{align*}
+        \onslide<1->{a_0(n) &= x_0}\\
+        \onslide<2->{a_1(n) &= (x_1 - x_0)n + x_0}\\
+        \onslide<3>{a_2(n) &= (x_2 - 2x_1 + x_0)n(n-1) + (x_1 - x_0)n + x_0}
+    \end{align*}
+\end{frame}
+
+\begin{frame}{Fórma recursiva}
+    \centering
+    Si $S = \left<x_0, \dots, x_m\right>$, $0 \leq k < m$
+    \begin{align*}
+        a_0(n)      &= x_0\\
+        a_{k+1}(n)  &= 
+        \frac{1}{(k+1)!}[x_{k+1} - a_k(k+1)]\prod_{c=0}^{k}(n - c)
+        + a_k(n)\\[10pt]
+        &= \binom{n}{k+1}[x_{k+1} - a_k(k+1)] + a_k(n)
+    \end{align*}
+\end{frame}
+
+\section[Algor. no recursivo]{Eliminación de recursión}
+
+\begin{frame}{ ¿Qué hay que solucionar? }
+    \begin{align*}
+        \onslide<1->{a_k(n) &= \sum_{i=0}^{k}y_i \prod_{c=0}^{i-1}(n-c)}\\
+        \onslide<2->{y_{b+1} &= \frac{1}{(k+1)!}[x_k+1 - a_k(k+1)]}
+    \end{align*}
+    
+    \onslide<3>{
+        \begin{proofbox}{Valor a generalizar}
+        \[x_{k+1} - a_k(k+1)\]
+        \end{proofbox}
+        }
+\end{frame}
+
+\begin{frame}{ Ejemplos hasta $k=6$ }
+    \only<1>{
+        \[
+            \begin{matrix*}[l]
+                k = 0 & \flechita& x_0\\
+                k = 1 & \flechita& -x_0 + x_1\\
+                k = 2 & \flechita& x_0 - 2x_1 + x_2\\
+                k = 3 & \flechita& -x_0 + 3x_1 - 3x_2 + x_3\\
+                k = 4 & \flechita& x_0 - 4x_1 + 6x_2 - 4x_3 + x_4\\
+                k = 5 & \flechita& -x_0 + 5x_1 - 10x_2 + 10x_3 - 5x_4 + x_5\\
+                k = 6 & \flechita& x_0 -6x_1 + 15x_2 - 20x_3 + 15x_4 - 6x_5 + x_6
+            \end{matrix*}
+        \]
+        }
+    \only<2>{
+        \[
+            \begin{blockarray}{cccccccc}
+                & x_0     & x_1   & x_2   & x_3   & x_4   & x_5   & x_6\\
+                \begin{block}{c(ccccccc)}
+            0   &   1     & 0     & 0     & 0     & 0     & 0     & 0\\
+            1   &   -1    & 1     & 0     & 0     & 0     & 0     & 0\\
+            2   &   1     & -2    & 1     & 0     & 0     & 0     & 0\\
+            3   &   -1    & 3     & -3    & 1     & 0     & 0     & 0\\
+            4   &   1     & -4    & 6     & -4    & 1     & 0     & 0\\
+            5   &   -1    & 5     & -10   & 10    & -5    & 1     & 0\\
+            6   &   1     & -6    & 15    & -20   & 15    & -6    & 1\\
+        \end{block}
+    \end{blockarray}
+    \]
+    }
+\end{frame}
+
+\begin{frame}{Conjetura}
+    \only<1>{
+        \begin{gather*}
+            \phi_j(i) = \dfrac{(-1)^{i + j}}{j!}\prod_{c=0}^{j-1}(i - c)\\
+            \vdflechita\\
+            x_i \text{ en la iteración } k = j
+        \end{gather*}
+    }
+    \only<2>{
+        \[
+            \left\{
+                \begin{aligned}
+                    a_0(n)      &= x_0\\
+                    a_{k+1}(n)  &= \binom{n}{k+1}\left(x_{k+1} - a_k(k+1)\right) + a_k(k+1)
+                \end{aligned}
+            \right\}
+        \]
+    }
+    \only<3>{
+        \begin{align*}
+            a_k(n)  &= \sum_{i=0}^{k}\binom{n}{i}
+            \left(x_0\binom{i}{0}(-1)^i + \cdots x_k \binom{i}{k}(-1)^{i+k}\right)\\
+                    &= \sum_{i=0}^{k}\binom{n}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j            
+        \end{align*}
+    }
+\end{frame}
+
+\section[Extensión]{Extensión a otros dominios}
+
+\begin{frame}{Extrapolación deseada}
+    \only<1>{\[f:\Lambda \to \Upsilon\]
+    \[|f| = k, k \in \mathbb{N}\]}
+    \only<2>{
+        \[S_\Lambda\ ,\ S_\Upsilon\]
+    }
+\end{frame}
+
+\begin{frame}{Ejemplo rápido}
+    \[    
+        \begin{aligned}
+            f &= \left\{(0.1, 34), (2, -10), (12, 34)\right\}\\
+            &\vdflechita\\
+            S_\Lambda &= \left<0.1, 2, 12\right>\\
+            S_\Upsilon &= \left<34, -10, 34\right>
+        \end{aligned}
+    \]
+\end{frame}
+
+\begin{frame}{Función general de las sucesiones}
+    \onslide<1->{
+        \[
+\left\{
+    \begin{aligned}
+        S_\Lambda(0) &= \texttt{min}(\Lambda)\\
+        S_\Lambda(n + 1) &= 
+        \texttt{min}\left(\Lambda - \bigcup_{i=0}^{n}\left\{S_\Lambda(i)\right\} \right)
+    \end{aligned}
+\right\}
+\]
+\vspace{20pt}
+}
+\onslide<2>{
+    \[S_\Upsilon(n) = f(S_\Lambda(n))\]
+}
+\end{frame}
+
+\begin{frame}{Extrapolación para cualquier función finita}
+        \begin{gather*}
+            x \in \texttt{dom}(f)\\
+            f^{~}(x) = S_\Upsilon\left(S_\Lambda^{-1}(x)\right) 
+        \end{gather*}
+\end{frame}
+\end{document}

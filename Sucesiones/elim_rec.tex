@@ -69,16 +69,14 @@ en su respectivo $y_k$
 
 Fijándonos en cada columna por separado, podemos ver que hay cierto
 patrón. Para hallarlo, usamos la fórmula recursiva, ya demostrada.\\
-Llamaremos $\phi_j(n)$ a la sucesión la cual relaciona $k$ con los valores
-de una columna $j$. Tras llegar a un punto en el que las siguientes
+Llamaremos $\phi_j(n)$ a la sucesión la cual relaciona una iteración $n$
+con $x_j$. Tras llegar a un punto en el que las siguientes
 iteraciones resultan iguales a una anterior, se halló entonces que:
 
 \[\phi_j(i) = \dfrac{(-1)^{i + j}}{j!}\prod_{c=0}^{j-1}(i - c)\]
 
 Bajo está conjetura, cada $y_k$ se podría obtener directamente con las funciones que
-expresan cada columna de la matriz. Nótese que el subíndice de cada función $\phi$
-corresponde al mismo subíndice de $x$, y el valor en el que se evalúa, corresponde
-a la iteración.
+expresan cada columna de la matriz.
 
 Por ejemplo:
 
@@ -156,14 +154,14 @@ inductivo (suponiendo que la conjetura se cumple para $a_k(n)$):
         \why{ Igualdad con binomios }\\
             \res{ \sum_{i=0}^{k+1}\binom{n}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j
             = \binom{n}{k+1}(x_{k+1} - a_k(k+1)) + a_k(n) }\\
-        \why{ (izq.) La suma hasta $i=k$ es $a_k(n)$, Hipótesis de inducción }\\
+        \why{ (izq.) La suma hasta $i=k$ es $a_k(n)$, (der.) Hipótesis de inducción }\\
             \res{ \binom{n}{k+1} \sum_{j=0}^{k+1}\binom{k+1}{j}(-1)^{k+1+j}x_j
             =  \binom{n}{k+1}\left(x_{k+1} 
             - \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j\right)}\\
         \why*{}\\
             \res{ (-1)^{k+1}\sum_{j=0}^{k+1}\binom{k+1}{j}(-1)^{j}x_j
             = x_{k+1} - \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j}\\
-        \why{ (izq.) El último término de la suma, es $x_{k+1}$ }\\
+        \why{ (izq.) El último término de la suma es $x_{k+1}$ }\\
             \res{ (-1)^{k+1}\sum_{j=0}^{k}\binom{k+1}{j}(-1)^{j}x_j
             = - \sum_{i=0}^{k}\binom{k+1}{i}\sum_{j=0}^{i}\binom{i}{j}(-1)^{i+j}x_j }\\
         \why*{}\\
