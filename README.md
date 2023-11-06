@@ -17,3 +17,8 @@ PDF: [Link](Sumatorio/build/proyecto_sumas.pdf)
 Una extensión de los conectores lógicos a la aritmética, permitiendo una alternativa para demostrar proposiciones.
 
 PDF: [Link](Logica/build/Proyecto_log.pdf)
+
+## Análisis No Estándar
+
+Una formalización del cálculo descrito por Leibniz. Este consideró infinitesimales
+los cuales son números infinitamente pequeños o grandes.
