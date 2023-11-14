@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage{logicDG, calcDG}
+\usepackage{amsfonts}
+\usepackage[hidelinks]{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage[spanish, es-noquoting]{babel}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage{upgreek}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{70.38103pt}
+
+% ~~~~~~ Autor/es ~~~~~~ %
+\rhead{\textit{David G.}}
+% ~~~~~~ Esquina ~~~~~~ %
+
+\lhead{\includegraphics[width = 4cm]{\logo}}
+\lfoot{Página \thepage}
+
+% ~~~~~~ Título ~~~~~~ %
+\rfoot{Análisis N.E.}
+% ~~~~~~ Esquina ~~~~~~ %
+\renewcommand{\headrule}{\hbox to \headwidth{\color{rojoEci}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\hyphenpenalty=10000
+
+% ~~~~ Ruta a Imágenes ~~~~ %
+\graphicspath{{./AnalisisNE/}}
+\newcommand{\logo}{"logo-eci.png"}
+% ~~~~ Ruta a Imágenes ~~~~ %
+
+
+% ~~~~~~ Autor/es y Titulo ~~~~~~ %
+\newcommand{\titlename}{Análisis No Estandar}
+\renewcommand{\author}{{David Gómez}}
+% ~~~~~~ Autor/es y Titulo ~~~~~~ %
+
+\definecolor{rojoEci}{RGB}{225, 70, 49}
+
+% Enumi func
+
+\renewcommand{\labelenumi}{(\Roman{enumi})}
+\renewcommand{\labelenumii}{(\roman{enumii})}
+
+% ~~~~ Nombres de conjuntos y demás ~~~~~ %
+\NewDocumentCommand{\R}{}{\mathds{R}}
+\NewDocumentCommand{\dom}{}{\text{dom}}
+\NewDocumentCommand{\e}{}{\upvarepsilon}
+% ~~~~ Nombres de conjuntos y demás ~~~~~ %
+
+\doublespacing
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace{1cm}
+
+        \textbf{\Huge{\titlename}}
+
+        \vspace{1.5cm}
+
+        \textbf{\large{\author}}
+
+        \vspace{3cm}
+
+        \includegraphics[width=0.8\textwidth]{\logo}
+        
+        \vfill
+
+        Física de Calor y Ondas
+
+        Escuela Colombiana de Ingeniería Julio Garavito
+
+        \today
+    \end{center}
+\end{titlepage}
+
+\clearpage
+\tableofcontents
+
+\include{Intro}
+
+\end{document}

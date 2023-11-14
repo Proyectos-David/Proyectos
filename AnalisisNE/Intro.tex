@@ -1,0 +1,41 @@
+\section{Introduccion}
+
+La definición clásica de límite, presentada en el análisis clásico, es
+la \\formalización de las ideas con las que Newton construyó el cálculo.
+En esta definición se considera, por ejemplo, una función $f:\R \to \R$,
+un valor $c \in \R$ al que se hace tender la variable de $f$, y un
+valor de resultado $a \in \R$. Se formula entonces que:
+\[
+    \begin{derivation}
+            \res{ \Lim{x}{c} f(x) = a}\\
+        \equiv\\
+            \res{ (
+                    \forall \e \sthat \e > 0 \sat
+                    (
+                        \exists \updelta \sthat \updelta > 0 \sat
+                        (
+                            \forall x \sthat 0< |x - c|<\updelta :
+                            |f(x) - c| < \e
+                        )
+                    )
+                ) }
+    \end{derivation}
+\]
+
+Esta definición, claro, está dada por la naturaleza de $f$, ya que este
+concepto de límite se puede dar para cualquier función $g:A \to B$,
+donde $A$ y $B$ son espacios métricos.
+
+La definición de límite con la que Leibniz construyó el cálculo, es
+diferente, y no del todo conocida, pues ni él, ni alguno de sus
+sucesores pudieron construirla formalmente. Leibniz hablaba de números
+infinitamente pequeños o infinitamente grandes. Bajo esta idea, el
+límite del ejemplo consistiría tomar un número $c'$ tal que $|c' - c|$ es
+infinitamente pequeño, y demostrar entonces que \\$|f(c') - a|$ también
+es infinitamente pequeño. Esta explicación se nota un poco más intuitiva
+de entrada. Sin embargo, tomando los conociemitos del análisis clásico,
+esta definición de $c'$ solo sería posible si $c'=c$, cosa que no
+tendría sentido, si se quiere tener información del límite. En este
+artículo, presentaré los resultados obtenidos principalmente por
+Abraham Robinson, y la formalización de las ideas de los %TODO ref%
+infinitesimales.
