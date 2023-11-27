@@ -1,0 +1,142 @@
+\documentclass{article}
+
+\usepackage{logicDG}
+\usepackage{calcDG}
+\usepackage{upgreek}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-noquoting, es-lcroman]{babel}
+\usepackage[a]{esvect}
+\usepackage{amsfonts, amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage[hidelinks]{hyperref}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{geometry}
+\geometry{
+  left=2cm,
+  right=2cm,
+  bottom=2cm
+}
+\usepackage{blindtext}
+
+\hyphenpenalty=10000
+
+\newtheoremstyle{definition}%
+{10pt} % espaciado arriba
+{10pt} % espaciado abajo
+{\normalfont} % fuente del cuerpo
+{} % indentación
+{\bfseries} % fuente del título
+{:} % puntuación después del título
+{5pt} % espacio después del título
+{}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{theorem}{Teorema}[section]
+
+
+
+\NewDocumentCommand{\F}{}{\mathcal{F}}
+\NewDocumentCommand{\U}{}{\mathscr{U}}
+\NewDocumentCommand{\N}{}{\mathbb{N}}
+
+\renewcommand{\labelenumi}{(\roman{enumi})}
+
+\pagecolor[RGB]{28,28,28}
+\color[RGB]{212, 211, 210}
+
+\definecolor{bgtitleproof}{RGB}{28,28,28}
+\definecolor{bgproof}{RGB}{17, 37, 54}
+\definecolor{titleproof}{RGB}{48,48,48}
+\definecolor{subproofm}{RGB}{0,0,0}
+\definecolor{fontproof}{RGB}{212, 211, 210}
+\definecolor{fontprooft}{RGB}{212, 211, 210}
+
+\doublespacing
+\begin{document}
+\tableofcontents
+\clearpage
+\section{Filtros}
+
+Sea $I$ un conjunto no vacío.
+\begin{definition}
+  Un filtro $\F$ sobre $I$ es un conjunto no
+  vacío de subconjuntos de $I$, con las siguiente propiedades:
+  \begin{enumerate}
+    \item $\varnothing \not\in \F$
+    \item $A \in \F \land B \in \F \To A\cap B \in \F$
+    \item $A \in \F \land A \subseteq B \To B \in \F$
+  \end{enumerate}
+  La letra $\F$ denotará un filtro sobre $I$, a menos que se especifique
+  otra cosa.
+\end{definition}
+
+\begin{definition}[Relación de orden] Se dice que
+  un filtro $\F_1$ \emph{es más fino} que un filtro $\F_2$ cuando
+  $\F_2 \subseteq \F_1$.
+\end{definition}
+
+\begin{definition}
+  Sea $\mathcal{F}$ el conjunto de filtros sobre $I$. 
+  Un ultrafiltro, es un elemento maximal de $\mathcal{F}$. Por definición
+  de la relación de orden, esto es, no está contenido propiamente en algún
+  otro filtro de $\mathcal{F}$.\\
+  La letra $\U$ denotará un ultrafiltro sobre $I$, a menos que se especifique
+  otra cosa.
+\end{definition}
+
+\begin{theorem}[caracterizaciones de los ultrafiltros]
+  Un filtro $\U$ es un ultrafiltro sii
+  \begin{enumerate}
+    \item $\Forall{A}[A \in I]{A \in \U \not\equiv I - A \in \U}$
+    \item Si una unión finita está en $\U$, entonces al menos uno de
+          los conjuntos que compone dicha unión, también está en $\U$.
+          Esto es, si para un $n\in\N$ hay una colección $\{A_0,\dots,A_n\}$
+          tal que $\ds\bigcup_{k=0}^n A_k \in \U$, entonces,
+          $\Exists{k}[k\leq n]{A_k \in \U}$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proofbox}[10]{\textit{Demostración}}
+  \begin{enumerate}
+    \item Sea $\U$ un filtro que cumple la propiedad a demostrar.
+          Se va a suponer que $\U$ no es un ultrafiltro. Así, por
+          definición, existe un filtro $\U_2$ más fino que $\U$.
+            \begin{longderivation}
+                \res{ \U_2 - \U \not= \varnothing }\\
+              \equiv\\
+                \res{ \Exists{A}{A \in \U_2 - \U} }\\
+              \why{ $A$ no está en $\U$, y $\U$ cumple la propiedad mencionada }\\
+                \res{ \Exists{A}[A \in \U_2 - \U]{I - A \in \U} }\\
+              \why[\To]{$\U \subseteq \U_2$}\\
+                \res{ \Exists{A}[A \in \U_2 - \U]{I - A \in \U_2 } }\\
+              \equiv\\
+                \res{ \Exists{A}[A \not\in \U]{ I - A \in \U_2 \land A \in \U_2 } }\\
+              \why[\To]{Definición de filtro, intersección finita}\\
+                \res{ \Exists{A}[A \not\in \U]{ \varnothing \in \U_2 } }
+            \end{longderivation}
+          Esto último es una contradicción con otra de las propiedades en la definición
+          de un filtro. En consecuencia, la suposición de que $\U$ no es ultrafiltro es
+          incorrecta.
+    \item Esta caracterización se va a demostrar usando la anterior. Para mostrar
+          su definición de caracterización, se mostrará la equivalencia que tiene con (i).
+
+          Para toda la demostación, se considerará un $n \in \N$ y una colección con el
+          mismo nombre que la mencionada en la enunciación de la caracterización.
+          
+          Por una parte, suponiendo que $\ds\bigcup_{k=0}^n A_k \in \U \land
+          \Forall{k}[k\leq n]{A_k \not\in \U}$. Entonces
+          \[\bigcap_{k=1}^n (I-A_k) \not\in \U \land \Forall{k}[k\leq n]{A_k \not\in \U}\]
+          Se puede ver que hay una contradicción, pues la intersección de todos los $A_k$
+          debe pertenecer a $\U$, pues esta es una intersección finita. Así, (i) $\To$ (ii).
+
+          Por otro lado. Sean $F \not\in \U$, $A_1 = F$ y $A_2 = I-F$. Como
+          $\bigcup_{k=1}^{2} A_i = I$, $I \in \U$, entonces al menos uno de los
+          $A_k$ debe estar en $\U$. por definición de filtro, se tiene que no pueden ser
+          ambos al tiempo, y por (ii), tampoco puede ser que ninguno esté. Así, (ii) $\To$ (i)
+  \end{enumerate}
+\end{proofbox}
+\end{document}
