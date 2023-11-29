@@ -36,6 +36,7 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}[section]
 \newtheorem{theorem}{Teorema}[section]
+\newtheorem*{note}{Nota}
 
 
 
@@ -124,19 +125,49 @@ Sea $I$ un conjunto no vacío.
     \item Esta caracterización se va a demostrar usando la anterior. Para mostrar
           su definición de caracterización, se mostrará la equivalencia que tiene con (i).
 
-          Para toda la demostación, se considerará un $n \in \N$ y una colección con el
+          Para toda la primera demostación, se considerará un $n \in \N$ y una colección con el
           mismo nombre que la mencionada en la enunciación de la caracterización.
           
           Por una parte, suponiendo que $\ds\bigcup_{k=0}^n A_k \in \U \land
-          \Forall{k}[k\leq n]{A_k \not\in \U}$. Entonces
-          \[\bigcap_{k=1}^n (I-A_k) \not\in \U \land \Forall{k}[k\leq n]{A_k \not\in \U}\]
+          \Forall{k}[k\leq n]{A_k \not\in \U}$. Por (i), se tiene entonces
+          \[\bigcap_{k=1}^n (I-A_k) \not\in \U \land \Forall{k}[k\leq n]{I - A_k \in \U}\]
           Se puede ver que hay una contradicción, pues la intersección de todos los $A_k$
           debe pertenecer a $\U$, pues esta es una intersección finita. Así, (i) $\To$ (ii).
 
           Por otro lado. Sean $F \not\in \U$, $A_1 = F$ y $A_2 = I-F$. Como
-          $\bigcup_{k=1}^{2} A_i = I$, $I \in \U$, entonces al menos uno de los
+          $\ds\bigcup_{k=1}^{2} A_i = I$, $I \in \U$, entonces al menos uno de los
           $A_k$ debe estar en $\U$. por definición de filtro, se tiene que no pueden ser
           ambos al tiempo, y por (ii), tampoco puede ser que ninguno esté. Así, (ii) $\To$ (i)
+  \end{enumerate}
+\end{proofbox}
+
+\begin{note}
+  $\U$ es un ultrafiltro sii, agregarle otro elemento implica que $\varnothing \in \U$
+\end{note}
+
+
+\begin{definition}
+  Un filtro $\F$ es llamado $\updelta$-incompleto cuando existe una colección
+  $\{F_n\}_{n\in\N}$ en $I$, tal que para todo $n$, $F_n \in \F$ y
+  $\ds\bigcap_{n\in\N} F_n \not\in \F$. Un filtro $\F$ es llamado $\updelta$-completo
+  cuando no es $\updelta$-incompleto.
+\end{definition}
+\begin{definition}
+  Un filtro $\F$ es llamado libre cuando $\ds\bigcap\F = \varnothing$
+\end{definition}
+
+\begin{theorem}
+  \begin{enumerate}
+    \item Un ultrafiltro $\U$ sobre $I$ es $\updelta$-incompleto sii existe
+          una partición contable de $I$ ($I_n$) tal que, para todo $n$
+          $I_n \not\in \U$
+    \item Todo ultrafiltro $\updelta$-incompleto es libre
+  \end{enumerate}
+\end{theorem}
+
+\begin{proofbox}{\textit{Demostración}}
+  \begin{enumerate}
+    \item 
   \end{enumerate}
 \end{proofbox}
 \end{document}
