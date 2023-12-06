@@ -115,6 +115,27 @@ $G_3$ y $G_1$.
 
   Entonces, se tiene que $\U \subset \U_2$ y $\U_2$ es un filtro sobre
   $I$. Lo cual contradice la hipótesis de que $\U$ es un ultrafiltro.
+
+  Por el otro lado, de igual forma por contradicción. Se va a suponer que
+  $\U$ es un filtro con la propiedad (i) y que $\U$ no es un ultrafiltro.
+
+  Como $\U$ no es un ultrafiltro, existe un filtro $\U_2$ tal que
+  $\U \subset \U_2$.
+  \begin{longderivation}
+      \res{ \U_2 - \U \not= \varnothing }\\
+    \equiv\\
+      \res{ \Exists{A}{A \in \U_2 - \U} }\\
+    \why{ $\U$ cumple (i) y $A \not\in \U$ }\\
+      \res{ \Exists{A}[A\in\U_2-\U]{I-A\in\U} }\\
+    \why[\To]{$\U\subset\U_2$}\\
+      \res{ \Exists{A}[A\in\U_2-\U]{I-A\in \U_2} }\\
+    \equiv\\
+      \res{ \Exists{A}[A\not\in\U]{A\in\U_2 \land I-A\in\U_2} }\\
+    \why[\To]{Definición de filtro}\\
+      \res{ \Exists{A}[A\not\in\U]{\varnothing\in\U_2} }
+  \end{longderivation}
+  Esto último contradice la definición de filtro, mostrando así que la
+  suposición de que $\U$ no es un ultrafiltro, es incorrecta.
 \end{demo}
 \begin{demo}[ii]
   
