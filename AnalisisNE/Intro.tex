@@ -1,41 +1,28 @@
 \section{Introduccion}
 
-La definición clásica de límite, presentada en el análisis clásico, es
-la \\formalización de las ideas con las que Newton construyó el cálculo.
-En esta definición se considera, por ejemplo, una función $f:\R \to \R$,
-un valor $c \in \R$ al que se hace tender la variable de $f$, y un
-valor de resultado $a \in \R$. Se formula entonces que:
-\[
-    \begin{derivation}
-            \res{ \Lim{x}{c} f(x) = a}\\
-        \equiv\\
-            \res{ (
-                    \forall \e \sthat \e > 0 \sat
-                    (
-                        \exists \updelta \sthat \updelta > 0 \sat
-                        (
-                            \forall x \sthat 0< |x - c|<\updelta :
-                            |f(x) - c| < \e
-                        )
-                    )
-                ) }
-    \end{derivation}
-\]
+Cuando Newton y Leibniz trabajaron en la fundamentación del cálculo, una
+de sus diferencias fue la definición de límite. Mientras Newton lo
+definió de la forma en la que se ha enseñado principalmente, la
+definición $\e$ y $\updelta$. Leibniz, lo definia de una forma que
+incluso parece una versión más amigable que la de Newton. Leibniz
+consideraba números infinitamente pequeños, de tal forma que fueran
+menores que cualquier número positivo pero mayores a $0$. Junto con
+números infinitamente grandes, mayores que cualquier número positivo.
 
-Esta definición, claro, está dada por la naturaleza de $f$, ya que este
-concepto de límite se puede dar para cualquier función $g:A \to B$,
-donde $A$ y $B$ son espacios métricos.
+El problema de esta definición, se encontró cuando se intentó fundamentar
+formalmente. Cosa que Leibniz ni sus discípulos lograron demostrar.
+La definición de Newton recurre a los mismos números reales ya usados.
+La definición de Leibniz, recurre a una nueva especie de números, los cuales
+deben ser comparables y se deben poder operar con los reales. La idea entonces
+con esta nueva especie de números, es poder operar con estos, para
+posteriormente tomar el resultado y recuperar la información que interesa,
+la que corresponde a un valor real estándar. Esta nueva especie de números
+resulta tener aplicaciones en más áreas que el cálculo de límites, sin
+embargo, no hacen parte del objetivo de este proyecto, el cual consta de
+presentar esta idea en relación al análisis estándar, específicamente,
+el análisis diferencial.
 
-La definición de límite con la que Leibniz construyó el cálculo, es
-diferente, y no del todo conocida, pues ni él, ni alguno de sus
-sucesores pudieron construirla formalmente. Leibniz hablaba de números
-infinitamente pequeños o infinitamente grandes. Bajo esta idea, el
-límite del ejemplo consistiría tomar un número $c'$ tal que $|c' - c|$ es
-infinitamente pequeño, y demostrar entonces que \\$|f(c') - a|$ también
-es infinitamente pequeño. Esta explicación se nota un poco más intuitiva
-de entrada. Sin embargo, tomando los conociemitos del análisis clásico,
-esta definición de $c'$ solo sería posible si $c'=c$, cosa que no
-tendría sentido, si se quiere tener información del límite. En este
-artículo, presentaré los resultados obtenidos principalmente por
-Abraham Robinson, y la formalización de las ideas de los %TODO ref%
-infinitesimales.
+Los pasos para la construcción de estos números, recurre a los filtros,
+un objeto de la teoría de conjuntos sobre el que se hablará en el
+documento. Con estos, se puede lograr la construcción de esta nueva especie
+de números sobre los reales. 

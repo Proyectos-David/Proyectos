@@ -1,0 +1,121 @@
+\section{Filtros}
+
+Los filtros son, como se mencionó, objetos de la teoría de conjuntos.
+Como su nombre indica, son objetos que filtran, de forma análoga a lo que
+puede hacer un colador. Para esta sección, se considerará $I$ como un
+conjunto no vacío, esto último es necesario para la definición de filtro.
+
+\begin{definition}\label{def:filtro}
+  Un filtro $\F$ sobre $I$, es un conjunto no vacío de subconjuntos de $I$.
+  $\F$ cumple las siguientes características:
+  \begin{enumerate}
+    \item $\varnothing \not\in \F$
+    \item $\Forall{A,B}[A,B \in \F]{A\cap B \in \F}$
+    \item $\Forall{A,B}[A\in \F \land A \subseteq B]{B \in \F}$
+  \end{enumerate}
+
+  Para esta sección, la letra $\F$ denotará un filtro sobre $I$
+\end{definition}
+
+Por ejemplo, considere el conjunto $X=\{a,b,c\}$. Un filtro $G$ sobre $X$
+puede ser 
+\[G = \{\{a\}, \{a,b\}, \{a,c\}, \{a,b,c\}\}\]
+Nótese que por la definición de filtro, el conjunto sobre el que este se
+define, siempre debe ser un elemento del filtro.
+
+Así como un colador puede ser más fino que otro, en el sentido que
+deja pasar menos cosas, también se pueden comparar a los filtros definidos
+sobre un conjunto.
+
+\begin{definition}[Relación de orden]
+  Un filtro $\F_1$ es más fino que un filtro $\F_2$ cuando $\F_2 \subseteq \F_1$
+\end{definition}
+
+Volvamos al conjunto $X$ definido para el ejemplo anterior. Sean $G_1$, $G_2$
+filtros sobre $X$, y
+\[G_1 = \{\{a\}, \{a,b\},\{a,c\},\{a,b,c\}\}\text{ , } G_2 = \{\{a,b,c\}\}\]
+Se puede ver que $G_2 \subseteq G_1$.
+
+Se puede ver que hay filtros que no se pueden comparar, incluso en conjuntos tan
+simples como $X$. Si consideramos ahora un nuevo filtro\\
+$G_3 = \{\{b\}, \{b,a\},\{b,c\},\{a,b,c\}\}$, está claro que no se pueden comparar
+$G_3$ y $G_1$.
+
+\begin{definition}
+  Sea $\mathscr{F}$ el conjunto de filtros definidos sobre $I$. Se define
+  el concepto de ultrafiltro como un elemento maximal de $\mathscr{F}$ con
+  la relación de orden definida anteriormente. Simbólicamente,
+  un filtro $\U$ sobre $I$, es un ultrafiltro cuando
+  \[\Forall{\F}[\F\in\mathscr{F}]{\U\not\subset\F}\]
+
+  Para esta sección, la letra $\U$ denotará un ultrafiltro sobre $I$.
+\end{definition}
+
+\begin{theorem}[Caracterizaciones]
+  Sea $\U$ un ultrafiltro sobre $I$. $\U$ es un ultrafiltro si y solo si:
+  \begin{enumerate}
+    \item $\Forall{A}[A\subseteq I]{A\in\U \not\equiv I-A \in \U}$
+    \item Sean $n\in\N$, $\{A_k\}$ una colección de $n$ subconjuntos de $I$ tal que
+          \[\bigcup_{k=0}^n A_k \in \U\]
+          entonces
+          \[\Exists{k}[k\leq n]{A_k\in\U}\]
+  \end{enumerate}
+\end{theorem}
+
+\begin{demo}[i] Por un lado, se va a mostrar que si $\U$ es un ultrafiltro,
+  entonces se tiene la propiedad. Por contradicción, se va a suponer
+  que $\U$ es un ultrafiltro, y se tiene un subconjunto $A$ de $I$, tal
+  que $A \not\in \U \,\land\, I-A\not\in\U$. Una forma equivalente de escribir
+  el punto (ii) de la \hyperref[def:filtro]{definición de filtro} es
+  \[\Forall{A,B}[A\subseteq B]{B\not\in\F \To A\not\in\F}\]
+  Con esto se puede ver que ningún subconjunto, tanto de $A$ como de $I-A$
+  es elemento de $\U$.
+
+  Sea $\U_2 = \{B \subseteq I \,|\, B \cup A \in \U\}$, se puede ver que
+  $\U \subset \U_2$, en efecto
+  \begin{longderivation}<1>
+      \res{ B \in \U }\\
+    \To\\
+      \res{ B \cup A \in \U }\\
+    \equiv\\
+      \res{ B \in \U_2 }
+  \end{longderivation}
+
+  No son iguales, pues, por ejemplo, $I-A \cup A = I$, $I-A \in \U_2$.\\
+  Hace falta ver que $\U_2$ es un filtro.
+  \begin{enumerate}
+    \item Por contradicción, es inmediato:
+          \begin{longderivation}<0.7>
+              \res{ \varnothing \in \U_2 }\\
+            \equiv\\
+              \res{ A \in \U }
+          \end{longderivation}
+    \item Sean $X, Y \in \U_2$
+          \begin{longderivation}<0.7>
+              \res{ X \cap Y \in \U_2 }\\
+            \equiv\\
+              \res{ (X \cap Y) \cup A \in \U }\\
+            \equiv\\
+              \res{ (X \cup A) \cap (Y \cup A) \in \U }\\
+          \end{longderivation}
+          Como $X,Y\in\U_2$, se tiene que ambos términos de la intersección
+          son elementos de $\U$. Como $\U$ es un filtro, por definición, esta
+          intersección también es elemento de $\U$.
+    \item Sean $X\in\U_2$ y $Y\supseteq X$
+          \begin{longderivation}
+              \res{ X \subseteq  Y }\\
+            \To\\
+              \res{ X \cup A \subseteq Y \cup A }\\
+            \why[\To]{$X\in\U_2$ y $\U$ es un filtro}\\
+              \res{ Y \cup A \in \U }\\
+            \equiv\\
+              \res{ Y \in \U_2 }
+          \end{longderivation}
+  \end{enumerate}
+
+  Entonces, se tiene que $\U \subset \U_2$ y $\U_2$ es un filtro sobre
+  $I$. Lo cual contradice la hipótesis de que $\U$ es un ultrafiltro.
+\end{demo}
+\begin{demo}[ii]
+  
+\end{demo}

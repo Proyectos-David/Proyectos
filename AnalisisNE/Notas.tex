@@ -6,9 +6,11 @@
 \usepackage[T1]{fontenc}
 \usepackage[spanish, es-noquoting, es-lcroman]{babel}
 \usepackage[a]{esvect}
-\usepackage{amsfonts, amssymb}
+\usepackage{amssymb}
+\usepackage{amsfonts}
 \usepackage{mathrsfs}
 \usepackage{amsthm}
+\usepackage{dsfont}
 \usepackage[hidelinks]{hyperref}
 \usepackage{enumitem}
 \usepackage{setspace}
@@ -31,18 +33,34 @@
 {:} % puntuación después del título
 {5pt} % espacio después del título
 {}
-
+\newtheoremstyle{theorem*}%
+{10pt}
+{10pt}
+{\normalfont}
+{}
+{\bfseries}
+{:}
+{\newline}
+{}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}[section]
 \newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}{Lema}[section]
 \newtheorem*{note}{Nota}
 
+\theoremstyle{theorem*}
+\newtheorem{lemma*}{Lema}[section]
+\newtheorem{theorem*}{Teorema}[section]
 
 
 \NewDocumentCommand{\F}{}{\mathcal{F}}
 \NewDocumentCommand{\U}{}{\mathscr{U}}
-\NewDocumentCommand{\N}{}{\mathbb{N}}
+\NewDocumentCommand{\N}{}{\mathds{N}}
+\NewDocumentCommand{\J}{}{\mathds{J}}
+\NewDocumentCommand{\R}{}{\mathds{R}}
+\NewDocumentCommand{\Pts}{}{\mathscr{P}}
+\NewDocumentCommand{\Rh}{}{\widehat{\R}}
 
 \renewcommand{\labelenumi}{(\roman{enumi})}
 
@@ -81,10 +99,10 @@ Sea $I$ un conjunto no vacío.
 \end{definition}
 
 \begin{definition}
-  Sea $\mathcal{F}$ el conjunto de filtros sobre $I$. 
-  Un ultrafiltro, es un elemento maximal de $\mathcal{F}$. Por definición
+  Sea $\mathscr{F}$ el conjunto de filtros sobre $I$. 
+  Un ultrafiltro, es un elemento maximal de $\mathscr{F}$. Por definición
   de la relación de orden, esto es, no está contenido propiamente en algún
-  otro filtro de $\mathcal{F}$.\\
+  otro filtro de $\mathscr{F}$.\\
   La letra $\U$ denotará un ultrafiltro sobre $I$, a menos que se especifique
   otra cosa.
 \end{definition}
@@ -142,7 +160,7 @@ Sea $I$ un conjunto no vacío.
 \end{proofbox}
 
 \begin{note}
-  $\U$ es un ultrafiltro sii, agregarle otro elemento implica que $\varnothing \in \U$
+  $\U$ es un ultrafiltro sii, agregarle otro subconjunto implica que $\varnothing \in \U$
 \end{note}
 
 
@@ -159,7 +177,7 @@ Sea $I$ un conjunto no vacío.
 \begin{theorem}
   \begin{enumerate}
     \item Un ultrafiltro $\U$ sobre $I$ es $\updelta$-incompleto sii existe
-          una partición contable de $I$ ($I_n$) tal que, para todo $n$
+          una partición contable de $I$ ($I_n$) tal que, para todo $n$,
           $I_n \not\in \U$
     \item Todo ultrafiltro $\updelta$-incompleto es libre
   \end{enumerate}
@@ -167,6 +185,251 @@ Sea $I$ un conjunto no vacío.
 
 \begin{proofbox}{\textit{Demostración}}
   \begin{enumerate}
+    \item Sea $\{F_n\}_{n \in \J}$ una colección de subconjuntos de $I$ que
+          cumpla en $\U$ la definición de $\updelta$-incompleto. Como $\U$
+          es un ultrafiltro, se tiene entonces que, para todo $n \in \J$,
+          $I - F_n \not\in \U$. Por definción de filtro, tampoco
+          puede estar en $\U$ alguno de sus subconjuntos. Así mismo,
+          como la colección de los $F_n$ cumple la definición de
+          $\updelta$-incompleto, se tiene que $\ds\bigcup_{n\in\J}(I-F_n) \in \U$.
+
+          Sea $B_n$ una colección de subconjuntos de $I$ definida por
+          $\ds B_k = \bigcup_{n=1}^{k}(I-F_k)$
+          Sea $I_n$ una colección de subconjuntos de $I$ definida por
+          \[
+            \begin{siseq}[\{,\}]
+              I_0     &= \bigcap_{k\in\J}F_k\\
+              I_{n+1} &= B_{n+1} - B_{n}
+            \end{siseq}
+          \]
+
+          Se va a mostrar que la colección $\{I_n\}_{n\in\N}$ es una partición de $I$,
+          de la cual, para todo $n$, $I_n \not\in \U$
+
+          De entrada se tiene que $I_0 \not\in \U$, por definición de $\updelta$-incompleto.
+          Por otro lado, hace falta hallar de forma más explícita qué es $I_n$ para un $n\geq1$.
+          
+          \begin{align*}
+            I_1     &= I - F_1\\
+            I_2     &= ((I - F_1) \cup (I-F_2)) - (I-F_1)\\
+            I_3     &= ((I-F_1) \cup (I-F_2) \cup (I-F_3)) - ((I - F_1) \cup (I-F_2))\\
+            \vdots  & \qquad\vdots\\
+          \end{align*}
+
+          Se puede ver inmediatamente que $I_1 \not\in \U$. También se tiene que, para
+          un par de subconjuntos de $I$, $A$ y $B$: $A - B = A \cup (I - B)$ y
+          $I-(A\cup B) = (I-A)\cap(I-B)$. Una vez aclarado esto:
+
+          \[
+            \begin{derivation}
+                \res{ I_{n+1} }\\
+              =\\
+                \res{ B_{n+1} - B_{n} }\\
+              =\\
+                \res{ \bigcup_{k=1}^{n+1}(I-F_k) - \bigcup_{k=1}^{n}(I-F_k)}\\
+              =\\
+                \res{ \left((I-F_{n+1}) \cup \bigcup_{k=1}^{n}(I-F_k)\right)
+                      \cap \left(I-\bigcup_{k=1}^{n}(I-F_k)\right) }\\
+              =\\
+                \res{ \left((I-F_{n+1}) \cap
+                        \left(I-\bigcup_{k=1}^{n}(I-F_k)\right)
+                      \right)
+                        \cup
+                      \left(
+                        \bigcup_{k=1}^{n}(I-F_k) \cap
+                        \left(I-\bigcup_{k=1}^{n}(I-F_k)\right)
+                      \right) }\\
+              =\\
+                \res{ (I-F_{n+1}) \cap \bigcap_{k=1}^{n}F_k }
+            \end{derivation}
+          \]
+
+          Se puede ver que, para todo $n\in\J$, $I_n \subseteq (I-F_n)$, lo que,
+          por definición de filtro, y el hecho de que $I-F_n \not\in \U$, implica
+          que $I_n \not\in \U$.
+
+          Por la definición de $B_n$, para todo $n \in \J$, $B_n \subseteq B_{n+1}$.
+          Esto garantiza que para todo $n,m \in \J \land n\not=m$, $I_n \cup I_m = \varnothing$.
+
+          Falta resolver con $I_0$ y verificar que la unión de todos, en efecto, sea $I$.
+          Esto se puede hacer en un mismo paso, calculando la unión de todos los $I_n$
+          desde $n=1$. Pero esta unión resulta ser la misma que la unión de todos los
+          $I - F_n$. Así,
+          \[\bigcup_{n\in\J}I_n = \bigcup_{n\in\J}(I-F_n)\]
+
+          Con esta expresión, se puede ver que, $I_0$, es precisamente el complemento
+          en $I$ de esta unión. Con lo que se concluye que la colección $\{I_n\}_{n\in\N}$
+          es una partición de $I$ tal que, para todo $n\in\N$, $I_n \not\in \U$.
+
+          En el otro sentio, con ultrafiltro $\U$ sobre $I$ y una partición contable
+          de $I$, $\{I_n\}_{n\in\N}$ tal como se define en el enunciado. Se tiene entonces que, para todo $n\in\N$, $I-I_n \in \U$. Por lo que se define $F_n = I - I_n$. solo
+          hace falta ver que la intersección de todos los $F_n$ no esté en $\U$.
+          \[
+            \begin{derivation}
+                \res{\bigcap_{n\in\N}F_n}\\
+              =\\
+                \res{ \bigcap_{n\in\N}(I - I_n) }\\
+              =\\
+                \res{ I - \bigcup{n\in\N}I_n }\\
+              =\\
+                \res{ I - I }\\
+              =\\
+                \res{ \varnothing }\\
+              \not\in\\
+                \res{\U}
+            \end{derivation}
+          \]
+
+          Así, se concluye la demostración de esta caracterización de los ultrafiltros
+          $\updelta$-incompletos.
+
+    \item Este segundo teorema, resulta ser consecuencia inmediata del anterior.
+    Por esta razón, para un ultrafiltro $\updelta$-incompleto, se cuenta con una
+    partición contrable $\{I_n\}_{n\in\N}$ que cumple la definición del enunciado.
+    
+    Lo primero es explorar el significado de $\ds\bigcap\U=\varnothing$
+
+    \begin{longderivation}
+        \res{ \bigcap\U = \varnothing }\\
+      \equiv\\
+        \res{ \lnot \bigcap\U \not= \varnothing }\\
+      \equiv\\
+        \res{ \lnot\Exists{x}{x\in\bigcap\U} }\\
+      \equiv\\
+        \res{ \lnot\Exists{x}{\Forall{F}[F\in\U]{x\in F}} }\\
+      \equiv\\
+        \res{ \Forall{x}{\Exists{F}[F\in\U]{x\not\in F}} }
+    \end{longderivation}
+
+    Ya con esta proposición, es más claro lo que hace falta demostrar.
+    Por generalización:
+    \[
+      \begin{derivation}
+          \res{ x \in I }\\
+        \equiv\\
+          \res{ \Exists{n}[n\in\N]{x \in I_n \land I_n \not\in \U} }\\
+        \equiv\\
+          \res{ \Exists{n}[n\in\N]{x \not\in I - I_n \land (I-I_n)\in\U} }
+      \end{derivation}
+    \]
+    Así, queda demostrado el teorema (ii).
+  \end{enumerate}
+\end{proofbox}
+
+Junto con el lema de Zorn y la caracterización de los ultrafiltros $\updelta$-incompletos,
+se puede demostrar que en cualquier conjunto infinito, existen dichos ultrafiltros.
+
+\section{Súperestructura de \texorpdfstring{$\R$}{R}}
+
+La idea en esta súperestructura, es poder agrupar todas las relaciones
+posibles entre número reales. Debido a la definición de las
+$n$-uplas de forma recursiva:
+\[
+  \begin{siseq}[.,.]
+    (a) &= a\\
+    (a,b) &= \{\{a\}, \{a,b\}\}\\
+    (a_1, \dots, a_n, a_{n+1})  &= ((a_1, \dots, a_n), a_{n+1})
+  \end{siseq}
+\]
+y el hecho de que, $(a,b) \in A \times B \To (a,b) \in \Pts(\Pts(A\cup B))$,
+se puede lograr definir un conjunto el cual junte todas las $n$-uplas de
+números reales.
+
+Se define entones la siguiente colección de conjuntos:
+\[
+  \begin{siseq}[\{,\}]
+    \R_0      &= \R\\
+    \R_{n+1}  &= \Pts\left(\bigcup_{k=0}^n \R_k\right)
+  \end{siseq}
+\]
+
+\begin{definition}
+  La súperestructura, denotada por $\Rh$, se definirá como:
+  \[\Rh = \bigcup_{n\geq0} \R_n\]
+\end{definition}
+\begin{definition}
+  Los elementos de $\Rh$ serán llamados \emph{entidades}. De estas, los
+  elementos de $\R$ serán llamados \emph{individuos}.
+\end{definition}
+
+Ahora, se mostrarán algunas propiedades de las entidades. Estas servirán
+mucho más adelante para demostrar algunos teoremas a cerca de la construcción
+de los número híperreales.
+\begin{lemma*}~
+  \vspace{-20pt}
+  \begin{enumerate}
+    \item $\Forall{n,k}[n,k \in \J \land n \geq k]{\R_k \subseteq \R_n}$
+    \item $\ds\Forall{n}[n\in\J]{\bigcup_{k=0}^n \R_k = \R_n}$
+    \item $\Forall{n,k}[n,k \in\N\land k \leq n]{R_k \in R_n}$
+    \item $\Forall{n,x,y}[n\in\N \land y\in\R_{n+1} \land x\in y]{x \in \R_n}$
+  \end{enumerate}
+\end{lemma*}
+
+\begin{proofbox}{\textit{Demostración}}
+  \begin{enumerate}
+    \item Sean $n, k \in \J$ tales que $n \geq k$. Se mostrará la contenencia
+          De $\R_k$ en $R_n$ tomando un elemento en $\R_k$ y viendo que
+          esto implica que esté en $\R_n$.
+          \begin{longderivation}
+              \res{ x\in\R_k }\\
+            \equiv\\
+              \res{ x\in\Pts\left(\bigcup_{m=0}^{k-1}R_m\right) }\\
+            \equiv\\
+              \res{ x \subseteq \bigcup_{m=0}^{k-1}R_m }\\
+            \why[\To]{$A\subseteq B \To A \subseteq B \cup C$}\\
+              \res{ x \subseteq \bigcup_{m=0}^{n}R_m }\\
+            \equiv\\
+              \res{ x \in \Pts(\bigcup_{m=0}^{n}R_m) }\\
+            \equiv\\
+              \res{ x \in \R_n }
+          \end{longderivation}
+    \item La demostración se hará por inducción:
+          \emph{Caso base:}
+
+          \[ \bigcup_{k=0}^1 \R_k = \R_0 \cup \R_1 = \R_1\]
+
+          \emph{Paso inductivo:}
+          Suponiendo que, para $n\in\J$, se tiene la propiedad.
+
+          \[
+            \begin{derivation}
+                \res{ \bigcup_{k=0}^{n}\R_k = \R_0 \cup \R_n }\\
+              \why[\To]{$A = B \To A\cup C = B \cup C$}\\
+                \res{ \bigcup_{k=0}^{n+1}\R_k = \R_0 \cup \R_n \cup \R_{n+1} }\\
+              \why{Propiedad anterior, $A \subseteq B \equiv A\cup B = B$}\\
+                \res{\bigcup_{k=0}^{n+1}\R_k = \R_{n+1}}
+            \end{derivation}
+          \]
+
+    \item Para $n=1$, $k$ debe ser $0$. En este caso, se cumple la propiedad.
+          Para $n \geq 1$, se tiene que
+
+          \[
+            \begin{derivation}
+                \res{ \R_k \in \R_{n+1} }\\
+              \equiv\\
+                \res{ \R_k \in \Pts\left(\bigcup_{m=0}^{n}\R_m\right) }\\
+              \equiv\\
+                \res{ \R_k \subseteq \bigcup_{m=0}^{n}\R_m }\\
+              \why{Propiedad (ii)}\\
+                \res{ \R_k \subseteq \R_n }
+            \end{derivation}
+          \]
+
+          Esta última expresión, se puede ver por la propiedad (i), es cierta.
+
+    \item Sean $n\in\N$, $y\in\R_{n+1}$, $x\in y$
+
+          \[
+            \begin{derivation}
+                \res{ x\in y \land y\in\R_{n+1} }\\
+              \why{(ii)}\\
+                \res{ x\in y \land y \subseteq \R_n}\\
+              \To\\
+                \res{ x \in \R_n }
+            \end{derivation}
+          \]
+  
     \item 
   \end{enumerate}
 \end{proofbox}

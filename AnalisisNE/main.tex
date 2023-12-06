@@ -1,15 +1,26 @@
-\documentclass{article}
+\documentclass[leqno]{article}
 
 \usepackage{logicDG, calcDG}
 \usepackage{amsfonts}
 \usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{setspace}
-\usepackage[spanish, es-noquoting]{babel}
+\usepackage[spanish, es-noquoting, es-lcroman]{babel}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
 \usepackage{dsfont}
 \usepackage{upgreek}
+\usepackage{amsthm}
+\usepackage{geometry}
+\geometry{
+  left=2cm,
+  right=2cm,
+  bottom=4cm,
+  a4paper
+}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -32,7 +43,7 @@
 
 % ~~~~ Ruta a Imágenes ~~~~ %
 \graphicspath{{./AnalisisNE/}}
-\newcommand{\logo}{"logo-eci.png"}
+\newcommand{\logo}{"logo-eci-normal.png"}
 % ~~~~ Ruta a Imágenes ~~~~ %
 
 
@@ -45,12 +56,60 @@
 
 % Enumi func
 
-\renewcommand{\labelenumi}{(\Roman{enumi})}
-\renewcommand{\labelenumii}{(\roman{enumii})}
+\renewcommand{\labelenumi}{(\roman{enumi})}
 
 % ~~~~ Nombres de conjuntos y demás ~~~~~ %
+\newtheoremstyle{definition}%
+{10pt} % espaciado arriba
+{10pt} % espaciado abajo
+{\normalfont} % fuente del cuerpo
+{} % indentación
+{\bfseries} % fuente del título
+{:} % puntuación después del título
+{5pt} % espacio después del título
+{}
+\newtheoremstyle{theorem*}%
+{10pt}
+{10pt}
+{\normalfont}
+{}
+{\bfseries}
+{:}
+{\newline}
+{}
+
+\newtheoremstyle{proof}%
+{5pt}
+{10pt}
+{\normalfont}
+{\parindent}
+{\itshape}
+{:}
+{5pt}
+{}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definición}[section]
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}{Lema}[section]
+\newtheorem*{note}{Nota}
+
+\theoremstyle{theorem*}
+\newtheorem{lemma*}{Lema}[section]
+\newtheorem{theorem*}{Teorema}[section]
+
+\theoremstyle{proof}
+\newtheorem*{demo}{Demostración}
+
+
+\NewDocumentCommand{\F}{}{\mathcal{F}}
+\NewDocumentCommand{\U}{}{\mathscr{U}}
+\NewDocumentCommand{\N}{}{\mathds{N}}
+\NewDocumentCommand{\J}{}{\mathds{J}}
 \NewDocumentCommand{\R}{}{\mathds{R}}
-\NewDocumentCommand{\dom}{}{\text{dom}}
+\NewDocumentCommand{\Pts}{}{\mathscr{P}}
+\NewDocumentCommand{\Rh}{}{\widehat{\R}}
 \NewDocumentCommand{\e}{}{\upvarepsilon}
 % ~~~~ Nombres de conjuntos y demás ~~~~~ %
 
@@ -84,5 +143,7 @@
 \tableofcontents
 
 \include{Intro}
+
+\include{Filtros}
 
 \end{document}
