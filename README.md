@@ -22,3 +22,5 @@ PDF: [Link](Logica/build/Proyecto_log.pdf)
 
 Una formalización del cálculo descrito por Leibniz. Este consideró infinitesimales
 los cuales son números infinitamente pequeños o grandes.
+
+PDF: [link](AnalisisNE/build/main.pdf)

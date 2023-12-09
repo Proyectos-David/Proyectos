@@ -32,7 +32,7 @@ define, siempre debe ser un elemento del filtro.
 \end{definition}
 
 \begin{definition}
-  Sea $\mathcal{B}$ una colección no vacía de subconjuntosde $I$ tales
+  Sea $\mathcal{B}$ una colección no vacía de subconjuntos de $I$ tales
   que,
   \[
     \Forall{A,B}[A,B \in \mathcal{B}]{
@@ -50,7 +50,7 @@ sobre un conjunto.
 
 \begin{definition}[Relación de orden]
   Sea $\mathscr{F}$ el conjunto de filtros sobre $I$, la relación de contenencia
-  ordena parcialmente $\mathscr{F}$, y entre dos elementos de define de la siguiente
+  ordena parcialmente a $\mathscr{F}$, y entre dos elementos de define de la siguiente
   manera:
 
   Un filtro $\F_1$ es \emph{más fino} que un filtro $\F_2$ cuando $\F_2 \subseteq \F_1$.
@@ -70,7 +70,7 @@ $G_3$ y $G_1$.
   el concepto de ultrafiltro como un elemento maximal de $\mathscr{F}$ con
   la relación de orden definida anteriormente. Simbólicamente,
   un filtro $\U$ sobre $I$, es un ultrafiltro cuando
-  \[\Forall{\F}[\F\in\mathscr{F}]{\U\not\subset\F}\]
+  \[\Forall{\F}[\F\in\mathscr{F}\land\F \not=\U]{\U\not\subset\F}\]
 
   Para esta sección, la letra $\U$ denotará un ultrafiltro sobre $I$.\\
   Como ejemplo, se pueden tomar los filtros $G_1$ y $G_3$ de antes.
@@ -81,8 +81,8 @@ $G_3$ y $G_1$.
   Sea $\U$ un ultrafiltro sobre $I$. $\U$ es un ultrafiltro si y solo si:
   \begin{enumerate}
     \item $\Forall{A}[A\subseteq I]{A\in\U \not\equiv I-A \in \U}$
-    \item Sean $n\in\N$, $\{A_k\}$ una colección de $n$ subconjuntos de $I$ tal que
-          \[\bigcup_{k=0}^n A_k \in \U\]
+    \item Sean $n\in\J$, $\{A_k\}$ una colección de $n$ subconjuntos de $I$ tal que
+          \[\bigcup_{k=1}^n A_k \in \U\]
           entonces
           \[\Exists{k}[k\leq n]{A_k\in\U}\]
   \end{enumerate}
