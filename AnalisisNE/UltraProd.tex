@@ -133,13 +133,16 @@ la misma manera que su correspondiente para los elementos sobre los que
 aplica, esto es, si tomamos elementos de $\Rh$, compararlos con `$=$' o
 `$\in$' resulta ser equivalente a comparar su versión $*$ con `$\equ$'
 o `$\inu$' respectivamente, debido a esto se dejará la notación $\U$, y
-se usará `$=$' y `$\in$' respectivamente. Esto facilitará la
-continuidad en algunas demostraciones. De esta misma manera, sería
-posible ver que la validez de una proposición en $\Rh$, se mantiene en
-$\IRh$. Sin embargo, la demostración se hará de una forma más general,
-para evitar el proceso cada que sea necesario validar una proposición
-en $\IRh$. Para esto se considerará el lenguaje formal de la lógica de
-primer orden y los elementos de $\Rh$. Considerando que relaciones
+se usará solamente `$=$' y `$\in$'. Esto facilitará la
+continuidad en algunas demostraciones.
+
+De la misma manera en que se demostró la ley del reemplazo para
+la extensión de `$\in$', sería posible ver que la validez de una
+proposición en $\Rh$, se mantiene en $\IRh$. Sin embargo, la
+demostración se hará de una forma más general, para evitar el proceso
+cada que sea necesario validar una proposición en $\IRh$. Para esto se
+considerará el lenguaje formal de la lógica de primer orden y los
+elementos de $\Rh$. Considerando que relaciones
 básicas en $\Rh$ son `$=$' y `$\in$', ya se cuenta con simbolos de
 relación correspondientes en $\IRh$. Por lo que se puede generar un
 lenguage formal con $\IRh$, cuyas proposiciones dependen de $\U$.
@@ -219,7 +222,7 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
                             \set{i}{x(i) \in a_k}\in\U
                           }
                         }\\
-                      \why[\To]{Definción de filtro}\\
+                      \why[\To]{Definción de filtro (ii)}\\
                         \res{
                           \set{i}{\Forall{k}[1\leq k\leq n]{x(i)\in a_k}}
                         }
@@ -237,7 +240,7 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
                             \Forall{k}[1\leq k\leq n]{x(i)\in a_k}
                           }\in\U
                         }\\
-                      \why[\To]{Definición de filtro}\\
+                      \why[\To]{Definición de filtro (iii)}\\
                         \res{
                           \Forall{k}[1\leq k\leq n]{
                             \set{i}{x(i) \in a_k}\in\U
@@ -261,7 +264,7 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
                       \res{ \Exists{k}[1\leq k\leq n]{
                         \set{i}{x(i) \in a_k}\in\U
                       }}\\
-                    \why[\To]{Definición de filtro}\\
+                    \why[\To]{Definición de filtro (iii)}\\
                       \res{ \set{i}{
                         \Exists{k}[1\leq k\leq n]{x(i) \in a_k}\in\U
                       } }\\
@@ -295,13 +298,13 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
                         \land
                         \Forall{k}[1\leq k\leq n]{\set{i}{x(i)\not\in a_k}\in\U}
                       }\\
-                    \why[\To]{definición de filtro}\\
+                    \why[\To]{definición de filtro (ii)}\\
                       \res{
                         \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
                         \land
                         \set{i}{\Forall{k}[1\leq k\leq n]{x(i)\not\in a_k}}\in\U
                       }\\
-                    \why[\To]{definición de filtro}\\
+                    \why[\To]{definición de filtro (ii)}\\
                       \res{
                         \set{i}{
                           x(i)\in\bigcup_{k=1}^n a_k
@@ -376,7 +379,7 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
                   \res{ x \in \st{(a-b)} }\\
                 \equiv\\
                   \res{ \set{i}{x(i) \in a \land x(i) \not\in b}\in\U }\\
-                \why[\To]{Definición de filtro}\\
+                \why[\To]{Definición de filtro (iii)}\\
                   \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\not\in b}\in\U }\\
                 \why{$\U$ es un ultrafiltro}\\
                   \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\in b}\not\in\U }\\
@@ -390,7 +393,7 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
                   \res{ \set{i}{x(i) \not\in a}\in\U \land \set{i}{x(i)\in b}\not\in\U }\\
                 \why[\To]{$\U$ es un ultrafiltro}\\
                   \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\not\in b}\in\U  }\\
-                \why[\To]{Definición de filtro}\\
+                \why[\To]{Definición de filtro (ii)}\\
                   \res{ \set{i}{x(i) \in a \land x(i) \not\in b}\in\U }\\
                 \equiv\\
                   \res{ x \in \st{(a-b)} }
@@ -457,7 +460,8 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
                     \equiv\\
                       \res{ x \in \varnothing }
                   \end{longderivation}
-            \item Para el rango, la misma estrategia se puede usar.
+            \item Para el rango, el argumento es idéntico, cambia el
+              	  orden de la pareja ordenada.
           \end{itemize}
   \end{enumerate}
 \end{demo}

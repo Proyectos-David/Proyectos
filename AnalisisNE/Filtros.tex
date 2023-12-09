@@ -75,8 +75,7 @@ $G_3$ y $G_1$.
   Para esta sección, la letra $\U$ denotará un ultrafiltro sobre $I$.\\
   Como ejemplo, se pueden tomar los filtros $G_1$ y $G_3$ de antes.
 \end{definition}
-
-
+\pagebreak
 \begin{theorem}[Caracterizaciones]
   Sea $\U$ un ultrafiltro sobre $I$. $\U$ es un ultrafiltro si y solo si:
   \begin{enumerate}
@@ -142,11 +141,11 @@ $G_3$ y $G_1$.
   Entonces, se tiene que $\U \subset \U_2$ y $\U_2$ es un filtro sobre
   $I$. Lo cual contradice la hipótesis de que $\U$ es un ultrafiltro.
 
-  Por el otro lado, de igual forma por contradicción. Se va a suponer que
+  Por el otro lado, de igual forma por contradicción, se va a suponer que
   $\U$ es un filtro con la propiedad (i) y que $\U$ no es un ultrafiltro.
 
-  Como $\U$ no es un ultrafiltro, existe un filtro $\U_2$ tal que
-  $\U \subset \U_2$.
+  Como $\U$ no es un ultrafiltro, por el lema del ultrafiltro, existe
+  un filtro $\U_2$ tal que $\U \subset \U_2$.
   \begin{longderivation}
       \res{ \U_2 - \U \not= \varnothing }\\
     \equiv\\
@@ -168,9 +167,9 @@ $G_3$ y $G_1$.
   ultrafiltro y (i), se va a usar esta última.
 
   Por un lado, se va a mostrar que (i) $\To$ (ii).
-  Sean $\U$ un ultrafiltro sobre $I$, $n\in\N$, $\{A_k\}$ una colección
-  de conjuntos de $I$ como se definió en el enunciado. Se va a mostrar
-  que existe un elemento de esta colección que es elento de $\U$. Para
+  Sean $\U$ un ultrafiltro sobre $I$, $n\in\N$ y $\{A_k\}$ una colección
+  de conjuntos de $I$ tal que su unión esté en $\U$. Se va a mostrar
+  que existe un elemento de esta colección que está en $\U$. Para
   esto, se va a suponer que no existe dicho elemento, es decir:
   \begin{longderivation}
       \res{ \bigcup_{k=1}^{n} A_k \in \U \land
@@ -192,7 +191,7 @@ $G_3$ y $G_1$.
   y $I\in\U$, por (ii), al menos uno de los $A_k$ debe pertenecer a $\U$.
   Por definición de filtro, no puede ser que ambos sean elementos de $\U$
   y (ii) garantiza que no puede ser que ninguno sea elemento de $\U$. Es decir,
-  $A_1\in\U \not\equiv A_2\in\U$, que reemplazando es (i). Así
+  $A_1\in\U \not\equiv A_2\in\U$, que reemplazando, es (i). Así
   (ii) $\To$ (i).
 \end{demo}
 
@@ -202,10 +201,6 @@ $G_3$ y $G_1$.
   su intersección no. Es decir, si existe $\{F_n\}_{n\in\N}$ tal que,
   para todo $n\in\N$, $F_n\in\U$ y $\ds\bigcap_{n\in\N}F_n \not\in \U$. Un filtro
   es llamado $\delta$-completo cuando no es $\delta$-incompleto.
-\end{definition}
-
-\begin{definition}
-  Un filtro $\F$ es llamado \emph{libre} cuando $\ds\bigcap\F = \varnothing$.
 \end{definition}
 
 \begin{theorem}[Caracterización]
@@ -270,9 +265,10 @@ $G_3$ y $G_1$.
   así, para todo $n\in\N$, $I_n\not\in\U$.
   
   Por como se definió $I_n$ para $n\in\J$, se puede ver que sus
-  elementos son disjuntos. Asimismo, al ser estos subconjuntos de $F_n$ respectivamente, lo que los hace disjuntos con $I_0$. Esto último se verá
-  de forma más clara al corroborar que la unión de la colección sea
-  efectivamente $I$.
+  elementos son disjuntos. Asimismo, al ser estos subconjuntos de
+  $I - F_n$ respectivamente, son disjuntos con $I_0$. Esto
+  último se verá de forma más clara al corroborar que la unión de la
+  colección sea efectivamente $I$.
   \begin{longderivation}
       \res{ \bigcup_{n\in\J}I_n }\\
     =\\
@@ -282,8 +278,7 @@ $G_3$ y $G_1$.
   \end{longderivation}
 
   Para finalizar la demostración, se tomará el complemento de esta unión,
-  la cual, al unirla con lo obtenido, se obtiene $I$, y más importante, es
-  disjunta con lo obtenido.
+  la cual es disjunta con dicha unión y además, su unión es $I$.
   \begin{longderivation}
       \res{ I - \bigcup_{n\in\J}(I - F_n) }\\
     =\\
@@ -291,37 +286,6 @@ $G_3$ y $G_1$.
     =\\
       \res{ I_0 }
   \end{longderivation}
-\end{demo}
-
-\begin{theorem}
-  Todo ultrafiltro $\delta$-incompleto es libre, con
-  $\{I_n\}_{n\in\N}$ una partición que cumple la definición de
-  $\delta$-incompleto en $\U$.
-\end{theorem}
-\begin{demo}
-  Sea $\U$ un ultrafiltro $\delta$-incompleto sobre $I$. Lo primero es
-  explorar precisamente qué hace falta demostrar, es decir, expandir el
-  significado de \emph{libre}.
-  \begin{longderivation}
-    \res{ \bigcap\U = \varnothing }\\
-  \equiv\\
-    \res{ \lnot \bigcap\U \not= \varnothing }\\
-  \equiv\\
-    \res{ \lnot\Exists{x}{x\in\bigcap\U} }\\
-  \equiv\\
-    \res{ \lnot\Exists{x}{\Forall{F}[F\in\U]{x\in F}} }\\
-  \equiv\\
-    \res{ \Forall{x}{\Exists{F}[F\in\U]{x\not\in F}} }
-\end{longderivation}
-
-Tomando un elemento arbitrario de $I$:
-\begin{longderivation}
-    \res{ x \in I }\\
-  \equiv\\
-    \res{ \Exists{n}[n\in\N]{x \in I_n} }\\
-  \equiv\\
-    \res{ \Exists{n}[n\in\N]{x \not\in I - I_n} }
-\end{longderivation}
 \end{demo}
 
 Nótese que la existencia de un ultrafiltro $\delta$-incompleto sobre
@@ -346,7 +310,7 @@ un conjunto, requiere que dicho conjunto sea infinito.
 
   La condición necesaria para que $\B$ sea una sub-base, es que cumpla la
   propiedad de las intersecciones finitas.
-  Sean $P_1$, $P_2$ subconjuntos finitos de $\N$, y ${H_n}_{n\in P_2}$ una
+  Sean $P_1$, $P_2$ subconjuntos finitos de $\N$, y $\{H_n\}_{n\in P_2}$ una
   colección de subconjuntos finitos de $I$.
 
   \begin{longderivation}
@@ -356,7 +320,7 @@ un conjunto, requiere que dicho conjunto sea infinito.
   \end{longderivation}
 
   Nótese que, $\ds\bigcup_{n\in I - P_1} I_n$ es un subconjunto infinito de $I$.
-  También, se tiene que $\ds\bigcup_{n\in P_2}$ es un subconjunto finito de $I$.
+  También, se tiene que $\ds\bigcup_{n\in P_2}H_n$ es un subconjunto finito de $I$.
   Con esto se demuestra que la intersección presentada es distinta de $\varnothing$.
   Con lo cual, $\B$ es una sub-base.
 \end{demo}
