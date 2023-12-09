@@ -1,0 +1,53 @@
+\section{Superestructura \texorpdfstring{$\Rh$}{R}}
+
+El objetivo de la superestructura es poder agrupar todas las relaciones
+definidas en un conjunto. En este caso $\R$. Debido a que las
+$n$-uplas se definen recursivamente de la siguiente manera:
+\begin{align*}
+  (a) &= a\\
+  (a,b) &= \{\{a\}, \{a,b\}\}\\
+  (a_1, \dots, a_n, a_{n+1}) &= ((a_1, \dots, a_n), a_{n+1})
+\end{align*}
+Se puede demostrar que $(a,b) \in A\times B \To
+(a,b) \in \Pts(\Pts(A \cup B))$. Debido a esto, es posible definir un
+conjunto el cual contenga todas las relaciones entre números reales. Se
+define la colección $\R_n$ de la siguiente manera:
+\[
+  \begin{siseq}[\{,\}]
+    \R_0 &= \R\\
+    \R_{n+1} &= \Pts(\R_n)
+  \end{siseq}
+\]
+
+Se define entonces, la superestructura $\Rh$ por
+\[\Rh = \bigcup_{n\in\N} R_n\]
+Los elementos de $\Rh$ serán llamados \emph{entidades} y los elementos
+de $\R$ serán llamados \emph{individuos}.
+
+\begin{lemma}~
+  \begin{enumerate}
+    \item $\Forall{n,m}[n,m\in\N \land n \leq m]{R_n \in \R_{m+1}}$
+    \item $\Forall{n,x,y}[n\in\N \land y\in\R_{n+1} \land x\in y]{x\in\R_n}$
+  \end{enumerate}
+\end{lemma}
+\pagebreak
+\begin{demo}~
+  \begin{enumerate}
+    \item Sean $n,m \in \N$ tales que $n \leq m$.
+          \begin{longderivation}<.9>
+              \res{ \R_n \subseteq \R_m }\\
+            \equiv\\
+              \res{\R_n \in \Pts(\R_m)}\\
+            \equiv\\
+              \res{ \R_n \in \R_{m+1} }
+          \end{longderivation}
+    \item Sean $n\in\N$, $y\in\R_{n+1}$ y $x\in y$.
+          \begin{longderivation}<.9>
+              \res{ x \in y \land y \in \R_{n+1} }\\
+            \equiv\\
+              \res{ x \in y \land y \subseteq \R_n }\\
+            \To\\
+              \res{ x \in \R_n }
+          \end{longderivation}
+  \end{enumerate}
+\end{demo}

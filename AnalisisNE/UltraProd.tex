@@ -1,0 +1,463 @@
+\section{Ultraproducto de \texorpdfstring{$\Rh$}{R}}
+
+Sean $I$ un conjunto infinito, $\U$ un ultrafiltro $\delta$-incompleto
+sobre $I$, y $\{I_n\}_{n\in\N}$ una partición contable la cual cumple
+la definición de $\delta$-incomleto en $\U$.
+
+Considere ahora el conjunto $\IRh$, de las funciones de $I$ en $\Rh$.
+Sea $a\in\Rh$, se define $\st{a}\in\IRh$ por $\st{a(i)} = a$. Esta
+función, definida para todas las entidades, es una forma de incorporar
+$\Rh$ en $\IRh$. Se puede definir una extensión de las relaciones `$=$'
+y `$\in$' basadas en $\U$
+
+\begin{definition}
+  Sean $a,b\in\IRh$
+  \begin{enumerate}
+    \item $a\equ b \equiv \{i\,|\,a(i) = b(i)\} \in \U$
+    \item $a\inu b \equiv \{i\,|\,a(i) \in b(i)\} \in \U$
+  \end{enumerate}
+\end{definition}
+
+Sean $a,b\in\IRh$, estas relaciones se comportan de la misma forma
+que su versión usual, esto es:
+\begin{itemize}
+  \item $a \equ b \not\equiv a \not\equ b$
+  \item $a \inu b \not\equiv a \not\inu b$
+\end{itemize}
+\begin{demo}
+  Sean $a,b\in\IRh$. Nótese que $\{i\,|\,a(i) = b(i)\} \cup 
+  \{i\,|\,a(i) \not= b(i)\} = I$. Esto mismo sucede con `$\in$'.
+\begin{center}
+  \setlength{\tabcolsep}{20pt}
+  \begin{tabular}{>{$}c<{$}| >{$}c<{$}}
+    \begin{derivation}
+        \res{ a \equ b }\\
+      \equiv\\
+        \res{ \{i\,|\,a(i) = b(i)\} \in \U }\\
+      \why[\not\equiv]{$\U$ es un ultrafiltro}\\
+        \res{ \{i\,|\,a(i) \not= b(i)\} \not\in \U }
+    \end{derivation}
+    &
+    \begin{derivation}
+        \res{ a \inu b }\\
+      \equiv\\
+        \res{ \{i\,|\,a(i) \in b(i)\} \in \U }\\
+      \why[\not\equiv]{$\U$ es un ultrafiltro}\\
+        \res{ \{i\,|\,a(i) \not\in b(i)\} \not\in \U }
+    \end{derivation}
+  \end{tabular}
+\end{center}
+\end{demo}
+
+Antes de continuar, se presenta la siguiente convención de notación:
+\begin{definition}
+  Sean $a\in\IRh$ y $V$ un predicado en $\Rh$ con
+  $a_1,\dots,a_n$ constantes, dichas constantes denotan elementos fijos
+  de $\Rh$.
+  \begin{itemize}
+    \item $\{a\}(i) = \{a(i)\}$
+    \item $\st{V} = V$ reemplazando cada $a_i$ por $\st{a_i}$.
+  \end{itemize}
+\end{definition}
+Sean $a,b\in \IRh$, otra propiedad que se tiene, en este caso para
+la igualdad bajo $\U$ es:
+\[a \equ b \equiv \Forall{c}[c\in\IRh]{a\inu c \equiv b \inu c}\]
+\begin{demo}
+  La demostración se hará por doble implicación.
+  Suponiendo que $a\equ b$. Sea $c\in\IRh$.
+  \begin{center}
+    \begin{tabular}{>{$}c<{$}| >{$}c<{$}}
+      \begin{derivation}
+          \res{ a \inu c \land a\equ b}\\
+        \equiv\\
+          \res{ \{i\,|\,a(i) \in c(i)\}\in\U \\
+            & \land\\
+            &\{i\,|\,a(i) = b(i)\}\in\U
+          }\\
+        \why[\To]{Definición de filtro}\\
+          \res{ \{i\,|\,a(i) \in c(i) \land a(i) = b(i)\}\in\U }\\
+        \why[\To]{Definición de filtro}\\
+          \res{ \{i\,|\,b(i) \in c(i)\}\in\U }\\
+        \equiv\\
+          \res{ b \inu c }
+      \end{derivation}
+      &
+      \begin{derivation}
+        \res{ b \inu c \land a\equ b}\\
+      \equiv\\
+        \res{ \{i\,|\,b(i) \in c(i)\}\in\U\\
+          & \land\\
+          & \{i\,|\,a(i) = b(i)\}\in\U
+        }\\
+      \why[\To]{Definición de filtro}\\
+        \res{ \{i\,|\,b(i) \in c(i) \land a(i) = b(i)\}\in\U }\\
+      \why[\To]{Definición de filtro}\\
+        \res{ \{i\,|\,a(i) \in c(i)\}\in\U }\\
+      \equiv\\
+        \res{ a \inu c }
+      \end{derivation}
+    \end{tabular}
+  \end{center}
+
+  Por el otro lado:
+  \begin{longderivation}<.9>
+      \res{ \Forall{c}[c\in\IRh]{a\inu c \equiv b \inu c} }\\
+    \To\\
+      \res{ a\inu \{a\} \equiv b \inu \{a\} }\\
+    \equiv\\
+      \res{
+        \{i\,|\,a(i) \in \{a\}(i)\} \in\U
+        \equiv
+        \{i\,|\,b(i) \in \{a\}(i)\} \in\U
+      }\\
+    \equiv\\
+      \res{
+        \{i\,|\,a(i) = a(i)\} \in\U
+        \equiv
+        \{i\,|\,b(i) = a(i)\} \in\U
+      }\\
+    \equiv\\
+      \res{ I\in\U \equiv b \equ a }\\
+    \equiv\\
+      \res{ b \equ a }
+  \end{longderivation}
+\end{demo}
+
+Nótese que con estas propiedades, y el hecho de que `$\equ$' es una
+relación de equivalencia, se puede demostrar de la misma forma que
+es válida la ley del reemplazo en $\inu$. Esto es, en $\IRh$:
+\[\Forall{a,b,c,d}[a\inu b \land a\equ c \land b \equ d]{c\inu d}\]
+
+Se puede demostrar que las relaciones `$=$' y `$\in$' se comportan de
+la misma manera que su correspondiente para los elementos sobre los que
+aplica, esto es, si tomamos elementos de $\Rh$, compararlos con `$=$' o
+`$\in$' resulta ser equivalente a comparar su versión $*$ con `$\equ$'
+o `$\inu$' respectivamente, debido a esto se dejará la notación $\U$, y
+se usará `$=$' y `$\in$' respectivamente. Esto facilitará la
+continuidad en algunas demostraciones. De esta misma manera, sería
+posible ver que la validez de una proposición en $\Rh$, se mantiene en
+$\IRh$. Sin embargo, la demostración se hará de una forma más general,
+para evitar el proceso cada que sea necesario validar una proposición
+en $\IRh$. Para esto se considerará el lenguaje formal de la lógica de
+primer orden y los elementos de $\Rh$. Considerando que relaciones
+básicas en $\Rh$ son `$=$' y `$\in$', ya se cuenta con simbolos de
+relación correspondientes en $\IRh$. Por lo que se puede generar un
+lenguage formal con $\IRh$, cuyas proposiciones dependen de $\U$.
+Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
+
+\begin{lemma}~
+  \begin{enumerate}
+    \item $\st{\varnothing} = \varnothing$
+    \item $\Forall{a,b}[a,b\in\Rh]{a \subseteq b \To \st{a} \subseteq \st{b}}$
+    \item $\Forall{a,b}[a,b\in\Rh]{a\in b \equiv \st{a} \in \st{b}}$
+    \item Sean $n\in\J$ y $\{a_k\}$ una colección de $n$ elementos de
+          $\Rh$. Entonces:
+          \begin{itemize}
+            \item $\ds\st{\left(\,\bigcup_{i=1}^n a_i\right)}=\bigcup_{i=1}^n \st{a_i}$
+            \item $\ds\st{\left(\,\bigcap_{i=1}^n a_i\right)}=\bigcap_{i=1}^n \st{a_i}$
+            \item $\st{\{a_1,\dots,a_n\}} = \{\st{a_1},\dots,\st{a_n}\}$
+            \item $\st{(a_1,\dots,a_n)} = (\st{a_1},\dots,\st{a_n})$
+            \item $\st{(a_1 \times \dots \times a_n)} = 
+                    \st{a_1} \times \dots \times \st{a_n}$
+          \end{itemize}
+    \item $\Forall{a,b}[a,b\in\Rh]{\st{(a - b)} = \st{a} - \st{b}}$
+    \item Sea $b\in\Rh$ una relación binaria.
+          \begin{itemize}
+            \item $\st{(\dom b)} = \dom \st{b}$
+            \item $\st{(\ran b)} = \ran \st{b}$
+          \end{itemize}
+  \end{enumerate}
+\end{lemma}
+\pagebreak
+\begin{demo}~
+  \begin{enumerate}
+    \item~
+          \begin{longderivation}<.9>
+              \res{ x\in\st{\varnothing} }\\
+            \equiv\\
+              \res{ \{i\,|\,x(i) \in \varnothing\} \in\U }\\
+            \equiv\\
+              \res{ \varnothing \in \U }\\
+            \equiv\\
+              \res{ x\in\varnothing }
+          \end{longderivation}
+    \item Sean $a,b\in\Rh$ tales que $a\subseteq b$. Sea $x\in\IRh$
+          \begin{longderivation}<.9>
+              \res{ x\in\st{a} }\\
+            \equiv\\
+              \res{ \{i\,|\,x(i) \in a\} \in\U}\\
+            \why[\To]{Definiciónd de filtro, $a\subseteq b$}\\
+              \res{ \{i\,|\,x(i) \in b\}\in\U }\\
+            \equiv\\
+              \res{ x \in \st{b} }
+          \end{longderivation}
+    \item Sean $a,b\in\Rh$
+          \begin{longderivation}<.9>
+              \res{ \st{a} \in \st{b} }\\
+            \equiv\\
+              \res{ \{i\,|\,a \in b\} \in \U }
+          \end{longderivation}
+          Por un lado, suponiendo que $a\in b$, se tendría que $I\in\U$,
+          cosa que es verdadera. Por otro lado, suponiendo que $\st{a} \in \st{b}$,
+          se tendría que, efectivamente $\{i\,|\,a \in b\}\in\U$, recordando que,
+          para un $c\in\Rh$, se definió, que para todo $i\in I$, $\st{c}(i) = i$.
+          La expresión que define $\st{a} \in \st{b}$, nuevamente conduce a $I\in\U$.
+    \item Sean $n\in\J$, $\{a_k\}$ una colección con $n$ elementos de
+          $\Rh$ y $x, (x_1,\dots,x_n)\in\IRh$.
+          \begin{itemize}
+            \item Para la intersección
+            
+            \noindent\makebox[14.5cm]{
+                  \begin{tabular}{>{$}c<{$} | >{$}c<{$}}
+                    \begin{derivation}
+                        \res{ x \in \bigcap_{k=1}^n \st{a_k} }\\
+                      \equiv\\
+                        \res{ \Forall{k}[1\leq k\leq n]{x \in \st{a_k}} }\\
+                      \equiv\\
+                        \res{
+                          \Forall{k}[1\leq k\leq n]{
+                            \set{i}{x(i) \in a_k}\in\U
+                          }
+                        }\\
+                      \why[\To]{Definción de filtro}\\
+                        \res{
+                          \set{i}{\Forall{k}[1\leq k\leq n]{x(i)\in a_k}}
+                        }
+                    \end{derivation}
+                    &
+                    \begin{derivation}
+                        \res{ x \in\st{\left(\,\bigcap_{k=1}^n a_k\right)} }\\
+                      \equiv\\
+                        \res{
+                          \set{i}{x(i) \in \bigcap_{k=1}^n a_k} \in \U
+                        }\\
+                      \equiv\\
+                        \res{
+                          \set{i}{
+                            \Forall{k}[1\leq k\leq n]{x(i)\in a_k}
+                          }\in\U
+                        }\\
+                      \why[\To]{Definición de filtro}\\
+                        \res{
+                          \Forall{k}[1\leq k\leq n]{
+                            \set{i}{x(i) \in a_k}\in\U
+                          }
+                        }
+                    \end{derivation}
+                  \end{tabular}
+                }
+                \vspace{10pt}
+            \item Para la unión.
+
+                  Primero se mostrará que
+                  $\ds\bigcup_{k=1}^n\st{a_k}\subseteq
+                  \st{\left(\bigcup_{k=1}^n a_k\right)}$
+
+                  \begin{longderivation}
+                      \res{ x\in\bigcup_{k=1}^n\st{a_k} }\\
+                    \equiv\\
+                      \res{ \Exists{k}[1\leq k\leq 1]{x\in\st{a_k}} }\\
+                    \equiv\\
+                      \res{ \Exists{k}[1\leq k\leq n]{
+                        \set{i}{x(i) \in a_k}\in\U
+                      }}\\
+                    \why[\To]{Definición de filtro}\\
+                      \res{ \set{i}{
+                        \Exists{k}[1\leq k\leq n]{x(i) \in a_k}\in\U
+                      } }\\
+                    \equiv\\
+                      \res{x\in \st{\left(\bigcup_{k=1}^n a_k\right)}}
+                  \end{longderivation}
+
+                  Ahora se mostrará que
+                  $\ds\st{\left(\bigcup_{k=1}^n a_k\right)}-
+                  \bigcup_{k=1}^n\st{a_k}=\varnothing$
+                  \begin{longderivation}
+                      \res{
+                        x\in\st{\left(\bigcup_{k=1}^n a_k\right)}
+                        - \bigcup_{k=1}^n\st{a_k}
+                      }\\
+                    \equiv\\
+                      \res{
+                        \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
+                        \land
+                        \lnot\Exists{k}[1\leq k\leq n]{\set{i}{x(i)\in a_k}\in\U}
+                      }\\
+                    \equiv\\
+                      \res{
+                        \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
+                        \land
+                        \Forall{k}[1\leq k\leq n]{\set{i}{x(i)\in a_k}\not\in\U}
+                      }\\
+                    \why{$\U$ es un ultrafiltro}\\
+                      \res{
+                        \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
+                        \land
+                        \Forall{k}[1\leq k\leq n]{\set{i}{x(i)\not\in a_k}\in\U}
+                      }\\
+                    \why[\To]{definición de filtro}\\
+                      \res{
+                        \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
+                        \land
+                        \set{i}{\Forall{k}[1\leq k\leq n]{x(i)\not\in a_k}}\in\U
+                      }\\
+                    \why[\To]{definición de filtro}\\
+                      \res{
+                        \set{i}{
+                          x(i)\in\bigcup_{k=1}^n a_k
+                          \land
+                          \Forall{k}[1\leq k\leq n]{x(i)\not\in a_k}
+                        }\in\U
+                      }\\
+                    \equiv\\
+                      \res{ \varnothing \in\U }\\
+                    \equiv\\
+                      \res{ x\in\varnothing }
+                  \end{longderivation}
+                  
+            \item Para la colección, el argumento se realiza de la
+                  misma forma que para la unión, lo único que cambia es
+                  `$\in$' por `$=$'.
+            \item Para la $n$-upla, por cómo se define, se puede ver que es
+                  la unión de dos conjuntos, lo que significa, que es
+                  consecuencia del punto de la unión.
+            \item Para el producto cartesiano.
+
+                  Por un lado:
+                  \begin{longderivation}
+                      \res{(x_1,\dots, x_n)\in\st{(a_1\times\dots\times a_n)}}\\
+                    \equiv\\
+                      \res{
+                        \set{i}{(x_1(i),\dots,x_n(i))\in a_1\times\dots\times a_n}\in\U
+                      }\\
+                    \equiv\\
+                      \res{
+                        \set{i}{
+                          \Forall{k}[1\leq k\leq n]{x_k(i) \in a_k}
+                        }\in\U
+                      }\\
+                    \why[\To]{Definición de filtro (iii)}\\
+                      \res{
+                        \Forall{k}[1\leq k\leq n]{
+                          \set{i}{x_k(i)\in a_k} \in\U
+                        }
+                      }\\
+                    \equiv\\
+                      \res{ (x_1,\dots,x_n) \in \st{a_1}\times\dots\times\st{a_n} }
+                  \end{longderivation}
+                  Por el otro:
+                  \begin{longderivation}
+                      \res{ (x_1,\dots,x_n) \in \st{a_1}\times\dots\times\st{a_n} }\\
+                    \equiv\\
+                      \res{
+                        \Forall{k}[1\leq k\leq n]{
+                          \set{i}{x_k(i)\in a_k} \in\U
+                        }
+                      }\\
+                    \why[\To]{Definición de filtro (ii)}\\
+                      \res{
+                        \set{i}{
+                          \Forall{k}[1\leq k\leq n]{x_k(i) \in a_k}
+                        }\in\U
+                      }\\
+                    \equiv\\
+                      \res{
+                        \set{i}{(x_1(i),\dots,x_n(i))\in a_1\times\dots\times a_n}\in\U
+                      }\\
+                    \equiv\\
+                      \res{(x_1,\dots, x_n)\in\st{(a_1\times\dots\times a_n)}}\\
+                  \end{longderivation}
+          \end{itemize}
+
+    \item Por doble contenencia:
+          \begin{center}
+            \begin{tabular}{>{$}c<{$} | >{$}c<{$}}
+              \begin{derivation}
+                  \res{ x \in \st{(a-b)} }\\
+                \equiv\\
+                  \res{ \set{i}{x(i) \in a \land x(i) \not\in b}\in\U }\\
+                \why[\To]{Definición de filtro}\\
+                  \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\not\in b}\in\U }\\
+                \why{$\U$ es un ultrafiltro}\\
+                  \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\in b}\not\in\U }\\
+                \equiv\\
+                  \res{ x \in \st{a} - \st{b} }
+              \end{derivation}
+              &
+              \begin{derivation}
+                  \res{ x \in \st{a} - \st{b} }\\
+                \equiv\\
+                  \res{ \set{i}{x(i) \not\in a}\in\U \land \set{i}{x(i)\in b}\not\in\U }\\
+                \why[\To]{$\U$ es un ultrafiltro}\\
+                  \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\not\in b}\in\U  }\\
+                \why[\To]{Definición de filtro}\\
+                  \res{ \set{i}{x(i) \in a \land x(i) \not\in b}\in\U }\\
+                \equiv\\
+                  \res{ x \in \st{(a-b)} }
+              \end{derivation}
+            \end{tabular}
+          \end{center}
+    \item~
+          \begin{itemize}
+            \item Se va a seguir la misma estrategia que se usó en (iv)
+                  para la unión. Se mostrará que $\dom \st{b} \subseteq \st{(\dom b)}$
+                  \begin{longderivation}
+                      \res{ x\in\dom\st{b} }\\
+                    \equiv\\
+                      \res{ \Exists{y}{(x,y)\in\dom\st{b}} }\\
+                    \equiv\\
+                      \res{ \Exists{y}{
+                        \set{i}{(x(i),y(i))\in b}\in\U
+                      } }\\
+                    \why[\To]{Definición de filtro (iii)}\\
+                      \res{
+                        \set{i}{
+                          \Exists{y}{(x(i),y(i))\in b}
+                        }\in\U
+                      }\\
+                    \equiv\\
+                      \res{ x\in\st{(\dom b)} }
+                  \end{longderivation}
+
+                  Ahora se mostrará que $\st{(\dom b)} - \dom \st{b} = \varnothing$
+                  \begin{longderivation}
+                      \res{ x\in \st{(\dom b)} - \dom \st{b} }\\
+                    \equiv\\
+                      \res{
+                        \set{i}{x(i) \in \dom b}\in\U
+                        \land
+                        \lnot\Exists{y}{\set{i}{(x(i),y(i))\in b}\in\U}
+                      }\\
+                    \equiv\\
+                      \res{
+                        \set{i}{x(i) \in \dom b}\in\U
+                        \land
+                        \Forall{y}{\set{i}{(x(i),y(i))\in b}\not\in\U}
+                      }\\
+                    \why{$\U$ es un ultrafiltro}\\
+                      \res{
+                        \set{i}{x(i) \in \dom b}\in\U
+                        \land
+                        \Forall{y}{\set{i}{(x(i),y(i))\not\in b}\in\U}
+                      }\\
+                    \why[\To]{Definición de filtro (ii)}\\
+                      \res{
+                        \set{i}{x(i) \in \dom b}\in\U
+                        \land
+                        \set{i}{\Forall{y}{(x(i),y(i))\not\in b}}\in\U
+                      }\\
+                    \why[\To]{Definición de filtro (ii)}\\
+                      \res{
+                        \set{i}{
+                          x(i)\in\dom b \land x(i) \not\in\dom b
+                        }\in\U
+                      }\\
+                    \equiv\\
+                      \res{ \varnothing\in\U }\\
+                    \equiv\\
+                      \res{ x \in \varnothing }
+                  \end{longderivation}
+            \item Para el rango, la misma estrategia se puede usar.
+          \end{itemize}
+  \end{enumerate}
+\end{demo}

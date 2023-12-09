@@ -1,4 +1,4 @@
-\documentclass[leqno]{article}
+\documentclass[leqno, 12pt]{article}
 
 \usepackage{logicDG, calcDG}
 \usepackage{amsfonts}
@@ -6,7 +6,7 @@
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{setspace}
-\usepackage[spanish, es-noquoting, es-lcroman]{babel}
+\usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{mathrsfs}
@@ -21,6 +21,8 @@
   bottom=4cm,
   a4paper
 }
+\usepackage{pdfrender}
+\pdfrender{TextRenderingMode=2,LineWidth=.5pt}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -61,7 +63,7 @@
 % ~~~~ Nombres de conjuntos y demás ~~~~~ %
 \newtheoremstyle{definition}%
 {10pt} % espaciado arriba
-{10pt} % espaciado abajo
+{20pt} % espaciado abajo
 {\normalfont} % fuente del cuerpo
 {} % indentación
 {\bfseries} % fuente del título
@@ -83,7 +85,7 @@
 {10pt}
 {\normalfont}
 {\parindent}
-{\itshape}
+{\itshape\bfseries}
 {:}
 {5pt}
 {}
@@ -103,15 +105,26 @@
 \newtheorem*{demo}{Demostración}
 
 
+% ~~~~ Nombres de conjuntos y demás ~~~~~ %
 \NewDocumentCommand{\F}{}{\mathcal{F}}
 \NewDocumentCommand{\U}{}{\mathscr{U}}
-\NewDocumentCommand{\N}{}{\mathds{N}}
+\NewDocumentCommand{\N}{}{\mathbb{N}}
 \NewDocumentCommand{\J}{}{\mathds{J}}
 \NewDocumentCommand{\R}{}{\mathds{R}}
 \NewDocumentCommand{\Pts}{}{\mathscr{P}}
 \NewDocumentCommand{\Rh}{}{\widehat{\R}}
 \NewDocumentCommand{\e}{}{\upvarepsilon}
-% ~~~~ Nombres de conjuntos y demás ~~~~~ %
+\NewDocumentCommand{\B}{}{\mathcal{B}}
+\NewDocumentCommand{\equ}{}{=_\U}
+\NewDocumentCommand{\inu}{}{\in_\U}
+\NewDocumentCommand{\st}{m}{\prescript{*}{}{#1}}
+\NewDocumentCommand{\IRh}{}{\prescript{I}{}{\Rh}}
+
+\NewDocumentCommand{\dom}{}{\text{dom}\;}
+\NewDocumentCommand{\ran}{}{\text{ran}\;}
+\NewDocumentCommand{\set}{m m}{\left\{#1\,\middle|\,#2\right\}}
+
+\renewcommand{\labelitemi}{$\bullet$}
 
 \doublespacing
 \begin{document}
@@ -145,5 +158,9 @@
 \include{Intro}
 
 \include{Filtros}
+
+\include{SupEstructura}
+
+\include{UltraProd}
 
 \end{document}
