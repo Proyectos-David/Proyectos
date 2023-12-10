@@ -1,4 +1,7 @@
-\section{Ultraproducto de \texorpdfstring{$\Rh$}{R}}
+\section{Ultrapotencia de \texorpdfstring{$\Rh$}{R}}
+
+En esta sección se definirá una estructura la cual es una
+ultrapotencia de $\Rh$.
 
 Sean $I$ un conjunto infinito, $\U$ un ultrafiltro $\delta$-incompleto
 sobre $I$, y $\{I_n\}_{n\in\N}$ una partición contable la cual cumple
@@ -464,4 +467,62 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
               	  orden de la pareja ordenada.
           \end{itemize}
   \end{enumerate}
+\end{demo}
+
+Ahora, se van a considerar los tipos de elementos que están en $\IRh$.
+\pagebreak
+\begin{definition}
+  $a\in\IRh$ es llamada \emph{entidad interna} cuando existe $n\in\N$
+  tal que $a\in\st{\R_n}$. $a$ es llamada, además, \emph{estándar}
+  cuando existe $b\in\Rh$ tal que, $a=\st{b}$. Simbólicamente:
+
+  \begin{center}
+    \begin{tabular}{>{$}c<{$} | >{$}c<{$}}
+      \begin{derivation}
+          \res{\text{$a$ es un entidad interna}}\\
+        \equiv\\
+          \res{ \Exists{n}[n\in\N]{a\in\st{\R_n}} }
+      \end{derivation}
+      &
+      \begin{derivation}
+        \res{\text{$a$ es una entidad interna estándar}}\\
+      \equiv\\
+        \res{
+          \Exists{b}[b\in\Rh]{a=\st{b}}
+          \land
+          \Exists{n}[n\in\N]{a\in\st{R_n}}
+        }
+      \end{derivation}
+    \end{tabular}
+  \end{center}
+  \vspace{20pt}
+  El conjunto $\ds\bigcup_{n\in\N}\st{\R_n}$, es llamado la
+  ultrapotencia de $\Rh$ con respecto a $\U$, y se denotará como
+  $\st{(\Rh)}$.
+\end{definition}
+
+Por la definición de elemento interno y estándar, podría parecer que no
+existen elementos internos no-estándar. Sin embargo, son estos los que
+precisamente logran el objetivo de toda esta construcción.
+
+\begin{theorem}
+  Existen entidades internas no-estándar.
+\end{theorem}
+
+\begin{demo}
+  Sea $a\in\Rh$ una entidad con infinitos elementos. Entonces, existe
+  $\{b_n\}_{n\in\N}$, una colección de elementos de $a$ tales que,
+  $\Forall{n,m}[n,m\in\N \land n\not=m]{b_n \not= b_m}$. Sea $b$ una
+  función de $I$ en $a$ definida de la siguiente manera:
+  \[b(i) = b_n \quad (i\in I_n)\]
+  Recordando que $\{I_n\}_{n\in\N}$ es la partición de $I$ la cual
+  cumple la definción de $\delta$-incompleto en $\U$.
+
+  \begin{longderivation}
+      \res{ b \in \st{a} }\\
+    \equiv\\
+      \res{ \set{i}{b(i) \in a}\in\U }\\
+    \equiv\\
+      \res{ I\in\U }
+  \end{longderivation}
 \end{demo}
