@@ -111,7 +111,6 @@
 \NewDocumentCommand{\N}{}{\mathbb{N}}
 \NewDocumentCommand{\J}{}{\mathds{J}}
 \NewDocumentCommand{\R}{}{\mathds{R}}
-\NewDocumentCommand{\Pts}{}{\mathscr{P}}
 \NewDocumentCommand{\Rh}{}{\widehat{\R}}
 \NewDocumentCommand{\e}{}{\upvarepsilon}
 \NewDocumentCommand{\B}{}{\mathcal{B}}
@@ -120,6 +119,7 @@
 \NewDocumentCommand{\st}{m}{\prescript{*}{}{#1}}
 \NewDocumentCommand{\IRh}{}{\prescript{I}{}{\Rh}}
 
+\NewDocumentCommand{\Pts}{m}{\mathscr{P}\left(#1\right)}
 \NewDocumentCommand{\dom}{}{\text{dom}\;}
 \NewDocumentCommand{\ran}{}{\text{ran}\;}
 \NewDocumentCommand{\set}{m m}{\left\{#1\,\middle|\,#2\right\}}
@@ -162,5 +162,7 @@
 \include{SupEstructura}
 
 \include{UltraPot}
+
+\include{NoEstReal}
 
 \end{document}

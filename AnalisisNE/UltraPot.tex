@@ -151,7 +151,7 @@ relación correspondientes en $\IRh$. Por lo que se puede generar un
 lenguage formal con $\IRh$, cuyas proposiciones dependen de $\U$.
 Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
 
-\begin{lemma}~
+\begin{lemma}\label{lema:stR}~
   \begin{enumerate}
     \item $\st{\varnothing} = \varnothing$
     \item $\Forall{a,b}[a,b\in\Rh]{a \subseteq b \To \st{a} \subseteq \st{b}}$
@@ -473,7 +473,7 @@ Ahora, se van a considerar los tipos de elementos que están en $\IRh$.
 \pagebreak
 \begin{definition}
   $a\in\IRh$ es llamada \emph{entidad interna} cuando existe $n\in\N$
-  tal que $a\in\st{\R_n}$. $a$ es llamada, además, \emph{estándar}
+  tal que $a\in\st{\R_n}$. $a$ es llamada \emph{estándar}
   cuando existe $b\in\Rh$ tal que, $a=\st{b}$. Simbólicamente:
 
   \begin{center}
@@ -485,13 +485,9 @@ Ahora, se van a considerar los tipos de elementos que están en $\IRh$.
       \end{derivation}
       &
       \begin{derivation}
-        \res{\text{$a$ es una entidad interna estándar}}\\
+        \res{\text{$a$ es una entidad estándar}}\\
       \equiv\\
-        \res{
-          \Exists{b}[b\in\Rh]{a=\st{b}}
-          \land
-          \Exists{n}[n\in\N]{a\in\st{R_n}}
-        }
+        \res{\Exists{b}[b\in\Rh]{a=\st{b}}}
       \end{derivation}
     \end{tabular}
   \end{center}
@@ -502,27 +498,243 @@ Ahora, se van a considerar los tipos de elementos que están en $\IRh$.
 \end{definition}
 
 Por la definición de elemento interno y estándar, podría parecer que no
-existen elementos internos no-estándar. Sin embargo, son estos los que
+existen entidades internas no-estándar. Sin embargo, son estas las que
 precisamente logran el objetivo de toda esta construcción.
 
-\begin{theorem}
+\begin{theorem}\label{theo:noEst}
   Existen entidades internas no-estándar.
 \end{theorem}
 
 \begin{demo}
-  Sea $a\in\Rh$ una entidad con infinitos elementos. Entonces, existe
-  $\{b_n\}_{n\in\N}$, una colección de elementos de $a$ tales que,
-  $\Forall{n,m}[n,m\in\N \land n\not=m]{b_n \not= b_m}$. Sea $b$ una
-  función de $I$ en $a$ definida de la siguiente manera:
-  \[b(i) = b_n \quad (i\in I_n)\]
-  Recordando que $\{I_n\}_{n\in\N}$ es la partición de $I$ la cual
-  cumple la definción de $\delta$-incompleto en $\U$.
-
-  \begin{longderivation}
-      \res{ b \in \st{a} }\\
+  Sea $n\in\N$, considere $\R_n$. Nótese que, $\R_n$ es un conjunto
+  infinito. Sea $\{a_n\}_{n\in\N}$ una colección de elementos de $\R_n$
+  tal que $\Forall{n,m}[n,m\in\N \land n\not= m]{a_n \not= a_m}$.
+  Sea $a$ una función de $I$ en $\R_n$ definida por:
+  \[a(i) = a_n \quad (i\in I_n)\]
+  recordando que $\{I_n\}_{n\in\N}$ es la partición de $I$ que se
+  mencionó al principio de esta sección. Primero, se va a mostrar que
+  $a$ es una entidad interna. Específicamente, $a\in\st{R_n}$.
+  \begin{longderivation}<.9>
+      \res{ a\in\st{\R_n} }\\
     \equiv\\
-      \res{ \set{i}{b(i) \in a}\in\U }\\
+      \res{ \set{i}{a(i) \in \R_n}\in\U }\\
     \equiv\\
-      \res{ I\in\U }
+      \res{ I \in \U }
   \end{longderivation}
+
+  por contradicción, supongase que existe $b\in\Rh$ tal que $a=\st{b}$.
+  \begin{longderivation}
+      \res{ a=\st{b} }\\
+    \equiv\\
+      \res{ \set{i}{a(i) = b} }\\
+    \why{$b$ es constante}\\
+      \res{ \Exists{n}[n\in\N]{I_n\in\U} }
+  \end{longderivation}
+  Esto último, por la definición de $\{I_n\}$, es falso. Así, se tiene
+  que $a$ es una entidad interna no-estándar.
+\end{demo}
+
+\begin{theorem}~
+  \begin{enumerate}
+    \item Una entidad es interna si y solo si pertenece a alguna
+          entidad estándar.
+    \item Los elementos de entidades internas son internos.
+  \end{enumerate}
+\end{theorem}
+
+\begin{demo}~
+  \begin{enumerate}
+    \item La demostración se hará por doble implicación. Por un lado,
+          sean $n\in\N$, $c\in\R_{n+1}$ y $b=\st{c}$. Esto es,
+          $b$ es una entidad estándar, donde $c$ cumple la definición
+          de estándar en $b$.
+          \begin{longderivation}<.9>
+              \res{a\in b}\\
+            \equiv\\
+              \res{ a\in \st{c} }\\
+            \equiv\\
+              \res{\set{i}{a(i)\in c}\in\U}\\
+            \why[\To]{\hyperref[lema:Rn]{Propiedad de $\R_n$}}\\
+              \res{\set{i}{a(i)\in\R_0\cup\R_n}\in\U}\\
+            \why{\hyperref[lema:stR]{Propiedad de ${^*}$}}\\
+              \res{a\in\st{\R_0}\cup\st{\R_n}}\\
+            \To\\
+              \res{\Exists{n}[n\in\N]{a\in\st{\R_n}}}
+          \end{longderivation}
+          Por el otro lado, sean $n\in\N$ y $a\in\st{\R_n}$ una entidad
+          interna. Se puede ver inmediatamente que $a$ es elemento de
+          una entidad estándar. En efecto, sean $c=\R_n$, $b=\st{c}$.
+          Por el \hyperref[lema:Rn]{lema 3.1}, se tiene que
+          $c\in\R_{n+1}$, con lo que $b$ resulta ser una entidad estándar.
+    \item Sean $n\in\N$, $b\in\R_{n+1}$ y $a\in b$.
+          Sea $B=\set{i}{b\in\R_{n+1}}$. Por el
+          \hyperref[lema:Rn]{3.1},
+          $B=\set{i}{b\subseteq \R_0\cup\R_n}$.
+          \begin{longderivation}
+              \res{a\in b}\\
+            \To\\
+              \res{\Forall{i}[i\in B]{a(i)\in\R_0\cup\R_n}}\\
+            \equiv\\
+              \res{ \set{i}{a(i)\in\R_0\cup\R_n}\in\U }\\
+            \why{\hyperref[lema:stR]{lema 4.1}}\\
+              \res{a\in\st{R_0}\cup\st{\R_n}}\\
+            \To\\
+              \res{\Exists{n}[n\in\N]{a\in\st{\R_n}}}
+          \end{longderivation}
+  \end{enumerate}
+\end{demo}
+
+Ahora, se va a explorar el comportamiento de las proposiciones al
+tomar su incorporación `$({^*})$'.
+
+\begin{theorem}\label{theo:FT}
+  Sean $a\in\Rh$, $V(x_1,\dots,x_m)$ un predicado sobre $x_1,\dots,x_m$
+  en $\Rh$ y
+  \[A=\set{(x_1,\dots,x_m)\in a}{V(x_1,\dots,x_m)}\]
+  Entonces $A\in\Rh$ y 
+  \[\st{A}=\set{(x_1,\dots,x_m)\in\st{a}}{\st{V(x_1,\dots,x_p)}}\]
+\end{theorem}
+\begin{demo}
+  Sea $n\in\N$ y $a\in\R_{n+1}$. Como $A\subseteq a$, y por definición
+  $a\subseteq \R_0\cup\R_n$, se tiene que $A\subseteq\R_0\cup\R_n$, que
+  equivale a $A\in\R_{n+1}$. Para el segundo, por doble contenencia:
+  \begin{longderivation}
+      \res{(y_1,\dots,y_m) \in\st{A}}\\
+    \equiv\\
+      \res{
+        (y_1,\dots,y_m)\in\st{
+          \set{(x_1,\dots,x_m)\in a}{V(x_1,\dots,x_m)}
+        }
+      }\\
+    \equiv\\
+      \res{
+        \set{i}{
+          (y_1(i),\dots,y_m(i))\in a \land V(y_1(i),\dots,y_m(i))
+        }\in\U
+      }\\
+    \why[\To]{\hyperref[def:filtro]{definición de filtro (iii)}}\\
+      \res{
+        \set{i}{
+          (y_1(i),\dots,y_m(i))\in a}\in\U
+        \land
+        \set{i}{
+          V(y_1(i),\dots,y_m(i))}\in\U
+      }\\
+    \equiv\\
+      \res{
+        (y_1,\dots,y_m)\in\st{a} \land \st{V(y_1,\dots,y_m)}
+      }\\
+    \equiv\\
+      \res{(y_1,\dots,y_m)\in\set{(x_1,\dots,x_m)\in\st{a}}{\st{V(x_1,\dots,x_m)}}}
+  \end{longderivation}
+
+  Por el otro lado:
+  \begin{longderivation}
+      \res{
+        (y_1,\dots,y_m)\in\set{(x_1,\dots,x_m)\in
+        \st{a}}{\st{V(x_1,\dots,x_m)}}
+      }\\
+    \equiv\\
+      \res{
+        (y_1,\dots,y_m)\in\st{a} \land \st{V(y_1,\dots,y_m)}
+      }\\
+    \equiv\\
+    \res{
+      \set{i}{
+          (y_1(i),\dots,y_m(i))\in a}\in\U
+        \land
+        \set{i}{
+          V(y_1(i),\dots,y_m(i))}\in\U
+      }\\
+    \why[\To]{\hyperref[def:filtro]{definición de filtro (ii)}}\\
+      \res{
+        \set{i}{
+          (y_1(i),\dots,y_m(i))\in a \land V(y_1(i),\dots,y_m(i))
+        }\in\U
+      }\\
+    \equiv\\
+      \res{
+        (y_1,\dots,y_m)\in\st{
+          \set{(x_1,\dots,x_m)\in a}{V(x_1,\dots,x_m)}
+        }
+      }\\
+    \equiv\\
+      \res{
+        (y_1,\dots,y_m)\in\st{A}
+      }
+  \end{longderivation}
+\end{demo}
+
+Ya establecida la equivalencia entre predicados del lenguaje formal
+en $\Rh$ y la incorporación en $\st{(\Rh)}$, falta abordar las sentencias,
+las cuales son proposiciónes sin variables libres. En el siguiente
+teorema se establecerá la equivalencia entre sentencias de ambos
+lenguajes formales.
+
+\begin{theorem}
+  Sea $V$ una sentencia válida en $\Rh$. $V$ es verdadera en $\Rh$ si y
+  solo si, $\st{V}$ es verdadera en $\st{(\Rh)}$.
+\end{theorem}
+
+\begin{demo}
+  De igual forma que se abordó el problema de los predicados tratando
+  con conjuntos, se puede abordar este problema. Para esto, hace falta
+  entender a qué corresponde una sentencia de $\Rh$ si se piensa
+  denotar en términos de un conjunto. Antes de empezar a trabajar con
+  cuantificadores, se considerará una sentencia sin cuantificadores.
+
+  Sea $V$ es una sentencia sin cuantificadores y atómica. Sean
+  $a_1,\dots,a_m$ las constantes de $V$. Entonces $V$ es de la
+  forma $(a_1,\dots,a_{n-1})\in a_n$ o cualquier otra combinación.
+  Entonces:
+  \begin{longderivation}<.8>
+      \res{\st{(a_1,\dots,a_{n-1})}\in \st{a_n}}\\
+    \equiv\\
+      \res{\set{i}{(a_1,\dots,a_{n-1}) \in a_n}\in\U}
+  \end{longderivation}
+  Está claro que se tiene la equivalencia en este caso. Si $V$ es una
+  sentencia sin cuantificadores, pero no es atómica, es una sentencia
+  compuesta de varias sentencias atómicas unidas por conectores lógicos,
+  en este caso, el conjunto que debe pertenecer a $\U$ cuando $V$ tiene
+  conectores lógicos se puede descomponer en uniones, intersecciones o
+  complementos, con lo que, para sentencias sin cuantificadores, queda
+  demostrado.
+
+  Para una sentencia con cuantificadores. Sea $W(x_1,\dots,x_{n+1})$ un
+  predicado sin cuantificadores sobre $x_1,\dots,x_{n+1}$. Sean
+  $q_1,\dots,q_{n+1}$ cuantificadores y $V$ una sentencia de la forma
+  \[V=(q_{n+1}x_{n+1}\,|:\,(q_n x_n\,|:\,\dots(q_1x_1\,|:\,W(x_1,\dots,x_{n+1}))\dots))\]
+  Suponiendo que $q_{n+1}$ es un cuantificador existencial, $V$ se puede escribir en
+  términos de un conjunto específico. Sea $b$ el dominio de $q_{n+1}$ y defínase $A$
+  como:
+  \[A = \set{x}{x\in b \land (q_n x_n\,|:\,\dots(q_1x_1\,|:\,W(x_1,\dots,x_n,x))\dots)}\]
+  La sentencia $V$ se puede expresar en términos de $A$ de la siguiente forma:
+  \[A\not=\varnothing\]
+  Debido a que la definición de $A$ es un predicado sobre $x$, por el teorema
+  anterior se tiene que:
+  \[
+    \st{A} =
+    \set{x}{
+      x\in\st{b} \land
+      (q_n x_n\,|:\,\dots(q_1x_1\,|:\,\st{W(x_1,\dots,x_n,x)})\dots)
+    }  
+  \]
+  Debido a que $A\not=\varnothing \equiv \st{A} \not= \st{\varnothing}$ y que
+  $\varnothing=\st{\varnothing}$. Para el caso del cuantificador universal, se
+  niega la proposición, obteniendo así un cuantificador existencial. De la
+  misma forma que para sentencias atómicas, $V$ es una sentencia con conectores,
+  estos se pueden traducir en el conjunto definido a uniones, complementos o
+  intersecciones.
+\end{demo}
+
+\begin{theorem}
+  Sean $V$ un predicado con variables libre $x_1,\dots,x_m$ y
+  $a\in\st{(\Rh)}$. Entonces, el conjunto $A$ definido por
+  $A=\set{(x_1,\dots,x_n)}{(x_1,\dots,x_n)\in a \land V}$ es interno.
+\end{theorem}
+\begin{demo}
+  Sea $n\in\N$ tal que $a\in\R_{n+1}$. Se puede ver que $A$ es
+  subconjunto de $a$. Por definición $a\subseteq \R_0 \cup \R_n$,
+  lo que implica que $A\in\R_0\cup\R_n$, que a su vez implica que
+  \[\Exists{n}[n\in\N]{A\in\R_n}\]
 \end{demo}
