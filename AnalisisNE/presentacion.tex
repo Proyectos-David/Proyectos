@@ -1,0 +1,280 @@
+\documentclass{beamer}
+
+\usepackage{logicDG}
+\usepackage{calcDG}
+\usepackage{graphicx}
+\usepackage{dsfont}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{pgfplots}
+\pgfplotsset{compat = newest}
+\usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
+\usetheme{PaloAlto}
+\setbeamercovered{transparent}
+
+
+% ~~~~ Comandos aux. ~~~~ %
+\NewDocumentCommand{\F}{}{\mathcal{F}}
+\NewDocumentCommand{\U}{}{\mathscr{U}}
+\NewDocumentCommand{\N}{}{\mathbb{N}}
+\NewDocumentCommand{\J}{}{\mathds{J}}
+\NewDocumentCommand{\R}{}{\mathds{R}}
+\NewDocumentCommand{\Rh}{}{\widehat{\R}}
+\NewDocumentCommand{\e}{}{\upvarepsilon}
+\NewDocumentCommand{\B}{}{\mathcal{B}}
+\NewDocumentCommand{\equ}{}{=_\U}
+\NewDocumentCommand{\inu}{}{\in_\U}
+\NewDocumentCommand{\st}{m}{\prescript{*}{}{#1}}
+\NewDocumentCommand{\IRh}{}{\prescript{I}{}{\Rh}}
+\NewDocumentCommand{\sd}{m}{\mathrm{s\hspace{-0.25pt}t}\!\left(#1\right)}
+
+\NewDocumentCommand{\Pts}{m}{\mathscr{P}\left(#1\right)}
+\NewDocumentCommand{\dom}{}{\text{dom}\;}
+\NewDocumentCommand{\ran}{}{\text{ran}\;}
+\NewDocumentCommand{\set}{m m}{\left\{#1\,\middle|\,#2\right\}}
+
+%  -- Beamer colors --
+
+\definecolor{coso}{HTML}{0038a5}
+\setbeamercolor{logo}{bg=coso}
+\setbeamercolor{frametitle}{bg=coso} 
+\setbeamercolor{sidebar}{bg=coso} 
+
+\graphicspath{./AnalisisNE/}
+\logo{\includegraphics[width=1.5cm]{logo-eci-invert.png}}
+
+% -- Titlepage --
+
+\title{Análisis no estándar}
+
+\author[{David G.}]{{David Gómez}}
+
+\institute[ECI]{
+    Escuela Colombiana de Ingeniería\\
+    Matemáticas
+    }
+\date[18/12/2023]{18 de Diciembre del 2023}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Filtros}
+\begin{frame}{Definición}
+    Sea $I\not=\varnothing$. Un filtro $\F$ sobre $I$ es un conjunto de
+    subconjuntos de $I$ con las siguientes características:
+    \begin{enumerate}
+      \item $\varnothing\not\in \F$
+      \item $A\subseteq B \To (A\in\F \To B\in\F)$
+      \item $A,B\in\F \To A\cap B\in\F$
+    \end{enumerate}
+  \onslide<2>{
+    \begin{align*}
+      I  &= \{a,b,c\}\\
+      \F &= \{\{a,b\},\{a,b,c\}\}
+    \end{align*}
+  }
+\end{frame}
+
+\begin{frame}{Relación de orden}
+  Sea $\mathscr{F}$ el conjunto de filtros sobre $I$.
+  $\F_1$ es \emph{más fino} que $\F_2$ cuando
+  $\F_2 \subseteq \F_1$.
+  un filtro $\U$ es llamado ultrafiltro si es un elemento maximal.
+  \[\Forall{\F}[\F\in\mathscr{F}-\{\U\}]{\U \not\subset \F}\]
+  \onslide<2>{
+    \begin{align*}
+      I &= \{a,b,c\}\\
+      \F_1 &= \{\{a,b\},\{a,b,c\}\}\\
+      \F_2 &= \{\{b,c\},\{a,b,c\}\}\\
+      \U_1 &= \{\{a\},\{a,b\},\{a,c\},\{a,b,c\}\}\\
+      \U_2 &= \{\{b\},\{a,b\},\{b,c\},\{a,b,c\}\}
+    \end{align*}
+  }
+\end{frame}
+
+\begin{frame}{Caracterizaciones}
+  Un filtro $\U$ sobre $I$ es un ultrafiltro si y solo si:
+  \begin{enumerate}
+    \item $\Forall{A}[A\subseteq I]{A\in\U\not\equiv I-A\in\U}$
+    \item Si una unión finita es elemento de $\U$, entonces al menos un
+          elemento de la unión es elemento de $\U$:
+          $\ds\bigcup_{k=0}^n F_n \in \U \To F_k \in \U$ para algún $k$.
+  \end{enumerate}
+  \onslide<2>{
+    \begin{align*}
+      I &= \{a,b,c\}\\
+      \F &= \{\{a,b\},\{a,b,c\}\}\\
+      \U &= \{\{a\},\{a,b\},\{a,c\},\{a,b,c\}\}\\
+    \end{align*}
+  }
+\end{frame}
+
+\begin{frame}{Ulfrafiltros $\delta$-incompletos}
+  Sea $I$ un conjunto infinito. $\U$ es un ultrafiltro $\delta$-incompleto
+  cuando existe $\{I_n\}_{n\in\N}$, una partición contable de $I$, tal que
+  para todo $n$, $I_n \not\in\U$.
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (0,0) -- (5,0);
+      \node at (0,0) {$\Biggl($};
+      \node at (5,0) {$\Biggr)$};
+      \draw (2.5,-0.7) -- (2.5, 0.7);
+      \draw[
+        domain=0:360,
+        samples=500,
+        thick,
+        color=red!60!black
+      ] plot ({0.5*cos(\x)+2.5},{0.2*sin(\x)});
+      \draw[
+        domain=0:360,
+        samples=500,
+        thick,
+        color=red!60!black
+      ] plot ({1*cos(\x)+2.5},{0.4*sin(\x)});
+      \draw[
+        domain=0:360,
+        samples=500,
+        thick,
+        color=red!60!black
+      ] plot ({1.5*cos(\x)+2.5},{0.6*sin(\x)});
+
+      \node at (1.25,0.7) {$I_0$};
+      \node at (3.75,0.7) {$I_1$};
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\section{Superestructura}
+\begin{frame}{$n$-uplas}
+  \begin{align*}
+    (a) &= a\\
+    (a,b) &= \{\{a\}, \{a,b\}\}\\
+    (a_1,\dots,a_n,a_{n+1}) &= ((a_1,\dots,a_n),a_{n+1})
+  \end{align*}
+  \begin{align*}
+    A\times B &\subseteq \Pts{\Pts{A\cup B}}\\
+    A\times B\times C &\subseteq \Pts{\Pts{(A\times B)\cup C}}\\
+    & \subseteq \Pts{\Pts{\Pts{\Pts{A\cup B}}\cup C}}\\
+    \vdots & \qquad\vdots
+  \end{align*}
+\end{frame}
+\begin{frame}{Superestructura de $\R$}
+  \[
+    \begin{siseq}[\{,\}]
+      \R_0 &= \R\\
+      \R_{n+1} &= \Pts{\bigcup_{k=0}^n \R_k}
+    \end{siseq}
+  \]
+  \[\Rh = \bigcup_{n\geq 0} \R_n\]
+\end{frame}
+\section{Ultrapotencia}
+\begin{frame}{Construcción de la ultrapotencia}
+  Sea $I$ un conjunto infinito, $\U$ un ultrafiltro sobre $I$, y
+  $\{I_n\}_{n\in\N}$ una partición contable de $I$ la cual cumple la
+  definición de $\delta$-incompleto en $\U$.
+  \[\IRh = \set{f}{\dom f = I \land \ran f \subseteq \Rh}\]
+\end{frame}
+\begin{frame}{Extensión de la igualdad y la pertenencia}
+  Sean $a,b\in\IRh$
+  \begin{center}
+    \begin{tabular}{>{$}c<{$} | >{$}c<{$}}
+      \begin{derivation}
+          \res{a\equ b}\\
+        \equiv\\
+          \res{\set{i}{a(i) = b(i)}\in\U}
+      \end{derivation}
+      &
+      \begin{derivation}
+          \res{a\inu b}\\
+        \equiv\\
+          \res{\set{i}{a(i)\in b(i)}\in\U}
+      \end{derivation}
+    \end{tabular}
+  \end{center}
+  \only<1>{
+    \[\Forall{a,b}[a,b\in\IRh]{a\equ b \lor a \not\equ b}\]
+  }
+  \only<2>{
+    Se define, para todo $a\in\Rh$, la incorporación a $\IRh$ por la
+    función constante $\st{a}(i) = a$ para todo $i\in I$.
+  }
+\end{frame}
+\begin{frame}{Entidades internas y estándar}
+  Sea $a\in\IRh$, $a$ es llamada \emph{entidad interna} cuando existe $n\in\N$
+  tal que $a\in\st{\R_n}$. $a$ es llamada \emph{estándar}
+  cuando existe $b\in\Rh$ tal que, $a=\st{b}$.
+  El conjunto $\bigcup_{n\in\N}\st{\R_n}$, es llamado la
+  ultrapotencia de $\Rh$ con respecto a $\U$, y se denotará como
+  $\st{(\Rh)}$.
+  
+  Existen entidades internas no-estándar.
+\end{frame}
+\begin{frame}{Demostración}
+  Considerando algún $\R_n$, y una colección $\{a_n\}_{n\in\N}\in\R_n$ tal
+  que, si $m\not=n$ entonces $a_m \not= a_n$.
+  Se define entonces $a\in\IRh$ por $a(i) = a_n \quad (i\in I_n)$.
+  \begin{tabular}{>{$}c<{$} | >{$}c<{$}}
+    \begin{derivation}<1>
+        \res{a\in\st{\R_n}}\\
+      \equiv\\
+        \res{\set{i}{a(i)\in\R_n}\in\U}\\
+      \equiv\\
+        \res{I\in\U}
+    \end{derivation}
+    &
+    \begin{derivation}
+        \res{a=\st{b}}\\
+      \equiv\\
+        \res{\set{i}{a(i)=b}\in\U}\\
+      \equiv\\
+        \res{\Exists{n}[n\in\N]{I_n\in\U}}
+    \end{derivation}
+  \end{tabular}
+\end{frame}
+%TODO parte lógica
+\section{Números no estándar}
+\begin{frame}{Extensión de otras relaciones y operaciones}
+  Sean $a,b,c\in\IRh$
+  \begin{align*}
+    a + b = c &\equiv \set{i}{a(i) + b(i) = c(i)}\in\U\\
+    a \leq b &\equiv \set{i}{a(i) \leq b(i)}\in\U\\
+    ||&: \st{R} \to \st{(R^+)}
+  \end{align*}
+\end{frame}
+
+\begin{frame}{Ejemplo de un número no estádar}
+  Defínase $\omega \in \st{\N}$ por
+  \[\omega(i) = n\quad (i\in I_n)\]
+  Sea $k\in\N$
+  \begin{longderivation}
+      \res{\omega \leq k}\\
+    \equiv\\
+      \res{ \set{i}{\omega(i) \leq k}\in\U }\\
+    \equiv\\
+      \res{\bigcup_{i=0}^k I_i \in\U}
+  \end{longderivation}
+\end{frame}
+\begin{frame}{Números finitos e infinitesimales}
+    Un número $a\in\st{\R}$ es llamado \emph{finito} cuando existe
+    $r\in\R^+$ tal que $|a|<r$. un número no finito es llamado \emph{infinito}.
+    Un número $a\in\st{\R}$ es llamado \emph{infinitesimal} cuando,
+    para todo $r\in\R^+$, $|a|<r$.
+    \begin{align*}
+      M_0 &= \set{a\in\st{\R}}{a \text{ es finito}}\\
+      M_1 &= \set{a\in\st{\R}}{a \text{ es infinitesimal}}
+    \end{align*}
+\end{frame}{Isomorfismo con $\R$}
+  \begin{enumerate}
+    \item $M_0$ es un subanillo de $\st{\R}$.
+    \item $M_1$ es un subanillo de $M_0$.
+    \item $M_1$ es un ideal maximal de $M_0$.
+  \end{enumerate}
+  \begin{itemize}
+    \item Con la relación $=_1$ en $\st{R}$, definida por
+          $a=_1b \equiv a-b\in M_1$, se define el anillo cociente
+          $M_0/M_1$.
+    \item $M_0/M_1$ es isomorfo a $\R$.
+  \end{itemize}
+\end{document}

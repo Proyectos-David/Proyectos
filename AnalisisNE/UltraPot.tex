@@ -52,16 +52,15 @@ que su versión usual, esto es:
 \end{center}
 \end{demo}
 
-Antes de continuar, se presenta la siguiente convención de notación:
-\begin{definition}
-  Sean $a\in\IRh$ y $V$ un predicado en $\Rh$ con
-  $a_1,\dots,a_n$ constantes, dichas constantes denotan elementos fijos
-  de $\Rh$.
-  \begin{itemize}
-    \item $\{a\}(i) = \{a(i)\}$
-    \item $\st{V} = V$ reemplazando cada $a_i$ por $\st{a_i}$.
-  \end{itemize}
-\end{definition}
+Antes de continuar, se aclarará algo de la notación. Sean $a\in\IRh$,
+$(b_1,\dots,b_m)$ una $m$-upla de elmentos de $\IRh$ y $V$ un predicado
+en $\Rh$ con $c_1,\dots,c_n$ constantes las cuales denotan elementos
+fijos de $\Rh$.
+\begin{itemize}
+  \item $\{a\}(i) = \{a(i)\}$
+  \item $(b_1,\dots,b_m)(i) = (b_1(i),\dots,b_m(i))$
+  \item $\st{V} = V$ reemplazando cada $c_i$ por $\st{c_i}$.
+\end{itemize}
 Sean $a,b\in \IRh$, otra propiedad que se tiene, en este caso para
 la igualdad bajo $\U$ es:
 \[a \equ b \equiv \Forall{c}[c\in\IRh]{a\inu c \equiv b \inu c}\]
@@ -568,7 +567,7 @@ precisamente logran el objetivo de toda esta construcción.
           $c\in\R_{n+1}$, con lo que $b$ resulta ser una entidad estándar.
     \item Sean $n\in\N$, $b\in\R_{n+1}$ y $a\in b$.
           Sea $B=\set{i}{b\in\R_{n+1}}$. Por el
-          \hyperref[lema:Rn]{3.1},
+          \hyperref[lema:Rn]{lema 3.1},
           $B=\set{i}{b\subseteq \R_0\cup\R_n}$.
           \begin{longderivation}
               \res{a\in b}\\
@@ -738,3 +737,30 @@ lenguajes formales.
   lo que implica que $A\in\R_0\cup\R_n$, que a su vez implica que
   \[\Exists{n}[n\in\N]{A\in\R_n}\]
 \end{demo}
+
+Se presentarán dos teoremas que se cumplen en $\R$, los cuales muestran
+como ejemplo la interpretación correcta del \hyperref[theo:FT]{teorema 4.3}.
+En estos ejemplos, las sentencias tienen cuantificadores sobre
+\textbf{subconjuntos} de $\R$. Para poder aplicar el teorema de forma
+correcta, hace falta modificar la expresión para que esté escrita con
+las relaciones básicas `$\in$' o `$=$'.
+
+\begin{enumerate}
+  \item Todo subconjunto no vacío de $\N$ tiene un primer elemento:
+        La sentencia se escribe de forma equivalente como
+        ``Todo elemento de $\Pts{\N} - \varnothing$ tiene un primer
+        elemento''. Al hacer uso del teorema, lo que se obtiene es:
+
+        Todo elemento de $\st{(\Pts{\N}-\varnothing)}$ tiene un primer
+        elemento. Nótese que esto se puede transformar a la siguiente
+        sentencia:
+
+        Todo subconjunto interno no vacío de $\st{N}$ tiene un primer
+        elemento.
+  \item Todo subconjunto de $\R$ acotado superiormente tiene una mínima
+        cota superior. De igual forma, al usar el teorema, la sentencia
+        correspondiente sería:
+
+        Todo subconjunto interno de $\R$ acotado superiormente tiene
+        una mínima cota superior.
+\end{enumerate}

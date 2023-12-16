@@ -24,6 +24,11 @@
 \usepackage{pdfrender}
 \pdfrender{TextRenderingMode=2,LineWidth=.5pt}
 
+\hypersetup{
+  pdftitle={Análisis no estándar},
+  pdfauthor={David Gómez}
+}
+
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\headheight}{70.38103pt}
@@ -70,15 +75,6 @@
 {:} % puntuación después del título
 {5pt} % espacio después del título
 {}
-\newtheoremstyle{theorem*}%
-{10pt}
-{10pt}
-{\normalfont}
-{}
-{\bfseries}
-{:}
-{\newline}
-{}
 
 \newtheoremstyle{proof}%
 {5pt}
@@ -97,20 +93,17 @@
 \newtheorem{lemma}{Lema}[section]
 \newtheorem*{note}{Nota}
 
-\theoremstyle{theorem*}
-\newtheorem{lemma*}{Lema}[section]
-\newtheorem{theorem*}{Teorema}[section]
-
 \theoremstyle{proof}
 \newtheorem*{demo}{Demostración}
 
 
-% ~~~~ Nombres de conjuntos y demás ~~~~~ %
+% ~~~~ Nombres de conjuntos, funciones y demás ~~~~~ %
 \NewDocumentCommand{\F}{}{\mathcal{F}}
 \NewDocumentCommand{\U}{}{\mathscr{U}}
 \NewDocumentCommand{\N}{}{\mathbb{N}}
 \NewDocumentCommand{\J}{}{\mathds{J}}
 \NewDocumentCommand{\R}{}{\mathds{R}}
+\NewDocumentCommand{\C}{}{\mathds{C}}
 \NewDocumentCommand{\Rh}{}{\widehat{\R}}
 \NewDocumentCommand{\e}{}{\upvarepsilon}
 \NewDocumentCommand{\B}{}{\mathcal{B}}
@@ -118,11 +111,14 @@
 \NewDocumentCommand{\inu}{}{\in_\U}
 \NewDocumentCommand{\st}{m}{\prescript{*}{}{#1}}
 \NewDocumentCommand{\IRh}{}{\prescript{I}{}{\Rh}}
+\NewDocumentCommand{\sd}{m}{\mathrm{s\hspace{-0.25pt}t}\!\left(#1\right)}
 
 \NewDocumentCommand{\Pts}{m}{\mathscr{P}\left(#1\right)}
 \NewDocumentCommand{\dom}{}{\text{dom}\;}
 \NewDocumentCommand{\ran}{}{\text{ran}\;}
 \NewDocumentCommand{\set}{m m}{\left\{#1\,\middle|\,#2\right\}}
+
+\RenewDocumentCommand{\frac}{m m}{\genfrac{}{}{.865pt}{0}{#1}{#2}}
 
 \renewcommand{\labelitemi}{$\bullet$}
 
@@ -144,7 +140,7 @@
         
         \vfill
 
-        Física de Calor y Ondas
+        Matemáticas
 
         Escuela Colombiana de Ingeniería Julio Garavito
 
@@ -164,5 +160,7 @@
 \include{UltraPot}
 
 \include{NoEstReal}
+
+\include{Sucesiones}
 
 \end{document}

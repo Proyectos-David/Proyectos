@@ -1,4 +1,4 @@
-\section{El sistema no estándar \texorpdfstring{$\st{\R}$}{R}}
+\section{El sistema numérico no estándar \texorpdfstring{$\st{\R}$}{R}}
 
 Por el \hyperref[theo:FT]{teorema 4.3}, las mismas propiedades que aplican
 en $\R$, aplican en $\st{\R}$ hasta donde apliquen en ambos simultaneamente.
@@ -58,12 +58,12 @@ por el \hyperref[lema:stR]{lema 4.1}, se tiene que $S=\st{S}$ si y solo
 si $S$ es finito.
 
 Un resultado del álgebra nos dice que todo cuerpo arquimediano es
-isomorfo con un subcuerpo de $\R$. Debido a que $\R\subset\st{R}$, se
-tiene que $\st{\R}$ no es arquimediano. Sin embargo, $\st{R}$ cumple
-las mismas propiedades que $\R$, lo que parecería ser una contradicción.
-La razón de esto, es que la propiedad arquimediana es relativa a un
-conjunto, en el caso de $\R$, es con $\N$. explícitamente, la propiedad
-es la siguiente:
+isomorfo con un subcuerpo de $\R$. Debido a la existencia de los
+infinitesimales en $\st{R}$, se tiene que $\st{\R}$ no es arquimediano.
+Sin embargo, $\st{R}$ cumple las mismas propiedades que $\R$, lo que
+parecería ser una contradicción. La razón de esto, es que la propiedad
+arquimediana es relativa a un conjunto, en el caso de $\R$, es con $\N$.
+explícitamente, la propiedad es la siguiente:
 \[\Forall{x,y}[x,y\in\R\land0<x\leq y]{\Exists{n}[n\in\N]{y\leq n\,x}}\]
 Al hacer uso del \hyperref[theo:FT]{teorema 4.3}, se tiene que
 \[\Forall{x,y}[x,y\in\st{\R}\land 0<x\leq y]{\Exists{n}[n\in\st{\N}]{y\leq n\,x}}\]
@@ -156,5 +156,137 @@ un número infinitesimal distinto de $0$, es infinito.
 \end{theorem}
 
 \begin{demo}
-  Si $n$ es finito, entonces existe $r\in\R$ tal que $n< |r|$.
+  La demostración se hará por doble implicación. Por un lado, si
+  $n\in\N$, se puede considerar $n+1$. Este número cumple la definición
+  de que $n$ es finito. Por el otro lado, si $n\in\st{\N}$ es finito,
+  entonces, existe $r\in\R^+$ tal que $n<r$. En $\R$, se cumple que
+  $n<r$ es equivalente a que $n\in\set{m\in\N}{m<r}$, el cual es un
+  conjunto no vacío para todo $r>0$. Debido a esto, la propiedad
+  se cumple en $\st{\R}$ por el \hyperref[theo:FT]{teorema 4.3}.
 \end{demo}
+
+Considerando $M_0$. Este es un subanillo de $\st{R}$, en efecto, es
+cerrado bajo la suma y el producto. Asímismo, $M_1$ es un subanillo de
+$M_0$. La razón es la misma, sin embargo puede no parecer tan intuitivo.
+Considere un par de funciones de $I$ en $\st{R}$ las cuales definen un
+par de números infinitesimales, la suma y el producto de estas resulta
+en un infinitesimal, cosa que se puede corroborar fácilmente realizando
+un proceso como el que se usó para mostrar que existen los
+infinitesimales.
+
+\begin{lemma}
+  $M_1$ es un ideal maximal de $M_0$.
+\end{lemma}
+\begin{demo}
+  Lo primero es mostrar que $M_1$ es un ideal de $M_0$. En efecto, sean
+  $h\in M_1$ y $a\in M_0$. Por definición de infinitesimal:
+  \begin{longderivation}<1.1>
+      \res{\Forall{r}[r\in\R^+]{ |h|<r}}\\
+    \equiv\\
+      \res{\Forall{r}[r\in\R^+]{ |a\,h| < |a|\,r}}\\
+    \why[\To]{$|a|\,r \in \R^+$}\\
+      \res{\Forall{r'}[r'\in\R^+]{|a\,h| < r'}}\\
+    \equiv\\
+      \res{a\,h \in M_1}
+  \end{longderivation}
+  Sea $a\in M_0 - M_1$, por definición, se tiene que:
+  \begin{longderivation}<.9>
+      \res{\Exists{r_1,r_2}[r_1,r_2\in\R^+]{r_1 < |a| < r_2}}\\
+    \equiv\\
+      \res{\Exists{r_1,r_2}[r_1,r_2\in\R^+]{\frac{1}{r_1} > \frac{1}{|a|} > \frac{1}{r_2}}}\\
+    \equiv\\
+      \res{\frac{1}{a}\in M_0 - M_1}
+  \end{longderivation}
+  Sea $X$ un ideal de $M_0$ tal que $M_1\subset X$. entonces existe un
+  $b\in M_0 - M_1$ tal que $b\in X$. Sin embargo, como se mostró,
+  $\frac{1}{b}\in M_0$, con lo que, por definición de ideal,
+  $b\,\frac{1}{b}=1\in X$, lo que a su vez implica que $X=M_0$. Así,
+  queda demostrado que $M_1$ es un ideal maximal de $M_0$.
+\end{demo}
+
+Defínase la relación de equivalencia $=_1$ en $\st{\R}$ por:
+$a=_1 b \equiv a - b \in M_1$. Considere entonces el anillo cociente
+$M_0/M_1$.
+
+\begin{theorem}
+  El anillo cociente $M_0/M_1$ is isomorfo al cuerpo $\R$ de los números
+  reales estándar.
+\end{theorem}
+
+\begin{demo}
+  Por un lado, a cada real se le puede asignar una clase de
+  equivalencia. En efecto, en cada clase de equivalencia no pueden
+  haber dos números reales estándar distintos. Sean $r_1$, $r_2$ dos
+  números reales usuales en la misma clase de equivalencia.
+  \begin{longderivation}
+      \res{r_1 - r_2 \in M_1 \land |r_1 - r_2| \not= 0}\\
+    \To\\
+      \res{ |r_1 - r_2| < |r_1 - r_2| }
+  \end{longderivation}
+  Esto último es una contradicción, claramente. Por otro lado, para todo
+  $a\in M_0$, existe un único número real $r$ tal que $a-r=_1 0$. En
+  efecto, sea $a\in M_0$, defínanse $D=\set{x\in\R}{x \leq a}$ y
+  $D'=\R - D$. La pareja $(D,D')$ define una cortadura de Dedekin en $\R$.
+  Sea $r\in\R$ tal que $r$ define la misma cortadura, se puede ver que
+  esto implica que $a=_1 r$, pues de lo contrario $a$ o $r$ estaría en
+  alguno de los conjuntos que definen la cortadura. Así, $M_0/M_1$ es
+  isomorfo con $\R$.
+\end{demo}
+
+De lo descrito anteriormente, se puede entonces tratar con los
+elementos de $M_0/M_1$ como si fueran los mismos elementos de $\R$.
+
+\begin{definition}
+  El homomorfismo de $M_0$ a $\R$ con kernel $M_1$ será llamado
+  \emph{homomorfismo de parte estándar} y se denotará por $\mathrm{s\hspace{-0.25pt}t}$.
+\end{definition}
+
+A continuación se mostrarán algunas propiedades de este homomorfismo.
+
+\begin{lemma}[Propiedades] Para todo $a,b\in M_0$
+  \begin{enumerate}
+    \item $\sd{a+b} = \sd{a} + \sd{b}$
+    \item $\sd{a\,b} = \sd{a}\,\sd{b}$
+    \item $a \leq b \To \sd{a} \leq \sd{b}$
+    \item $\sd{|a|} = |\sd{a}|$
+    \item $\sd{\max\{a,b\}} = \max\{\sd{a},\sd{b}\}$
+    \item $\sd{\min\{a,b\}} = \min\{\sd{a},\sd{b}\}$
+    \item $a\in M_1 \equiv \sd{a} = 0$
+    \item $a\in\R \To \sd{a} = a$
+    \item $\sd{a} \geq 0 \To |a| =_1 \sd{a}$
+    \item $a=_1 b \equiv \sd{a} = \sd{b}$
+  \end{enumerate}
+\end{lemma}
+
+Se puede ver esto debido a cómo se definió el homomorfismo, y el hecho
+de que en cada clase de equivalencia de $M_0/M_1$, hay exáctamente un
+número real estándar.
+\begin{definition}
+  Las clases de equivalencia de $M_0$ respecto a $M_1$ serán llamadas
+  \emph{mónadas} de los números estándar que las determinan, y serán
+  denotadas, para un $r\in\R$, como $\mu(r)$. Por ejemplo,
+  $\mu(0) = M_1$.
+\end{definition}
+
+Una breve introducción al sistema numérico no estándar:
+
+Siguiendo el hecho de que los números complejos son construidos usando
+parejas ordenadas, partiendo de la misma idea, se construye la
+superestructura $\widehat{\R\times\R}$ definida por $\R\times\R$. De la
+misma forma se llega al conjunto $\st{\left(\widehat{\R\times\R}\right)}$.
+La diferencia en este caso, es la estructura algebráica a considerar.
+
+Se toma entonces $\st{\C} = \st{\R}\times\st{\R}$, el cual hereda las
+propiedades de $\C$. En $\st{\C}$, se puede definir el concepto de
+\emph{finito} e \emph{infinitesimal} de la siguiente manera:
+\begin{definition}
+  Un número $z\in\st{\C}$ es llamado \emph{finito} cuado existe
+  $r\in\R^+$ tal que $\|z\| < r$. Un número no finito es llamado
+  \emph{infinito}.
+
+  Un número $z\in\st{\C}$ es llamado \emph{infinitesimal} cuando, para
+  todo $r\in\R^+$, $\|z\| < r$.
+\end{definition}
+
+Nótese que, bajo estas definiciones, es fácil ver que un número complejo
+$z = a + b\,i$ es infinitesimal si y solo si $a,b$ son infinitesimales.
