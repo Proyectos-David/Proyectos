@@ -2,6 +2,122 @@
 
 Una sucesión en $\R$ es una función de $\N$ en $\R$. Debido a esto, es
 un subconjunto de $\N\times\R$, con lo que es una entidad de $\Rh$.
-Una sucesión $s$ en $\R$ se extiende a $\st{s}$ como una función de 
+Una sucesión $\{s_n\}$ en $\R$ se extiende a $\{\st{s_n}\}$ como una función de 
 $\st{\N}$ en $\st{\R}$. Esto último se debe al teorema \ref{theo:FT} y
-al lema \ref{lema:stR}.
+al lema \ref{lema:stR}. Nótese que, para todo $n\in\N$, $\st{s_n} = s_n$,
+nuevamente por el lema \ref{lema:stR}, ya que $\st{(\ran s_n)} = \ran \st{s_n}$.
+Debido a esto, se dejará la notación $(\st{})$ para hacer referencia a
+individuos.
+
+\begin{theorem}
+  Sea $\{s_n\}$ una sucesión en $\R$. $\{s_n\}$ ese acotada si y solo si, para todo
+  número natural infinito $\omega\in\st{\N}-\N$, $\st{s_\omega}$ es
+  finito.
+\end{theorem}
+
+\begin{demo}
+  Por un lado
+  \begin{longderivation}<.9>
+      \res{\Forall{n}[n\in\st{\N}]{\Exists{a}[a\in M_0]{|\st{s_n}| \leq a}}}\\
+    \why[\To]{Aplicando $\sd{}$}\\
+      \res{\Forall{n}[n\in\N]{\Exists{a}[a\in M_0]{|s_n| \leq \sd{a}}}}\\
+    \equiv\\
+      \res{\{s\} \text{ es acotada en } \R}
+  \end{longderivation}
+  Por el otro, si $\{s_n\}$ es acotada en $\R$, el rango de $s$ tiene una
+  mínima cota superior y una máxima cota inferior. Por el teorema
+  \ref{theo:FT}, esto se traduce a que el rango de $\{\st{s_n}\}$ sea acotado
+  en $\st{\R}$, con lo que, para todo $n\in\st{\N}$, $\st{s_n}$ es finito.
+\end{demo}
+
+Recordando la definición usual para decir que una sucesión $\{s_n\}$
+converge a $s$ en $\R$:
+\[\Forall{\e}[\e>0]{\Exists{N}[N\in\N]{\Forall{n}[n\in\N \land n\geq N]{|s_n - s| < \e}}}\]
+Su análogo en el análisis no estándar es:
+\begin{theorem}
+  Sean $\{s_n\}$ una sucesión en $\R$ y $s\in\R$. entonces 
+  $\Lim{n}{\infty} s_n = s$ si y solo si, para todo $\omega\in\st{\N} - \N$,
+  $s_\omega =_1 s$.
+\end{theorem}
+
+\begin{demo}
+  Por un lado, sea $\e>0$
+  \begin{longderivation}<1>
+      \res{\Exists{N}[N\in\N]{\Forall{n}[n\in\N \land n\geq N]{|s_n - s| < \e}}}\\
+    \equiv\\
+      \res{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n\geq N]{|\st{s_n} - s| < \e}}}\\
+    \why{Definición de infinitesimal}\\
+      \res{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n\geq N]{\st{s_n} =_1 s}}}\\
+    \To\\
+      \res{\Forall{\omega}[\omega\in\st{\N} - \N]{\st{s_\omega} =_1 s}}
+  \end{longderivation}
+  Por el otro lado:
+  \begin{longderivation}<1>
+      \res{\Forall{n}[n\in\st{\N} - \N]{\st{s_n} =_1 s}}\\
+    \To\\
+      \res{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n \geq N]{\st{s_n} =_1 s}}}\\
+    \equiv\\
+      \res{
+        \Forall{\e}[\e>0]{
+          \Exists{N}[N\in\st{N}]{
+            \Forall{n}[n\in\st{\N} \land n \geq N]{|\st{s_n} - s| < \e}
+          }
+        }
+      }\\
+    \equiv\\
+      \res{
+        \Forall{\e}[\e>0]{
+          \Exists{N}[N\in\N]{
+            \Forall{n}[n\in\N \land n\leq N]{
+              |s_n - s| < \e
+            }
+          }
+        }
+      }
+  \end{longderivation}
+\end{demo}
+
+El teorema se puede reescribir de forma equivalente, usando el
+homomorfismo de parte estándar:
+\begin{longderivation}<.8>
+    \res{\Forall{\omega}[\omega\in\st{\N}-\N]{\st{s_\omega}=_1 s}}\\
+  \equiv\\
+    \res{\Forall{\omega}[\omega\in\st{\N}-\N]{\sd{\st{s_\omega}}= s}}\\
+\end{longderivation}
+
+Por ejemplo, la sucesión $\{\sqrt[n]{n}\}_{n\in\J}$. Para ver que esta sucesión
+converge a $1$, se considera $s_n = \sqrt[n]{n} - 1$.
+\begin{longderivation}<.8>
+    \res{s_n = \sqrt[n]{n} - 1}\\
+  \equiv\\
+    \res{n = \left(s_n + 1\right)^n}\\
+  \equiv\\
+    \res{n = \sum_{k=0}^n \binom{n}{k} s_n^k}\\
+  \To\\
+    \res{n \geq \binom{n}{2}s_n^2}\\
+  \equiv\\
+    \res{n \geq \frac{n!}{(n-2)!\,2!}s_n^2}\\
+  \equiv\\
+    \res{1 \geq \frac{n-1}{2}s_n^2}\\
+  \equiv\\
+    \res{\sqrt{\frac{2}{n-1}} \geq s_n}
+\end{longderivation}
+
+Se tiene entonces, que para todo $n\in\N$, $0\leq s_n \leq \sqrt{\frac{2}{n-1}}$.
+De igual forma, para todo $n\in\st{\N}$, $0\leq \st{s_n} \leq \sqrt{\frac{2}{n-1}}$.
+Lo que implica, que para todo $\omega\in\st{\N}-\N$
+\begin{longderivation}
+    \res{0\leq\st{s_\omega}\leq\sqrt{\frac{2}{n-1}}}\\
+  \why[\To]{Los recíprocos de infinitos son infinitesimales, aplicando $\sd{}$}\\
+    \res{0\leq\sd{\st{s_\omega}}\leq 0}\\
+  \equiv\\
+    \res{\sd{\st{s_\omega}} = 0}
+\end{longderivation}
+
+\begin{theorem}[Sucesiones de Cauchy]
+  Sea $\{s_n\}$ una sucesión. $\{s_n\}$ es una sucesión de Cauchy, si y
+  solo si, para todo $\omega,\gamma\in\st{\N}-\N$, $\st{s_\omega =_1 \st{s_\gamma}}$
+\end{theorem}
+
+La demostración de este teorema es exáctamente igual que el teorema
+anterior.
