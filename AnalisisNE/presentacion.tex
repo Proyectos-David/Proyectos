@@ -15,6 +15,7 @@
 
 % ~~~~ Comandos aux. ~~~~ %
 \NewDocumentCommand{\F}{}{\mathcal{F}}
+\NewDocumentCommand{\C}{}{\mathds{C}}
 \NewDocumentCommand{\U}{}{\mathscr{U}}
 \NewDocumentCommand{\N}{}{\mathbb{N}}
 \NewDocumentCommand{\J}{}{\mathds{J}}
@@ -265,16 +266,48 @@
       M_0 &= \set{a\in\st{\R}}{a \text{ es finito}}\\
       M_1 &= \set{a\in\st{\R}}{a \text{ es infinitesimal}}
     \end{align*}
-\end{frame}{Isomorfismo con $\R$}
+\end{frame}
+\begin{frame}{Isomorfismo con $\R$}
   \begin{enumerate}
     \item $M_0$ es un subanillo de $\st{\R}$.
     \item $M_1$ es un subanillo de $M_0$.
     \item $M_1$ es un ideal maximal de $M_0$.
   \end{enumerate}
   \begin{itemize}
-    \item Con la relación $=_1$ en $\st{R}$, definida por
-          $a=_1b \equiv a-b\in M_1$, se define el anillo cociente
-          $M_0/M_1$.
-    \item $M_0/M_1$ es isomorfo a $\R$.
+    \only<1>{
+      \item Con la relación $=_1$ en $\st{R}$, definida por
+            $a=_1b \equiv a-b\in M_1$, se define el anillo cociente
+            $M_0/M_1$.
+      \item $M_0/M_1$ es isomorfo a $\R$.
+    }
+    \onslide<2>{
+      \item El homomorfismo de $M_0$ a $\R$ con kernel $M_1$ se denotará
+            como $\sd{}$
+      \item Las clases de equivalencia de $M_0$ con respecto a $M_1$ se
+            denotarán como $\mu()$. Por ejemplo $\mu(0) = M_1$.
+    }
   \end{itemize}
+\end{frame}
+\begin{frame}{Sistema numérico no estándar $\st{\C}$}
+  \only<1>{
+    \begin{itemize}
+      \item Superestructura $\widehat{\R\times\R}$.
+      \item Ultrapotencia $\st{\left(\widehat{\R\times\R}\right)}$.
+      \item $\st{\C} = \st{\R}\times\st{\R}$.
+    \end{itemize}
+  }
+  \only<2>{
+    Un número $z\in\st{\C}$ es llamado \emph{finito} cuado existe
+  $r\in\R^+$ tal que $\|z\| < r$. Un número no finito es llamado
+  \emph{infinito}.
+
+  Un número $z\in\st{\C}$ es llamado \emph{infinitesimal} cuando, para
+  todo $r\in\R^+$, $\|z\| < r$.
+
+  $z = a + b\,i$ es infinitesimal si y solo si $a,b$ son infinitesimales.
+  }
+\end{frame}
+
+\section{Sucesiones en \texorpdfstring{$\R$}{R}}
+
 \end{document}
