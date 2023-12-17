@@ -1,4 +1,4 @@
-\section{Sucesiones en \texorpdfstring{$\R$}{R}}
+\section{Sucesiones}
 
 Una sucesión en $\R$ es una función de $\N$ en $\R$. Debido a esto, es
 un subconjunto de $\N\times\R$, con lo que es una entidad de $\Rh$.
@@ -121,3 +121,36 @@ Lo que implica, que para todo $\omega\in\st{\N}-\N$
 
 La demostración de este teorema es exáctamente igual que el teorema
 anterior.
+
+Por lo mencionado al principio de esta sección, pareciera que el uso de
+esta teoría para sucesiones en espacios métricos arbitrarios no tendría
+sentido, pues la sucesión podría no hacer parte de $\Rh$. Sin embargo,
+solo hace falta ver que todas las definiciones y teoremas que estudian
+el comportamiento de las sucesiones en otros espacios métricos, reducen
+el problema a nuevas sucesiones las cuales efectivamente, son sucesiones
+reales. Por ejemplo, sea $\{p_n\}$ una sucesión en un espacio métrico $X$
+el cual tiene como distancia la función $d_X: (X\times X) \to \R^{\geq 0}$.
+Se dice que $\{p_n\}$ converge a $p\in X$ cuando
+\[\Forall{\e}[\e>0]{\Exists{N}[N\in\N]{\Forall{n}[n\geq N]{d_X(p_n, p)<\e}}}\]
+Defínase la sucesión $\{q_n\}$ de $\N$ a $\R$ por:
+\[q_n = d_X(p_n,p)\]
+La convergencia de $\{p_n\}$ se puede escribir en términos de la
+convergencia de $\{q_n\}$ a $0$ de la siguiente manera:
+\[\Forall{\e}[\e>0]{\Exists{N}[N\in\N]{\Forall{n}[n\geq N]{|q_n - 0| <\e}}}\]
+Como la sucesión $\{q_n\}$ es real, aplican los teoremas anteriores,
+con lo que, la convergencia de $\{p_n\}$ se puede expresar en el análisis
+no estándar como:
+\[\Forall{\omega}[\omega\in\st{\N}-\N]{d_X(p_\omega,p)=_1 0}\]
+
+De la misma forma, la sucesión $\{p_n\}$, es de Cauchy cuando
+\[\Forall{\e}[\e>0]{\Exists{N}[N\in\N]{\Forall{n,m}[n,m\geq N]{d_X(p_n,p_m)<\e}}}\]
+En este caso, para pasar a una sucesión real, no se tiene como tal una
+sucesión, pues su dominio no sería $\N$, sino $\N\times\N$. Esto, sin
+embargo, no complica el problema. Defínase $\{s_{n,m}\}$ por
+\[s_{n,m} = d_X(p_n,p_m)\]
+La proposición se puede reescribir como
+\[\Forall{\e}[\e>0]{\Exists{N}[N\in\N]{\Forall{n,m}[n,m\geq N]{s_{n,m}<\e}}}\]
+De la misma forma que se realizó en la demostración de los teoremas
+para sucesiones reales, se puede obtener un equivalente en el
+análisis no estándar:
+\[\Forall{\omega,\gamma}[\omega,\gamma\in\st{\N}-\N]{d_X(p_\omega,p_\gamma)=_1 0}\]

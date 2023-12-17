@@ -739,11 +739,18 @@ lenguajes formales.
 \end{demo}
 
 Se presentarán dos teoremas que se cumplen en $\R$, los cuales muestran
-como ejemplo la interpretación correcta del \hyperref[theo:FT]{teorema 4.3}.
+como ejemplo la interpretación correcta del teorema \ref{theo:FT}.
 En estos ejemplos, las sentencias tienen cuantificadores sobre
 \textbf{subconjuntos} de $\R$. Para poder aplicar el teorema de forma
 correcta, hace falta modificar la expresión para que esté escrita con
-las relaciones básicas `$\in$' o `$=$'.
+las relaciones básicas `$\in$' o `$=$'. La razón de esto, es que cualquier
+predicado o sentencia cuantificada sobre subconjuntos de $\R$, no tiene
+sentido realmente al considerar el teorema \ref{theo:FT}, pues este hace
+referencia a las relaciones básicas. En el caso de los subconjuntos,
+la forma de interpretarlo es que se toman subconjuntos $S$ de $\R$, por
+lo que la versión estrella tomará subconjuntos $\st{S}$ de $\st{\R}$. Más
+adelante se presentarán ejemplos los cuales no pueden aplicarse en
+estas sentencias.
 
 \begin{enumerate}
   \item Todo subconjunto no vacío de $\N$ tiene un primer elemento:

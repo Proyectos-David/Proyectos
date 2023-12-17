@@ -6,6 +6,7 @@
 \usepackage{dsfont}
 \usepackage{amssymb}
 \usepackage{mathrsfs}
+\usepackage{upgreek}
 \usepackage{pgfplots}
 \pgfplotsset{compat = newest}
 \usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
@@ -283,8 +284,6 @@
     \onslide<2>{
       \item El homomorfismo de $M_0$ a $\R$ con kernel $M_1$ se denotará
             como $\sd{}$
-      \item Las clases de equivalencia de $M_0$ con respecto a $M_1$ se
-            denotarán como $\mu()$. Por ejemplo $\mu(0) = M_1$.
     }
   \end{itemize}
 \end{frame}
@@ -308,6 +307,58 @@
   }
 \end{frame}
 
-\section{Sucesiones en \texorpdfstring{$\R$}{R}}
+\section{Sucesiones}
+\begin{frame}{Sucesiones Reales}
+  Al ser funciones de $\N$ en $\R$ son subconjuntos de $\N\times\R$, por
+  lo que son entidades de $\Rh$. La extensión de una sucesión $\{s_n\}$
+  es $\{\st{s_n}\}$ la cual es una función de $\st{\N}$ a $\st{\R}$.
 
+  \[\st{(\dom \{s_n\})} = \dom \st{\{s_n\}}\]
+\end{frame}
+\begin{frame}{Convergencia y Sucesiones de Cauchy}
+  \[\{s_n\} \to s\]
+  \only<1>{
+      \begin{enumerate}
+      \item Convergencia:
+      \begin{itemize}
+        \item Dado $\e>0$, existe $N\in\N$ tal que:
+        \[\Forall{n}[n\in\N \land n\geq N]{|s_n - s| < \e}\]
+        \item De forma análoga:
+        \[\Forall{n}[n\in\st{\N} - \N]{\st{s_n} =_1 s}\]
+      \end{itemize}
+      \end{enumerate}
+    }
+    \only<2>{
+      \begin{enumerate}
+      \setcounter{enumi}{1}
+      \item Sucesión de Cauchy
+      \begin{itemize}
+        \item Dado $\e>0$, existe $N\in\N$ tal que:
+        \[\Forall{n,m}[n,m\in\N \land n,m \geq N]{|s_n - s_m| < \e}\]
+        \item De form análoga:
+        \[\Forall{n,m}[n,m\in\st{\N}-\N]{s_n =_1 s_m}\]
+      \end{itemize}
+      \end{enumerate}
+    }
+\end{frame}
+\begin{frame}{Sucesiones en otros espacios métricos}
+  Sea $\{s_n\}$ una sucesión en un espacio métrico $X$ con función
+  distancia $d_X$.
+  Sea $\e>0$, existe $N\in\N$ tal que:
+  \begin{itemize}
+    \item $\{s_n\} \to s$:
+    \only<1-2>{\[\Forall{n}[n\geq N]{d_X(s_n, s)<\e}\]}
+    \only<3>{\[\Forall{n}[n\geq N]{|q_n - 0|<\e}\]}
+    \only<4>{\[\Forall{n}[n\in\st{\N}-\N]{d_X(s_n,s)=_1 0}\]}
+    \item $\{s_n\}$ es una sucesción de Cauchy:
+    \only<1-2>{\[\Forall{n,m}[n,m\geq N]{d_X(s_n,s_m)<\e}\]}
+    \only<3>{\[\Forall{n,m}[n,m\geq N]{|p_{n,m} - 0|<\e}\]}
+    \only<4>{\[\Forall{n,m}[n,m\in\st{\N}-\N]{d_X(s_n,s_m)=_1 0}\]}
+  \end{itemize}
+  \pause
+  \begin{align*}
+    q_n &= d_X(s_n,s)\\
+    p_{n,m} &= d_X(s_n,s_m)
+  \end{align*}
+\end{frame}
 \end{document}

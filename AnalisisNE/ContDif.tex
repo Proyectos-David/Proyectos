@@ -1,0 +1,67 @@
+\section{Continuidad y Diferenciabilidad}
+
+Una función de variable real y valor real, es un subconjunto de
+$\R\times\R$, por lo que, es una entidad de $\Rh$. De igual forma, una
+función $f$ se extiende a $\st{f}$ la cual, por el teorema \ref{theo:FT}
+y el lema \ref{lema:stR} es un subconjunto de $\st{\R}\times\st{\R}$.
+De la misma forma, si $A=\dom f$, para todo $x\in A$, $f(a) = \st{f(a)}$.
+Cabe resaltar, que las propiedades de $f$ se mantienen en $\st{\R}$
+mientras estas se puedan expresar en ambos lenguajes.
+
+La definición de $\Lim{x}{c} f(x) = a$ en el análisis estándar es
+\[
+  \Forall{\e}[\e>0]{
+    \Exists{\delta}[\delta>0]{
+      \Forall{x}[x\in\R\land 0< |x-c|<\delta]{|f(x)-a|<\e}
+    }
+  }  
+\]
+
+De la misma forma que se hizo con las sucesiones, se obtiene una
+definición análoga para el análisis no estándar:
+\[\Forall{x}[x\in\mu(c)-\{c\}]{\st{f(x)} =_1 a}\]
+Definiendo la suma de conjuntos como:
+$A+B = \set{a+b}{a\in A \land b\in B}$, se tiene que, para todo
+$r\in\R$, $\mu(r) = M_1 + \{r\}$. Usando esto, se puede
+reescribir la definición de límite de la siguiente forma
+\[\Forall{x}[x\in M_1-\{0\}]{\st{f(c+x)}=_1 a}\]
+
+Nótese que para la continuidad de $f$ en $c$, se tiene respectivamente
+la siguiente definición:
+\[\Forall{x}[x\in M_1]{\st{f(c+x)}=_1 f(c)}\]
+
+La derivada, en su definición, tiene dos ``versiones'', las cuales son
+completamente equivalentes. La derivada de $f$ en $x$ existe si y solo
+si los siguientes límites existen (basta con uno, pues son el mismo límite):
+
+\begin{enumerate}
+  \item $\ds\Lim{h}{0}\frac{f(x + h) - f(x)}{h}$
+  \item $\ds\Lim{t}{x}\frac{f(t) - f(x)}{t - x}$
+\end{enumerate}
+
+Por simplicidad se considerará el resultado de estos límites como $L$.
+En el análisis no estándar, análogamente, la derivada de $f$ en $x$
+existe si y solo si, para todo $h\in M_1-\{0\}$:
+\[\frac{\st{f(x + h)} - f(x)}{h} =_1 L\]
+
+De igual forma, se puede definir $f'(x)$ como la parte estándar del
+cociente que define el límite:
+\[f'(x) = \sd{\frac{\st{f(x + h)} - f(x)}{h}}\]
+
+Como ejemplo, se motrará el uso de estas definiciones para demostrar que
+la diferenciabilidad en un punto implica continuidad en ese punto.
+Sean $x\in\R$, $f$ una función derivable en $x$ y $h\in M_1-\{0\}$.
+\begin{longderivation}<.8>
+    \res{\st{f(x+h)} - f(x)}\\
+  =_1\\
+    \res{\frac{\st{f(x + h)} - f(x)}{h}\,h}\\
+  =_1\\
+    \res{f'(x)\,h}\\
+  =_1\\
+    \res{0}
+\end{longderivation}
+
+Nótese que la demostración se puede replicar en el análisis estándar,
+ya que la relación `$=_1$' es análoga a decir que algo tiende a un
+resultado bajo cierta condición, esta condición vienen a ser los
+hiperreales que están operando.
