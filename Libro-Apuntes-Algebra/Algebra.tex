@@ -1,0 +1,63 @@
+\documentclass[leqno, 12pt]{article}
+
+\usepackage{logicDG}
+\usepackage{Analysis}
+\usepackage{TPRO}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\hypersetup{
+  pdfauthor={David Gomez}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{16pt}
+
+\rhead{David G.}
+\lhead{Álgebra}
+
+\cfoot{\thepage}
+
+\hyphenpenalty=10000
+
+\newcommand*{\titleTMB}{\begingroup
+\def\drop{0.1\textheight}
+\centering
+\vspace*{\baselineskip}
+{\large\scshape David Gómez}\\[\baselineskip]
+\rule{\textwidth}{1.6pt}\\[0pt]
+\vspace*{-\baselineskip}
+\vspace*{2pt}
+\rule{\textwidth}{0.4pt}\\[\baselineskip]
+{\LARGE ÁLGEBRA LINEAL}\\[\baselineskip]
+\rule{\textwidth}{0.4pt}\\[0pt]
+\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule{\textwidth}{1.6pt}\\[\baselineskip]
+\vfill
+{\large\scshape Matemáticas}\\[\baselineskip]
+{\small\scshape 2024}\par
+\vspace*{\drop}
+\endgroup}
+
+\doublespacing
+
+\renewcommand{\labelitemi}{$\bullet$}
+
+\begin{document}
+\begin{titlepage}
+\titleTMB
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\include{EspaciosVect}
+\end{document}

@@ -34,19 +34,19 @@ que su versión usual, esto es:
   \setlength{\tabcolsep}{20pt}
   \begin{tabular}{>{$}c<{$}| >{$}c<{$}}
     \begin{derivation}
-        \res{ a \equ b }\\
+        \wff{ a \equ b }\\
       \equiv\\
-        \res{ \{i\,|\,a(i) = b(i)\} \in \U }\\
+        \wff{ \{i\,|\,a(i) = b(i)\} \in \U }\\
       \why[\not\equiv]{$\U$ es un ultrafiltro}\\
-        \res{ \{i\,|\,a(i) \not= b(i)\} \not\in \U }
+        \wff{ \{i\,|\,a(i) \not= b(i)\} \not\in \U }
     \end{derivation}
     &
     \begin{derivation}
-        \res{ a \inu b }\\
+        \wff{ a \inu b }\\
       \equiv\\
-        \res{ \{i\,|\,a(i) \in b(i)\} \in \U }\\
+        \wff{ \{i\,|\,a(i) \in b(i)\} \in \U }\\
       \why[\not\equiv]{$\U$ es un ultrafiltro}\\
-        \res{ \{i\,|\,a(i) \not\in b(i)\} \not\in \U }
+        \wff{ \{i\,|\,a(i) \not\in b(i)\} \not\in \U }
     \end{derivation}
   \end{tabular}
 \end{center}
@@ -70,58 +70,58 @@ la igualdad bajo $\U$ es:
   \begin{center}
     \begin{tabular}{>{$}c<{$}| >{$}c<{$}}
       \begin{derivation}
-          \res{ a \inu c \land a\equ b}\\
+          \wff{ a \inu c \land a\equ b}\\
         \equiv\\
-          \res{ \{i\,|\,a(i) \in c(i)\}\in\U \\
+          \wff{ \{i\,|\,a(i) \in c(i)\}\in\U \\
             & \land\\
             &\{i\,|\,a(i) = b(i)\}\in\U
           }\\
         \why[\To]{Definición de filtro}\\
-          \res{ \{i\,|\,a(i) \in c(i) \land a(i) = b(i)\}\in\U }\\
+          \wff{ \{i\,|\,a(i) \in c(i) \land a(i) = b(i)\}\in\U }\\
         \why[\To]{Definición de filtro}\\
-          \res{ \{i\,|\,b(i) \in c(i)\}\in\U }\\
+          \wff{ \{i\,|\,b(i) \in c(i)\}\in\U }\\
         \equiv\\
-          \res{ b \inu c }
+          \wff{ b \inu c }
       \end{derivation}
       &
       \begin{derivation}
-        \res{ b \inu c \land a\equ b}\\
+        \wff{ b \inu c \land a\equ b}\\
       \equiv\\
-        \res{ \{i\,|\,b(i) \in c(i)\}\in\U\\
+        \wff{ \{i\,|\,b(i) \in c(i)\}\in\U\\
           & \land\\
           & \{i\,|\,a(i) = b(i)\}\in\U
         }\\
       \why[\To]{Definición de filtro}\\
-        \res{ \{i\,|\,b(i) \in c(i) \land a(i) = b(i)\}\in\U }\\
+        \wff{ \{i\,|\,b(i) \in c(i) \land a(i) = b(i)\}\in\U }\\
       \why[\To]{Definición de filtro}\\
-        \res{ \{i\,|\,a(i) \in c(i)\}\in\U }\\
+        \wff{ \{i\,|\,a(i) \in c(i)\}\in\U }\\
       \equiv\\
-        \res{ a \inu c }
+        \wff{ a \inu c }
       \end{derivation}
     \end{tabular}
   \end{center}
 
   Por el otro lado:
   \begin{longderivation}<.9>
-      \res{ \Forall{c}[c\in\IRh]{a\inu c \equiv b \inu c} }\\
+      \wff{ \Forall{c}[c\in\IRh]{a\inu c \equiv b \inu c} }\\
     \To\\
-      \res{ a\inu \{a\} \equiv b \inu \{a\} }\\
+      \wff{ a\inu \{a\} \equiv b \inu \{a\} }\\
     \equiv\\
-      \res{
+      \wff{
         \{i\,|\,a(i) \in \{a\}(i)\} \in\U
         \equiv
         \{i\,|\,b(i) \in \{a\}(i)\} \in\U
       }\\
     \equiv\\
-      \res{
+      \wff{
         \{i\,|\,a(i) = a(i)\} \in\U
         \equiv
         \{i\,|\,b(i) = a(i)\} \in\U
       }\\
     \equiv\\
-      \res{ I\in\U \equiv b \equ a }\\
+      \wff{ I\in\U \equiv b \equ a }\\
     \equiv\\
-      \res{ b \equ a }
+      \wff{ b \equ a }
   \end{longderivation}
 \end{demo}
 
@@ -158,8 +158,8 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
     \item Sean $n\in\J$ y $\{a_k\}$ una colección de $n$ elementos de
           $\Rh$. Entonces:
           \begin{itemize}
-            \item $\ds\st{\left(\,\bigcup_{i=1}^n a_i\right)}=\bigcup_{i=1}^n \st{a_i}$
-            \item $\ds\st{\left(\,\bigcap_{i=1}^n a_i\right)}=\bigcap_{i=1}^n \st{a_i}$
+            \item $\st{\left(\,\bigcup_{i=1}^n a_i\right)}=\bigcup_{i=1}^n \st{a_i}$
+            \item $\st{\left(\,\bigcap_{i=1}^n a_i\right)}=\bigcap_{i=1}^n \st{a_i}$
             \item $\st{\{a_1,\dots,a_n\}} = \{\st{a_1},\dots,\st{a_n}\}$
             \item $\st{(a_1,\dots,a_n)} = (\st{a_1},\dots,\st{a_n})$
             \item $\st{(a_1 \times \dots \times a_n)} = 
@@ -178,29 +178,29 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
   \begin{enumerate}
     \item~
           \begin{longderivation}<.9>
-              \res{ x\in\st{\varnothing} }\\
+              \wff{ x\in\st{\varnothing} }\\
             \equiv\\
-              \res{ \{i\,|\,x(i) \in \varnothing\} \in\U }\\
+              \wff{ \{i\,|\,x(i) \in \varnothing\} \in\U }\\
             \equiv\\
-              \res{ \varnothing \in \U }\\
+              \wff{ \varnothing \in \U }\\
             \equiv\\
-              \res{ x\in\varnothing }
+              \wff{ x\in\varnothing }
           \end{longderivation}
     \item Sean $a,b\in\Rh$ tales que $a\subseteq b$. Sea $x\in\IRh$
           \begin{longderivation}<.9>
-              \res{ x\in\st{a} }\\
+              \wff{ x\in\st{a} }\\
             \equiv\\
-              \res{ \{i\,|\,x(i) \in a\} \in\U}\\
+              \wff{ \{i\,|\,x(i) \in a\} \in\U}\\
             \why[\To]{Definiciónd de filtro, $a\subseteq b$}\\
-              \res{ \{i\,|\,x(i) \in b\}\in\U }\\
+              \wff{ \{i\,|\,x(i) \in b\}\in\U }\\
             \equiv\\
-              \res{ x \in \st{b} }
+              \wff{ x \in \st{b} }
           \end{longderivation}
     \item Sean $a,b\in\Rh$
           \begin{longderivation}<.9>
-              \res{ \st{a} \in \st{b} }\\
+              \wff{ \st{a} \in \st{b} }\\
             \equiv\\
-              \res{ \{i\,|\,a \in b\} \in \U }
+              \wff{ \{i\,|\,a \in b\} \in \U }
           \end{longderivation}
           Por un lado, suponiendo que $a\in b$, se tendría que $I\in\U$,
           cosa que es verdadera. Por otro lado, suponiendo que $\st{a} \in \st{b}$,
@@ -215,35 +215,35 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
             \noindent\makebox[14.5cm]{
                   \begin{tabular}{>{$}c<{$} | >{$}c<{$}}
                     \begin{derivation}
-                        \res{ x \in \bigcap_{k=1}^n \st{a_k} }\\
+                        \wff{ x \in \bigcap_{k=1}^n \st{a_k} }\\
                       \equiv\\
-                        \res{ \Forall{k}[1\leq k\leq n]{x \in \st{a_k}} }\\
+                        \wff{ \Forall{k}[1\leq k\leq n]{x \in \st{a_k}} }\\
                       \equiv\\
-                        \res{
+                        \wff{
                           \Forall{k}[1\leq k\leq n]{
                             \set{i}{x(i) \in a_k}\in\U
                           }
                         }\\
                       \why[\To]{Definción de filtro (ii)}\\
-                        \res{
+                        \wff{
                           \set{i}{\Forall{k}[1\leq k\leq n]{x(i)\in a_k}}
                         }
                     \end{derivation}
                     &
                     \begin{derivation}
-                        \res{ x \in\st{\left(\,\bigcap_{k=1}^n a_k\right)} }\\
+                        \wff{ x \in\st{\left(\,\bigcap_{k=1}^n a_k\right)} }\\
                       \equiv\\
-                        \res{
+                        \wff{
                           \set{i}{x(i) \in \bigcap_{k=1}^n a_k} \in \U
                         }\\
                       \equiv\\
-                        \res{
+                        \wff{
                           \set{i}{
                             \Forall{k}[1\leq k\leq n]{x(i)\in a_k}
                           }\in\U
                         }\\
                       \why[\To]{Definición de filtro (iii)}\\
-                        \res{
+                        \wff{
                           \Forall{k}[1\leq k\leq n]{
                             \set{i}{x(i) \in a_k}\in\U
                           }
@@ -255,59 +255,59 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
             \item Para la unión.
 
                   Primero se mostrará que
-                  $\ds\bigcup_{k=1}^n\st{a_k}\subseteq
+                  $\bigcup_{k=1}^n\st{a_k}\subseteq
                   \st{\left(\bigcup_{k=1}^n a_k\right)}$
 
                   \begin{longderivation}
-                      \res{ x\in\bigcup_{k=1}^n\st{a_k} }\\
+                      \wff{ x\in\bigcup_{k=1}^n\st{a_k} }\\
                     \equiv\\
-                      \res{ \Exists{k}[1\leq k\leq 1]{x\in\st{a_k}} }\\
+                      \wff{ \Exists{k}[1\leq k\leq 1]{x\in\st{a_k}} }\\
                     \equiv\\
-                      \res{ \Exists{k}[1\leq k\leq n]{
+                      \wff{ \Exists{k}[1\leq k\leq n]{
                         \set{i}{x(i) \in a_k}\in\U
                       }}\\
                     \why[\To]{Definición de filtro (iii)}\\
-                      \res{ \set{i}{
+                      \wff{ \set{i}{
                         \Exists{k}[1\leq k\leq n]{x(i) \in a_k}\in\U
                       } }\\
                     \equiv\\
-                      \res{x\in \st{\left(\bigcup_{k=1}^n a_k\right)}}
+                      \wff{x\in \st{\left(\bigcup_{k=1}^n a_k\right)}}
                   \end{longderivation}
 
                   Ahora se mostrará que
-                  $\ds\st{\left(\bigcup_{k=1}^n a_k\right)}-
+                  $\st{\left(\bigcup_{k=1}^n a_k\right)}-
                   \bigcup_{k=1}^n\st{a_k}=\varnothing$
                   \begin{longderivation}
-                      \res{
+                      \wff{
                         x\in\st{\left(\bigcup_{k=1}^n a_k\right)}
                         - \bigcup_{k=1}^n\st{a_k}
                       }\\
                     \equiv\\
-                      \res{
+                      \wff{
                         \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
                         \land
                         \lnot\Exists{k}[1\leq k\leq n]{\set{i}{x(i)\in a_k}\in\U}
                       }\\
                     \equiv\\
-                      \res{
+                      \wff{
                         \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
                         \land
                         \Forall{k}[1\leq k\leq n]{\set{i}{x(i)\in a_k}\not\in\U}
                       }\\
                     \why{$\U$ es un ultrafiltro}\\
-                      \res{
+                      \wff{
                         \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
                         \land
                         \Forall{k}[1\leq k\leq n]{\set{i}{x(i)\not\in a_k}\in\U}
                       }\\
                     \why[\To]{definición de filtro (ii)}\\
-                      \res{
+                      \wff{
                         \set{i}{x(i)\in\bigcup_{k=1}^n a_k}\in\U
                         \land
                         \set{i}{\Forall{k}[1\leq k\leq n]{x(i)\not\in a_k}}\in\U
                       }\\
                     \why[\To]{definición de filtro (ii)}\\
-                      \res{
+                      \wff{
                         \set{i}{
                           x(i)\in\bigcup_{k=1}^n a_k
                           \land
@@ -315,9 +315,9 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
                         }\in\U
                       }\\
                     \equiv\\
-                      \res{ \varnothing \in\U }\\
+                      \wff{ \varnothing \in\U }\\
                     \equiv\\
-                      \res{ x\in\varnothing }
+                      \wff{ x\in\varnothing }
                   \end{longderivation}
                   
             \item Para la colección, el argumento se realiza de la
@@ -330,47 +330,47 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
 
                   Por un lado:
                   \begin{longderivation}
-                      \res{(x_1,\dots, x_n)\in\st{(a_1\times\dots\times a_n)}}\\
+                      \wff{(x_1,\dots, x_n)\in\st{(a_1\times\dots\times a_n)}}\\
                     \equiv\\
-                      \res{
+                      \wff{
                         \set{i}{(x_1(i),\dots,x_n(i))\in a_1\times\dots\times a_n}\in\U
                       }\\
                     \equiv\\
-                      \res{
+                      \wff{
                         \set{i}{
                           \Forall{k}[1\leq k\leq n]{x_k(i) \in a_k}
                         }\in\U
                       }\\
                     \why[\To]{Definición de filtro (iii)}\\
-                      \res{
+                      \wff{
                         \Forall{k}[1\leq k\leq n]{
                           \set{i}{x_k(i)\in a_k} \in\U
                         }
                       }\\
                     \equiv\\
-                      \res{ (x_1,\dots,x_n) \in \st{a_1}\times\dots\times\st{a_n} }
+                      \wff{ (x_1,\dots,x_n) \in \st{a_1}\times\dots\times\st{a_n} }
                   \end{longderivation}
                   Por el otro:
                   \begin{longderivation}
-                      \res{ (x_1,\dots,x_n) \in \st{a_1}\times\dots\times\st{a_n} }\\
+                      \wff{ (x_1,\dots,x_n) \in \st{a_1}\times\dots\times\st{a_n} }\\
                     \equiv\\
-                      \res{
+                      \wff{
                         \Forall{k}[1\leq k\leq n]{
                           \set{i}{x_k(i)\in a_k} \in\U
                         }
                       }\\
                     \why[\To]{Definición de filtro (ii)}\\
-                      \res{
+                      \wff{
                         \set{i}{
                           \Forall{k}[1\leq k\leq n]{x_k(i) \in a_k}
                         }\in\U
                       }\\
                     \equiv\\
-                      \res{
+                      \wff{
                         \set{i}{(x_1(i),\dots,x_n(i))\in a_1\times\dots\times a_n}\in\U
                       }\\
                     \equiv\\
-                      \res{(x_1,\dots, x_n)\in\st{(a_1\times\dots\times a_n)}}\\
+                      \wff{(x_1,\dots, x_n)\in\st{(a_1\times\dots\times a_n)}}\\
                   \end{longderivation}
           \end{itemize}
 
@@ -378,27 +378,27 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
           \begin{center}
             \begin{tabular}{>{$}c<{$} | >{$}c<{$}}
               \begin{derivation}
-                  \res{ x \in \st{(a-b)} }\\
+                  \wff{ x \in \st{(a-b)} }\\
                 \equiv\\
-                  \res{ \set{i}{x(i) \in a \land x(i) \not\in b}\in\U }\\
+                  \wff{ \set{i}{x(i) \in a \land x(i) \not\in b}\in\U }\\
                 \why[\To]{Definición de filtro (iii)}\\
-                  \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\not\in b}\in\U }\\
+                  \wff{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\not\in b}\in\U }\\
                 \why{$\U$ es un ultrafiltro}\\
-                  \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\in b}\not\in\U }\\
+                  \wff{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\in b}\not\in\U }\\
                 \equiv\\
-                  \res{ x \in \st{a} - \st{b} }
+                  \wff{ x \in \st{a} - \st{b} }
               \end{derivation}
               &
               \begin{derivation}
-                  \res{ x \in \st{a} - \st{b} }\\
+                  \wff{ x \in \st{a} - \st{b} }\\
                 \equiv\\
-                  \res{ \set{i}{x(i) \not\in a}\in\U \land \set{i}{x(i)\in b}\not\in\U }\\
+                  \wff{ \set{i}{x(i) \not\in a}\in\U \land \set{i}{x(i)\in b}\not\in\U }\\
                 \why[\To]{$\U$ es un ultrafiltro}\\
-                  \res{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\not\in b}\in\U  }\\
+                  \wff{ \set{i}{x(i)\in a}\in\U \land \set{i}{x(i)\not\in b}\in\U  }\\
                 \why[\To]{Definición de filtro (ii)}\\
-                  \res{ \set{i}{x(i) \in a \land x(i) \not\in b}\in\U }\\
+                  \wff{ \set{i}{x(i) \in a \land x(i) \not\in b}\in\U }\\
                 \equiv\\
-                  \res{ x \in \st{(a-b)} }
+                  \wff{ x \in \st{(a-b)} }
               \end{derivation}
             \end{tabular}
           \end{center}
@@ -407,60 +407,60 @@ Primero se mostrarán propiedades de la incorporación de $\Rh$ en $\IRh$.
             \item Se va a seguir la misma estrategia que se usó en (iv)
                   para la unión. Se mostrará que $\dom \st{b} \subseteq \st{(\dom b)}$
                   \begin{longderivation}
-                      \res{ x\in\dom\st{b} }\\
+                      \wff{ x\in\dom\st{b} }\\
                     \equiv\\
-                      \res{ \Exists{y}{(x,y)\in\dom\st{b}} }\\
+                      \wff{ \Exists{y}{(x,y)\in\dom\st{b}} }\\
                     \equiv\\
-                      \res{ \Exists{y}{
+                      \wff{ \Exists{y}{
                         \set{i}{(x(i),y(i))\in b}\in\U
                       } }\\
                     \why[\To]{Definición de filtro (iii)}\\
-                      \res{
+                      \wff{
                         \set{i}{
                           \Exists{y}{(x(i),y(i))\in b}
                         }\in\U
                       }\\
                     \equiv\\
-                      \res{ x\in\st{(\dom b)} }
+                      \wff{ x\in\st{(\dom b)} }
                   \end{longderivation}
 
                   Ahora se mostrará que $\st{(\dom b)} - \dom \st{b} = \varnothing$
                   \begin{longderivation}
-                      \res{ x\in \st{(\dom b)} - \dom \st{b} }\\
+                      \wff{ x\in \st{(\dom b)} - \dom \st{b} }\\
                     \equiv\\
-                      \res{
+                      \wff{
                         \set{i}{x(i) \in \dom b}\in\U
                         \land
                         \lnot\Exists{y}{\set{i}{(x(i),y(i))\in b}\in\U}
                       }\\
                     \equiv\\
-                      \res{
+                      \wff{
                         \set{i}{x(i) \in \dom b}\in\U
                         \land
                         \Forall{y}{\set{i}{(x(i),y(i))\in b}\not\in\U}
                       }\\
                     \why{$\U$ es un ultrafiltro}\\
-                      \res{
+                      \wff{
                         \set{i}{x(i) \in \dom b}\in\U
                         \land
                         \Forall{y}{\set{i}{(x(i),y(i))\not\in b}\in\U}
                       }\\
                     \why[\To]{Definición de filtro (ii)}\\
-                      \res{
+                      \wff{
                         \set{i}{x(i) \in \dom b}\in\U
                         \land
                         \set{i}{\Forall{y}{(x(i),y(i))\not\in b}}\in\U
                       }\\
                     \why[\To]{Definición de filtro (ii)}\\
-                      \res{
+                      \wff{
                         \set{i}{
                           x(i)\in\dom b \land x(i) \not\in\dom b
                         }\in\U
                       }\\
                     \equiv\\
-                      \res{ \varnothing\in\U }\\
+                      \wff{ \varnothing\in\U }\\
                     \equiv\\
-                      \res{ x \in \varnothing }
+                      \wff{ x \in \varnothing }
                   \end{longderivation}
             \item Para el rango, el argumento es idéntico, cambia el
               	  orden de la pareja ordenada.
@@ -478,20 +478,20 @@ Ahora, se van a considerar los tipos de elementos que están en $\IRh$.
   \begin{center}
     \begin{tabular}{>{$}c<{$} | >{$}c<{$}}
       \begin{derivation}
-          \res{\text{$a$ es un entidad interna}}\\
+          \wff{\text{$a$ es un entidad interna}}\\
         \equiv\\
-          \res{ \Exists{n}[n\in\N]{a\in\st{\R_n}} }
+          \wff{ \Exists{n}[n\in\N]{a\in\st{\R_n}} }
       \end{derivation}
       &
       \begin{derivation}
-        \res{\text{$a$ es una entidad estándar}}\\
+        \wff{\text{$a$ es una entidad estándar}}\\
       \equiv\\
-        \res{\Exists{b}[b\in\Rh]{a=\st{b}}}
+        \wff{\Exists{b}[b\in\Rh]{a=\st{b}}}
       \end{derivation}
     \end{tabular}
   \end{center}
   \vspace{20pt}
-  El conjunto $\ds\bigcup_{n\in\N}\st{\R_n}$, es llamado la
+  El conjunto $\bigcup_{n\in\N}\st{\R_n}$, es llamado la
   ultrapotencia de $\Rh$ con respecto a $\U$, y se denotará como
   $\st{(\Rh)}$.
 \end{definition}
@@ -514,20 +514,20 @@ precisamente logran el objetivo de toda esta construcción.
   mencionó al principio de esta sección. Primero, se va a mostrar que
   $a$ es una entidad interna. Específicamente, $a\in\st{R_n}$.
   \begin{longderivation}<.9>
-      \res{ a\in\st{\R_n} }\\
+      \wff{ a\in\st{\R_n} }\\
     \equiv\\
-      \res{ \set{i}{a(i) \in \R_n}\in\U }\\
+      \wff{ \set{i}{a(i) \in \R_n}\in\U }\\
     \equiv\\
-      \res{ I \in \U }
+      \wff{ I \in \U }
   \end{longderivation}
 
   por contradicción, supongase que existe $b\in\Rh$ tal que $a=\st{b}$.
   \begin{longderivation}
-      \res{ a=\st{b} }\\
+      \wff{ a=\st{b} }\\
     \equiv\\
-      \res{ \set{i}{a(i) = b} }\\
+      \wff{ \set{i}{a(i) = b} }\\
     \why{$b$ es constante}\\
-      \res{ \Exists{n}[n\in\N]{I_n\in\U} }
+      \wff{ \Exists{n}[n\in\N]{I_n\in\U} }
   \end{longderivation}
   Esto último, por la definición de $\{I_n\}$, es falso. Así, se tiene
   que $a$ es una entidad interna no-estándar.
@@ -548,17 +548,17 @@ precisamente logran el objetivo de toda esta construcción.
           $b$ es una entidad estándar, donde $c$ cumple la definición
           de estándar en $b$.
           \begin{longderivation}<.9>
-              \res{a\in b}\\
+              \wff{a\in b}\\
             \equiv\\
-              \res{ a\in \st{c} }\\
+              \wff{ a\in \st{c} }\\
             \equiv\\
-              \res{\set{i}{a(i)\in c}\in\U}\\
+              \wff{\set{i}{a(i)\in c}\in\U}\\
             \why[\To]{\hyperref[lema:Rn]{Propiedad de $\R_n$}}\\
-              \res{\set{i}{a(i)\in\R_0\cup\R_n}\in\U}\\
+              \wff{\set{i}{a(i)\in\R_0\cup\R_n}\in\U}\\
             \why{\hyperref[lema:stR]{Propiedad de ${^*}$}}\\
-              \res{a\in\st{\R_0}\cup\st{\R_n}}\\
+              \wff{a\in\st{\R_0}\cup\st{\R_n}}\\
             \To\\
-              \res{\Exists{n}[n\in\N]{a\in\st{\R_n}}}
+              \wff{\Exists{n}[n\in\N]{a\in\st{\R_n}}}
           \end{longderivation}
           Por el otro lado, sean $n\in\N$ y $a\in\st{\R_n}$ una entidad
           interna. Se puede ver inmediatamente que $a$ es elemento de
@@ -570,15 +570,15 @@ precisamente logran el objetivo de toda esta construcción.
           \hyperref[lema:Rn]{lema 3.1},
           $B=\set{i}{b\subseteq \R_0\cup\R_n}$.
           \begin{longderivation}
-              \res{a\in b}\\
+              \wff{a\in b}\\
             \To\\
-              \res{\Forall{i}[i\in B]{a(i)\in\R_0\cup\R_n}}\\
+              \wff{\Forall{i}[i\in B]{a(i)\in\R_0\cup\R_n}}\\
             \equiv\\
-              \res{ \set{i}{a(i)\in\R_0\cup\R_n}\in\U }\\
+              \wff{ \set{i}{a(i)\in\R_0\cup\R_n}\in\U }\\
             \why{\hyperref[lema:stR]{lema 4.1}}\\
-              \res{a\in\st{R_0}\cup\st{\R_n}}\\
+              \wff{a\in\st{R_0}\cup\st{\R_n}}\\
             \To\\
-              \res{\Exists{n}[n\in\N]{a\in\st{\R_n}}}
+              \wff{\Exists{n}[n\in\N]{a\in\st{\R_n}}}
           \end{longderivation}
   \end{enumerate}
 \end{demo}
@@ -598,21 +598,21 @@ tomar su incorporación `$({^*})$'.
   $a\subseteq \R_0\cup\R_n$, se tiene que $A\subseteq\R_0\cup\R_n$, que
   equivale a $A\in\R_{n+1}$. Para el segundo, por doble contenencia:
   \begin{longderivation}
-      \res{(y_1,\dots,y_m) \in\st{A}}\\
+      \wff{(y_1,\dots,y_m) \in\st{A}}\\
     \equiv\\
-      \res{
+      \wff{
         (y_1,\dots,y_m)\in\st{
           \set{(x_1,\dots,x_m)\in a}{V(x_1,\dots,x_m)}
         }
       }\\
     \equiv\\
-      \res{
+      \wff{
         \set{i}{
           (y_1(i),\dots,y_m(i))\in a \land V(y_1(i),\dots,y_m(i))
         }\in\U
       }\\
     \why[\To]{\hyperref[def:filtro]{definición de filtro (iii)}}\\
-      \res{
+      \wff{
         \set{i}{
           (y_1(i),\dots,y_m(i))\in a}\in\U
         \land
@@ -620,25 +620,25 @@ tomar su incorporación `$({^*})$'.
           V(y_1(i),\dots,y_m(i))}\in\U
       }\\
     \equiv\\
-      \res{
+      \wff{
         (y_1,\dots,y_m)\in\st{a} \land \st{V(y_1,\dots,y_m)}
       }\\
     \equiv\\
-      \res{(y_1,\dots,y_m)\in\set{(x_1,\dots,x_m)\in\st{a}}{\st{V(x_1,\dots,x_m)}}}
+      \wff{(y_1,\dots,y_m)\in\set{(x_1,\dots,x_m)\in\st{a}}{\st{V(x_1,\dots,x_m)}}}
   \end{longderivation}
 
   Por el otro lado:
   \begin{longderivation}
-      \res{
+      \wff{
         (y_1,\dots,y_m)\in\set{(x_1,\dots,x_m)\in
         \st{a}}{\st{V(x_1,\dots,x_m)}}
       }\\
     \equiv\\
-      \res{
+      \wff{
         (y_1,\dots,y_m)\in\st{a} \land \st{V(y_1,\dots,y_m)}
       }\\
     \equiv\\
-    \res{
+    \wff{
       \set{i}{
           (y_1(i),\dots,y_m(i))\in a}\in\U
         \land
@@ -646,19 +646,19 @@ tomar su incorporación `$({^*})$'.
           V(y_1(i),\dots,y_m(i))}\in\U
       }\\
     \why[\To]{\hyperref[def:filtro]{definición de filtro (ii)}}\\
-      \res{
+      \wff{
         \set{i}{
           (y_1(i),\dots,y_m(i))\in a \land V(y_1(i),\dots,y_m(i))
         }\in\U
       }\\
     \equiv\\
-      \res{
+      \wff{
         (y_1,\dots,y_m)\in\st{
           \set{(x_1,\dots,x_m)\in a}{V(x_1,\dots,x_m)}
         }
       }\\
     \equiv\\
-      \res{
+      \wff{
         (y_1,\dots,y_m)\in\st{A}
       }
   \end{longderivation}
@@ -687,9 +687,9 @@ lenguajes formales.
   forma $(a_1,\dots,a_{n-1})\in a_n$ o cualquier otra combinación.
   Entonces:
   \begin{longderivation}<.8>
-      \res{\st{(a_1,\dots,a_{n-1})}\in \st{a_n}}\\
+      \wff{\st{(a_1,\dots,a_{n-1})}\in \st{a_n}}\\
     \equiv\\
-      \res{\set{i}{(a_1,\dots,a_{n-1}) \in a_n}\in\U}
+      \wff{\set{i}{(a_1,\dots,a_{n-1}) \in a_n}\in\U}
   \end{longderivation}
   Está claro que se tiene la equivalencia en este caso. Si $V$ es una
   sentencia sin cuantificadores, pero no es atómica, es una sentencia

@@ -1,0 +1,130 @@
+\section{Espacios Vectoriales}
+
+Los espacios vectoriales necesitan un campo $C$ y un conjunto $V$, junto
+con una operación $\oplus : (V\times V) \to V$, y una operación
+$\otimes : (C \times V) \to V$. Los elementos de $V$ son llamados \emph{vectores}.
+
+Para que estos conjuntos junto con dichas operaciones se puedan llamar un espacio
+vectorial, se deben cumplir las siguientes propiedades:
+
+Sean $+$ y $\cdot$ las operaciones binarias del campo $C$ con el comportamiento análogo
+a la suma y producto en $\R$.
+
+
+\begin{itemize}
+  \item Conmutatividad de $\oplus$:
+  \[
+    \Forall{\mathbf{u},\mathbf{v}}[\mathbf{u},\mathbf{v}\in V]{
+      \mathbf{u} \oplus \mathbf{v} = \mathbf{v} \oplus \mathbf{u}  
+    }
+  \]
+  \item Asociatividad de $\oplus$:
+  \[
+    \Forall{\mathbf{u},\mathbf{v},\mathbf{w}}[
+      \mathbf{u},\mathbf{v},\mathbf{w}\in V
+    ]{
+      (\mathbf{u} \oplus \mathbf{v}) \oplus \mathbf{w} =
+      \mathbf{u} \oplus (\mathbf{v} \oplus \mathbf{w})
+    }
+  \]
+  \item Elemento neutro de $\oplus$:
+  \[
+    \Exists{\mathbf{0}}[\mathbf{0}\in V]{ 
+      \Forall{\mathbf{u}}[\mathbf{u}\in V]{
+        \mathbf{0} + \mathbf{u} = \mathbf{u}
+      }
+    }
+  \]
+  \item Elemento inverso para $\oplus$:
+  \[
+    \Forall{\mathbf{u}}[\mathbf{u} \in V]{
+      \Exists{\mathbf{v}}[\mathbf{v} \in V]{
+        \mathbf{u} \oplus \mathbf{v} = \mathbf{0}
+      }
+    }
+  \]
+  \item Asociatividad de $\cdot$ en interacción con $\otimes$:
+  \[
+    \Forall{a,b,\mathbf{u}}[
+      a,b \in C \land \mathbf{u} \in V
+    ]{
+      a\cdot(b\otimes\mathbf{u}) = (a\cdot b)\otimes\mathbf{u}
+    }
+  \]
+  \item Distributiva de $\otimes$ sobre $+$:
+  \[
+    \Forall{a,b,\mathbf{u}}[
+      a,b \in C \land \mathbf{u} \in V
+    ]{
+      (a + b)\otimes\mathbf{u} = (a\otimes\mathbf{u}) \oplus (b\otimes\mathbf{u})
+    }
+  \]
+  \item Distributiva de $\cdot$ sobre $\oplus$:
+  \[
+    \Forall{a,\mathbf{u},\mathbf{v}}[
+      a \in C \land \mathbf{u},\mathbf{v} \in V
+    ]{
+      a \otimes (\mathbf{u} \oplus \mathbf{v}) = a\otimes\mathbf{u} \oplus a\otimes\mathbf{v}
+    }
+  \]
+  \item Existencia de un elemento neutro para $\otimes$
+  \[
+    \Exists{a}[a \in C]{
+      \Forall{\mathbf{u}}[\mathbf{u} \in V]{
+        a\otimes\mathbf{u} = \mathbf{u}
+      }
+    }
+  \]
+\end{itemize}
+
+Nótese la similitud entre $\oplus$ con $+$, y $\otimes$ con $\cdot$. Debido a esto,
+y el hecho de que siempre se hará la distinción de los vectores a los elementos
+del campo, se acostumbra a denotar con el mismo símbolo las operaciones similares. Es decir,
+se denota $\oplus$ como $+$ y $\otimes$ como $\cdot$ (o demás conveniencias del uso de estas
+operaciones).
+
+\subsection{Transformaciones lineales}
+
+Las transformaciones lineales son funciones de un espacio vectorial a otro.
+La única condición entre estos es que compartan el mismo campo.
+
+Sean $V,W$ conjuntos los cuales forman un espacio vectorial con el campo $C$. Sea
+$T: V \to W$. $T$ es llamada transformacion lineal cuando:
+
+\begin{itemize}
+  \item Conserva la adición
+  \[
+    \Forall{\mathbf{u},\mathbf{v}}[
+      \mathbf{u},\mathbf{v} \in V
+    ]{
+      T(\mathbf{u} + \mathbf{v}) = T(\mathbf{u}) + T(\mathbf{v})
+    }
+  \]
+  \item Conserva el producto
+  \[
+    \Forall{a,\mathbf{u}}[a \in C \land \mathbf{u} \in V]{
+      T(a\,\mathbf{u}) = a\,T(\mathbf{u})
+    }
+  \]
+\end{itemize}
+
+\subsection{\texorpdfstring{$\R^n$}{Rn} como espacio vectorial junto a \texorpdfstring{$\R$}{R}}
+
+Los espacios vectoriales comunes consisten en algún $\R^n$ junto con $\R$. Realmente
+no hay diferencia en mencionar un vector de $\R^n$ haciendo referencia al espacio vectorial,
+o a una n-upla con elementos de $\R$. Sin embargo, ayuda al contexto saber si se va a
+tratar $\R^n$ como espacio vectorial. La distinción se hará de la siguiente manera,
+$\langle \rangle$ serán los delimitadores de un vector, y $()$ los delimitadores de una n-upla.
+
+La suma entre vectores y el producto de escalares por vectores se denota de la misma
+forma que la suma y producto usuales. Estos se definen de la siguiente manera:
+
+Sean $\mathbf{u},\mathbf{v}\in\R^n$, con componentes
+$u_1,u_2,\dots,u_n$ y $v_1,v_2,\dots,v_n$ respectivamente, y $x\in\R$.
+\begin{align*}
+  \left<u_1,u_2,\dots,u_n\right> + \left<v_1,v_2,\dots,v_n\right>
+  &=
+  \left<u_1 + v_1, u_2  + v_2,\dots,u_n + v_n\right>\\
+  x\,\left<u_1,u_2,\dots,u_n\right> &= \left<x\,u_1,x\,u_2,\dots,x\,u_n\right>
+\end{align*}
+

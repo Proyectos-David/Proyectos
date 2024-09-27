@@ -15,6 +15,7 @@
 \usepackage{upgreek}
 \usepackage{amsthm}
 \usepackage{csquotes}
+\usepackage{enumerate}
 \usepackage[sorting=none]{biblatex}
 \addbibresource{Referencias.bib}
 \usepackage{geometry}
@@ -124,6 +125,8 @@
 \RenewDocumentCommand{\frac}{m m}{\genfrac{}{}{.865pt}{0}{#1}{#2}}
 
 \renewcommand{\labelitemi}{$\bullet$}
+
+\everymath{\displaystyle}
 
 \doublespacing
 \begin{document}

@@ -8,7 +8,7 @@ De la misma forma, si $A=\dom f$, para todo $x\in A$, $f(a) = \st{f(a)}$.
 Cabe resaltar, que las propiedades de $f$ se mantienen en $\st{\R}$
 mientras estas se puedan expresar en ambos lenguajes.
 
-La definición de $\Lim{x}{c} f(x) = a$ en el análisis estándar es
+La definición de $\lim_{x\to c} f(x) = a$ en el análisis estándar es
 \[
   \Forall{\e}[\e>0]{
     \Exists{\delta}[\delta>0]{
@@ -35,8 +35,8 @@ completamente equivalentes. La derivada de $f$ en $x$ existe si y solo
 si los siguientes límites existen (basta con uno, pues son el mismo límite):
 
 \begin{enumerate}
-  \item $\ds\Lim{h}{0}\frac{f(x + h) - f(x)}{h}$
-  \item $\ds\Lim{t}{x}\frac{f(t) - f(x)}{t - x}$
+  \item $\lim{h\to 0}\frac{f(x + h) - f(x)}{h}$
+  \item $\lim{t\to x}\frac{f(t) - f(x)}{t - x}$
 \end{enumerate}
 
 Por simplicidad se considerará el resultado de estos límites como $L$.
@@ -52,13 +52,13 @@ Como ejemplo, se motrará el uso de estas definiciones para demostrar que
 la diferenciabilidad en un punto implica continuidad en ese punto.
 Sean $x\in\R$, $f$ una función derivable en $x$ y $h\in M_1-\{0\}$.
 \begin{longderivation}<.8>
-    \res{\st{f(x+h)} - f(x)}\\
+    \wff{\st{f(x+h)} - f(x)}\\
   =_1\\
-    \res{\frac{\st{f(x + h)} - f(x)}{h}\,h}\\
+    \wff{\frac{\st{f(x + h)} - f(x)}{h}\,h}\\
   =_1\\
-    \res{f'(x)\,h}\\
+    \wff{f'(x)\,h}\\
   =_1\\
-    \res{0}
+    \wff{0}
 \end{longderivation}
 
 Nótese que la demostración se puede replicar en el análisis estándar,

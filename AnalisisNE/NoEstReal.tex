@@ -24,11 +24,11 @@ Aclarando más acerca de algunas funciones comunes en $\R$, el valor
 absoluto, definido por:
 \[
   |r| =
-  \begin{siseq}[\{,\}]
+  \begin{syseq}(\{,\})
     r   &&\quad (r > 0)\\
     0   &&\quad (r = 0)\\
     -r  &&\quad (r < 0)
-  \end{siseq}
+  \end{syseq}
 \]
 es una función de $\R$ en $\R^{\geq 0}$. Debido a la incorporación
 del sistema formal de $\R$ en $\st{\R}$, se tiene una función
@@ -37,11 +37,11 @@ $\st{\R^{\geq 0}}$. Por el \hyperref[theo:FT]{teorema 4.3}, esta función
 cumple que:
 \[
   \st{|r|} =
-  \begin{siseq}[\{,\}]
+  \begin{syseq}(\{,\})
     r   &&\quad (r > 0)\\
     0   &&\quad (r = 0)\\
     -r  &&\quad (r < 0)
-  \end{siseq}
+  \end{syseq}
 \]
 por supuesto, para $r\in\st{\R}$. Debido a esto, se denotará el valor
 absoluto en $\st{\R}$ de la forma usual. Por la misma razón, se denotará
@@ -89,45 +89,45 @@ entidades internas no-estándar. Lo que nos conduce a el siguiente teorema:
         Defínase para todo número natural el conjunto $A_n=\set{i}{\omega(i)\leq k}$.
         Nótese que, para todo $n$, $A_n\not\in\U$. En efecto, sea $k\in\N$
         \begin{longderivation}<.8>
-            \res{A_k}\\
+            \wff{A_k}\\
           =\\
-            \res{\set{i}{\omega(i)\leq k}}\\
+            \wff{\set{i}{\omega(i)\leq k}}\\
           =\\
-            \res{\bigcup_{i=0}^k I_i}
+            \wff{\bigcup_{i=0}^k I_i}
         \end{longderivation}
-        Como $\U$ es un ultrafiltro, si $\ds\bigcup_{i=0}^k I_i\in\U$, por las
+        Como $\U$ es un ultrafiltro, si $\bigcup_{i=0}^k I_i\in\U$, por las
         caracterizaciones de los ultrafiltros, al menos uno de los
         elementos de la unión debe estar en $\U$, lo que resultaría en
         que existe un $n\in\N$ tal que $I_n\in\U$. Esto es una
         contradicción por la definición de $\U$ y $\{I_n\}$. Así,
         \begin{longderivation}
-            \res{
+            \wff{
               \Forall{n}[n\in\N]{
                 \set{i}{\omega(i)\leq n}\not\in\U
               }
             }\\
           \why{$\U$ es un ultrafiltro}\\
-            \res{
+            \wff{
               \Forall{n}[n\in\N]{
                 \set{i}{\omega(i) > n}\in\U
               }
             }\\
           \equiv\\
-            \res{\Forall{n}[n\in\N]{\omega > n}}
+            \wff{\Forall{n}[n\in\N]{\omega > n}}
         \end{longderivation}
   \item Por la propiedad arquimediana de $\R$ con respecto a $\N$, solo
         hace falta demostrar que para todo
-        $n\in\N$, $\ds\e < \frac{1}{n+1}$. Defínase la función $\e$ de $I$
+        $n\in\N$, $\e < \frac{1}{n+1}$. Defínase la función $\e$ de $I$
         en $\R$ por:
         \[\e(i)=\frac{1}{n+1} \quad (i\in I_n)\]
         De la misma manera, se define para todo número natural el
-        conjunto $\ds B_n=\set{i}{\e(i)\geq \frac{1}{k+1}}$. Sea $k\in\N$
+        conjunto $ B_n=\set{i}{\e(i)\geq \frac{1}{k+1}}$. Sea $k\in\N$
         \begin{longderivation}<.8>
-            \res{B_k}\\
+            \wff{B_k}\\
           =\\
-            \res{\set{i}{\e(i) \geq \frac{1}{k+1}}}\\
+            \wff{\set{i}{\e(i) \geq \frac{1}{k+1}}}\\
           =\\
-            \res{\bigcup_{i=0}^k I_i}
+            \wff{\bigcup_{i=0}^k I_i}
         \end{longderivation}
         Nuevamente se repite el argumento y se concluye que:
         \[\Forall{n}[n\in\N]{\e < \frac{1}{n+1}}\]
@@ -181,21 +181,21 @@ infinitesimales.
   Lo primero es mostrar que $M_1$ es un ideal de $M_0$. En efecto, sean
   $h\in M_1$ y $a\in M_0$. Por definición de infinitesimal:
   \begin{longderivation}<1.1>
-      \res{\Forall{r}[r\in\R^+]{ |h|<r}}\\
+      \wff{\Forall{r}[r\in\R^+]{ |h|<r}}\\
     \equiv\\
-      \res{\Forall{r}[r\in\R^+]{ |a\,h| < |a|\,r}}\\
+      \wff{\Forall{r}[r\in\R^+]{ |a\,h| < |a|\,r}}\\
     \why[\To]{$|a|\,r \in \R^+$}\\
-      \res{\Forall{r'}[r'\in\R^+]{|a\,h| < r'}}\\
+      \wff{\Forall{r'}[r'\in\R^+]{|a\,h| < r'}}\\
     \equiv\\
-      \res{a\,h \in M_1}
+      \wff{a\,h \in M_1}
   \end{longderivation}
   Sea $a\in M_0 - M_1$, por definición, se tiene que:
   \begin{longderivation}<.9>
-      \res{\Exists{r_1,r_2}[r_1,r_2\in\R^+]{r_1 < |a| < r_2}}\\
+      \wff{\Exists{r_1,r_2}[r_1,r_2\in\R^+]{r_1 < |a| < r_2}}\\
     \equiv\\
-      \res{\Exists{r_1,r_2}[r_1,r_2\in\R^+]{\frac{1}{r_1} > \frac{1}{|a|} > \frac{1}{r_2}}}\\
+      \wff{\Exists{r_1,r_2}[r_1,r_2\in\R^+]{\frac{1}{r_1} > \frac{1}{|a|} > \frac{1}{r_2}}}\\
     \equiv\\
-      \res{\frac{1}{a}\in M_0 - M_1}
+      \wff{\frac{1}{a}\in M_0 - M_1}
   \end{longderivation}
   Sea $X$ un ideal de $M_0$ tal que $M_1\subset X$. entonces existe un
   $b\in M_0 - M_1$ tal que $b\in X$. Sin embargo, como se mostró,
@@ -219,9 +219,9 @@ $M_0/M_1$.
   haber dos números reales estándar distintos. Sean $r_1$, $r_2$ dos
   números reales usuales en la misma clase de equivalencia.
   \begin{longderivation}
-      \res{r_1 - r_2 \in M_1 \land |r_1 - r_2| \not= 0}\\
+      \wff{r_1 - r_2 \in M_1 \land |r_1 - r_2| \not= 0}\\
     \To\\
-      \res{ |r_1 - r_2| < |r_1 - r_2| }
+      \wff{ |r_1 - r_2| < |r_1 - r_2| }
   \end{longderivation}
   Esto último es una contradicción, claramente. Por otro lado, para todo
   $a\in M_0$, existe un único número real $r$ tal que $a-r=_1 0$. En

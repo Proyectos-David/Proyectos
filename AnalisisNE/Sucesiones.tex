@@ -18,11 +18,11 @@ individuos.
 \begin{demo}
   Por un lado
   \begin{longderivation}<.9>
-      \res{\Forall{n}[n\in\st{\N}]{\Exists{a}[a\in M_0]{|\st{s_n}| \leq a}}}\\
+      \wff{\Forall{n}[n\in\st{\N}]{\Exists{a}[a\in M_0]{|\st{s_n}| \leq a}}}\\
     \why[\To]{Aplicando $\sd{}$}\\
-      \res{\Forall{n}[n\in\N]{\Exists{a}[a\in M_0]{|s_n| \leq \sd{a}}}}\\
+      \wff{\Forall{n}[n\in\N]{\Exists{a}[a\in M_0]{|s_n| \leq \sd{a}}}}\\
     \equiv\\
-      \res{\{s\} \text{ es acotada en } \R}
+      \wff{\{s\} \text{ es acotada en } \R}
   \end{longderivation}
   Por el otro, si $\{s_n\}$ es acotada en $\R$, el rango de $s$ tiene una
   mínima cota superior y una máxima cota inferior. Por el teorema
@@ -36,28 +36,28 @@ converge a $s$ en $\R$:
 Su análogo en el análisis no estándar es:
 \begin{theorem}
   Sean $\{s_n\}$ una sucesión en $\R$ y $s\in\R$. entonces 
-  $\Lim{n}{\infty} s_n = s$ si y solo si, para todo $\omega\in\st{\N} - \N$,
+  $\lim{n\to\infty} s_n = s$ si y solo si, para todo $\omega\in\st{\N} - \N$,
   $s_\omega =_1 s$.
 \end{theorem}
 
 \begin{demo}
   Por un lado, sea $\e>0$
   \begin{longderivation}<1>
-      \res{\Exists{N}[N\in\N]{\Forall{n}[n\in\N \land n\geq N]{|s_n - s| < \e}}}\\
+      \wff{\Exists{N}[N\in\N]{\Forall{n}[n\in\N \land n\geq N]{|s_n - s| < \e}}}\\
     \equiv\\
-      \res{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n\geq N]{|\st{s_n} - s| < \e}}}\\
+      \wff{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n\geq N]{|\st{s_n} - s| < \e}}}\\
     \why{Definición de infinitesimal}\\
-      \res{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n\geq N]{\st{s_n} =_1 s}}}\\
+      \wff{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n\geq N]{\st{s_n} =_1 s}}}\\
     \To\\
-      \res{\Forall{\omega}[\omega\in\st{\N} - \N]{\st{s_\omega} =_1 s}}
+      \wff{\Forall{\omega}[\omega\in\st{\N} - \N]{\st{s_\omega} =_1 s}}
   \end{longderivation}
   Por el otro lado:
   \begin{longderivation}<1>
-      \res{\Forall{n}[n\in\st{\N} - \N]{\st{s_n} =_1 s}}\\
+      \wff{\Forall{n}[n\in\st{\N} - \N]{\st{s_n} =_1 s}}\\
     \To\\
-      \res{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n \geq N]{\st{s_n} =_1 s}}}\\
+      \wff{\Exists{N}[N\in\st{\N}]{\Forall{n}[n\in\st{\N} \land n \geq N]{\st{s_n} =_1 s}}}\\
     \equiv\\
-      \res{
+      \wff{
         \Forall{\e}[\e>0]{
           \Exists{N}[N\in\st{N}]{
             \Forall{n}[n\in\st{\N} \land n \geq N]{|\st{s_n} - s| < \e}
@@ -65,7 +65,7 @@ Su análogo en el análisis no estándar es:
         }
       }\\
     \equiv\\
-      \res{
+      \wff{
         \Forall{\e}[\e>0]{
           \Exists{N}[N\in\N]{
             \Forall{n}[n\in\N \land n\leq N]{
@@ -80,38 +80,38 @@ Su análogo en el análisis no estándar es:
 El teorema se puede reescribir de forma equivalente, usando el
 homomorfismo de parte estándar:
 \begin{longderivation}<.8>
-    \res{\Forall{\omega}[\omega\in\st{\N}-\N]{\st{s_\omega}=_1 s}}\\
+    \wff{\Forall{\omega}[\omega\in\st{\N}-\N]{\st{s_\omega}=_1 s}}\\
   \equiv\\
-    \res{\Forall{\omega}[\omega\in\st{\N}-\N]{\sd{\st{s_\omega}}= s}}\\
+    \wff{\Forall{\omega}[\omega\in\st{\N}-\N]{\sd{\st{s_\omega}}= s}}\\
 \end{longderivation}
 
 Por ejemplo, la sucesión $\{\sqrt[n]{n}\}_{n\in\J}$. Para ver que esta sucesión
 converge a $1$, se considera $s_n = \sqrt[n]{n} - 1$.
 \begin{longderivation}<.8>
-    \res{s_n = \sqrt[n]{n} - 1}\\
+    \wff{s_n = \sqrt[n]{n} - 1}\\
   \equiv\\
-    \res{n = \left(s_n + 1\right)^n}\\
+    \wff{n = \left(s_n + 1\right)^n}\\
   \equiv\\
-    \res{n = \sum_{k=0}^n \binom{n}{k} s_n^k}\\
+    \wff{n = \sum_{k=0}^n \binom{n}{k} s_n^k}\\
   \To\\
-    \res{n \geq \binom{n}{2}s_n^2}\\
+    \wff{n \geq \binom{n}{2}s_n^2}\\
   \equiv\\
-    \res{n \geq \frac{n!}{(n-2)!\,2!}s_n^2}\\
+    \wff{n \geq \frac{n!}{(n-2)!\,2!}s_n^2}\\
   \equiv\\
-    \res{1 \geq \frac{n-1}{2}s_n^2}\\
+    \wff{1 \geq \frac{n-1}{2}s_n^2}\\
   \equiv\\
-    \res{\sqrt{\frac{2}{n-1}} \geq s_n}
+    \wff{\sqrt{\frac{2}{n-1}} \geq s_n}
 \end{longderivation}
 
 Se tiene entonces, que para todo $n\in\N$, $0\leq s_n \leq \sqrt{\frac{2}{n-1}}$.
 De igual forma, para todo $n\in\st{\N}$, $0\leq \st{s_n} \leq \sqrt{\frac{2}{n-1}}$.
 Lo que implica, que para todo $\omega\in\st{\N}-\N$
 \begin{longderivation}
-    \res{0\leq\st{s_\omega}\leq\sqrt{\frac{2}{n-1}}}\\
+    \wff{0\leq\st{s_\omega}\leq\sqrt{\frac{2}{n-1}}}\\
   \why[\To]{Los recíprocos de infinitos son infinitesimales, aplicando $\sd{}$}\\
-    \res{0\leq\sd{\st{s_\omega}}\leq 0}\\
+    \wff{0\leq\sd{\st{s_\omega}}\leq 0}\\
   \equiv\\
-    \res{\sd{\st{s_\omega}} = 0}
+    \wff{\sd{\st{s_\omega}} = 0}
 \end{longderivation}
 
 \begin{theorem}[Sucesiones de Cauchy]

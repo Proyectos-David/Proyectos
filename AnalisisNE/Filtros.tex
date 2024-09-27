@@ -99,11 +99,11 @@ $G_3$ y $G_1$.
   Sea $\U_2 = \{B \subseteq I \,|\, B \cup A \in \U\}$, se puede ver que
   $\U \subset \U_2$, en efecto
   \begin{longderivation}<1>
-      \res{ B \in \U }\\
+      \wff{ B \in \U }\\
     \To\\
-      \res{ B \cup A \in \U }\\
+      \wff{ B \cup A \in \U }\\
     \equiv\\
-      \res{ B \in \U_2 }
+      \wff{ B \in \U_2 }
   \end{longderivation}
 
   No son iguales, pues, por ejemplo, $I-A \cup A = I$, $I-A \in \U_2$.\\
@@ -111,30 +111,30 @@ $G_3$ y $G_1$.
   \begin{enumerate}
     \item Por contradicción, es inmediato:
           \begin{longderivation}<0.7>
-              \res{ \varnothing \in \U_2 }\\
+              \wff{ \varnothing \in \U_2 }\\
             \equiv\\
-              \res{ A \in \U }
+              \wff{ A \in \U }
           \end{longderivation}
     \item Sean $X, Y \in \U_2$
           \begin{longderivation}<0.7>
-              \res{ X \cap Y \in \U_2 }\\
+              \wff{ X \cap Y \in \U_2 }\\
             \equiv\\
-              \res{ (X \cap Y) \cup A \in \U }\\
+              \wff{ (X \cap Y) \cup A \in \U }\\
             \equiv\\
-              \res{ (X \cup A) \cap (Y \cup A) \in \U }\\
+              \wff{ (X \cup A) \cap (Y \cup A) \in \U }\\
           \end{longderivation}
           Como $X,Y\in\U_2$, se tiene que ambos términos de la intersección
           son elementos de $\U$. Como $\U$ es un filtro, por definición, esta
           intersección también es elemento de $\U$.
     \item Sean $X\in\U_2$ y $Y\supseteq X$
           \begin{longderivation}
-              \res{ X \subseteq  Y }\\
+              \wff{ X \subseteq  Y }\\
             \To\\
-              \res{ X \cup A \subseteq Y \cup A }\\
+              \wff{ X \cup A \subseteq Y \cup A }\\
             \why[\To]{$X\in\U_2$ y $\U$ es un filtro}\\
-              \res{ Y \cup A \in \U }\\
+              \wff{ Y \cup A \in \U }\\
             \equiv\\
-              \res{ Y \in \U_2 }
+              \wff{ Y \in \U_2 }
           \end{longderivation}
   \end{enumerate}
 
@@ -147,17 +147,17 @@ $G_3$ y $G_1$.
   Como $\U$ no es un ultrafiltro, por el lema del ultrafiltro, existe
   un filtro $\U_2$ tal que $\U \subset \U_2$.
   \begin{longderivation}
-      \res{ \U_2 - \U \not= \varnothing }\\
+      \wff{ \U_2 - \U \not= \varnothing }\\
     \equiv\\
-      \res{ \Exists{A}{A \in \U_2 - \U} }\\
+      \wff{ \Exists{A}{A \in \U_2 - \U} }\\
     \why{ $\U$ cumple (i) y $A \not\in \U$ }\\
-      \res{ \Exists{A}[A\in\U_2-\U]{I-A\in\U} }\\
+      \wff{ \Exists{A}[A\in\U_2-\U]{I-A\in\U} }\\
     \why[\To]{$\U\subset\U_2$}\\
-      \res{ \Exists{A}[A\in\U_2-\U]{I-A\in \U_2} }\\
+      \wff{ \Exists{A}[A\in\U_2-\U]{I-A\in \U_2} }\\
     \equiv\\
-      \res{ \Exists{A}[A\not\in\U]{A\in\U_2 \land I-A\in\U_2} }\\
+      \wff{ \Exists{A}[A\not\in\U]{A\in\U_2 \land I-A\in\U_2} }\\
     \why[\To]{Definición de filtro}\\
-      \res{ \Exists{A}[A\not\in\U]{\varnothing\in\U_2} }
+      \wff{ \Exists{A}[A\not\in\U]{\varnothing\in\U_2} }
   \end{longderivation}
   Esto último contradice la definición de filtro, mostrando así que la
   suposición de que $\U$ no es un ultrafiltro, es incorrecta.
@@ -172,10 +172,10 @@ $G_3$ y $G_1$.
   que existe un elemento de esta colección que está en $\U$. Para
   esto, se va a suponer que no existe dicho elemento, es decir:
   \begin{longderivation}
-      \res{ \bigcup_{k=1}^{n} A_k \in \U \land
+      \wff{ \bigcup_{k=1}^{n} A_k \in \U \land
             \Forall{k}[1\leq k\leq n]{A_k \not\in \U} }\\
     \why{(i)}\\
-      \res{ \bigcap_{k=0}^{n} (I - A_k) \not\in\U \land
+      \wff{ \bigcap_{k=0}^{n} (I - A_k) \not\in\U \land
             \Forall{k}[1\leq k\leq n]{I - A_k \in \U} }
   \end{longderivation}
   Esta última expresión es contradictoria, pues por definición, las
@@ -187,7 +187,7 @@ $G_3$ y $G_1$.
 
   Por otro lado, se va a mostrar que (ii) $\To$ (i). Sea $\U$ un
   ultrafiltro sobre $I$. Suponiendo que se cuenta con (ii). Sean
-  $F \in \U$, $A_1 = F$ y $A_2 = I-F$. Como $\ds\bigcup_{k=1}^2 A_k = I$
+  $F \in \U$, $A_1 = F$ y $A_2 = I-F$. Como $\bigcup_{k=1}^2 A_k = I$
   y $I\in\U$, por (ii), al menos uno de los $A_k$ debe pertenecer a $\U$.
   Por definición de filtro, no puede ser que ambos sean elementos de $\U$
   y (ii) garantiza que no puede ser que ninguno sea elemento de $\U$. Es decir,
@@ -199,7 +199,7 @@ $G_3$ y $G_1$.
   Un filtro $\F$ es llamado $\delta$-incompleto cuando existe una colección
   contable de subconjuntos de $I$, tal que todos sus elementos estén en $\U$ y
   su intersección no. Es decir, si existe $\{F_n\}_{n\in\N}$ tal que,
-  para todo $n\in\N$, $F_n\in\U$ y $\ds\bigcap_{n\in\N}F_n \not\in \U$. Un filtro
+  para todo $n\in\N$, $F_n\in\U$ y $\bigcap_{n\in\N}F_n \not\in \U$. Un filtro
   es llamado $\delta$-completo cuando no es $\delta$-incompleto.
 \end{definition}
 
@@ -215,39 +215,39 @@ $G_3$ y $G_1$.
   cumple la definición de $\delta$-incompleto en $\U$. Se tiene
   entonces que
   \begin{longderivation}
-      \res{ \Forall{n}[n\in\J]{F_n\in\U} \land \bigcap_{n\in\J} F_n \not\in \U}\\
+      \wff{ \Forall{n}[n\in\J]{F_n\in\U} \land \bigcap_{n\in\J} F_n \not\in \U}\\
     \why{ $\U$ es un ultrafiltro }\\
-      \res{ \Forall{n}[n\in\J]{I - F_n \not\in \U} \land
+      \wff{ \Forall{n}[n\in\J]{I - F_n \not\in \U} \land
             \bigcup_{n\in\J} (I - F_n) \in \U }
   \end{longderivation}
 
   Sea $\{B_n\}_{n\in\J}$ una colección de subconjuntos de $I$, definida por
-  $\ds B_n = \bigcup_{k=1}^n (I - F_k)$. Nótese que, los elementos de
+  $ B_n = \bigcup_{k=1}^n (I - F_k)$. Nótese que, los elementos de
   $B_n$ están contenidos consecutivamente, esto es
   \[\Forall{n,m}[n,m\in\J \land n \leq m]{B_n \subseteq B_m}\]
 
   Sea $\{I_n\}_{n\in\N}$ una colección de subconjuntos de $I$ definida por
   \[
-    \begin{siseq}[\{,\}]
+    \begin{syseq}(\{,\})
       I_0     &= \bigcap_{k\in\J} F_k\\
       I_{n+1} &= B_{n+1} - B_n
-    \end{siseq}
+    \end{syseq}
   \]
 
   Se va a mostrar que $\{I_n\}_{n\in\N}$ es una partición de $I$ tal que,
   para todo $n$, $I_n\not\in\U$. Es evidente que $I_0\not\in\U$, pues se
   tiene en la definición de $\{F_n\}$.
   \begin{longderivation}
-      \res{ I_{n+1} }\\
+      \wff{ I_{n+1} }\\
     =\\
-      \res{ B_{n+1} - B_{n} }\\
+      \wff{ B_{n+1} - B_{n} }\\
     =\\
-      \res{ \bigcup_{k=1}^{n+1}(I-F_k) - \bigcup_{k=1}^{n}(I-F_k)}\\
+      \wff{ \bigcup_{k=1}^{n+1}(I-F_k) - \bigcup_{k=1}^{n}(I-F_k)}\\
     =\\
-      \res{ \left((I-F_{n+1}) \cup \bigcup_{k=1}^{n}(I-F_k)\right)
+      \wff{ \left((I-F_{n+1}) \cup \bigcup_{k=1}^{n}(I-F_k)\right)
             \cap \left(I-\bigcup_{k=1}^{n}(I-F_k)\right) }\\
     =\\
-      \res{ \left((I-F_{n+1}) \cap
+      \wff{ \left((I-F_{n+1}) \cap
               \left(I-\bigcup_{k=1}^{n}(I-F_k)\right)
             \right)
               \cup
@@ -256,7 +256,7 @@ $G_3$ y $G_1$.
               \left(I-\bigcup_{k=1}^{n}(I-F_k)\right)
             \right) }\\
     =\\
-      \res{ (I-F_{n+1}) \cap \bigcap_{k=1}^{n}F_k }
+      \wff{ (I-F_{n+1}) \cap \bigcap_{k=1}^{n}F_k }
   \end{longderivation}
 
   Se puede ver que, para todo $n\in\J$, $I_n \subseteq I - F_n$. Por la
@@ -270,21 +270,21 @@ $G_3$ y $G_1$.
   último se verá de forma más clara al corroborar que la unión de la
   colección sea efectivamente $I$.
   \begin{longderivation}
-      \res{ \bigcup_{n\in\J}I_n }\\
+      \wff{ \bigcup_{n\in\J}I_n }\\
     =\\
-      \res{ \bigcup_{n\in\J}B_n }\\
+      \wff{ \bigcup_{n\in\J}B_n }\\
     =\\
-      \res{ \bigcup_{n\in\J}(I - F_n) }
+      \wff{ \bigcup_{n\in\J}(I - F_n) }
   \end{longderivation}
 
   Para finalizar la demostración, se tomará el complemento de esta unión,
   la cual es disjunta con dicha unión y además, su unión es $I$.
   \begin{longderivation}
-      \res{ I - \bigcup_{n\in\J}(I - F_n) }\\
+      \wff{ I - \bigcup_{n\in\J}(I - F_n) }\\
     =\\
-      \res{ \bigcap_{n\in\J}F_n }\\
+      \wff{ \bigcap_{n\in\J}F_n }\\
     =\\
-      \res{ I_0 }
+      \wff{ I_0 }
   \end{longderivation}
 \end{demo}
 
@@ -314,13 +314,15 @@ un conjunto, requiere que dicho conjunto sea infinito.
   colección de subconjuntos finitos de $I$.
 
   \begin{longderivation}
-      \res{ \bigcap_{n\in P}(I - I_n) \cap \bigcap_{n\in P_2} (I - H_n) }\\
+      \wff{ \bigcap_{n\in P}(I - I_n) \cap \bigcap_{n\in P_2} (I - H_n) }\\
     =\\
-      \res{ I - \left(\bigcup_{n\in P_1} I_n \cup \bigcup_{n\in P_2} H_n\right) }
+      \wff{ I - \left(\bigcup_{n\in P_1} I_n \cup \bigcup_{n\in P_2} H_n\right) }
   \end{longderivation}
 
-  Nótese que, $\ds\bigcup_{n\in I - P_1} I_n$ es un subconjunto infinito de $I$.
-  También, se tiene que $\ds\bigcup_{n\in P_2}H_n$ es un subconjunto finito de $I$.
+  Nótese que, $\bigcup_{n\in I - P_1} I_n$ es un subconjunto infinito de $I$.
+  También, se tiene que $\bigcup_{n\in P_2}H_n$ es un subconjunto finito de $I$.
   Con esto se demuestra que la intersección presentada es distinta de $\varnothing$.
   Con lo cual, $\B$ es una sub-base.
 \end{demo}
+
+\input{EjerFiltros}
