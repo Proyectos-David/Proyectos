@@ -17,7 +17,13 @@
 \usepackage{setspace}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
-
+\usepackage{geometry}
+\geometry{
+  left=2cm,
+  right=2cm,
+  bottom=4cm,
+  a4paper
+}
 \usepackage{blindtext}
 \hypersetup{
   colorlinks=false,
@@ -50,8 +56,8 @@
     qed={\qedsymbol}
 ]{Proof}
 
-\declaretheorem[style=definition]{Def}
-\declaretheorem[style=definition]{Teo}
+\declaretheorem[style=definition,name=Definición]{Def}
+\declaretheorem[style=definition,name=Teorema]{Teo}
 \declaretheorem[style=Proof, numbered=no]{Demo}
 % Portada %
 \newcommand*{\titleTMB}{\begingroup
