@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\usepackage[arrows]{logicDG}
+\usepackage{calcDG}
+\usepackage{analysis}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{etoolbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\usepackage{blindtext}
+\hypersetup{
+  colorlinks=false,
+  pdftitle={DemostracionesPRYE},
+  pdfauthor={David Gómez y Laura Rincón}
+}
+
+\pagestyle{fancy}
+\setlength{\headheight}{13pt}
+\fancyhf{}
+\fancyhead[R]{\textit{David G., Laura R.}}
+\fancyhead[L]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+\declaretheoremstyle[
+  spaceabove=10pt,
+  spacebelow=20pt,
+  bodyfont={\normalfont},
+  notefont={\normalfont},
+  notebraces={(}{)},
+  headpunct={:},
+  headfont={\bfseries},
+  ]{definition}
+  
+  \declaretheoremstyle[
+    headpunct={},
+    bodyfont={\normalfont\leftskip2.5em},
+    headindent=-2.5em,
+    headformat={\textbf{Demostración:}},
+    qed={\qedsymbol}
+]{Proof}
+
+\declaretheorem[style=definition]{Def}
+\declaretheorem[style=Proof, numbered=no]{Demo}
+% Portada %
+\newcommand*{\titleTMB}{\begingroup
+\def\drop{0.1\textheight}
+\centering
+\vspace*{\baselineskip}
+{\large\scshape David Gómez, Laura Rincón}\\[\baselineskip]
+\rule{\textwidth}{1.6pt}\\[0pt]
+\vspace*{-\baselineskip}
+\vspace*{2pt}
+\rule{\textwidth}{0.4pt}\\[\baselineskip]
+{\LARGE DEMOSTRACIONES DE PRYE}\\[\baselineskip]
+\rule{\textwidth}{0.4pt}\\[0pt]
+\vspace*{-\baselineskip}\vspace{3.2pt}
+\rule{\textwidth}{1.6pt}\\[\baselineskip]
+\vfill
+{\large\scshape Matemáticas}\\[\baselineskip]
+{\small\scshape 2024}\par
+\vspace*{\drop}
+\endgroup}
+
+\everymath{\displaystyle}
+\doublespacing
+\hyphenpenalty=1000
+
+\begin{document}
+\begin{titlepage}
+  \titleTMB
+\end{titlepage}
+\tableofcontents
+\clearpage
+
+algo
+\end{document}
