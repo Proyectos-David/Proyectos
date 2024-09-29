@@ -1,5 +1,96 @@
 \section{Estadística Descriptiva}
 
+Uno de los problemas no resueltos de esta primera parte del
+curso fue hallar la probabilidad de una unión finita de eventos.
+
+Esta probabilidad, sin embargo, se puede hallar mediante una
+forma recursiva con la siguiente expresión
+\begin{align*}
+  P(A_1 \cup A_2) &= P(A_1) + P(A_2) - P(A_1 \cap A_2)\\[10pt]
+  P\left(\bigcup_{i=1}^{n+1} A_i\right)
+  &= P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right) -
+    P\left(\bigcup_{i=1}^n (A_{n+1}\cap A_i)\right)
+\end{align*}
+Lo que se quiere es resolver esta función de recursión. Para esto,
+se evaluaran unos cuantos de sus resultados.
+\[
+\begin{derivation}
+    \wff{P(A_1 \cup A_2\cup A_3)}\\
+  =\\
+    \wff{P(A_3) + P(A_1 \cup A_2) - P((A_3\cap A_1) \cup (A_3\cap A_2))}\\
+  =\\
+    &P(A_3) + P(A_2) + P(A_1) - P(A_1\cap A_2)\\
+    &\quad-[P(A_1\cap A_3) + P(A_2 \cap A_3) - P(A_1\cap A_2\cap A_3)]\\
+  =\\
+    &P(A_1) + P(A_2) + P(A_3) - P(A_1\cap A_2) - P(A_1\cap A_3)\\
+    &\quad- P(A_2\cap A_3) + P(A_1\cap A_2\cap A_3)\\
+  =\\
+    \wff{
+      \sum_{i=1}^3P(A_i) - \sum_{i=1}^2\sum_{j=i+1}^3P(A_i\cap A_j)
+      + P\left(\bigcap_{i=1}^3 A_i\right)
+    }
+\end{derivation}
+\]
+Análogamente para cuatro eventos, usando lo obtenido
+\[
+\begin{derivation}
+    \wff{P(A_1\cup A_2\cup A_3\cup A_4)}\\
+  =\\
+    \wff{P(A_4) + P(A_1\cup A_2\cup A_3) - P\left(\bigcup_{i=1}^3(A_4\cap A_i)\right)}\\
+  =\\
+    & P(A_4) + \sum_{i=1}^3P(A_i) - \sum_{i=1}^2\sum_{j=i+1}^3P(A_i\cap A_j)
+    + P\left(\bigcap_{i=1}^3 A_i\right)\\
+    &\quad-\left[\sum_{i=1}^3P(A_4\cap A_i) - \sum_{i=1}^2\sum_{j=i+1}^3P(A_4\cap A_i\cap A_j)
+    + P\left(\bigcap_{i=1}^4 A_i\right)\right]\\
+  =\\
+    \wff{
+      \sum_{i=1}^4P(A_i) - \sum_{i=1}^3\sum_{i=1}^4P(A_i\cap A_j) +
+      \sum_{i=1}^2\sum_{j=i+1}^3\sum_{k=j+1}^4P(A_1\cap A_j\cap A_k) -
+      P\left(\bigcap_{i=1}^4 A_i\right)
+    }
+\end{derivation}
+\]
+Por último, recordar que
+\[\sum_{i=a}^b\sum_{j=i+1}^{b+1} f(i,j) = \sum_{\mathclap{a\leq i < j \leq b}}f(i,j)\]
 \begin{Teo}
-  La probabilidad de una unión finita
+  Sean $A_1,A_2,\dots,A_n$ eventos de un espacio muestral. Entonces,
+  \[
+    P\left(\bigcup_{i=0}^nA_i\right) = \sum_{\mathclap{1\leq i\leq n}}P(A_i)
+    -\sum_{\mathclap{1\leq i < j\leq n}}P(A_i\cap A_j) +
+    \sum_{\mathclap{1\leq i<j<k\leq n}}P(A_i\cap A_j\cap A_k)
+    -\dots+(-1)^nP\left(\bigcap_{i=1}^n A_i\right)
+  \]
+  De otra forma, la probabilidad de una unión finita es la suma de
+  la probabilidad de cada evento menos las posibles intersecciones
+  dos a dos, sumando las probabilidades tres a tres\dots
 \end{Teo}
+\begin{Demo}
+  Siguiendo por inducción. Los caso base $n=1$ y $n=2$ caen en la
+  definición recursiva y para $n=3$ fue el desarrollo anterior.
+  Para el paso inductivo, supóngase que la propiedad se mantiene hasta
+  un valor $n$.
+  \[
+  \begin{derivation}
+      \wff{P\left(\bigcup_{i=1}^{n+1} A_i\right)}\\
+    =\\
+      \wff{
+        P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right) -
+        P\left(\bigcup_{i=1}^n (A_{n+1}\cap A_i)\right)
+      }\\
+    =\\
+      &P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right)\\
+      &\quad-\left[\hspace{3pt}
+        \sum_{\mathclap{1\leq i\leq n}}(A_{n+1}\cap A_i)
+        -\sum_{\mathclap{1\leq i<j\leq n}}(A_{n+1}\cap A_i\cap A_j) +
+        \dots+(-1)^nP\left(\bigcap_{i=1}^{n+1}A_i\right)
+      \right]\\
+    =\\
+      &\qquad\begin{matrix*}[l]
+        \sum_{\mathclap{1\leq i\leq n+1}}P(A_i)
+        -\sum_{\mathclap{1\leq i < j\leq n+1}}P(A_i\cap A_j) +\\
+        \quad\sum_{\mathclap{1\leq i<j<k\leq n+1}}P(A_i\cap A_j\cap A_k)
+        -\dots+(-1)^{n+1}P\left(\bigcap_{i=1}^{n+1} A_i\right)
+      \end{matrix*}
+  \end{derivation}
+  \]
+\end{Demo}
