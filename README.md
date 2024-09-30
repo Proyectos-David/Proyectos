@@ -24,3 +24,9 @@ Una formalización del cálculo descrito por Leibniz. Este consideró infinitesi
 los cuales son números infinitamente pequeños o grandes.
 
 PDF: [link](AnalisisNE/build/main.pdf)
+
+## Demostraciones de PRYE
+
+Una compilación de demostraciones varias de propiedades y teoremas mencionados en el curso, alguno no demostrados en el curso como tal.
+
+PDF: [link](https://github.com/Proyectos-David/Proyectos/blob/f99f39a600ebc4608a1202f3bde72d8b4b24135f/DemostracionesPRYE/build/main.pdf)
