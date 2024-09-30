@@ -94,3 +94,63 @@ Por último, recordar que
   \end{derivation}
   \]
 \end{Demo}
+
+\begin{Def}[Eventos independientes]
+  Sean $A$ y $B$ eventos de un espacio muestral. Se dice que $A$ y $B$
+  son independientes, cuando $P(A\cap B)=P(A)\,P(B)$.
+\end{Def}
+
+\begin{Teo}
+  Sean $A$ y $B$ eventos independientes. Entonces
+  \begin{enumerate}
+    \item $A^c$ y $B^c$ son independientes.
+    \item $A^c$ y $B$ son independientes.
+  \end{enumerate}
+\end{Teo}
+\begin{Demo}
+  \begin{enumerate}
+    Supóngase $A$ y $B$ eventos independientes de un espacio muestral.
+    \item Partiendo de que $A^c \cap B^c = (A\cup B)^c$.
+    \[
+    \begin{derivation}<0.9>
+        \wff{P(A^c\cap B^c)}\\
+      =\\
+        \wff{1 - P(A\cup B)}\\
+      =\\
+        \wff{1 - [P(A) + P(B) - P(A\cap B)]}\\
+      =\\
+        \wff{1-P(A)+P(B)-P(A)P(B)}\\
+      =\\
+        \wff{(1-P(A))(1-P(B))}\\
+      =\\
+        \wff{P(A^c)\,P(B^c)}
+    \end{derivation}
+    \]
+    Así, los eventos $A^c$ y $B^c$ también son independientes.
+    \item Partiendo de que $B=(B\cap A)\cup(B\cap A^c)$
+    \[
+    \begin{derivation}<0.9>
+        \wff{P(B)}\\
+      =\\
+        \wff{P((B\cap A)\cup(B\cap A^c))}\\
+      =\\
+        \wff{P(B\cap A) + P(B\cap A^c) - P(\varnothing)}\\
+      =\\
+        \wff{P(B)\,P(A) + P(B\cap A^c)}
+    \end{derivation}
+    \]
+    Tomando la primera y última igualdad
+    \[
+    \begin{derivation}<0.9>
+        \wff{P(B\cap A^c)}\\
+      =\\
+        \wff{P(B) - P(B)P(A)}\\
+      =\\
+        \wff{P(B)(1-P(A))}\\
+      =\\
+        \wff{P(B)\,P(A^c)}
+    \end{derivation}
+    \]
+    Así, los eventos $A^c$ y $B$ también son independientes.
+  \end{enumerate}
+\end{Demo}

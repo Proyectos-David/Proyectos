@@ -15,6 +15,7 @@
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{setspace}
+\usepackage{enumerate}
 \usepackage{tikz}
 \usetikzlibrary{positioning}
 \usepackage{geometry}
@@ -24,12 +25,12 @@
   bottom=4cm,
   a4paper
 }
-\usepackage{blindtext}
 \hypersetup{
   colorlinks=false,
   pdftitle={DemostracionesPRYE},
   pdfauthor={David Gómez y Laura Rincón}
 }
+\renewcommand{\labelenumi}{(\roman{enumi})}
 
 \pagestyle{fancy}
 \setlength{\headheight}{13pt}
@@ -49,16 +50,18 @@
   ]{definition}
   
   \declaretheoremstyle[
-    headpunct={},
+    headpunct={:},
+    headfont={\bfseries},
     bodyfont={\normalfont\leftskip2.5em},
     headindent=-2.5em,
-    headformat={\textbf{Demostración:}},
     qed={\qedsymbol}
 ]{Proof}
 
+% Entornos de definiciones, teoremas y demás %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \declaretheorem[style=definition,name=Definición]{Def}
 \declaretheorem[style=definition,name=Teorema]{Teo}
-\declaretheorem[style=Proof, numbered=no]{Demo}
+\declaretheorem[style=Proof, numbered=no, name=Demostración]{Demo}
 % Portada %
 \newcommand*{\titleTMB}{\begingroup
 \def\drop{0.1\textheight}
