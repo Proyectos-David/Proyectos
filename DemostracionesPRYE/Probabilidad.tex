@@ -1,4 +1,4 @@
-\section{Estadística Descriptiva}
+\section{Probabilidad}
 
 Uno de los problemas no resueltos de esta primera parte del
 curso fue hallar la probabilidad de una unión finita de eventos.
@@ -85,17 +85,17 @@ Por último, recordar que
         \dots+(-1)^nP\left(\bigcap_{i=1}^{n+1}A_i\right)
       \right]\\
     =\\
-      &\qquad\begin{matrix*}[l]
-        \sum_{\mathclap{1\leq i\leq n+1}}P(A_i)
-        -\sum_{\mathclap{1\leq i < j\leq n+1}}P(A_i\cap A_j) +\\
-        \quad\sum_{\mathclap{1\leq i<j<k\leq n+1}}P(A_i\cap A_j\cap A_k)
-        -\dots+(-1)^{n+1}P\left(\bigcap_{i=1}^{n+1} A_i\right)
-      \end{matrix*}
+      \wff[10pt]{
+          \sum_{\mathclap{1\leq i\leq n+1}}P(A_i)
+          -\sum_{\mathclap{1\leq i < j\leq n+1}}P(A_i\cap A_j) +\\
+          \quad\sum_{\mathclap{1\leq i<j<k\leq n+1}}P(A_i\cap A_j\cap A_k)
+          -\dots+(-1)^{n+1}P\left(\bigcap_{i=1}^{n+1} A_i\right)
+        }
   \end{derivation}
   \]
 \end{Demo}
 
-\begin{Def}[Eventos independientes]
+\begin{Def}
   Sean $A$ y $B$ eventos de un espacio muestral. Se dice que $A$ y $B$
   son independientes, cuando $P(A\cap B)=P(A)\,P(B)$.
 \end{Def}
@@ -107,6 +107,7 @@ Por último, recordar que
     \item $A^c$ y $B$ son independientes.
   \end{enumerate}
 \end{Teo}
+\clearpage
 \begin{Demo}
   \begin{enumerate}
     Supóngase $A$ y $B$ eventos independientes de un espacio muestral.
@@ -154,3 +155,5 @@ Por último, recordar que
     Así, los eventos $A^c$ y $B$ también son independientes.
   \end{enumerate}
 \end{Demo}
+
+\clearpage
