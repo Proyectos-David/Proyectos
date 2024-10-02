@@ -83,6 +83,8 @@
 \endgroup}
 
 \everymath{\displaystyle}
+\RenewDocumentCommand{\dfrac}{mm}{\frac{\displaystyle#1}{\displaystyle#2}}
+\renewcommand{\iff}{\Leftrightarrow}
 \doublespacing
 \hyphenpenalty=1000
 
@@ -94,5 +96,6 @@
 \clearpage
 
 \include{Intro}
-\include{EstDesc}
+\include{Probabilidad}
+\include{Distribuciones}
 \end{document}
