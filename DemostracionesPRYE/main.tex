@@ -4,6 +4,7 @@
 \usepackage{calcDG}
 \usepackage{analysis}
 \usepackage{amsfonts}
+\usepackage{upgreek}
 \usepackage{mathrsfs}
 \usepackage{amsthm}
 \usepackage{thmtools}
@@ -17,6 +18,7 @@
 \usepackage{setspace}
 \usepackage{enumerate}
 \usepackage{tikz}
+\usepackage{ifthen}
 \usetikzlibrary{positioning}
 \usepackage{geometry}
 \geometry{
@@ -62,6 +64,7 @@
 \declaretheorem[style=definition,name=Definición]{Def}
 \declaretheorem[style=definition,name=Teorema]{Teo}
 \declaretheorem[style=Proof, numbered=no, name=Demostración]{Demo}
+\declaretheorem[style=definition, numbered=no, name=Lema]{Lema}
 % Portada %
 \newcommand*{\titleTMB}{\begingroup
 \def\drop{0.1\textheight}
@@ -82,8 +85,11 @@
 \vspace*{\drop}
 \endgroup}
 
+% Comandos y demás %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
 \everymath{\displaystyle}
 \RenewDocumentCommand{\dfrac}{mm}{\frac{\displaystyle#1}{\displaystyle#2}}
+\renewcommand{\epsilon}{\upvarepsilon}
 \renewcommand{\iff}{\Leftrightarrow}
 \doublespacing
 \hyphenpenalty=1000
