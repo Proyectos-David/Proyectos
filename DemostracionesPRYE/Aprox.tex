@@ -1,0 +1,155 @@
+\subsection{Teoremas de Aproximación}
+Se puede ver una similitud entre la \hyperref[dist:binom]{distribución binomial}
+y la \hyperref[dist:hip]{distribución hipergeométrica}, pues si en esta última, manteniendo
+un tamaño de muestra ($n$) fijo, a medida que aumentan el total de objetos ($N$ y $K$) bajo
+ciertas condiciones, los eventos que esta distribución describe tienen a ser independientes.
+Esto lleva al siguiente teorema de aproximación.
+
+\begin{Teo}
+  Sea $X$ una variable aleatoria con distribución hipergeométrica de
+  parámetros $N,K,n$ donde $n \geq 2$. Si para un $\epsilon>0$, se tiene que
+  \begin{align*}
+    \frac{n-x}{N-K} &< \epsilon\\
+    \frac{1}{K}   &< \epsilon\\
+    \frac{n-1}{N} &< \epsilon
+  \end{align*}
+  entonces,
+  \[\left|P(X=x) - B\left(n,\frac{K}{N}\right)(x)\right| < (\epsilon + 1)^{2n-3} - 1\]
+\end{Teo}
+
+Antes de comenzar con la demostración de este teorema, se presenta el siguiente lema, el
+cual será de utilidad para obtener el resultado presentado.
+\begin{Lema}
+  Sean $r\in\Z^+$ y $\left\{S_{k,n}\right\}_{1}^{r}$ una colección de $r$ sucesiones
+  en función de $n$ las cuales convergen a $1$. Dado $\epsilon>0$,
+  existe un $N\in\N$ tal que para todo $1\leq k\leq r$
+  \[n\geq N \To |S_{k,n} - 1| < \epsilon\]
+  entonces,
+  \[n\geq N \To \left|\prod_{k=1}^r S_{k,n} -1\right| < (\epsilon + 1)^r - 1\]
+\end{Lema}
+\begin{Demo}
+  La existencia de este $N$ consta de tomar el máximo entre los diferentes $N$'s
+  dados por la convergencia de cada sucesión en la colección. La demostración del
+  acotamiento se hará por inducción.
+
+  Caso base ($r=1$): se tiene que $|S_{1,n}| < \epsilon$, con lo que se cumple
+  la propiedad para una sucesión.
+
+  Paso inductivo: supóngase que para el producto de $r$ sucesiones, la propiedad se mantiene.
+  Para $r+1$ sucesiones
+
+  \begin{longderivation}
+      & \left|\prod_{k=1}^{r+1}S_{k,n} - 1\right|\\
+    =\\
+      & \left|S_{r+1,n}\prod_{k=1}^{r}S_{k,n} - 1\right|\\
+    =\\
+      & \left|
+        (S_{r+1,n} - 1)\left(\prod_{k=1}^{r}S_{k,n} - 1\right)
+        + (S_{r+1,n} - 1)
+        + \left(\prod_{k=1}^{r}S_{k,n} - 1\right)
+      \right|\\
+    \leq\\
+      &\left|(S_{r+1,n} - 1)\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|
+      + \left|(S_{r+1,n} - 1)\right|
+      + \left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|\\
+    <\\
+      &\epsilon\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|
+      + \epsilon + \left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|\\
+    =\\
+      &\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|(\epsilon + 1) + \epsilon
+  \end{longderivation}
+
+  Con esto, se define $f$ de la siguiente manera: $f(1) = \epsilon$ y
+  $f(r+1) = f(r)(\epsilon + 1) + \epsilon$. Nótese que, por el caso base y lo
+  desarrollado, $f$ cumple que
+  $\left|\prod_{k=1}^r S_{k,r}-1\right| < f(r)$.
+  Para resolver la ecuación de recurrencia, se define $g$ como
+  $g(r) = \frac{f(r)}{(\epsilon + 1)^r}$, es decir,
+  $g(1) = \frac{\epsilon}{\epsilon + 1}$ y $g(r+1) = \frac{f(r+1)}{(\epsilon + 1)^r+1}$.
+  Desarrollando la última expresión, se obtiene
+  \[
+    g(r+1) = \frac{f(r)}{(\epsilon + 1)^r} + \frac{\epsilon}{(\epsilon+1)^{r+1}}
+    = g(r) + \frac{\epsilon}{(\epsilon+1)^{r+1}}
+  \]
+  con lo que, por definición,
+  \begin{longderivation}
+      & g(r)\\
+    =\\
+      & \sum_{k=1}^{r}\frac{\epsilon}{(\epsilon + 1)^k}\\
+    =\\
+      & \frac{\epsilon}{\epsilon + 1}\sum_{k=0}^{r-1}\frac{1}{(\epsilon+1)^r}\\
+    =\\
+      & \frac{\epsilon}{\epsilon+1}
+      \left(\frac{1 - \dfrac{1}{(\epsilon + 1)^r}}{1 - \dfrac{1}{\epsilon+1}}\right)\\
+    =\\
+      & \frac{\epsilon}{\epsilon+1}
+      \left(\frac{(\epsilon + 1)^r - 1}{(\epsilon+1)^r}\frac{\epsilon+1}{\epsilon}\right)\\
+    =\\
+      & \frac{(\epsilon + 1)^r - 1}{(\epsilon+1)^r}
+  \end{longderivation}
+
+  Así, $f(r) = (\epsilon+1)^r\,g(r) = (\epsilon+1)^r - 1$.
+\end{Demo}
+\begin{Demo}
+  Inicialmente, se expresará la función de masa de $X$ en términos más prácticos para
+  esta demostración:
+  \begin{longderivation}
+      & \dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\\
+    =\\
+      & \frac{K!}{(K-x)!\,x!}\,\frac{(N-K)!}{(N-K-n+x)!\,(n-x)!}\,\frac{(N-n)!\,n!}{N!}\\
+    =\\
+      & \binom{n}{x}\dfrac{\prod_{i=1}^{K}i}{\prod_{i=1}^{K-x}i}
+      \dfrac{\prod_{j=1}^{N-K}j}{\prod_{j=1}^{N-K-n+x}j}
+      \dfrac{\prod_{s=1}^{N-n}s}{\prod_{s=1}^{N}s}\\
+    =\\
+      & \binom{n}{x}\smashoperator[r]{\prod_{i=K-x+1}^{K}}i\hspace{20pt}
+      \smashoperator[r]{\prod_{j=N-K-n+x+1}^{N-K}}j\hspace{30pt}
+      \dfrac{1}{\prod_{s=N-n+1}^{N}\mspace{-25mu}s\mspace{25mu}}\\
+    =\\
+      & \binom{n}{x}\prod_{i=0}^{x-1}(K-i)
+      \prod_{j=0}^{n-x-1}\mspace{-9mu}(N-K-j)\mspace{9mu}
+      \dfrac{1}{\prod_{s=0}^{n-1}(N-s)}\\
+    =\\
+      &\binom{n}{x}\left(\frac{K}{N}\right)^x\left(\frac{N-K}{N}\right)^{n-x}
+      \dfrac{\prod_{i=0}^{x-1}(K-i)}{K^x}
+      \dfrac{\prod_{j=0}^{n-x-1}\mspace{-9mu}(N-K-j)\mspace{9mu}}{(N-K)^{n-x}}
+      \dfrac{N^n}{\prod_{s=0}^{n-1}(N-s)}\\
+    =\\
+      & B\left(n,\frac{K}{N}\right)(x)\,\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
+      \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
+      \prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right)
+  \end{longderivation}
+
+  En este proceso no se toma en cuenta el caso en el que $x=0$ o $x=n$. Estos se
+  resolverán posterior a tratar con la última expresión.
+
+  Tomando en cuenta este resultado,
+  \begin{longderivation}<1.5>
+      & \left|\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}} -
+      B\left(n,\frac{K}{N}\right)(x)\right|\\
+    =\\
+      & B\left(n,\frac{K}{N}\right)(x)
+      \left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
+      \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
+      \prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right|\\
+    \why[\leq]{$B(n,p)(x)$ es una probabilidad, con lo que es siempre menor o igual a $1$}\\
+    &\left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
+    \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
+    \prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right|
+  \end{longderivation}
+
+  Nótese que cada término en cada productorio tiende a $1$ cuando $K,N,N-K$
+  tienden a infinito. Con esto basta para demostrar la convergencia.
+
+  En el los productorios se ven involucradas sucesiones las cuales convergen
+  a $0$ y además, son sencillas de acotar. Entonces, como
+  \begin{align*}
+    \left|1 - \frac{i}{K} - 1\right| &= \frac{i}{K} \leq \frac{x-1}{K}\\
+    \left|1 - \frac{j}{N-K} - 1\right| &= \frac{j}{N-K} \leq \frac{n-x-1}{N-K}\\
+    \left|1 + \frac{s}{N} - 1\right| &= \frac{s}{N} \leq \frac{n-1}{N}
+  \end{align*}
+  solo hace falta hallar una cota para los miembros derechos de las desigualdades para
+  acotar todos los términos de los productorios.
+
+  
+\end{Demo}

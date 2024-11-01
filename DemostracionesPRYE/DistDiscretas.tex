@@ -1,6 +1,7 @@
 \subsection{Distribuciones Discretas}
 \subsubsection{Binomial}
-Supóngase se realiza un experimento el cual tiene como posible
+\label{dist:binom}
+Supóngase que se realiza un experimento el cual tiene como posible
 resultado $a$ o $b$ exclusivamente, y además, el resultado
 de realizar nuevamente el experimento es independiente al
 resultado anterior. Dado que $a$ y $b$ son los únicos resultados,
@@ -82,7 +83,7 @@ Entonces
       =\\
         & E(X^2) - E^2(X)\\
       =\\
-        & \sum_{x=0}^1x^2\binom{n}{x}p^x(1-p)^{n-x} - p^2\\
+        & \sum_{x=0}^1x^2\binom{1}{x}p^x(1-p)^{1-x} - p^2\\
       =\\
         & p - p^2\\
       =\\
@@ -92,7 +93,8 @@ Entonces
   \end{enumerate}
 \end{Demo}
 \subsubsection{Hipergeométrica}
-Supóngase se tienen dos tipos de objetos, $a$ y $b$ en un total de
+\label{dist:hip}
+Supóngase que se tienen dos tipos de objetos, $a$ y $b$ en un total de
 $N$ objetos exclusivamente de estos dos tipos. Sea $K$ el número de
 objetos de tipo $a$ en el total de los $N$ objetos, es decir
 hay $N-K$ objetos de tipo $b$. Supóngase que se toman ahora $n$
@@ -117,7 +119,7 @@ de la muestra o tomar más objetos de tipo $a$ del total de estos.
 De la misma forma, no tiene sentido tomar una cantidad negativa
 de objetos tipo $a$, o tomar una cantidad de objetos tipo $a$
 de forma que haya una cantidad negativa de objetos tipo $b$ para completar
-los $n$ objetos.
+los $n$ objetos o más objetos de tipo $b$ de los que hay en total.
 De forma más concreta, se pueden ver las condiciones de $x$ dada la
 expresión de la función de masa presentada.
 \begin{longderivation}<0.8>
