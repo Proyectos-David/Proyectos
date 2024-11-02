@@ -12,7 +12,7 @@ Esto lleva al siguiente teorema de aproximación.
   \begin{align*}
     \frac{x-1}{K}     &< \epsilon\\
     \frac{n-x-1}{N-K} &< \epsilon\\
-    \frac{n-1}{N}     &< \epsilon
+    \frac{n-1}{N - n + 1}     &< \epsilon
   \end{align*}
   entonces,
   \[\left|P(X=x) - B\left(n,\frac{K}{N}\right)(x)\right| < (\epsilon + 1)^{2n} - 1\]
@@ -33,7 +33,7 @@ cual será de utilidad para obtener el resultado presentado.
   dados por la convergencia de cada sucesión en la colección. La demostración del
   acotamiento se hará por inducción.
 
-  Caso base ($r=1$): se tiene que $|S_{1,n}| < \epsilon$, con lo que se cumple
+  Caso base ($r=1$): se tiene que $|S_{1,n}-1| < \epsilon$, con lo que se cumple
   la propiedad para una sucesión.
 
   Paso inductivo: supóngase que para el producto de $r$ sucesiones, la propiedad se mantiene.
@@ -58,15 +58,21 @@ cual será de utilidad para obtener el resultado presentado.
       + \epsilon + \left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|\\
     =\\
       &\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|(\epsilon + 1) + \epsilon
+    <\\
+      & [(\epsilon + 1)^r - 1](\epsilon + 1) + \epsilon
+    =\\
+      * (\epsilon + 1)^{r+1} - 1
   \end{longderivation}
 
-  Con esto, se define $f$ de la siguiente manera: $f(1) = \epsilon$ y
+  Con esto ya estaría demostrado. Sin embargo, para entender de dónde
+  surgió originalmente el lema se presenta esta demostración alternativa:
+  Se define $f$ de la siguiente manera: $f(1) = \epsilon$ y
   $f(r+1) = f(r)(\epsilon + 1) + \epsilon$. Nótese que, por el caso base y lo
   desarrollado, $f$ cumple que
   $\left|\prod_{k=1}^r S_{k,r}-1\right| < f(r)$.
   Para resolver la ecuación de recurrencia, se define $g$ como
   $g(r) = \frac{f(r)}{(\epsilon + 1)^r}$, es decir,
-  $g(1) = \frac{\epsilon}{\epsilon + 1}$ y $g(r+1) = \frac{f(r+1)}{(\epsilon + 1)^r+1}$.
+  $g(1) = \frac{\epsilon}{\epsilon + 1}$ y $g(r+1) = \frac{f(r+1)}{(\epsilon + 1)^{r+1}}$.
   Desarrollando la última expresión, se obtiene
   \[
     g(r+1) = \frac{f(r)}{(\epsilon + 1)^r} + \frac{\epsilon}{(\epsilon+1)^{r+1}}
@@ -81,7 +87,7 @@ cual será de utilidad para obtener el resultado presentado.
       & \frac{\epsilon}{\epsilon + 1}\sum_{k=0}^{r-1}\frac{1}{(\epsilon+1)^r}\\
     =\\
       & \frac{\epsilon}{\epsilon+1}
-      \left(\frac{1 - \dfrac{1}{(\epsilon + 1)^r}}{1 - \dfrac{1}{\epsilon+1}}\right)\\
+      \left(\frac{1 - \dfrac{1}{(\epsilon + 1)^k}}{1 - \dfrac{1}{\epsilon+1}}\right)\\
     =\\
       & \frac{\epsilon}{\epsilon+1}
       \left(\frac{(\epsilon + 1)^r - 1}{(\epsilon+1)^r}\frac{\epsilon+1}{\epsilon}\right)\\
@@ -137,7 +143,7 @@ Siguiendo ahora con el teorema\dots
     \why[\leq]{$B(n,p)(x)$ es una probabilidad, con lo que es siempre menor o igual a $1$}\\
     &\left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
     \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
-    \prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right|
+    \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|
   \end{longderivation}
 
   Nótese que cada término en cada productorio tiende a $1$ cuando $K,N,N-K$
@@ -148,7 +154,7 @@ Siguiendo ahora con el teorema\dots
   \begin{align*}
     \left|1 - \frac{i}{K} - 1\right| &= \frac{i}{K} \leq \frac{x-1}{K}\\[10pt]
     \left|1 - \frac{j}{N-K} - 1\right| &= \frac{j}{N-K} \leq \frac{n-x-1}{N-K}\\[10pt]
-    \left|1 + \frac{s}{N} - 1\right| &= \frac{s}{N} \leq \frac{n-1}{N}
+    \left|1 + \frac{s}{N-s} - 1\right| &= \frac{s}{N-s} \leq \frac{n-1}{N-n+1}
   \end{align*}
   solo hace falta hallar una cota para los miembros derechos de las desigualdades para
   acotar todos los términos de los productorios.
@@ -157,7 +163,7 @@ Siguiendo ahora con el teorema\dots
   \begin{align*}
     \frac{x-1}{K}     &< \epsilon\\
     \frac{n-x-1}{N-K} &< \epsilon\\
-    \frac{n-1}{N}     &< \epsilon
+    \frac{n-1}{N-n+1} &< \epsilon
   \end{align*}
   Entonces, por el lema,
   \begin{align*}
@@ -165,7 +171,7 @@ Siguiendo ahora con el teorema\dots
     &< (\epsilon + 1)^x - 1\\[10pt]
     \left|\prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right) - 1\right|
     &< (\epsilon + 1)^{n-x} - 1\\[10pt]
-    \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right|
+    \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|
     &< (\epsilon + 1)^n - 1
   \end{align*}
 
@@ -251,7 +257,7 @@ Siguiendo ahora con el teorema\dots
     <\\
       & [(\epsilon + 1)^n - 1](\epsilon + 1)^n + (\epsilon + 1)^n - 1\\
     =\\
-      & (\epsilon + 1)^{2n} - 1 
+      & (\epsilon + 1)^{2n} - 1
   \end{longderivation}
 
   Para $n=1$ o $n=0$, la diferencia presentada es nula.
