@@ -59,7 +59,7 @@ cual será de utilidad para obtener el resultado presentado.
     =\\
       &\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|(\epsilon + 1) + \epsilon
     <\\
-      & [(\epsilon + 1)^r - 1](\epsilon + 1) + \epsilon
+      & [(\epsilon + 1)^r - 1](\epsilon + 1) + \epsilon\\
     =\\
       * (\epsilon + 1)^{r+1} - 1
   \end{longderivation}
@@ -125,7 +125,7 @@ Siguiendo ahora con el teorema\dots
     =\\
       & B\left(n,\frac{K}{N}\right)(x)\,\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
       \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
-      \prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right)
+      \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right)
   \end{longderivation}
 
   En este proceso no se toma en cuenta el caso en el que $x=0$ o $x=n$. Estos casos se
@@ -221,13 +221,13 @@ Siguiendo ahora con el teorema\dots
     =\\
       & B\left(n,\frac{K}{N}\right)(0)\left|
         \prod_{j=0}^{n-1}\left(1 - \frac{j}{N-K}\right)
-        \prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1
+        \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1
       \right|\\
     \leq\\
       & \left|\prod_{j=0}^{n-1}\left(1 - \frac{j}{N-K}\right) - 1\right|
-      \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right| + 
+      \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right| + 
       \left|\prod_{j=0}^{n-1}\left(1 - \frac{j}{N-K}\right) - 1\right| +
-      \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right|\\
+      \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|\\
     <\\
       & [(\epsilon + 1)^n - 1](\epsilon + 1)^n + (\epsilon + 1)^n - 1\\
     =\\
@@ -247,13 +247,13 @@ Siguiendo ahora con el teorema\dots
       & B\left(n,\frac{K}{N}\right)(n)
       \left|
         \prod_{i=0}^{n-1}\left(1 - \frac{i}{K}\right)
-        \prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1
+        \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1
       \right|\\
     \leq\\
         & \left|\prod_{i=0}^{n-1}\left(1 - \frac{i}{K}\right) - 1\right|
-        \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right| +
+        \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right| +
         \left|\prod_{i=0}^{n-1}\left(1 - \frac{i}{K}\right) - 1\right| +
-        \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right|\\
+        \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|\\
     <\\
       & [(\epsilon + 1)^n - 1](\epsilon + 1)^n + (\epsilon + 1)^n - 1\\
     =\\
