@@ -13,51 +13,51 @@ forma recursiva con la siguiente expresión
 \end{align*}
 Lo que se quiere es resolver esta función de recursión. Para esto,
 se evaluaran unos cuantos de sus resultados.
-\[
+
 \begin{derivation}
-    \wff{P(A_1 \cup A_2\cup A_3)}\\
+    & {P(A_1 \cup A_2\cup A_3)}\\
   =\\
-    \wff{P(A_3) + P(A_1 \cup A_2) - P((A_3\cap A_1) \cup (A_3\cap A_2))}\\
+    & {P(A_3) + P(A_1 \cup A_2) - P((A_3\cap A_1) \cup (A_3\cap A_2))}\\
   =\\
     &P(A_3) + P(A_2) + P(A_1) - P(A_1\cap A_2)\\
-    &\quad-[P(A_1\cap A_3) + P(A_2 \cap A_3) - P(A_1\cap A_2\cap A_3)]\\
+    &-[P(A_1\cap A_3) + P(A_2 \cap A_3) - P(A_1\cap A_2\cap A_3)]\\
   =\\
     &P(A_1) + P(A_2) + P(A_3) - P(A_1\cap A_2) - P(A_1\cap A_3)\\
-    &\quad- P(A_2\cap A_3) + P(A_1\cap A_2\cap A_3)\\
+    &- P(A_2\cap A_3) + P(A_1\cap A_2\cap A_3)\\
   =\\
-    \wff{
+    & {
       \sum_{i=1}^3P(A_i) - \sum_{i=1}^2\sum_{j=i+1}^3P(A_i\cap A_j)
       + P\left(\bigcap_{i=1}^3 A_i\right)
     }
 \end{derivation}
-\]
+
 Análogamente para cuatro eventos, usando lo obtenido
-\[
+
 \begin{derivation}
-    \wff{P(A_1\cup A_2\cup A_3\cup A_4)}\\
+    & {P(A_1\cup A_2\cup A_3\cup A_4)}\\
   =\\
-    \wff{P(A_4) + P(A_1\cup A_2\cup A_3) - P\left(\bigcup_{i=1}^3(A_4\cap A_i)\right)}\\
+    & {P(A_4) + P(A_1\cup A_2\cup A_3) - P\left(\bigcup_{i=1}^3(A_4\cap A_i)\right)}\\
   =\\
     & P(A_4) + \sum_{i=1}^3P(A_i) - \sum_{i=1}^2\sum_{j=i+1}^3P(A_i\cap A_j)
     + P\left(\bigcap_{i=1}^3 A_i\right)\\
-    &\quad-\left[\sum_{i=1}^3P(A_4\cap A_i) - \sum_{i=1}^2\sum_{j=i+1}^3P(A_4\cap A_i\cap A_j)
+    &-\left[\sum_{i=1}^3P(A_4\cap A_i) - \sum_{i=1}^2\sum_{j=i+1}^3P(A_4\cap A_i\cap A_j)
     + P\left(\bigcap_{i=1}^4 A_i\right)\right]\\
   =\\
-    \wff{
+    & {
       \sum_{i=1}^4P(A_i) - \sum_{i=1}^3\sum_{i=1}^4P(A_i\cap A_j) +
       \sum_{i=1}^2\sum_{j=i+1}^3\sum_{k=j+1}^4P(A_1\cap A_j\cap A_k) -
       P\left(\bigcap_{i=1}^4 A_i\right)
     }
 \end{derivation}
-\]
+
 Por último, recordar que
 \[\sum_{i=a}^b\sum_{j=i+1}^{b+1} f(i,j) = \sum_{\mathclap{a\leq i < j \leq b}}f(i,j)\]
 \begin{Teo}
   Sean $A_1,A_2,\dots,A_n$ eventos de un espacio muestral. Entonces,
   \[
-    P\left(\bigcup_{i=1}^nA_i\right) = \sum_{\mathclap{1\leq i\leq n}}P(A_i)
-    -\sum_{\mathclap{1\leq i < j\leq n}}P(A_i\cap A_j) +
-    \sum_{\mathclap{1\leq i<j<k\leq n}}P(A_i\cap A_j\cap A_k)
+    P\left(\bigcup_{i=1}^nA_i\right) = \smashoperator[r]{\sum_{1\leq i\leq n}}P(A_i)
+    -\smashoperator[lr]{\sum_{1\leq i<j\leq n}}P(A_i\cap A_j) +
+    \smashoperator[lr]{\sum_{1\leq i<j<k\leq n}}P(A_i\cap A_j\cap A_k)
     -\dots+(-1)^nP\left(\bigcap_{i=1}^n A_i\right)
   \]
   De otra forma, la probabilidad de una unión finita es la suma de
@@ -69,30 +69,30 @@ Por último, recordar que
   definición recursiva y para $n=3$ fue el desarrollo anterior.
   Para el paso inductivo, supóngase que la propiedad se mantiene hasta
   un valor $n$.
-  \[
+\begin{center}
   \begin{derivation}
-      \wff{P\left(\bigcup_{i=1}^{n+1} A_i\right)}\\
+      & {P\left(\bigcup_{i=1}^{n+1} A_i\right)}\\
     =\\
-      \wff{
+      & {
         P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right) -
         P\left(\bigcup_{i=1}^n (A_{n+1}\cap A_i)\right)
       }\\
     =\\
       &P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right)\\
-      &\quad-\left[\hspace{3pt}
-        \sum_{\mathclap{1\leq i\leq n}}(A_{n+1}\cap A_i)
+      &-\left[
+        \smashoperator[r]{\sum_{1\leq i\leq n}}(A_{n+1}\cap A_i)
         -\sum_{\mathclap{1\leq i<j\leq n}}(A_{n+1}\cap A_i\cap A_j) +
         \dots+(-1)^nP\left(\bigcap_{i=1}^{n+1}A_i\right)
       \right]\\
     =\\
-      \wff[10pt]{
-          \sum_{\mathclap{1\leq i\leq n+1}}P(A_i)
-          -\sum_{\mathclap{1\leq i < j\leq n+1}}P(A_i\cap A_j) +\\
-          \quad\sum_{\mathclap{1\leq i<j<k\leq n+1}}P(A_i\cap A_j\cap A_k)
+      & 
+          \smashoperator[r]{\sum_{1\leq i\leq n+1}}P(A_i)
+          -\sum_{\mathclap{1\leq i < j\leq n+1}}P(A_i\cap A_j)\\
+      &   +\\
+      &   \smashoperator[r]{\sum_{1\leq i<j<k\leq n+1}}P(A_i\cap A_j\cap A_k)
           -\dots+(-1)^{n+1}P\left(\bigcap_{i=1}^{n+1} A_i\right)
-        }
   \end{derivation}
-  \]
+\end{center}
 \end{Demo}
 
 \begin{Def}
@@ -112,46 +112,46 @@ Por último, recordar que
   \begin{enumerate}
     Supóngase $A$ y $B$ eventos independientes de un espacio muestral.
     \item Partiendo de que $A^c \cap B^c = (A\cup B)^c$.
-    \[
+    
     \begin{derivation}<0.9>
-        \wff{P(A^c\cap B^c)}\\
+        & {P(A^c\cap B^c)}\\
       =\\
-        \wff{1 - P(A\cup B)}\\
+        & {1 - P(A\cup B)}\\
       =\\
-        \wff{1 - [P(A) + P(B) - P(A\cap B)]}\\
+        & {1 - [P(A) + P(B) - P(A\cap B)]}\\
       =\\
-        \wff{1-P(A)+P(B)-P(A)P(B)}\\
+        & {1-P(A)+P(B)-P(A)P(B)}\\
       =\\
-        \wff{(1-P(A))(1-P(B))}\\
+        & {(1-P(A))(1-P(B))}\\
       =\\
-        \wff{P(A^c)\,P(B^c)}
+        & {P(A^c)\,P(B^c)}
     \end{derivation}
-    \]
+    
     Así, los eventos $A^c$ y $B^c$ también son independientes.
     \item Partiendo de que $B=(B\cap A)\cup(B\cap A^c)$
-    \[
+    
     \begin{derivation}<0.9>
-        \wff{P(B)}\\
+        & {P(B)}\\
       =\\
-        \wff{P((B\cap A)\cup(B\cap A^c))}\\
+        & {P((B\cap A)\cup(B\cap A^c))}\\
       =\\
-        \wff{P(B\cap A) + P(B\cap A^c) - P(\varnothing)}\\
+        & {P(B\cap A) + P(B\cap A^c) - P(\varnothing)}\\
       =\\
-        \wff{P(B)\,P(A) + P(B\cap A^c)}
+        & {P(B)\,P(A) + P(B\cap A^c)}
     \end{derivation}
-    \]
+    
     Tomando la primera y última igualdad
-    \[
+    
     \begin{derivation}<0.9>
-        \wff{P(B\cap A^c)}\\
+        & {P(B\cap A^c)}\\
       =\\
-        \wff{P(B) - P(B)P(A)}\\
+        & {P(B) - P(B)P(A)}\\
       =\\
-        \wff{P(B)(1-P(A))}\\
+        & {P(B)(1-P(A))}\\
       =\\
-        \wff{P(B)\,P(A^c)}
+        & {P(B)\,P(A^c)}
     \end{derivation}
-    \]
+    
     Así, los eventos $A^c$ y $B$ también son independientes.
   \end{enumerate}
 \end{Demo}
