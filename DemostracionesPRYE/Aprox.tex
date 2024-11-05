@@ -61,7 +61,7 @@ cual será de utilidad para obtener el resultado presentado.
     <\\
       & [(\epsilon + 1)^r - 1](\epsilon + 1) + \epsilon\\
     =\\
-      * (\epsilon + 1)^{r+1} - 1
+      &(\epsilon + 1)^{r+1} - 1
   \end{longderivation}
 
   Con esto ya estaría demostrado. Sin embargo, para entender de dónde
@@ -139,7 +139,7 @@ Siguiendo ahora con el teorema\dots
       & B\left(n,\frac{K}{N}\right)(x)
       \left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
       \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
-      \prod_{s=0}^{n-1}\left(1 + \frac{s}{N}\right) - 1\right|\\
+      \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|\\
     \why[\leq]{$B(n,p)(x)$ es una probabilidad, con lo que es siempre menor o igual a $1$}\\
     &\left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
     \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
@@ -149,7 +149,7 @@ Siguiendo ahora con el teorema\dots
   Nótese que cada término en cada productorio tiende a $1$ cuando $K,N,N-K$
   tienden a infinito. Con esto basta para demostrar la convergencia.
 
-  En el los productorios se ven involucradas sucesiones las cuales convergen
+  En los productorios, se ven involucradas sucesiones las cuales convergen
   a $0$ y además, son sencillas de acotar. Entonces, como
   \begin{align*}
     \left|1 - \frac{i}{K} - 1\right| &= \frac{i}{K} \leq \frac{x-1}{K}\\[10pt]
