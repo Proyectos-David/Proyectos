@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[arrows]{logicDG}
+\usepackage{calcDG}
+\usepackage{analysis}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{etoolbox}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{geometry}
+\geometry{
+  left=2cm,
+  right=2cm,
+  bottom=4cm,
+  a4paper
+}
+\declaretheoremstyle[
+    headpunct={},
+    bodyfont={\normalfont\leftskip2.5em},
+    headindent=-2.5em,
+    headformat={\textbf{Demostración:}},
+    qed={\qedsymbol}
+]{Proof}
+
+\begin{document}
+
+\section{Propiedades Var y E}
+\subsection{$Var(x) \geq 0$}
+\begin{proof}
+    Por definición $Var(X) = E(X - \mu)^2$ donde $\mu = E(X) = \int_{-\infty}^{\infty}xf(x)dx$ 
+    Entonces $Var(X) = \int_{-\infty}^{\infty}(x-\mu)^2 f(x)dx$.
+
+    Dado que $(x-\mu)^2 \geq 0$ y $f(x) \geq 0$ para toda función de densidad, entonces
+    la integral siempre es mayor que cero
+\end{proof}
+\subsection{$Var(cX) = c^2Var(X)$}
+\end{document}
