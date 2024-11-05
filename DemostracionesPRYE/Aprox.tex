@@ -36,6 +36,20 @@ cual será de utilidad para obtener el resultado presentado.
   Caso base ($r=1$): se tiene que $|S_{1,n}-1| < \epsilon$, con lo que se cumple
   la propiedad para una sucesión.
 
+  para $r=2$
+
+  \begin{longderivation}
+      & \left|S_{1,n}\,S_{2,n} - 1\right|\\
+    =\\
+      & \left|(S_{1,n} - 1)(S_{2,n} - 1) + S_{1,n} - 1 + S_{2,n} - 1\right|\\
+    \leq\\
+      & \left|S_{1,n}-1\right||S_{2,n}-1| + |S_{1,n}-1| + |S_{2,n}-1|\\
+    <\\
+      & \epsilon^2 + 2\epsilon\\
+    =\\
+      & (\epsilon + 1)^2 - 1
+  \end{longderivation}
+
   Paso inductivo: supóngase que para el producto de $r$ sucesiones, la propiedad se mantiene.
   Para $r+1$ sucesiones
 
@@ -57,7 +71,7 @@ cual será de utilidad para obtener el resultado presentado.
       &\epsilon\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|
       + \epsilon + \left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|\\
     =\\
-      &\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|(\epsilon + 1) + \epsilon
+      &\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|(\epsilon + 1) + \epsilon\\
     <\\
       & [(\epsilon + 1)^r - 1](\epsilon + 1) + \epsilon\\
     =\\
