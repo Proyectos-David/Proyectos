@@ -24,4 +24,27 @@ Entonces $Var(X) = 2V$ y $E(x) = V$
         =\\
         & v 
         \end{derivation}
+
+    Ahora, se demuestra que $Var(x) = 2n$
+    \begin{derivation}
+        & Var(x)\\
+        =\\
+        & E(X^2)-E^2(X)\\
+        =\\
+        &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{2}x^{\frac{v}{2}-1}e^{\frac{-x}{2}}dx -v^2\\
+        =\\
+        &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}+1}e^{-\frac{x}{2}}dx - v^2\\
+        =\\
+        &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}2\int_{0}^{\infty}2^{\frac{v}{2}+1}u^{\frac{v}{2}+1}e^{-u}du - v^2\\
+        =\\
+        & \frac{4}{\Gamma(\frac{v}{2})}\Gamma{\frac{v}{2}+2}-v^2\\
+        =\\
+        & \frac{4}{\Gamma(\frac{v}{2})}(\frac{v}{2}+1)(\frac{v}{2})\Gamma(\frac{v}{2})-v^2\\
+        =\\
+        & 4\frac{v^2}{4}+4\frac{v}{2}-v^2\\
+        =\\
+        & v^2 +2v - v^2\\
+        =\\
+        & 2v
+    \end{derivation}
 \end{Demo}
