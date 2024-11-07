@@ -1,0 +1,27 @@
+\section{Distribución chi-cuadrada}
+Sea X una variable aleatoria tal que $X~\chi^2(v)$, entonces su $fdd$
+\[
+    F(X) = \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})} * x^{\frac{v}{2}-1}e^{\frac{-x}{2}}
+\]
+Entonces $Var(X) = 2V$ y $E(x) = V$
+
+\begin{Demo}
+    Primero se comprueba $E(X)$
+    \begin{derivation}
+        & E(X)\\
+        =\\
+        & \int_{0}^{\infty} xf(x)dx\\
+        =\\
+        & \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}-1+1}e^{\frac{-x}{2}}dx\\
+        = \\
+        & \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}*2\int_{0}^{\infty}2^{\frac{v}{2}}x^{\frac{v}{2}}e^{-u}du\\
+        =\\
+        & \frac{2}{\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}}e^{-u}du\\
+        =\\
+        & \frac{2}{\Gamma(\frac{v}{2})}\Gamma(\frac{v}{2}+1)\\
+        =\\
+        &\frac{2}{\Gamma(\frac{v}{2})}\frac{v}{2}\Gamma(\frac{v}{2})\\
+        =\\
+        & v 
+        \end{derivation}
+\end{Demo}
