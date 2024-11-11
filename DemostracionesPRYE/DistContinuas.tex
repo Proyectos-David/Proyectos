@@ -1,17 +1,17 @@
 \section{Distribuciones Continuas}
 \subsection{Chi-cuadrada}
-Sea X una variable aleatoria tal que $X\sim\chi^2(V)$, entonces su $fdd$
+Sea X una variable aleatoria tal que $X\sim\chi^2(v)$, entonces su $fdd$
 \[
-    F(X) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
+    F(x) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
 \]
-Entonces $\text{Var}[X] = 2V$ y $\text{E}[X] = V$
+Entonces $\text{Var}[X] = 2v$ y $\text{E}[X] = v$
 
 \begin{Demo}
-    Primero se comprueba $\text{E}[X] = V$
+    Primero se comprueba $\text{E}[X] = v$
 
     \begin{center}
         \begin{derivation}
-            & \text{E}[x]\\
+            & \text{E}[X]\\
             =\\
             & \int_{0}^{\infty} xf(x)dx\\
             =\\
@@ -29,13 +29,13 @@ Entonces $\text{Var}[X] = 2V$ y $\text{E}[X] = V$
             \end{derivation}
     \end{center}
 
-    Ahora, se demuestra que $Var(x) = 2n$
+    Ahora, se demuestra que $\text{Var}[x] = 2v$
     
     \begin{center}
         \begin{derivation}
-            & Var(x)\\
+            & \text{Var}[X]\\
             =\\
-            & E(X^2)-E^2(X)\\
+            & \text{E}[X^2]-\text{E}^2[X]\\
             =\\
             &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{2}x^{(\nicefrac{v}{2})-1}e^{\nicefrac{-x}{2}}dx -v^2\\
             =\\
