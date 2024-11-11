@@ -22,8 +22,8 @@ Entonces
   Sea $X$ una variable aleatoria la cual sigue una distribución
   binomial $B(n,p)$. Entonces
   \begin{enumerate}
-    \item $E(X) = np$
-    \item $\text{Var}(X)=np(1-p)$
+    \item $\text{E}[X] = np$
+    \item $\text{Var}[X]=np(1-p)$
   \end{enumerate}
 \end{Teo}
 \begin{Demo}
@@ -31,7 +31,7 @@ Entonces
   \begin{enumerate}
     \item~
     \begin{longderivation}<0.8>
-        & {E(X)}\\
+        & {\text{E}[X]}\\
       =\\
         & {\sum_{x=0}^nx\binom{n}{x}p^x(1-p)^{n-x}}\\
       =\\
@@ -45,9 +45,9 @@ Entonces
     \end{longderivation}
     \item~
     \begin{longderivation}<0.8>
-        & {\text{Var}(X)}\\
+        & {\text{Var}[X]}\\
       =\\
-        & {E(X^2) - E^2(X)}\\
+        & {E[X^2] - E^2[X]}\\
       =\\
         & {\sum_{x=0}^nx^2\binom{n}{x}p^x(1-p)^{n-x} - (np)^2}\\
       =\\
@@ -79,9 +79,9 @@ Entonces
     \end{longderivation}
     Este argumento es válido siempre que $n\geq 2$. Si $n<2$, entonces $n=1$ y
     \begin{longderivation}<0.8>
-        & \text{Var}(X)\\
+        & \text{Var}[X]\\
       =\\
-        & E(X^2) - E^2(X)\\
+        & E[X^2] - E^2[X]\\
       =\\
         & \sum_{x=0}^1x^2\binom{1}{x}p^x(1-p)^{1-x} - p^2\\
       =\\
@@ -105,7 +105,7 @@ $n$ objetos tomados. Entonces
 \begin{Def}
   Sea $X$ una variable aleatoria discreta. $X$ sigue una distribución
   hipergeométrica con parámetros $N,K,n$ ($N,K,n\in\Z^+,K\leq N, n\leq N$),
-  cuando su función de masa es
+  denotada por $Hg(N,K,n)$, cuando su función de masa es
   \[
     f(x)=P(X=x)=\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}},\qquad
     \max\{0,n+K-N\} \leq x \leq \min\{K,n\}
@@ -129,4 +129,110 @@ expresión de la función de masa presentada.
   \iff\\
     & \max\{0,n+K-N\}\leq x\leq\min\{K,n\}
 \end{longderivation}
+Sin embargo, tomando la convención de que $\binom{n}{k} = 0$ cuando $k>n$,
+se puede tomar a $x$ entre $0$ y $n$.
+
+Para demostrar la validez de esta función de masa, hace falta un resultado
+sobre la combinatoria.
+\begin{Lema}[Identidad de Vandermonde]
+  Sean $m,n,k\in\Z$ no negativos. Entonces
+  \[\binom{m+n}{k} = \sum_{r=0}^k\binom{m}{r}\binom{n}{k-r}\]
+  Esta identidad tiene sentido tomando la convención mencionada anteriormente.
+\end{Lema}
+\begin{Demo}
+  La demostración se hará por inducción sobre $m$, tomando $k,n$ como
+  enteros no negativos arbitrarios. Caso base ($m=0$):
+  \[\binom{0+n}{k} = \sum_{r=0}^k\binom{0}{r}\binom{n}{k-r}=\binom{n}{k}\]
+  Paso inductivo: sea $k\in\Z$ con $k\geq1$ y supóngase que la propiedad se mantiene
+  para todo entero no negativo hasta $k$. (Para $k=0$ la propiedad es trivial)
+  \begin{longderivation}
+      & \binom{m+n}{k+1}\\
+    =\\
+      & \binom{m+n}{k} + \binom{m+n}{k-1}\\
+    =\\
+      & \sum_{r=0}^k\binom{m}{r}\binom{n}{k-r} +
+      \sum_{r=0}^{k-1}\binom{m}{r}\binom{n}{k-1-r}\\
+    =\\
+      & \binom{m}{k} + 
+      \sum_{r=0}^{k-1}\binom{m}{r}\left(\binom{n}{k-r} + \binom{n}{k-1-r}\right)\\
+    =\\
+      & \binom{m}{n} + \sum_{k=0}^{k-1}\binom{m}{r}\binom{n}{k-r}\\
+    =\\
+      & \sum_{k=0}^k \binom{m}{k}\binom{n}{k-r}
+  \end{longderivation}
+\end{Demo}
+
+\begin{Teo}
+  Sea $X\sim Hg(N,K,n)$. Entonces,
+  \begin{enumerate}
+    \item para todo $x\in\Z$ con $0\leq x\leq n$, $P(X=x) \geq 0$.
+    \item $\sum_{x=0}^nP(X=x) = 1$.
+    \item $\text{E}[X]=\frac{nK}{N}$.
+    \item $\text{Var}[X] = \frac{n\,K(N-K)(N-n)}{N^2(N-1)}$.
+  \end{enumerate}
+\end{Teo}
+\begin{Demo}~
+  \begin{enumerate}
+    \item Sea $x\in\Z$ con $0\leq x\leq n$. Recordando que
+    \[P(X=x) = \dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\]
+    dado que todos los términos de la expresión son no negativos, se
+    concluye que $P(X=x)\geq0$
+    \item ~
+    \begin{longderivation}
+        & \sum_{x=0}^nP(X=i)\\
+      =\\
+        & \sum_{x=0}^n\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\\
+      =\\
+        & \dfrac{1}{\binom{N}{n}}\sum_{x=0}^n\binom{K}{x}\binom{N-K}{n-x}\\
+      =\\
+        & \dfrac{\binom{N}{n}}{\binom{N}{n}}\\
+      =\\
+        & 1
+    \end{longderivation}
+    \item~
+    \begin{longderivation}
+        & \text{E}[X]\\
+      =\\
+        & \sum_{x=0}^nx\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\\
+      =\\
+        & \dfrac{1}{\binom{N}{n}}\sum_{x=0}^nx\binom{K}{x}\binom{N-K}{n-x}\\
+      =\\
+        & \dfrac{K}{\binom{N}{n}}\sum_{x=1}^n\binom{K-1}{x-1}\binom{N-K}{n-x}\\
+      =\\
+        & \dfrac{K}{\binom{N}{n}}\sum_{x=0}^{n-1}\binom{K-1}{x}\binom{N-K}{n-x-1}\\
+      =\\
+        & \dfrac{K}{\binom{N}{n}}\binom{N-1}{n-1}\\
+      =\\
+        & \frac{K\,n}{N}
+    \end{longderivation}
+    \item~
+    \begin{longderivation}
+        & \text{Var}[X]\\
+      =\\
+        & \text{E}[X^2] - \text{E}[X] + \text{E}[X] - \text{E}^2[X]\\
+      =\\
+        & \dfrac{1}{\binom{N}{n}}\sum_{x=0}^nx^2\binom{K}{x}\binom{N-K}{n-x}
+        - \dfrac{1}{\binom{N}{n}}\sum_{x=0}^nx\binom{K}{x}\binom{N-K}{n-x}
+        + \frac{n\,K}{N} - \frac{n^2\,K^2}{N^2}\\
+      =\\
+        & \dfrac{K}{\binom{N}{n}}\left[
+          \sum_{x=0}^{n-1}x\binom{K-1}{x-1}\binom{N-K}{n-x-1} -
+          \sum_{x=0}^{n-1}\binom{K-1}{x-1}\binom{N-K}{n-x-1}
+        \right]
+        + \frac{n\,K}{N} - \frac{n^2\,K^2}{N^2}\\
+      =\\
+        & \dfrac{K(K-1)}{\binom{N}{n}}
+          \sum_{x=0}^{n-2}\binom{K-2}{x}\binom{N-K}{n-x-2}
+        + \frac{n\,K}{N} - \frac{n^2\,K^2}{N^2}\\
+      =\\
+        & \dfrac{K(K-1)}{\binom{N}{n}}\binom{N-2}{n-2}
+        + \frac{n\,K}{N} - \frac{n^2\,K^2}{N^2}\\
+      =\\
+        & \frac{K(K-1)n(n-1)}{N(N-1)}
+        + \frac{n\,K}{N} - \frac{n^2\,K^2}{N^2}\\
+      =\\
+        & \frac{n\,K(N-K)(N-n)}{N^2(N-1)}
+    \end{longderivation}
+  \end{enumerate}
+\end{Demo}
 \clearpage
