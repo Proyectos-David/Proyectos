@@ -1,29 +1,29 @@
 \section{Distribuciones Continuas}
 \subsection{Chi-cuadrada}
-Sea X una variable aleatoria tal que $X~\chi^2(v)$, entonces su $fdd$
+Sea X una variable aleatoria tal que $X\sim\chi^2(V)$, entonces su $fdd$
 \[
-    F(X) = \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})} * x^{\frac{v}{2}-1}e^{\frac{-x}{2}}
+    F(X) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
 \]
-Entonces $Var(X) = 2V$ y $E(x) = V$
+Entonces $\text{Var}[X] = 2V$ y $\text{E}[X] = V$
 
 \begin{Demo}
-    Primero se comprueba $E(X)$
+    Primero se comprueba $\text{E}[X] = V$
 
     \begin{center}
         \begin{derivation}
-            & E(X)\\
+            & \text{E}[x]\\
             =\\
             & \int_{0}^{\infty} xf(x)dx\\
             =\\
-            & \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}-1+1}e^{\frac{-x}{2}}dx\\
+            & \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{\left(\nicefrac{v}{2}\right)}e^{\nicefrac{-x}{2}}dx\\
             = \\
-            & \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}*2\int_{0}^{\infty}2^{\frac{v}{2}}x^{\frac{v}{2}}e^{-u}du\\
+            & \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}2\int_{0}^{\infty}2^{\nicefrac{v}{2}}u^{\nicefrac{v}{2}}e^{-u}du\\
             =\\
-            & \frac{2}{\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}}e^{-u}du\\
+            & \frac{2}{\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}u^{\nicefrac{v}{2}}e^{-u}du\\
             =\\
-            & \frac{2}{\Gamma(\frac{v}{2})}\Gamma(\frac{v}{2}+1)\\
+            & \frac{2}{\Gamma\left(\frac{v}{2}\right)}\Gamma\left(\frac{v}{2}+1\right)\\
             =\\
-            &\frac{2}{\Gamma(\frac{v}{2})}\frac{v}{2}\Gamma(\frac{v}{2})\\
+            &\frac{2}{\Gamma\left(\frac{v}{2}\right)}\left(\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)\\
             =\\
             & v 
             \end{derivation}
@@ -37,17 +37,17 @@ Entonces $Var(X) = 2V$ y $E(x) = V$
             =\\
             & E(X^2)-E^2(X)\\
             =\\
-            &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{2}x^{\frac{v}{2}-1}e^{\frac{-x}{2}}dx -v^2\\
+            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{2}x^{(\nicefrac{v}{2})-1}e^{\nicefrac{-x}{2}}dx -v^2\\
             =\\
-            &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}+1}e^{-\frac{x}{2}}dx - v^2\\
+            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{(\nicefrac{v}{2})+1}e^{-\nicefrac{x}{2}}dx - v^2\\
             =\\
-            &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}2\int_{0}^{\infty}2^{\frac{v}{2}+1}u^{\frac{v}{2}+1}e^{-u}du - v^2\\
+            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}2\int_{0}^{\infty}2^{1+\nicefrac{v}{2}}u^{1+\nicefrac{v}{2}}e^{-u}du - v^2\\
             =\\
-            & \frac{4}{\Gamma(\frac{v}{2})}\Gamma{\frac{v}{2}+2}-v^2\\
+            & \frac{4}{\Gamma\left(\frac{v}{2}\right)}\Gamma\left(\frac{v}{2}+2\right)-v^2\\
             =\\
-            & \frac{4}{\Gamma(\frac{v}{2})}(\frac{v}{2}+1)(\frac{v}{2})\Gamma(\frac{v}{2})-v^2\\
+            & \frac{4}{\Gamma\left(\frac{v}{2}\right)}\left(\frac{v}{2}+1\right)\left(\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)-v^2\\
             =\\
-            & 4\frac{v^2}{4}+4\frac{v}{2}-v^2\\
+            & 4\left(\frac{v^2}{4}\right)+4\left(\frac{v}{2}\right)-v^2\\
             =\\
             & v^2 +2v - v^2\\
             =\\
