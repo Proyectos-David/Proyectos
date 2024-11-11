@@ -1,50 +1,50 @@
 \section{Distribución chi-cuadrada}
-Sea X una variable aleatoria tal que $X~\chi^2(v)$, entonces su $fdd$
+Sea X una variable aleatoria tal que $X\sim\chi^2\left(v\right)$, entonces su $fdd$
 \[
-    F(X) = \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})} * x^{\frac{v}{2}-1}e^{\frac{-x}{2}}
+    F\left(X\right) = \frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}x^{\frac{v}{2}-1}e^{\frac{-x}{2}}
 \]
-Entonces $Var(X) = 2V$ y $E(x) = V$
+Entonces $Var\left(X\right) = 2V$ y $E\left(x\right) = V$
 
 \begin{Demo}
-    Primero se comprueba $E(X)$
+    Primero se comprueba $E\left(X\right)$
 
     \begin{center}
         \begin{derivation}
-            & E(X)\\
+            & E\left(X\right)\\
             =\\
-            & \int_{0}^{\infty} xf(x)dx\\
+            & \int_{0}^{\infty} xf\left(x\right)dx\\
             =\\
-            & \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}-1+1}e^{\frac{-x}{2}}dx\\
+            & \frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{\frac{v}{2}-1+1}e^{\frac{-x}{2}}dx\\
             = \\
-            & \frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}*2\int_{0}^{\infty}2^{\frac{v}{2}}x^{\frac{v}{2}}e^{-u}du\\
+            & \frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}*2\int_{0}^{\infty}2^{\frac{v}{2}}x^{\frac{v}{2}}e^{-u}du\\
             =\\
-            & \frac{2}{\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}}e^{-u}du\\
+            & \frac{2}{\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{\frac{v}{2}}e^{-u}du\\
             =\\
-            & \frac{2}{\Gamma(\frac{v}{2})}\Gamma(\frac{v}{2}+1)\\
+            & \frac{2}{\Gamma\left(\frac{v}{2}\right)}\Gamma\left(\frac{v}{2}+1\right)\\
             =\\
-            &\frac{2}{\Gamma(\frac{v}{2})}\frac{v}{2}\Gamma(\frac{v}{2})\\
+            &\frac{2}{\Gamma\left(\frac{v}{2}\right)}\frac{v}{2}\Gamma\left(\frac{v}{2}\right)\\
             =\\
             & v 
             \end{derivation}
     \end{center}
 
-    Ahora, se demuestra que $Var(x) = 2n$
+    Ahora, se demuestra que $Var\left(x\right) = 2n$
     
     \begin{center}
         \begin{derivation}
-            & Var(x)\\
+            & Var\left(x\right)\\
             =\\
-            & E(X^2)-E^2(X)\\
+            & E\left(X^2\right)-E^2\left(X\right)\\
             =\\
-            &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{2}x^{\frac{v}{2}-1}e^{\frac{-x}{2}}dx -v^2\\
+            &\frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{2}x^{\frac{v}{2}-1}e^{\frac{-x}{2}}dx -v^2\\
             =\\
-            &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}\int_{0}^{\infty}x^{\frac{v}{2}+1}e^{-\frac{x}{2}}dx - v^2\\
+            &\frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{\frac{v}{2}+1}e^{-\frac{x}{2}}dx - v^2\\
             =\\
-            &\frac{1}{2^{\frac{v}{2}}\Gamma(\frac{v}{2})}2\int_{0}^{\infty}2^{\frac{v}{2}+1}u^{\frac{v}{2}+1}e^{-u}du - v^2\\
+            &\frac{1}{2^{\frac{v}{2}}\Gamma\left(\frac{v}{2}\right)}2\int_{0}^{\infty}2^{\frac{v}{2}+1}u^{\frac{v}{2}+1}e^{-u}du - v^2\\
             =\\
-            & \frac{4}{\Gamma(\frac{v}{2})}\Gamma{\frac{v}{2}+2}-v^2\\
+            & \frac{4}{\Gamma\left(\frac{v}{2}\right)}\Gamma{\frac{v}{2}+2}-v^2\\
             =\\
-            & \frac{4}{\Gamma(\frac{v}{2})}(\frac{v}{2}+1)(\frac{v}{2})\Gamma(\frac{v}{2})-v^2\\
+            & \frac{4}{\Gamma\left(\frac{v}{2}\right)}\left(\frac{v}{2}+1\right)\left(\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)-v^2\\
             =\\
             & 4\frac{v^2}{4}+4\frac{v}{2}-v^2\\
             =\\
