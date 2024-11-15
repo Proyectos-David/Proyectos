@@ -14,7 +14,7 @@ forma recursiva con la siguiente expresión
 Lo que se quiere es resolver esta función de recursión. Para esto,
 se evaluaran unos cuantos de sus resultados.
 
-\begin{derivation}
+\begin{longderivation}
     & {P(A_1 \cup A_2\cup A_3)}\\
   =\\
     & {P(A_3) + P(A_1 \cup A_2) - P((A_3\cap A_1) \cup (A_3\cap A_2))}\\
@@ -29,11 +29,11 @@ se evaluaran unos cuantos de sus resultados.
       \sum_{i=1}^3P(A_i) - \sum_{i=1}^2\sum_{j=i+1}^3P(A_i\cap A_j)
       + P\left(\bigcap_{i=1}^3 A_i\right)
     }
-\end{derivation}
+\end{longderivation}
 
 Análogamente para cuatro eventos, usando lo obtenido
 
-\begin{derivation}
+\begin{longderivation}
     & {P(A_1\cup A_2\cup A_3\cup A_4)}\\
   =\\
     & {P(A_4) + P(A_1\cup A_2\cup A_3) - P\left(\bigcup_{i=1}^3(A_4\cap A_i)\right)}\\
@@ -48,7 +48,7 @@ Análogamente para cuatro eventos, usando lo obtenido
       \sum_{i=1}^2\sum_{j=i+1}^3\sum_{k=j+1}^4P(A_1\cap A_j\cap A_k) -
       P\left(\bigcap_{i=1}^4 A_i\right)
     }
-\end{derivation}
+\end{longderivation}
 
 Por último, recordar que
 \[\sum_{i=a}^b\sum_{j=i+1}^{b+1} f(i,j) = \sum_{\mathclap{a\leq i < j \leq b}}f(i,j)\]
@@ -69,30 +69,28 @@ Por último, recordar que
   definición recursiva y para $n=3$ fue el desarrollo anterior.
   Para el paso inductivo, supóngase que la propiedad se mantiene hasta
   un valor $n$.
-\begin{center}
-  \begin{derivation}
-      & {P\left(\bigcup_{i=1}^{n+1} A_i\right)}\\
-    =\\
-      & {
-        P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right) -
-        P\left(\bigcup_{i=1}^n (A_{n+1}\cap A_i)\right)
-      }\\
-    =\\
-      &P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right)\\
-      &-\left[
-        \smashoperator[r]{\sum_{1\leq i\leq n}}(A_{n+1}\cap A_i)
-        -\sum_{\mathclap{1\leq i<j\leq n}}(A_{n+1}\cap A_i\cap A_j) +
-        \dots+(-1)^nP\left(\bigcap_{i=1}^{n+1}A_i\right)
-      \right]\\
-    =\\
-      & 
-          \smashoperator[r]{\sum_{1\leq i\leq n+1}}P(A_i)
-          -\sum_{\mathclap{1\leq i < j\leq n+1}}P(A_i\cap A_j)\\
-      &   +\\
-      &   \smashoperator[r]{\sum_{1\leq i<j<k\leq n+1}}P(A_i\cap A_j\cap A_k)
-          -\dots+(-1)^{n+1}P\left(\bigcap_{i=1}^{n+1} A_i\right)
-  \end{derivation}
-\end{center}
+\begin{longderivation}
+    & {P\left(\bigcup_{i=1}^{n+1} A_i\right)}\\
+  =\\
+    & {
+      P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right) -
+      P\left(\bigcup_{i=1}^n (A_{n+1}\cap A_i)\right)
+    }\\
+  =\\
+    &P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right)\\
+    &-\left[
+      \smashoperator[r]{\sum_{1\leq i\leq n}}(A_{n+1}\cap A_i)
+      -\sum_{\mathclap{1\leq i<j\leq n}}(A_{n+1}\cap A_i\cap A_j) +
+      \dots+(-1)^nP\left(\bigcap_{i=1}^{n+1}A_i\right)
+    \right]\\
+  =\\
+    & 
+        \smashoperator[r]{\sum_{1\leq i\leq n+1}}P(A_i)
+        -\sum_{\mathclap{1\leq i < j\leq n+1}}P(A_i\cap A_j)\\
+    &   +\\
+    &   \smashoperator[r]{\sum_{1\leq i<j<k\leq n+1}}P(A_i\cap A_j\cap A_k)
+        -\dots+(-1)^{n+1}P\left(\bigcap_{i=1}^{n+1} A_i\right)
+\end{longderivation}
 \end{Demo}
 
 \begin{Def}
@@ -113,7 +111,7 @@ Por último, recordar que
     Supóngase $A$ y $B$ eventos independientes de un espacio muestral.
     \item Partiendo de que $A^c \cap B^c = (A\cup B)^c$.
     
-    \begin{derivation}<0.9>
+    \begin{longderivation}<0.9>
         & {P(A^c\cap B^c)}\\
       =\\
         & {1 - P(A\cup B)}\\
@@ -125,12 +123,12 @@ Por último, recordar que
         & {(1-P(A))(1-P(B))}\\
       =\\
         & {P(A^c)\,P(B^c)}
-    \end{derivation}
+    \end{longderivation}
     
     Así, los eventos $A^c$ y $B^c$ también son independientes.
     \item Partiendo de que $B=(B\cap A)\cup(B\cap A^c)$
     
-    \begin{derivation}<0.9>
+    \begin{longderivation}<0.9>
         & {P(B)}\\
       =\\
         & {P((B\cap A)\cup(B\cap A^c))}\\
@@ -138,11 +136,11 @@ Por último, recordar que
         & {P(B\cap A) + P(B\cap A^c) - P(\varnothing)}\\
       =\\
         & {P(B)\,P(A) + P(B\cap A^c)}
-    \end{derivation}
+    \end{longderivation}
     
     Tomando la primera y última igualdad
     
-    \begin{derivation}<0.9>
+    \begin{longderivation}<0.9>
         & {P(B\cap A^c)}\\
       =\\
         & {P(B) - P(B)P(A)}\\
@@ -150,7 +148,7 @@ Por último, recordar que
         & {P(B)(1-P(A))}\\
       =\\
         & {P(B)\,P(A^c)}
-    \end{derivation}
+    \end{longderivation}
     
     Así, los eventos $A^c$ y $B$ también son independientes.
   \end{enumerate}
