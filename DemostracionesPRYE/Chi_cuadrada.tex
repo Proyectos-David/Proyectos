@@ -1,0 +1,56 @@
+\subsubsection{Chi-cuadrada}
+Sea X una variable aleatoria tal que $X\sim\chi^2(v)$, entonces su $fdd$
+\[
+    F(x) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
+\]
+Entonces $\text{Var}[X] = 2v$ y $\text{E}[X] = v$
+
+\begin{Demo}
+    Primero se comprueba $\text{E}[X] = v$
+
+    \begin{center}
+        \begin{derivation}
+            & \text{E}[X]\\
+            =\\
+            & \int_{0}^{\infty} xf(x)dx\\
+            =\\
+            & \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{\left(\nicefrac{v}{2}\right)}e^{\nicefrac{-x}{2}}dx\\
+            = \\
+            & \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}2\int_{0}^{\infty}2^{\nicefrac{v}{2}}u^{\nicefrac{v}{2}}e^{-u}du\\
+            =\\
+            & \frac{2}{\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}u^{\nicefrac{v}{2}}e^{-u}du\\
+            =\\
+            & \frac{2}{\Gamma\left(\frac{v}{2}\right)}\Gamma\left(\frac{v}{2}+1\right)\\
+            =\\
+            &\frac{2}{\Gamma\left(\frac{v}{2}\right)}\left(\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)\\
+            =\\
+            & v 
+            \end{derivation}
+    \end{center}
+
+    Ahora, se demuestra que $\text{Var}[x] = 2v$
+    
+    \begin{center}
+        \begin{derivation}
+            & \text{Var}[X]\\
+            =\\
+            & \text{E}[X^2]-\text{E}^2[X]\\
+            =\\
+            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{2}x^{(\nicefrac{v}{2})-1}e^{\nicefrac{-x}{2}}dx -v^2\\
+            =\\
+            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{(\nicefrac{v}{2})+1}e^{-\nicefrac{x}{2}}dx - v^2\\
+            =\\
+            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}2\int_{0}^{\infty}2^{1+\nicefrac{v}{2}}u^{1+\nicefrac{v}{2}}e^{-u}du - v^2\\
+            =\\
+            & \frac{4}{\Gamma\left(\frac{v}{2}\right)}\Gamma\left(\frac{v}{2}+2\right)-v^2\\
+            =\\
+            & \frac{4}{\Gamma\left(\frac{v}{2}\right)}\left(\frac{v}{2}+1\right)\left(\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)-v^2\\
+            =\\
+            & 4\left(\frac{v^2}{4}\right)+4\left(\frac{v}{2}\right)-v^2\\
+            =\\
+            & v^2 +2v - v^2\\
+            =\\
+            & 2v
+        \end{derivation}
+    \end{center}
+\end{Demo}
