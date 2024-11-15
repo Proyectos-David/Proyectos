@@ -1,0 +1,103 @@
+\documentclass{beamer}
+
+\usepackage[arrows]{logicDG}
+\usepackage{calcDG}
+\usepackage{analysis}
+\usepackage{nicefrac}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage{mathrsfs}
+\usepackage{thmtools}
+\usepackage{marvosym}
+\usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
+\usetheme{Warsaw}
+\setbeamercovered{transparent}
+
+
+\title{Demostraciones de PRYE}
+\author[David G., Laura R.]{David Gómez, Laura Rincón}
+\date[15/11/2024]{15 de Noviembre de 2024}
+
+\begin{document}
+  \begin{frame}
+    \titlepage
+  \end{frame}
+
+  \section{Probabilidad}
+  \begin{frame}{Probabilidad de una unión finita}
+    \only<1>{La probabilidad de una unión finita está dada por
+    \begin{align*}
+      P\left(A_1\cup A_2\right) &= P(A_1) + P(A_2) - P(A_1\cap A_2)\\
+      P\left(\bigcup_{i=1}^{n+1}A_i\right) &=
+      P(A_{n+1}) + P\left(\bigcup_{i=1}^nA_i\right)
+      - P\left(\bigcup_{i=1}^n(A_{n+1}\cap A_i)\right)
+    \end{align*}}
+    \only<2>{
+      \begin{longderivation}
+        & P\left(\bigcup_{i=1}^nA_i\right)\\
+        =\\
+        & \smashoperator[r]{\sum_{1\leq i\leq n}}P(A_i)
+        -\smashoperator[r]{\sum_{1\leq i<j\leq n}}P(A_i\cap A_j) \\
+        & + \smashoperator[r]{\sum_{1\leq i<j<k\leq n}}P(A_i\cap A_j\cap A_k)
+        -\dots+(-1)^nP\left(\bigcap_{i=1}^n A_i\right)
+      \end{longderivation}
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+  \end{frame}
+  \begin{frame}{Sobre eventos independientes}
+    Dos eventos, $A$ y $B$, de un espacio muestral, son llamados
+    independientes cuando $P(A\cap B)=P(A)P(B)$.
+
+    \onslide<2->{
+      Si $A$ y $B$ son independientes, entonces
+      $A^c$ y $B$ son independientes;
+      $A^c y B^c$ son independientes.
+    }
+    \only<4>{
+      \begin{longderivation}<1>
+          & {P(A^c\cap B^c)}\\
+      =\\
+        & {1 - P(A\cup B)}\\
+      =\\
+        & {1 - [P(A) + P(B) - P(A\cap B)]}\\
+      =\\
+        & {(1-P(A))(1-P(B))}\\
+      =\\
+        & {P(A^c)\,P(B^c)}
+      \end{longderivation}
+      }
+      \only<3>{
+        \\Usando la igualdad $P(B) = P(B)\,P(A) + P(B\cap A^c)$
+        \begin{longderivation}<1>
+            & {P(B\cap A^c)}\\
+          =\\
+            & {P(B) - P(B)P(A)}\\
+          =\\
+            & {P(B)(1-P(A))}\\
+          =\\
+            & {P(B)\,P(A^c)}
+        \end{longderivation}
+        }
+  \end{frame}
+  \section{Varianza y Valor esperado}
+
+  \section{Distribuciones Discretas}
+  \begin{frame}{Binomial}
+    \[X\sim B(n,p)\]
+    \[f(x)=P(X=x)=\binom{n}{x}p^x(1-p)^{n-x}\qquad(0\leq x\leq n)\]
+    \onslide<2>{
+      \begin{enumerate}
+        \item Para todo $x\in\Z$ con $0\leq x\leq n$, $P(X=x) \geq 0$.
+        \item $\sum_{x\in\Z}P(X=x) = 1$.
+        \item $\text{E}[X] = np$.
+        \item $\text{Var}[X]=np(1-p)$.
+      \end{enumerate}
+    }
+  \end{frame}
+
+  \section{Distribuciones Continuas}
+
+  \section{Teoremas de Aproximación}
+\end{document}
