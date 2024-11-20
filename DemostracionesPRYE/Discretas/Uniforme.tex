@@ -1,0 +1,75 @@
+\subsubsection{Uniforme Discreta}
+Algunas distribuciones surgen por la función de masa que las define, más que
+por la similitud con un evento real, esto debido a resultados conocidos
+sobre los enteros en este caso.
+
+\begin{Def}
+  Sea $X$ una variable aleatoria discreta. $X$ sigue una distribución uniforme
+  discreta, de parámetros $n,m\in\Z$ ($n < m$), denotada por $U_d(n,m)$,
+  cuando su función de masa es
+  \[f(x) = P(X=x) = \frac{1}{m-n+1}\qquad (n\leq x\leq m)\]
+\end{Def}
+\begin{Teo}
+  Sea $X\sim U(n,m)$. Entonces,
+  \begin{enumerate}
+    \item Para todo $x\in\Z$, $P(X=x)\geq0$.
+    \item $\sum_{x\in\Z}P(X=x) = 1$.
+    \item $\text{E}[X] = \frac{n+m}{2}$
+    \item $\text{Var}[X] = \frac{(m-n+1)^2-1}{12}$
+  \end{enumerate}
+\end{Teo}
+\begin{Demo}~
+  \begin{enumerate}
+    \item Se sigue inmediatamente de la definición.
+    \item~
+    \[\sum_{x=n}^m \frac{1}{n+m+1} = \frac{n+m-1}{n+m-1}=1\]
+    \item~
+    \begin{longderivation}
+        & \text{E}[X]\\
+      =\\
+        & \sum_{x=n}^m\frac{x}{m-n+1}\\
+      =\\
+        & \frac{1}{m-n+1}\sum_{x=1}^{m-n+1}(x+n-1)\\
+      =\\
+        & \frac{1}{m-n+1}\left[\frac{(m-n+1)(m-n+2)}{2} + n(m-n+1) - (m-n+1)\right]\\
+      =\\
+        & \frac{m-n+2 + 2n - 2}{2}\\
+      =\\
+        & \frac{m+n}{2}
+    \end{longderivation}
+    \item Tomando $N=m-n+1$.
+    \begin{longderivation}
+        & \text{Var}[X]\\
+      =\\
+        & \text{E}[X^2] - \text{E}^2[X]\\
+      =\\
+        & \sum_{x=n}^m\frac{x^2}{m-n+1} - \left(\frac{n+m}{2}\right)^2\\
+      =\\
+        & \frac{1}{N}\sum_{x=1}^{m-n+1}(x+n-1)^2 - \left(\frac{n+m}{2}\right)^2\\
+      =\\
+        & \frac{1}{N}\left[\frac{N(N+1)(2N+1)}{6} + 2(n-1)\frac{N(N+1)}{2} + N(n-1)^2\right]
+        - \left(\frac{n+m}{2}\right)^2\\
+      =\\
+        & (N+1)\frac{2N+1+6n - 6}{6} + (n-1)^2 - \left(\frac{n+m}{2}\right)^2\\
+      =\\
+        & (N+1)\frac{2N + 6n - 5}{6} + \left(n - 1 - \frac{n+m}{2}\right)
+        \left(n-1+\frac{n+m}{2}\right)\\
+      =\\
+        & (N+1)\frac{2N + 6n - 5}{6}
+        + \left(\frac{n-m-2}{2}\right)\left(\frac{3n+m-2}{2}\right)\\
+      =\\
+        & (N+1)\frac{2N + 6n - 5}{6} + \left(\frac{m-n+2}{2}\right)
+        \left(\frac{2-3n-m}{2}\right)\\
+      =\\
+        & (N+1)\frac{2(2N + 6n - 5) + 3(2 - 3n + m)}{12}\\
+      =\\
+        & (N+1)\frac{4N - 3n - 3m -4}{12}\\
+      =\\
+        & (N+1)\frac{4m-4n+4-3n-3m-4}{12}\\
+      =\\
+        & \frac{N^2 - 1}{12}\\
+      =\\
+        & \frac{(m-n+1)^2-1}{12}
+    \end{longderivation}
+  \end{enumerate}
+\end{Demo}

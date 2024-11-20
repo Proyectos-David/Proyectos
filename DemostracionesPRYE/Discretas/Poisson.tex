@@ -1,0 +1,74 @@
+\subsubsection{Poisson}
+Recordando que $e^x=\sum_{n=0}^\infty\frac{x^n}{n!}$, y que esta es una función
+creciente cuyo valor es estrictamente positivo, se genera una función la cual
+cumple la definición de función de masa, obteniendo la siguiente distribución.
+\begin{Def}
+  Sea $X$ una variable aleatoria discreta. $X$ sigue una distribución
+  de Poisson con parámetro $\lambda\in\R^+$, denotada por $\text{Pois}(\lambda)$,
+  cuando su función de masa es
+  \[f(x) = P(X=x) = \frac{\lambda^xe^{-\lambda}}{x!} \qquad (x\in\N)\]
+\end{Def}
+\begin{Teo}
+  Sea $X\sim\text{Pois}(\lambda)$. Entonces,
+  \begin{enumerate}
+    \item Para todo $x\in\Z$, $P(X=x)\geq0$.
+    \item $\sum_{x\in\Z}P(X=x)=1$.
+    \item $\text{E}[X] = \lambda$.
+    \item $\text{Var}[X]=\lambda$.
+  \end{enumerate}
+\end{Teo}
+\begin{Demo}~
+  \begin{enumerate}
+    \item Sea $x\in\N$. Entonces
+    \[P(X=x) = \frac{\lambda^xe^{-\lambda}}{x!}\]
+    Como los términos involucrados son no negativos, se concluye que $P(X=x)\geq0$.
+    \item~
+    \begin{longderivation}<1>
+        & \sum_{x=0}^\infty\frac{\lambda^xe^{-\lambda}}{x!}\\
+      =\\
+        & e^{-\lambda}\sum_{x=0}^\infty\frac{\lambda^x}{x!}\\
+      =\\
+        & e^{-\lambda}\,e^\lambda\\
+      =\\
+        & 1
+    \end{longderivation}
+    \item~
+    \begin{longderivation}<1>
+        & \sum_{n=0}^\infty x\frac{\lambda^xe^{-\lambda}}{x!}\\
+      =\\
+        & \sum_{n=1}^\infty\frac{\lambda^xe^{-\lambda}}{(x-1)!}\\
+      =\\
+        & \lambda e^{-\lambda}\sum_{x=0}^\infty\frac{\lambda^x}{x!}\\
+      =\\
+        & \lambda
+    \end{longderivation}
+    \item~
+    \begin{longderivation}<1>
+        & \sum_{x=0}^\infty x^2\frac{\lambda^xe^{-\lambda}}{x!} - \lambda^2\\
+      =\\
+        & \sum_{n=1}^\infty x\frac{\lambda^xe^{-\lambda}}{(x-1)!} - \lambda^2\\
+      =\\
+        & \lambda\sum_{n=0}^\infty x\frac{\lambda^xe^{-\lambda}}{x!}
+        + \lambda\sum_{n=0}^\infty \frac{\lambda^xe^{-\lambda}}{x!}
+        - \lambda^2\\
+      =\\
+        & \lambda^2 + \lambda - \lambda^2\\
+      =\\
+        & \lambda
+    \end{longderivation}
+  \end{enumerate}
+
+  Para finalizar, se mostrará la validez de los procedimientos usados para
+  estos cálculos. Se afirma que la serie $\sum_x \left|x^t \frac{\lambda^x}{x!}\right|$
+  converge para todo $t\in\R$. 
+  Por el criterio de la razón, cuando $x\to\infty$,
+  \[
+    \left|(x+1)^t\frac{\lambda^{x+1}e^\lambda}{(x+1)!}\,
+    \frac{x!}{x^t\lambda^x}\right|
+    =
+    \left(1 + \frac{1}{x}\right)^t\,\frac{\lambda}{x+1}
+    \to 0 < 1
+  \]
+  La convergencia absoluta de la serie permite el reordenamiento de la misma y
+  la separación en sumas.
+\end{Demo}
