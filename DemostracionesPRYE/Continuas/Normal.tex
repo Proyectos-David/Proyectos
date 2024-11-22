@@ -1,0 +1,69 @@
+\subsubsection{Distribución Normal}
+\begin{Def}
+  Sea $X$ una variable aleatoria continua. $X$ tiene distribución normal
+  de parámetros $\mu\in\R$, $\sigma^2\in\R^+$ cuando su función de masa es
+  \[
+    f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}}
+    e^{\nicefrac{(x-\mu)^2}{\left(2\sigma^2\right)}}
+    \qquad (x\in\R)
+  \]
+  Esto se denotará como $X\sim N(\mu,\sigma^2)$.
+\end{Def}
+\begin{Teo}
+  Sean $X\sim N(\mu,\sigma^2)$ y $f$ la función de masa de $X$. Entonces,
+  \begin{enumerate}
+    \item Para todo $x\in\R$, $f(x) \geq 0$.
+    \item $\Int[\R]{f(x)}{x} = 1$.
+    \item $\text{E}[X] = \mu$.
+    \item $\text{Var}[X] = \sigma^2$.
+  \end{enumerate}
+\end{Teo}
+
+Para las integrales involucradas en los resultados del teorema es
+conveniente tener el siguiente resultado anterior a proceder con el teorema.
+\[I = \Int[\R]{e^{-x^2}}{x} = \sqrt{\pi}\]
+\begin{longderivation}
+    & I^2\\
+  =\\
+    & \left(\Int[\R]{e^{-x^2}}{x}\right)\left(\Int[\R]{e^{-x^2}}{x}\right)\\
+  =\\
+    & \left(\Int[\R]{e^{-x^2}}{x}\right)\left(\Int[\R]{e^{-y^2}}{y}\right)\\
+  =\\
+    & \Int[\R]{\Int[\R]{e^{-(x^2+y^2)}}{x}}{y}\\
+  =\\
+    & \Int[\R^2]{e^{-(x^2+y^2)}}{x}\mathrm{d}y
+\end{longderivation}
+  Parametrizando $\R^2$ con la función
+  \[
+    \vv{t(r,\theta)}=\left<r\cos(\theta),r\sin(\theta)\right>\qquad
+    (r,\theta)\in \left(R^+\cup\{0\}\right)\times[-\pi,\pi]
+  \]
+  acomodando $\vv{t}$ para $\R^3$, el elemento de área es
+\begin{longderivation}<0.9>
+    & \left|\vv{t_r} \times \vec{t_\theta}\right|\\
+  =\\
+    & \left|
+      \left<\cos(\theta),\sin(\theta),0\right>
+      \times
+      \left< -r\sin(\theta),r\cos(\theta),0\right>
+    \right|\\
+  =\\
+    & \left|
+      \left<0,0,r\cos^2(\theta) + r\sin^2(\theta)\right>
+    \right|\\
+  =\\
+    & r
+\end{longderivation}
+Dado que
+\[(x^2+y^2)\circ\vv{t(r,\theta)} = r^2\sin^2(\theta) + r^2\cos^2(\theta) = r^2\]
+La integral presentada se puede reescribir y desarrollar de la siguiente manera
+\begin{longderivation}
+    & \Int[0,\infty]{\Int[-\pi,\pi]{re^{-r^2}}{\theta}}{r}\\
+  =\\
+    & 2\pi\Int[0,\infty]{re^{-r^2}}{r}\\
+  \why[=]{Tomando $u=r^2$}\\
+    & \pi\Int[0,\infty]{e^{-u}}{u}\\
+  =\\
+    & \pi
+\end{longderivation}
+Así, $I = \sqrt{\pi}$
