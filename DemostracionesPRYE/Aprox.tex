@@ -7,114 +7,88 @@ Esto lleva al siguiente teorema de aproximación.
 
 \begin{Teo}
   Sea $X$ una variable aleatoria con distribución hipergeométrica de
-  parámetros $N,K,n$. Si para un $\epsilon>0$ , $n > 1$ , $x > 0$,
+  parámetros $N,K,n$. Si para $\epsilon_1,\epsilon_2,\epsilon_3\in\R^+$ , $n > 1$ , $x > 0$,
   se tiene que
   \begin{align*}
-    \frac{x-1}{K}     &< \epsilon\\
-    \frac{n-x-1}{N-K} &< \epsilon\\
-    \frac{n-1}{N - n + 1}     &< \epsilon
+    \frac{x-1}{K}         &< \epsilon_1\\
+    \frac{n-x-1}{N-K}     &< \epsilon_2\\
+    \frac{n-1}{N - n + 1} &< \epsilon_3
   \end{align*}
   entonces,
-  \[\left|P(X=x) - B\left(n,\frac{K}{N}\right)(x)\right| < (\epsilon + 1)^{2n} - 1\]
+  % Falta revisar cómo queda
+  \[
+    \left|\dfrac{Hg(N,K,n)(x)}{B\left(n,\frac{K}{N}\right)(x)} - 1\right| 
+    < (\epsilon + 1)^{2n} - 1
+  \]
+  Nótese que la expresión en valor absoluto corresponde al error entre la
+  función de masa de una distribución hipergeométrica y una binomial con ciertos
+  parámetros.
 \end{Teo}
 
 Antes de comenzar con la demostración de este teorema, se presenta el siguiente lema, el
 cual será de utilidad para obtener el resultado presentado.
 \begin{Lema}
-  Sean $r\in\Z^+$ y $\left\{S_{k,n}\right\}_{1}^{r}$ una colección de $r$ sucesiones
-  en función de $n$ las cuales convergen a $1$. Dado $\epsilon>0$,
-  existe un $N\in\N$ tal que para todo $1\leq k\leq r$
-  \[n\geq N \To |S_{k,n} - 1| < \epsilon\]
+  Sean $r\in\Z^+$, $\left\{S_{k,n}\right\}_{1}^{r}$ una colección de $r$ sucesiones
+  en función de $n$ las cuales convergen a $1$ y $\{\epsilon_k\}_1^r$ una colección
+  de $r$ reales positivos. Si para un $N\in\N$, se tiene que
+  \[1\leq k\leq r\quad\land\quad n\geq N \quad\To\quad |S_{k,n} - 1| \leq \epsilon_k\]
   entonces,
-  \[n\geq N \To \left|\prod_{k=1}^r S_{k,n} -1\right| < (\epsilon + 1)^r - 1\]
+  \[n\geq N \To \left|\prod_{k=1}^r S_{k,n} -1\right| < \prod_{k=1}^r(\epsilon_k + 1) - 1\]
 \end{Lema}
 \begin{Demo}
-  La existencia de este $N$ consta de tomar el máximo entre los diferentes $N$'s
-  dados por la convergencia de cada sucesión en la colección. La demostración del
-  acotamiento se hará por inducción.
-
-  Caso base ($r=1$): se tiene que $|S_{1,n}-1| < \epsilon$, con lo que se cumple
-  la propiedad para una sucesión.
-
-  para $r=2$
-
+  Supóngase la existencia de este $N$. Tomando una colección con $r+1$
+  sucesiones con una colección respectiva de cotas $\{\epsilon_k\}_1^{r+1}$ para la diferencia
+  de cada una con $1$, se tiene lo siguiente
   \begin{longderivation}
-      & \left|S_{1,n}\,S_{2,n} - 1\right|\\
-    =\\
-      & \left|(S_{1,n} - 1)(S_{2,n} - 1) + S_{1,n} - 1 + S_{2,n} - 1\right|\\
-    \leq\\
-      & \left|S_{1,n}-1\right||S_{2,n}-1| + |S_{1,n}-1| + |S_{2,n}-1|\\
-    <\\
-      & \epsilon^2 + 2\epsilon\\
-    =\\
-      & (\epsilon + 1)^2 - 1
+    & \left|\prod_{k=1}^{r+1}S_{k,n} - 1\right|\\
+  =\\
+    & \left|S_{r+1,n}\prod_{k=1}^{r}S_{k,n} - 1\right|\\
+  =\\
+    & \left|
+      (S_{r+1,n} - 1)\left(\prod_{k=1}^{r}S_{k,n} - 1\right)
+      + (S_{r+1,n} - 1)
+      + \left(\prod_{k=1}^{r}S_{k,n} - 1\right)
+    \right|\\
+  \leq\\
+    &\left|(S_{r+1,n} - 1)\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|
+    + \left|(S_{r+1,n} - 1)\right|
+    + \left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|\\
+  <\\
+    & \left|\prod_{k=1}^{r}S_{k,n} - 1\right|(\epsilon_{r+1}+1) + \epsilon_{r+1}
   \end{longderivation}
 
-  Paso inductivo: supóngase que para el producto de $r$ sucesiones, la propiedad se mantiene.
-  Para $r+1$ sucesiones
+  Se define entonces la siguiente función recursiva
+  \begin{align*}
+    f(1) &= \epsilon_1\\
+    f(n+1) &= f(n)(\epsilon_{n+1} + 1) + \epsilon_{n+1}
+  \end{align*}
 
+  Por el procedimiento anterior, es fácil ver que esta función cumple acotar la diferencia
+  del producto de $n$ sucesiones y $1$ con las condiciones del enunciado. Se afirma que
+  \[f(n) = \prod_{k=1}^n(\epsilon_k + 1) - 1\]
+  Caso base: $n=1$, efectivamente $f(1) = \epsilon_1$. Para $n=2$, por definición
+  \[f(2) = \epsilon_1(\epsilon_2+1)+\epsilon_2 = (\epsilon_1+1)(\epsilon_2+1)-1\]
+  Paso inductivo: supóngase que, para algún $n\geq2$,
+  \[f(n) = \prod_{k=1}^n(\epsilon_k + 1) - 1\]
+  Entonces,
   \begin{longderivation}
-      & \left|\prod_{k=1}^{r+1}S_{k,n} - 1\right|\\
+      & f(n+1)\\
     =\\
-      & \left|S_{r+1,n}\prod_{k=1}^{r}S_{k,n} - 1\right|\\
+      & f(n)(\epsilon_{n+1} + 1) + \epsilon_{n+1}\\
     =\\
-      & \left|
-        (S_{r+1,n} - 1)\left(\prod_{k=1}^{r}S_{k,n} - 1\right)
-        + (S_{r+1,n} - 1)
-        + \left(\prod_{k=1}^{r}S_{k,n} - 1\right)
-      \right|\\
-    \leq\\
-      &\left|(S_{r+1,n} - 1)\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|
-      + \left|(S_{r+1,n} - 1)\right|
-      + \left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|\\
-    <\\
-      &\epsilon\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|
-      + \epsilon + \left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|\\
+      & \left(\prod_{k=1}^n(\epsilon_k + 1) - 1\right)(\epsilon_{n+1} + 1)
+      + \epsilon_{n+1}\\
     =\\
-      &\left|\left(\prod_{k=1}^{r}S_{k,n} - 1\right)\right|(\epsilon + 1) + \epsilon\\
-    <\\
-      & [(\epsilon + 1)^r - 1](\epsilon + 1) + \epsilon\\
+      & \prod_{k=1}^{n+1}(\epsilon_k + 1) - \epsilon_{n+1} - 1 + \epsilon_{n+1}\\
     =\\
-      &(\epsilon + 1)^{r+1} - 1
+      & \prod_{k=1}^{n+1}(\epsilon_k + 1) - 1
   \end{longderivation}
-
-  Con esto ya estaría demostrado. Sin embargo, para entender de dónde
-  surgió originalmente el lema se presenta esta demostración alternativa:
-  Se define $f$ de la siguiente manera: $f(1) = \epsilon$ y
-  $f(r+1) = f(r)(\epsilon + 1) + \epsilon$. Nótese que, por el caso base y lo
-  desarrollado, $f$ cumple que
-  $\left|\prod_{k=1}^r S_{k,r}-1\right| < f(r)$.
-  Para resolver la ecuación de recurrencia, se define $g$ como
-  $g(r) = \frac{f(r)}{(\epsilon + 1)^r}$, es decir,
-  $g(1) = \frac{\epsilon}{\epsilon + 1}$ y $g(r+1) = \frac{f(r+1)}{(\epsilon + 1)^{r+1}}$.
-  Desarrollando la última expresión, se obtiene
-  \[
-    g(r+1) = \frac{f(r)}{(\epsilon + 1)^r} + \frac{\epsilon}{(\epsilon+1)^{r+1}}
-    = g(r) + \frac{\epsilon}{(\epsilon+1)^{r+1}}
-  \]
-  con lo que, por definición,
-  \begin{longderivation}
-      & g(r)\\
-    =\\
-      & \sum_{k=1}^{r}\frac{\epsilon}{(\epsilon + 1)^k}\\
-    =\\
-      & \frac{\epsilon}{\epsilon + 1}\sum_{k=0}^{r-1}\frac{1}{(\epsilon+1)^r}\\
-    =\\
-      & \frac{\epsilon}{\epsilon+1}
-      \left(\frac{1 - \dfrac{1}{(\epsilon + 1)^k}}{1 - \dfrac{1}{\epsilon+1}}\right)\\
-    =\\
-      & \frac{\epsilon}{\epsilon+1}
-      \left(\frac{(\epsilon + 1)^r - 1}{(\epsilon+1)^r}\frac{\epsilon+1}{\epsilon}\right)\\
-    =\\
-      & \frac{(\epsilon + 1)^r - 1}{(\epsilon+1)^r}
-  \end{longderivation}
-
-  Así, $f(r) = (\epsilon+1)^r\,g(r) = (\epsilon+1)^r - 1$.
+  Con lo que
+  \[n\geq N \To \left|\prod_{k=1}^r S_{k,n} -1\right| < \prod_{k=1}^r(\epsilon_k + 1) - 1\]
 \end{Demo}
 Siguiendo ahora con el teorema\dots
 \begin{Demo}
-  Inicialmente, se expresará la función de masa de $X$ en términos más prácticos para
-  esta demostración:
+  Inicialmente, se expresará la función de masa de $X$ en otros términos
   \begin{longderivation}
       & \dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\\
     =\\
@@ -124,17 +98,17 @@ Siguiendo ahora con el teorema\dots
       \dfrac{\prod_{j=1}^{N-K}j}{\prod_{j=1}^{N-K-n+x}\mspace{-20mu}j\mspace{20mu}}
       \dfrac{\prod_{s=1}^{N-n}s}{\prod_{s=1}^{N}s}\\
     =\\
-      & \binom{n}{x}\smashoperator[r]{\prod_{i=K-x+1}^{K}}i\hspace{20pt}
-      \smashoperator[r]{\prod_{j=N-K-n+x+1}^{N-K}}j\hspace{30pt}
-      \dfrac{1}{\prod_{s=N-n+1}^{N}\mspace{-25mu}s\mspace{25mu}}\\
+      & \binom{n}{x}\smashoperator[r]{\prod_{i=K-x+1}^{K}}i\mspace{20mu}
+      \smashoperator[r]{\prod_{j=N-K-n+x+1}^{N-K}}j\mspace{35mu}
+      \dfrac{1}{\smashoperator[r]{\prod_{s=N-n+1}^{N}}s\mspace{20mu}}\\
     =\\
       & \binom{n}{x}\prod_{i=0}^{x-1}(K-i)
-      \prod_{j=0}^{n-x-1}\mspace{-9mu}(N-K-j)\mspace{9mu}
+      \smashoperator{\prod_{j=0}^{n-x-1}}(N-K-j)
       \dfrac{1}{\prod_{s=0}^{n-1}(N-s)}\\
     =\\
       &\binom{n}{x}\left(\frac{K}{N}\right)^x\left(\frac{N-K}{N}\right)^{n-x}
       \dfrac{\prod_{i=0}^{x-1}(K-i)}{K^x}
-      \dfrac{\prod_{j=0}^{n-x-1}\mspace{-9mu}(N-K-j)\mspace{9mu}}{(N-K)^{n-x}}
+      \dfrac{\smashoperator[r]{\prod_{j=0}^{n-x-1}}(N-K-j)}{(N-K)^{n-x}}
       \dfrac{N^n}{\prod_{s=0}^{n-1}(N-s)}\\
     =\\
       & B\left(n,\frac{K}{N}\right)(x)\,\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
@@ -147,21 +121,17 @@ Siguiendo ahora con el teorema\dots
 
   Tomando en cuenta este resultado,
   \begin{longderivation}<1.5>
-      & \left|\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}} -
-      B\left(n,\frac{K}{N}\right)(x)\right|\\
+      & \left|\dfrac{Hg(N,K,n)(x)}{B\left(n,\frac{K}{N}\right)(x)} - 1\right|\\
     =\\
-      & B\left(n,\frac{K}{N}\right)(x)
-      \left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
+      & \left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
       \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
-      \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|\\
-    \why[\leq]{$B(n,p)(x)$ es una probabilidad, con lo que es siempre menor o igual a $1$}\\
-    &\left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right)
-    \prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right)
-    \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|
+      \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|
   \end{longderivation}
 
   Nótese que cada término en cada productorio tiende a $1$ cuando $K,N,N-K$
-  tienden a infinito. Con esto basta para demostrar la convergencia.
+  tienden a infinito. Con esto basta para demostrar la convergencia, debido a que
+  estas condiciones de tendencia para $N,K$ y $N-K$ se deben a que
+  $\frac{K}{N}$ debe ser un número entre $0$ y $1$.
 
   En los productorios, se ven involucradas sucesiones las cuales convergen
   a $0$ y además, son sencillas de acotar. Entonces, como
@@ -170,109 +140,69 @@ Siguiendo ahora con el teorema\dots
     \left|1 - \frac{j}{N-K} - 1\right| &= \frac{j}{N-K} \leq \frac{n-x-1}{N-K}\\[10pt]
     \left|1 + \frac{s}{N-s} - 1\right| &= \frac{s}{N-s} \leq \frac{n-1}{N-n+1}
   \end{align*}
-  solo hace falta hallar una cota para los miembros derechos de las desigualdades para
-  acotar todos los términos de los productorios.
-
-  Sea $\epsilon>0$ tal que
+  
+  Dado que las expresiones a la derecha de cada desigualdad representan sucesiones
+  decrecientes en función de $N$, $K$ y $N-K$ respectivamente, se tiene que, si para
+  valores de estas variables, se toman $\epsilon_1, \epsilon_2, \epsilon_3\in\R^+$
+  tales que
   \begin{align*}
-    \frac{x-1}{K}     &< \epsilon\\
-    \frac{n-x-1}{N-K} &< \epsilon\\
-    \frac{n-1}{N-n+1} &< \epsilon
+    \frac{x-1}{K}     &< \epsilon_1\\
+    \frac{n-x-1}{N-K} &< \epsilon_2\\
+    \frac{n-1}{N-n+1} &< \epsilon_3
   \end{align*}
   Entonces, por el lema,
   \begin{align*}
     \left|\prod_{i=0}^{x-1}\left(1-\frac{i}{K}\right) - 1\right| 
-    &< (\epsilon + 1)^x - 1\\[10pt]
+    &< (\epsilon_1 + 1)^x - 1\\[10pt]
     \left|\prod_{j=0}^{n-x-1}\left(1 - \frac{j}{N-K}\right) - 1\right|
-    &< (\epsilon + 1)^{n-x} - 1\\[10pt]
+    &< (\epsilon_2 + 1)^{n-x} - 1\\[10pt]
     \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|
-    &< (\epsilon + 1)^n - 1
+    &< (\epsilon_3 + 1)^n - 1
   \end{align*}
 
   Denotando cada uno de estos productos como $P_1$, $P_2$ y $P_3$ respectivamente,
-
-  \begin{longderivation}
-      & |P_1\,P_2\,P_3 - 1|\\
-    =\\
-      & |(P_1 - 1)(P_2\,P_3 - 1) + P_1 - 1 + P_2\,P_3 - 1|\\
-    \leq\\
-      & |P_1 - 1||P_2\,P_3 - 1| + |P_1 - 1| + |P_2\,P_3 - 1|\\
-    =\\
-      & |P_2\,P_3 - 1|(|P_1 - 1| + 1) + |P_1 - 1|\\
-    =\\
-      & |(P_2 - 1)(P_3 - 1) + P_2 - 1 + P_3 - 1|
-      (|P_1 - 1| + 1) + |P_1 - 1|\\
-    \leq\\
-      &(|P_2 - 1||P_3 - 1| + |P_2 - 1| + |P_3 - 1|)(|P_1 - 1| + 1) + |P_1 - 1|\\
-    <\\
-      &[
-        ((\epsilon + 1)^{n-x} - 1)((\epsilon + 1)^n - 1) +
-        (\epsilon + 1)^{n-x} - 1 + (\epsilon + 1)^n - 1
-      ]((\epsilon + 1)^x - 1 + 1) + (\epsilon + 1)^x - 1\\
-    =\\
-      & [
-        (\epsilon + 1)^{2n-x} - (\epsilon + 1)^{n-x} - (\epsilon + 1)^n + 1
-        + (\epsilon + 1)^{n-x} - 1 + (\epsilon + 1)^n - 1
-      ](\epsilon + 1)^x + (\epsilon + 1)^x - 1\\
-    =\\
-      & [(\epsilon + 1)^{2n-x} - 1](\epsilon + 1)^x + (\epsilon + 1)^x - 1\\
-    =\\
-      & (\epsilon + 1)^{2n} - 1
-  \end{longderivation}
-  
+  aplicando nuevamente el lema, se obtiene que
+  \[
+    |P_1\,P_2\,P_3 - 1|<
+    (\epsilon_1+1)^x(\epsilon_2+1)^{n-x}(\epsilon_3+1)^n - 1
+  \]
   Recordando que todo lo anterior se hizo bajo la suposición de que $x > 0$ y
   $ x \not= n$. Para $x = 0$
   \begin{longderivation}
       &\left|
-        \dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}
-        - \binom{n}{x}\left(\frac{K}{N}\right)^x\left(\frac{N-K}{N}\right)^{n-x}
+        \dfrac{Hg(N,K,n)(0)}{B\left(n,\frac{K}{N}\right)(0)}-1
       \right|\\
     =\\
       &\left|
         \dfrac{\binom{N-K}{n}}{\binom{N}{n}}
-        - \left(\frac{N-K}{N}\right)^n
+        \left(\frac{N-K}{N}\right)^{-n}
+        -1
       \right|\\
     =\\
-      & B\left(n,\frac{K}{N}\right)(0)\left|
+      & \left|
         \prod_{j=0}^{n-1}\left(1 - \frac{j}{N-K}\right)
         \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1
       \right|\\
-    \leq\\
-      & \left|\prod_{j=0}^{n-1}\left(1 - \frac{j}{N-K}\right) - 1\right|
-      \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right| + 
-      \left|\prod_{j=0}^{n-1}\left(1 - \frac{j}{N-K}\right) - 1\right| +
-      \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|\\
-    <\\
-      & [(\epsilon + 1)^n - 1](\epsilon + 1)^n + (\epsilon + 1)^n - 1\\
-    =\\
-      & (\epsilon + 1)^{2n} - 1
+    \why[<]{Aplicando el lema únicamente para las suceciones en estos productorios}\\
+      & (\epsilon_2+1)^n(\epsilon_3+1)^n-1
   \end{longderivation}
   Para $x=n$
   \begin{longderivation}
       &\left|
-          \dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}
-          - \binom{n}{x}\left(\frac{K}{N}\right)^x\left(\frac{N-K}{N}\right)^{n-x}
-        \right|\\
-    =\\
-      &\left|
-        \dfrac{\binom{K}{n}}{\binom{N}{n}} - \left(\frac{K}{N}\right)^n
+        \dfrac{Hg(N,K,n)(n)}{B\left(n,\frac{K}{N}\right)(n)}-1
       \right|\\
     =\\
-      & B\left(n,\frac{K}{N}\right)(n)
-      \left|
+      &\left|
+        \dfrac{\binom{K}{n}}{\binom{N}{n}}\left(\frac{K}{N}\right)^{-n}
+        -1
+      \right|\\
+    =\\
+      &\left|
         \prod_{i=0}^{n-1}\left(1 - \frac{i}{K}\right)
         \prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1
       \right|\\
-    \leq\\
-        & \left|\prod_{i=0}^{n-1}\left(1 - \frac{i}{K}\right) - 1\right|
-        \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right| +
-        \left|\prod_{i=0}^{n-1}\left(1 - \frac{i}{K}\right) - 1\right| +
-        \left|\prod_{s=0}^{n-1}\left(1 + \frac{s}{N-s}\right) - 1\right|\\
-    <\\
-      & [(\epsilon + 1)^n - 1](\epsilon + 1)^n + (\epsilon + 1)^n - 1\\
-    =\\
-      & (\epsilon + 1)^{2n} - 1
+    \why[<]{Aplicando el lema únicamente para las sucesiones en estos productos}\\
+      & (\epsilon_1+1)^n(\epsilon_3+1)^n-1
   \end{longderivation}
-
-  Para $n=1$ o $n=0$, la diferencia presentada es nula.
+  Para $n=1$ o $n=0$, el error es nulo.
 \end{Demo}
