@@ -1,0 +1,95 @@
+\subsubsection{Distribución Gamma}
+\begin{Def}
+  Sea $X$ una variable aleatoria continua. $X$ tiene distribución Gamma
+  de parámetros $\alpha,\beta\in\R^+$, cuando su función de densidad es
+  \[
+    f(x)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}
+    \qquad (x\in\R^+)
+  \]
+\end{Def}
+\begin{Teo}
+  Sean $X$ una variable aleatoria continua con distribución Gamma y $f$
+  su función de densidad. Entonces,
+  \begin{enumerate}
+    \item Para todo $x\in\R$, $f(x) \geq 0$.
+    \item $\int_{\R}f(x)\mathrm{d}x=1$.
+    \item $\text{E}[X]=\frac{\alpha}{\beta}$
+    \item $\text{Var}[X]=\frac{\alpha}{\beta^2}$
+  \end{enumerate}
+\end{Teo}
+\begin{Demo}
+  Para las integrales implicadas en este resultado, se utilizará eventualmente
+  el siguiente cambio de variable
+  \[t = \beta x\]
+  Cuando $x=0$, $t=0$ y cuando $x\to\infty$, $t\to\infty$.
+  \begin{enumerate}
+    \item Todos los términos en la definición de $f$ son no negativos, con lo que
+    $f(x)\geq0$.
+    \item~
+    \begin{longderivation}
+        & \int_0^{\infty}
+        \frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}
+        \diff{x}\\
+      \why[=]{Haciendo uso del cambio de variable presentado}\\
+        & \frac{\beta^{\alpha}}{\Gamma(\alpha)}\frac{1}{\beta}
+        \int_0^{\infty}\left(\frac{t}{\beta}\right)^{\alpha-1}e^{-t}
+        \diff{t}\\
+      =\\
+        & \frac{1}{\Gamma(\alpha)}
+        \int_0^{\infty}t^{\alpha-1}e^{-t}\diff{t}\\
+      =\\
+        & \frac{1}{\Gamma(\alpha)}\Gamma(\alpha)\\
+      =\\
+        & 1
+    \end{longderivation}
+    \item~
+    \begin{longderivation}
+      & \text{E}[X]\\
+    =\\
+      & \int_0^{\infty}
+      \frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha}e^{-\beta x}
+      \diff{x}\\
+    \why[=]{Haciendo uso del cambio de variable presentado}\\
+      & \frac{\beta^{\alpha}}{\Gamma(\alpha)}\frac{1}{\beta}
+      \int_0^{\infty}\left(\frac{t}{\beta}\right)^{\alpha}e^{-t}
+      \diff{t}\\
+    =\\
+      & \frac{1}{\beta\Gamma(\alpha)}
+      \int_0^{\infty}t^{\alpha}e^{-t}\diff{t}\\
+    =\\
+      & \frac{1}{\beta\Gamma(\alpha)}\Gamma(\alpha+1)\\
+    =\\
+      & \frac{\alpha\Gamma(\alpha)}{\beta\Gamma(\alpha)}\\
+    =\\
+      & \frac{\alpha}{\beta}
+  \end{longderivation}
+    \item~
+    \begin{longderivation}
+      & \text{Var}[X]\\
+    =\\
+      & \text{E}[X^2] - \text{E}^2[X]\\
+    =\\
+      & \int_0^{\infty}
+      \frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha+1}e^{-\beta x}
+      \diff{x} - \frac{\alpha^2}{\beta^2}\\
+    \why[=]{Haciendo uso del cambio de variable presentado}\\
+      & \frac{\beta^{\alpha}}{\Gamma(\alpha)}\frac{1}{\beta}
+      \int_0^{\infty}\left(\frac{t}{\beta}\right)^{\alpha+1}e^{-t}
+      \diff{t} - \frac{\alpha^2}{\beta^2}\\
+    =\\
+      & \frac{1}{\beta^2\Gamma(\alpha)}
+      \int_0^{\infty}t^{\alpha+1}e^{-t}\diff{t}
+      - \frac{\alpha^2}{\beta^2}\\
+    =\\
+      & \frac{1}{\beta^2\Gamma(\alpha)}\Gamma(\alpha+2)
+      - \frac{\alpha^2}{\beta^2}\\
+    =\\
+      & \frac{\alpha(\alpha+1)\Gamma(\alpha)}{\beta^2\Gamma(\alpha)}
+      - \frac{\alpha^2}{\beta^2}\\
+    =\\
+      & \frac{\alpha(\alpha+1)}{\beta^2} - \frac{\alpha^2}{\beta^2}\\
+    =\\
+      & \frac{\alpha}{\beta^2}
+  \end{longderivation}
+  \end{enumerate}
+\end{Demo}

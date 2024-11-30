@@ -18,7 +18,7 @@
   Recordando que $B$ hace referencia a la función beta.
 \end{Def}
 \begin{Teo}
-  Sea $F\sim F(u,v)$ y $f$ su función de densidad. Entonces,
+  Sean $F\sim F(u,v)$ y $f$ su función de densidad. Entonces,
   \begin{enumerate}
     \item Para todo $x\in\R$, $f(x) \geq 0$.
     \item $\int_{\R}f(x)\mathrm{d}x=1$.
@@ -57,55 +57,61 @@
           {\left(1 + \frac{u}{v}x\right)^{\nicefrac{(u+v)}{2}}}
           }\diff{x}\\
       =\\
-        & 2\frac{n}{m}\int_0^{\nicefrac{\pi}{2}}{
-          \dfrac{\left(\frac{n}{m}\right)^{(\nicefrac{m}{2})-1}\tan^{m-2}(\theta)}
-          {(1 + \tan^2(\theta))^{\nicefrac{(n+m)}{2}}}
+        & 2\frac{v}{u}\int_0^{\nicefrac{\pi}{2}}{
+          \dfrac{\left(\frac{v}{u}\right)^{(\nicefrac{u}{2})-1}\tan^{u-2}(\theta)}
+          {(1 + \tan^2(\theta))^{\nicefrac{(u+v)}{2}}}
           \tan(\theta)\sec^2(\theta)
         }\diff{\theta}\\
       =\\
-        & 2\left(\frac{n}{m}\right)^{\nicefrac{m}{2}}
+        & 2\left(\frac{v}{u}\right)^{\nicefrac{u}{2}}
         \int_0^{\nicefrac{\pi}{2}}{
-          \dfrac{\tan^{m-1}(\theta)\sec^2(\theta)}{\sec^{m+n}(\theta)}
+          \dfrac{\tan^{u-1}(\theta)\sec^2(\theta)}{\sec^{u+v}(\theta)}
         }\diff{\theta}\\
       =\\
-        & 2\left(\frac{n}{m}\right)^{\nicefrac{m}{2}}
+        & 2\left(\frac{v}{u}\right)^{\nicefrac{u}{2}}
         \int_0^{\nicefrac{\pi}{2}}{
-          \sin^{m-1}(\theta)\cos^{n-2}\cos(\theta)
+          \sin^{u-1}(\theta)\cos^{v-2}\cos(\theta)
         }\diff{\theta}
     \end{longderivation}
     Para continuar, se realiza el cambio de variable
-    \[v=\sin(\theta)\]
-    Cuando $\theta=0$, $v=0$ y cuando $\theta=\nicefrac{\pi}{2}$, $v=1$.
+    \[\tilde{n}=\sin(\theta)\]
+    Cuando $\theta=0$, $\tilde{n}=0$ y cuando $\theta=\nicefrac{\pi}{2}$, $\tilde{n}=1$.
     Por otra parte, dado que $\cos^2(\theta) + \sin^2(\theta) = 1$, entonces
-    $\cos(\theta) = (1-v^2)^{\nicefrac{1}{2}}$. Recordando que
+    $\cos(\theta) = (1-\tilde{n}^2)^{\nicefrac{1}{2}}$. Recordando que
     $\odv*{\sin(\theta)}{\theta} = \cos(\theta)$, se obtiene la siguiente igualdad
     \begin{longderivation}
-        & 2\left(\frac{n}{m}\right)^{\nicefrac{m}{2}}
+        & 2\left(\frac{v}{u}\right)^{\nicefrac{u}{2}}
         \int_0^{\nicefrac{\pi}{2}}{
-          \sin^{m-1}(\theta)\cos^{n-2}\cos(\theta)
+          \sin^{u-1}(\theta)\cos^{v-2}\cos(\theta)
         }\diff{\theta}\\
       =\\
-        & 2\left(\frac{n}{m}\right)^{\nicefrac{m}{2}}
+        & 2\left(\frac{v}{u}\right)^{\nicefrac{u}{2}}
         \int_0^1{
-          v^{m-2}(1-v^2)^{(\nicefrac{n}{2})-1}v
-        }\diff{v}
+          \tilde{n}^{u-2}(1-\tilde{n}^2)^{(\nicefrac{v}{2})-1}
+          \tilde{n}
+        }\,\diff{\tilde{n}}
     \end{longderivation}
     Por último, ser realiza el cambio de variable
-    \[t = v^2\]
-    Los límites de integración se mantienen. Recordando que $\odv*{v^2}{v}=2v$,
+    \[t = \tilde{n}^2\]
+    Los límites de integración se mantienen. Recordando que
+    $\odv*{\tilde{n}^2}{\tilde{n}}=2\tilde{n}$,
     se obtienen las siguientes igualdades
     \begin{longderivation}
-        & 2\left(\frac{n}{m}\right)^{\nicefrac{m}{2}}
+        & 2\left(\frac{v}{u}\right)^{\nicefrac{u}{2}}
           \int_0^1{
-            v^{m-2}(1-v^2)^{(\nicefrac{n}{2})-1}v
-          }\diff{v}\\
+            \tilde{n}^{u-2}(1-\tilde{n}^2)^{(\nicefrac{v}{2})-1}
+            \tilde{n}
+          }\,\diff{\tilde{n}}\\
       =\\
-        & 2\left(\frac{n}{m}\right)^{\nicefrac{m}{2}}
+        & 2\left(\frac{v}{u}\right)^{\nicefrac{u}{2}}
         \int_0^1{
-          \frac{1}{2}t^{(\nicefrac{m}{2})-1}(1 - t)^{(\nicefrac{n}{2})-1}
+          \frac{1}{2}t^{(\nicefrac{u}{2})-1}(1 - t)^{(\nicefrac{v}{2})-1}
         }\diff{t}\\
       =\\
-        & \left(\frac{n}{m}\right)^{\nicefrac{m}{2}}
+        & \left(\frac{v}{u}\right)^{\nicefrac{u}{2}}
+        B\left(\frac{u}{2},\frac{v}{2}\right)\\
+      =\\
+        & \left(\frac{u}{v}\right)^{-\nicefrac{u}{2}}
         B\left(\frac{u}{2},\frac{v}{2}\right)
     \end{longderivation}
     \item a
