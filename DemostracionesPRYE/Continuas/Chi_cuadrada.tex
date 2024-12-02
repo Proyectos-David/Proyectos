@@ -1,56 +1,136 @@
 \subsubsection{Chi-cuadrada}
-Sea X una variable aleatoria tal que $X\sim\chi^2(v)$, entonces su $fdd$
-\[
-    F(x) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
-\]
-Entonces $\text{Var}[X] = 2v$ y $\text{E}[X] = v$
+\begin{Def}
+    Sea $\chi^2$ una variable aleatoria continua, $\chi^2$ tiene una
+    distribución $\chi^2$ con parámetro $v$ si su función de distribución
+    es:
+    \[
+        f(x) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}
+        x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
+    \]  
+\end{Def}
 
-\begin{Demo}
-    Primero se comprueba $\text{E}[X] = v$
+\begin{Teo}
+    Si $\chi^2 \sim \chi^2(v)$ tiene función de densidad f, entonces:
+    \begin{enumerate}
+        \item para todo $x\geq0$, $f(x)\geq0$
+        \item $\int_{0}^{\infty}f(x)\diff{x}\geq0$
+        \item $\text{E}[\chi^2]= v \qquad(v\geq0)$
+        \item $\text{Var}[\chi^2]= 2v \qquad(v\geq0)$
+    \end{enumerate}
+\end{Teo}
 
-    \begin{center}
-        \begin{derivation}
-            & \text{E}[X]\\
-            =\\
-            & \int_{0}^{\infty} xf(x)dx\\
-            =\\
-            & \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{\left(\nicefrac{v}{2}\right)}e^{\nicefrac{-x}{2}}dx\\
-            = \\
-            & \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}2\int_{0}^{\infty}2^{\nicefrac{v}{2}}u^{\nicefrac{v}{2}}e^{-u}du\\
-            =\\
-            & \frac{2}{\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}u^{\nicefrac{v}{2}}e^{-u}du\\
-            =\\
-            & \frac{2}{\Gamma\left(\frac{v}{2}\right)}\Gamma\left(\frac{v}{2}+1\right)\\
-            =\\
-            &\frac{2}{\Gamma\left(\frac{v}{2}\right)}\left(\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)\\
-            =\\
-            & v 
-            \end{derivation}
-    \end{center}
+\begin{Demo}~
+    \begin{enumerate}
+        \item Dado que todos los factores del término que componen a
+        $f$ son positivos, $f\geq0$ para todo $x\geq 0$
+        \item Para demostrar esto, basta con demostrar que 
+        \[
+            \int_{0}^{\infty}x^{\left(\nicefrac{v}{2}\right)-1}
+            e^{\nicefrac{-x}{2}}\diff{x}
+            =2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)
+        \]
+            El procedimiento inicia con el cambio de variable
+            $u=\displaystyle\frac{x}{2}$. Si $x=0$, $u=0$ 
+            y si $x\to\infty$, $u\to\infty$. De la misma 
+            manera $\diff{u} = \displaystyle\frac{1}{2}\diff{x}$, por lo 
+            tanto $\diff{x}=2\diff{u}$, así:
+        \begin{center}
+            \begin{longderivation}
+                & \int_{0}^{\infty}x^{(\nicefrac{v}{2})-1}
+                e^{\nicefrac{-x}{2}}\diff{x}\\
+                =\\
+                & \int_{0}^{\infty}(2u)^{(\nicefrac{v}{2})-1}e^{-u}2\diff{u}\\
+                =\\
+                & 2^{\nicefrac{v}{2}}\int_{0}^{\infty}
+                u^{(\nicefrac{v}{2})-1}e^{-u}\diff{u}
+            \end{longderivation}
+        \end{center}
+        Recordando que la definición de la función $\Gamma$ es 
+        \[
+            \Gamma(x)=\int_{0}^{\infty}t^{x-1}e^{-t}\diff{t}
+        \]
+        Por lo que se obtiene:
+        \[
+            \int_{0}^{\infty}x^{(\nicefrac{v}{2})-1}
+            e^{\nicefrac{-x}{2}}\diff{x} =
+            2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)
+        \]
+        Que es lo que se quería demostrar.
+        \item Para empezar la demostración, se hará la misma sustitución
+        del item pasado.
 
-    Ahora, se demuestra que $\text{Var}[x] = 2v$
-    
-    \begin{center}
-        \begin{derivation}
-            & \text{Var}[X]\\
-            =\\
-            & \text{E}[X^2]-\text{E}^2[X]\\
-            =\\
-            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{2}x^{(\nicefrac{v}{2})-1}e^{\nicefrac{-x}{2}}dx -v^2\\
-            =\\
-            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{(\nicefrac{v}{2})+1}e^{-\nicefrac{x}{2}}dx - v^2\\
-            =\\
-            &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}2\int_{0}^{\infty}2^{1+\nicefrac{v}{2}}u^{1+\nicefrac{v}{2}}e^{-u}du - v^2\\
-            =\\
-            & \frac{4}{\Gamma\left(\frac{v}{2}\right)}\Gamma\left(\frac{v}{2}+2\right)-v^2\\
-            =\\
-            & \frac{4}{\Gamma\left(\frac{v}{2}\right)}\left(\frac{v}{2}+1\right)\left(\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)-v^2\\
-            =\\
-            & 4\left(\frac{v^2}{4}\right)+4\left(\frac{v}{2}\right)-v^2\\
-            =\\
-            & v^2 +2v - v^2\\
-            =\\
-            & 2v
-        \end{derivation}
-    \end{center}
+        \begin{center}
+            \begin{longderivation}
+                & \text{E}[\chi^2]\\
+                =\\
+                & \int_{0}^{\infty} xf(x)dx\\
+                =\\
+                & \frac{1}{2^{\nicefrac{v}{2}}
+                \Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{
+                \nicefrac{v}{2}}e^{\nicefrac{-x}{2}}\diff{x}\\
+                \why[=]{\text{Cambio de variable}}\\
+                & \frac{1}{2^{\nicefrac{v}{2}}
+                \Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}(2u)^{
+                \nicefrac{v}{2}}e^{-u}2\diff{u}\\
+                =\\
+                & \frac{2}{\Gamma\left(\frac{v}{2}\right)}
+                \int_{0}^{\infty}u^{\nicefrac{v}{2}}e^{-u}\diff{u}\\
+                \why[=]{\text{Definición de $\Gamma$}}\\
+                & \frac{2}{\Gamma\left(\frac{v}{2}\right)}
+                \Gamma\left(\frac{v}{2}+1\right)
+            \end{longderivation}
+        \end{center}
+        Por propiedad de la función $\Gamma$, $\Gamma(x+1)=x\Gamma(x)$, 
+        la igualdad se transforma a lo siguiente:
+        \begin{center}
+            \begin{longderivation}
+                &\text{E}[\chi^2]=\left(\frac{2}
+                {\Gamma\left(\frac{v}{2}\right)}\right)\left(\frac{v}
+                {2}\right)\Gamma\left(\frac{v}{2}\right)\\
+                \iff\\
+                &\text{E}[\chi^2]=v
+            \end{longderivation}
+        \end{center}
+        Lo que demuestra la propiedad
+        \item Nuevamente se utiliza el mismo cambio de variable para esta demostración.
+        \begin{center}
+            \begin{longderivation}
+                & \text{Var}[\chi^2]\\
+                =\\
+                & \text{E}[(\chi^2)^2]-\text{E}^2[\chi^2]\\
+                =\\
+                &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}
+                \int_{0}^{\infty}x^{2}x^{(\nicefrac{v}{2})-1}
+                e^{\nicefrac{-x}{2}}\diff{x} -v^2\\
+                =\\
+                &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}
+                \int_{0}^{\infty}x^{(\nicefrac{v}{2})+1}
+                e^{-\nicefrac{x}{2}}\diff{x} - v^2\\
+                \why[=]{\text{Cambio de variable}}\\
+                &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}
+                \int_{0}^{\infty}(2u)^{(\nicefrac{v}{2})+1}
+                e^{-u}2\diff{u}-v^2\\
+                =\\
+                &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}
+                2^{(\nicefrac{v}{2})+2}
+                \int_{0}^{\infty}u^{(\nicefrac{v}{2})+1}e^{-u}\diff{u}-v^2\\
+                \why[=]{\text{Definición de $\Gamma$}}\\
+                &\frac{4}{\Gamma\left(\frac{v}{2}\right)}\Gamma
+                \left(\frac{v}{2}+2\right)-v^2\\
+                \why[=]{\text{propiedades de $Gamma$}}\\
+                &\frac{4}{\Gamma\left(\frac{v}{2}\right)}\left
+                (\left(\frac{v}{2}+1\right)\left
+                (\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)\right)-v^2\\
+                =\\
+                &4\left(\frac{v+2}{2}\right)\left(\frac{v}{2}\right)-v^2\\
+                =\\
+                &(v+2)(v)-v^2\\
+                =\\
+                &v^2+2v-v^2\\
+                =\\
+                2v
+            \end{longderivation}
+        \end{center}    
+        Así, se obtiene que Var$[\chi^2]=2v$, lo que concluye la demostración.     
+    \end{enumerate}
 \end{Demo}
