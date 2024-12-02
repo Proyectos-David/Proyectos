@@ -1,21 +1,21 @@
 \subsubsection{Chi-cuadrada}
 \begin{Def}
-    Sea $\chi^2$ una variable aleatoria continua, $\chi^2$ tiene una
-    distribución $\chi^2$ con parámetro $v$ si su función de distribución
+    Sea $X$ una variable aleatoria continua, $X$ tiene una
+    distribución $\chi^2$ con parámetro $v$ si su función de densidad
     es:
     \[
         f(x) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}
-        x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
+        x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}} \qquad(x\geq0)
     \]  
 \end{Def}
 
 \begin{Teo}
-    Si $\chi^2 \sim \chi^2(v)$ tiene función de densidad f, entonces:
+    Si $X \sim \chi^2(v)$ tiene función de densidad $f$, entonces:
     \begin{enumerate}
-        \item para todo $x\geq0$, $f(x)\geq0$
-        \item $\int_{0}^{\infty}f(x)\diff{x}\geq0$
-        \item $\text{E}[\chi^2]= v \qquad(v\geq0)$
-        \item $\text{Var}[\chi^2]= 2v \qquad(v\geq0)$
+        \item para todo $x\in \R$, $f(x)\geq0$
+        \item $\int_{-\infty}^{\infty}f(x)\diff{x}\geq0$
+        \item $\text{E}[X]= v \qquad(v\geq0)$
+        \item $\text{Var}[X]= 2v \qquad(v\geq0)$
     \end{enumerate}
 \end{Teo}
 
@@ -61,9 +61,9 @@
 
         \begin{center}
             \begin{longderivation}
-                & \text{E}[\chi^2]\\
+                & \text{E}[X]\\
                 =\\
-                & \int_{0}^{\infty} xf(x)dx\\
+                & \int_{-\infty}^{\infty} xf(x)dx\\
                 =\\
                 & \frac{1}{2^{\nicefrac{v}{2}}
                 \Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{
@@ -84,20 +84,20 @@
         la igualdad se transforma a lo siguiente:
         \begin{center}
             \begin{longderivation}
-                &\text{E}[\chi^2]=\left(\frac{2}
+                &\text{E}[X]=\left(\frac{2}
                 {\Gamma\left(\frac{v}{2}\right)}\right)\left(\frac{v}
                 {2}\right)\Gamma\left(\frac{v}{2}\right)\\
                 \iff\\
-                &\text{E}[\chi^2]=v
+                &\text{E}[X]=v
             \end{longderivation}
         \end{center}
         Lo que demuestra la propiedad
         \item Nuevamente se utiliza el mismo cambio de variable para esta demostración.
         \begin{center}
             \begin{longderivation}
-                & \text{Var}[\chi^2]\\
+                & \text{Var}[X]\\
                 =\\
-                & \text{E}[(\chi^2)^2]-\text{E}^2[\chi^2]\\
+                & \text{E}[X^2]-\text{E}^2[X]\\
                 =\\
                 &\frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}
                 \int_{0}^{\infty}x^{2}x^{(\nicefrac{v}{2})-1}
@@ -117,7 +117,7 @@
                 \why[=]{\text{Definición de $\Gamma$}}\\
                 &\frac{4}{\Gamma\left(\frac{v}{2}\right)}\Gamma
                 \left(\frac{v}{2}+2\right)-v^2\\
-                \why[=]{\text{propiedades de $Gamma$}}\\
+                \why[=]{\text{propiedades de $\Gamma$}}\\
                 &\frac{4}{\Gamma\left(\frac{v}{2}\right)}\left
                 (\left(\frac{v}{2}+1\right)\left
                 (\frac{v}{2}\right)\Gamma\left(\frac{v}{2}\right)\right)-v^2\\
@@ -131,6 +131,6 @@
                 2v
             \end{longderivation}
         \end{center}    
-        Así, se obtiene que Var$[\chi^2]=2v$, lo que concluye la demostración.     
+        Así, se obtiene que Var$[X]=2v$, lo que concluye la demostración.     
     \end{enumerate}
 \end{Demo}
