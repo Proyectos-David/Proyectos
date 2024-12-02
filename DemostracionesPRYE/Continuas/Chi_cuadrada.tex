@@ -1,12 +1,21 @@
 \subsubsection{Chi-cuadrada}
-Sea X una variable aleatoria tal que $X\sim\chi^2(v)$, entonces su $fdd$
+Sea X una variable aleatoria tal que $X\sim\chi^2(v)$, entonces su función de densidad $fdd$ es:
 \[
     F(x) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
 \]
 Entonces $\text{Var}[X] = 2v$ y $\text{E}[X] = v$
 
 \begin{Demo}
-    Primero se comprueba $\text{E}[X] = v$
+    Lo primero, es demostrar que $F(x)$ es en efecto una función de masa
+    \begin{center}
+        \begin{derivation}
+            & \int_{-\infty}^{\infty} f(x)dx\\
+            =\\
+            & \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}\int_{0}^{\infty}x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}}
+        \end{derivation}
+        
+    \end{center}
+    Ahora se comprueba $\text{E}[X] = v$
 
     \begin{center}
         \begin{derivation}
@@ -28,7 +37,7 @@ Entonces $\text{Var}[X] = 2v$ y $\text{E}[X] = v$
             \end{derivation}
     \end{center}
 
-    Ahora, se demuestra que $\text{Var}[x] = 2v$
+    Por ultimo, se demuestra que $\text{Var}[x] = 2v$
     
     \begin{center}
         \begin{derivation}
