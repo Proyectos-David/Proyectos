@@ -114,7 +114,84 @@
         & \left(\frac{u}{v}\right)^{-\nicefrac{u}{2}}
         B\left(\frac{u}{2},\frac{v}{2}\right)
     \end{longderivation}
-    \item a
+    \item Denotando:
+    \[
+      A = \displaystyle\frac{\left(\frac{u}{v}\right)^{\nicefrac{u}{2}}}
+      {B\left(\frac{u}{2}\text{,}\frac{v}{2}\right)}
+    \]
+    Que es el término constante de $f$. Manteniendo el cambio de 
+    variable se obtiene las siguientes igualdades:
+
+    \begin{longderivation}
+      &\text{E}[F]\\
+      =\\
+      &A\int_{-\infty}^{\infty}xf(x)\diff{x}\\
+      =\\
+      &A\int_{0}^{\infty}x\frac{x^{(\nicefrac{u}{2})-1}}
+      {\left(1+\frac{u}{v}x\right)^{\nicefrac{(u+v)}{2}}}\diff{x}\\
+      =\\
+      &A\int_{0}^{\infty}\frac{x^{\nicefrac{u}{2}}}
+      {\left(1+\frac{u}{v}x\right)^{\nicefrac{(u+v)}{2}}}\\
+      \why[=]{\text{Cambio de variable}}\\
+      &A\int_{0}^{\frac{\pi}{2}}\frac{\left(\frac{v}{u}\tan^2(\theta)\right)}
+      {(1+\tan^2(\theta))^{\nicefrac{(u+v)}{2}}}
+      \frac{2v}{u}\tan(\theta)\sec^2(\theta)\diff{\theta}\\
+      =\\
+      &2\left(\frac{v}{u}\right)^{(\nicefrac{u}{2})+1}A
+      \int_{0}^{\frac{\pi}{2}}\frac{\tan^{u+1}\theta}
+      {(\sec^2(\theta))^{\nicefrac{(u+1)}{2}}}
+      \sec^2(\theta)\diff{\theta}\\
+      =\\
+      &\left(\frac{v}{u}\right)^{(\nicefrac{u}{2})+1}A
+      \int_{0}^{\frac{\pi}{2}}\tan^{u+1}(\theta)
+      \sec^{2-u-v}(\theta)\diff{\theta}\\
+      =\\
+      &\left(\frac{v}{u}\right)^{(\nicefrac{u}{2})+1}A
+      \int_{0}^{\frac{\pi}{2}}\sin^{u+1}(\theta)
+      \cos^{v-3}(\theta)\diff{\theta}\\
+    \end{longderivation}
+    Haciendo la sustitución presentada anteriormente $t=\sin(\theta)$, 
+    se continua como sigue:
+    \begin{longderivation}
+      &2A\left(\frac{v}{u}\right)^{(\nicefrac{u}{2})+1}
+      \int_{0}^{1}t^{u+1}(1-t^2)^{\frac{(v-4)}{2}}\diff{t}\\
+    \end{longderivation}
+    Ahora, con la sustitución $w=t^2$. Cuando $t=0$, $w=0$, cuando 
+    $t=1$, $w=1$. Además, $\diff{w}=2t\diff{t}$. 
+    Luego, la integral se transforma en:
+    \begin{longderivation}
+      &A\left(\frac{v}{u}\right)^{(\nicefrac{u}{2})+1}
+      \int_{0}^{1}w^{\nicefrac{u}{2}}(1-w)^{(\nicefrac{v}{2})-2}\diff{w}\\
+      \why[=]{\text{Definición de $B$}}\\
+      &A\left(\frac{v}{u}\right)^{(\nicefrac{u}{2})+1}
+      B\left(\frac{u}{2}+1\text{,}\frac{v}{2}-1\right)\\
+    \end{longderivation}
+    Recordando que $B(x\text{,}y)=\displaystyle\frac{\Gamma(x)\Gamma(y)}
+    {\Gamma(x+y)}$, y expandiendo $A$ se obtiene la expresión:
+    \begin{longderivation}
+      \frac{\left(\frac{u}{v}\right)^{\nicefrac{u}{2}}}
+      {B\left(\frac{u}{2}\text{,}\frac{v}{2}\right)}\left(\frac{v}{u}\right)^
+      {(\nicefrac{u}{2})+1}
+      \frac{\Gamma\left(\frac{u}{2}+1\right)\Gamma\left(\frac{v}{2}-1\right)}
+      {\Gamma\left(\frac{u+v}{2}\right)}\\
+      =\\
+      \left(\frac{v}{u}\right)\frac{\Gamma\left(\frac{u+v}{2}\right)}
+      {\Gamma\left(\frac{u}{2}\right)\Gamma\left(\frac{v}{2}\right)}
+      \frac{\Gamma\left(\frac{u}{2}+1\right)\Gamma\left(\frac{v}{2}-1\right)}
+      {\Gamma\left(\frac{u+v}{2}\right)}\\
+      =\\
+      \left(\frac{v}{u}\right)\frac{\frac{u}{2}\Gamma\left(\frac{u}{2}\right)
+      \Gamma\left(\frac{v}{2}-1\right)}{\Gamma\left(\frac{u}{2}\right)
+      \left(\frac{v}{2}-1\right)\Gamma\left(\frac{v}{2}-1\right)}\\
+      =\\
+      \left(\frac{v}{u}\right)\left(\frac{u}{2}\right)
+      \frac{1}{\left(\frac{v}{2}-1\right)}\\
+      =\\
+      \left(\frac{v}{2}\right)\left(\frac{2}{v-2}\right)\\
+      =\\
+      \frac{v}{v-2}
+    \end{longderivation}
+    Así, E$[F]=\displaystyle\frac{v}{v-2}$, y se concluye la demostración.
   \end{enumerate}
 \end{Demo}
 
