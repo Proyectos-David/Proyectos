@@ -33,19 +33,25 @@ conveniente tener el siguiente resultado anterior a proceder con el teorema.
   =\\
     & \int_{\R^2}e^{-(x^2+y^2)}\diff{x,y}\\
   =\\
-    & \smashoperator[r]{\int_{\R^2-\{(0,0)\}}}e^{-(x^2+y^2)}\diff{x,y}
+    & \smashoperator[r]{\int_{\R^2-\set{(x,0)\in\R^2}{x\leq0}}}
+    e^{-(x^2+y^2)}\diff{x,y}
 \end{longderivation}
 La validez de este último paso se justifica demostrando que la integral de esta función
-sobre el conjunto $\{(0,0)\}$ es nula.
+sobre el conjunto $\set{(x,0)\in\R^2}{x\leq0}$ es nula.
+Esto se hará en dos momentos.
+
+Inicialmente, se mostrará
+que la integral sobre el conjunto $\{(0,0)\}$ es nula.
 Para $n\in\Z^+$, se define la sucesión $K_n=[-\nicefrac{1}{n},\nicefrac{1}{n}]$. Para todo
 $n\in\Z^+$, $K_n$ es compacto y $K_{n+1}\subseteq K_n$, luego $\bigcap_{n\in\Z^+}K_n\not=\varnothing$
-y $\diam\bigcap_{n\in\Z^+}K_n = 0$. Dado que, para todo $n\in\Z^+$, $0\in K_n$, 
-$\bigcap_{n\in\Z^+}K_n=0$.
+y $\diam\bigcap_{n\in\Z^+}K_n = 0$. Dado que, para todo $n\in\Z^+$, se
+tiene que $0\in K_n$, entonces, $\bigcap_{n\in\Z^+}K_n=0$.
 
 Como el máximo de $\left|e^{-(x^2+y^2)}\right|$ es $1$, y la longitud del contorno $K_n\times K_n$ es
 $\nicefrac{4}{n}$, entonces,
 \[
-  \left|\smashoperator[r]{\int_{K_n\times K_n}}e^{-(x^2+y^2)}\diff{x,y}\right|\leq \frac{4}{n}
+  \left|\smashoperator[r]{\int_{K_n\times K_n}}
+  e^{-(x^2+y^2)}\diff{x,y}\right|\leq \frac{4}{n}
 \]
 
 Con esto se obtiene entonces que
@@ -53,12 +59,46 @@ Con esto se obtiene entonces que
   \int_{\{(0,0)\}}e^{-(x^2+y^2)}\diff{x,y} = 0
 \]
 
-Procediendo con la integral anterior a este resultado.Parametrizando
-$\R^2-\{(0,0)\}$ con la función
+Con esto, la integral sobre $\set{(x,0)}{x\leq0}$ coincide con la interal sobre
+$\set{(x,0)}{x<0}=\R^-\times\{0\}$. Para $n\in\Z^+$, se define la sucesión
 \[
-  \vv{t(r,\theta)}=\left<r\cos(\theta),r\sin(\theta)\right>\qquad
-  (r,\theta)\in R^+\times[-\pi,\pi)
+  S_n = \set{(x,y)\in\R^2}{
+    x<0\land\arctan\left|\frac{y}{x}\right|\leq\frac{1}{n}
+  }\cup\{0,0\}
 \]
+
+Por definición, se obtiene que
+\begin{longderivation}
+    & (x,y)\in S_n\\
+  \iff\\
+    & (x,y)=(0,0) \lor
+    \Forall{n}[n\in\Z^+]{
+      x<0\land\arctan\left|\frac{y}{x}\right|\leq\frac{1}{n}
+    }
+\end{longderivation}
+De esta última proposición, se obtiene que
+\[\left(R^-\times\{0\}\right)\cup\{0,0\}\subseteq\bigcap_{n\in\Z^+}S_n\]
+Ashora, supóngase que existe $(x,y)\in\R^2$ tal que
+$(x,y)\in\bigcap_{n\in\Z^+}S_n-
+\left(\left(R^-\times\{0\}\right)\cup\{0,0\}\right)$.
+Es decir,
+\[
+  \Forall{n}[n\in\Z^+]{
+      x<0\land\arctan\left|\frac{y}{x}\right|\leq\frac{1}{n}
+    }
+  \land
+  y\not=0
+\]
+Lo cual es contradictorio, pues de ser el caso $a = \arctan\left|\frac{y}{x}\right| >0$,
+pero existe $N\in\Z^+$ tal que $a > \frac{1}{N}$. Así, se concluye la igualdad
+\[\bigcap_{n\in\Z^+}S_n = \left(R^-\times\{0\}\right)\cup\{(0,0)\}\]
+
+Ahora, para mostrar que la integral sobre este conjunto es nula, se
+integrará sobre $S_n$. $S_n$, por el resultado previo, puede
+ser integrado sin tomar en cuenta $\{(0,0)\}$. De esta forma,
+una parametrización de $S_n-\{(0,0)\}$ es
+\[\vv{t(r,\theta)}=\left<r\cos(\theta),r\sin(\theta)\right>
+\qquad(r,\theta)\in\R^+\times[\pi-\nicefrac{1}{n},\pi+\nicefrac{1}{n}]\]
 acomodando $\vv{t}$ para $\R^3$, el elemento de área es
 \begin{longderivation}<0.9>
     & \left|\vv{t_r} \times \vec{t_\theta}\right|\\
@@ -75,9 +115,36 @@ acomodando $\vv{t}$ para $\R^3$, el elemento de área es
   =\\
     & r
 \end{longderivation}
-Dado que
-\[(x^2+y^2)\circ\vv{t(r,\theta)} = r^2\sin^2(\theta) + r^2\cos^2(\theta) = r^2\]
-La integral presentada se puede reescribir y desarrollar de la siguiente manera
+Por el resutlado anterior a cerca de la integral sobre $\{(0,0)\}$, se puede
+extender el dominio de $vv{t}$ de forma que se pierda la biyección únicamente
+en $\{(0,0)\}$. Así, tomando $r\in\R^+\cup\{0\}$, la integral sobre $S_n$
+resulta igual a
+\begin{longderivation}
+    & \int_0^{\infty}\int_{\pi-\nicefrac{1}{n}}^{\pi+\nicefrac{1}{n}}
+    re^{-r^2}\diff{\theta,r}\\
+  =\\
+    & \frac{1}{n}\int_0^{\infty}2re^{-r^2}\diff{r}\\
+  \why[=]{Tomando $u=r^2$}\\
+    & \frac{1}{n}
+\end{longderivation}
+Así,
+\[
+\smashoperator{\int_{\set{(x,0)\in\R^2}{x\leq0}}}
+e^{-\left(x^2+y^2\right)}\diff{x,y}
+=
+\lim_{n\to\infty}\int_{S_n}e^{-\left(x^2+y^2\right)}\diff{x,y}
+=
+\lim_{n\to\infty}\frac{1}{n}
+= 0
+\]
+
+Procediendo ahora sí con la integral sobre $\R^2-\set{(x,0)\in\R^2}{x\leq0}$,
+se utilizará la misma parametrización que se mostró para el último
+resultado, únicamente cambiando su dominio por
+\[(r,\theta)\in\R^+\times(-\pi,\pi)\]
+Por el resutlado anterior, se puede extender el dominio a
+$\left(R^+\cup\{0\}\right)\times[-\pi,\pi]$.
+Así, $I^2$ resulta igual a
 \begin{longderivation}
     & \int_0^\infty\int_{-\pi}^\pi re^{-r^2}\diff{\theta,r}\\
   =\\
@@ -87,7 +154,7 @@ La integral presentada se puede reescribir y desarrollar de la siguiente manera
   =\\
     & \pi
 \end{longderivation}
-Así, $I = \sqrt{\pi}$
+Con lo que, $I = \sqrt{\pi}$.
 
 Continuando con la demostración del teorema
 \begin{Demo}
