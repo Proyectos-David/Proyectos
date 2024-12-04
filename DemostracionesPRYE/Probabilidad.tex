@@ -1,18 +1,16 @@
 \section{Probabilidad}
-
-Uno de los problemas no resueltos de esta primera parte del
-curso fue hallar la probabilidad de una unión finita de eventos.
-
-Esta probabilidad, sin embargo, se puede hallar mediante una
-forma recursiva con la siguiente expresión
+Un primer resultado en el curso es a cerca de la probabilidad de una unión finita
+de eventos de un mismo espacio muestral. Para esto, se puede hacer uso del 
+resultado para la unión de dos eventos, mismo que se puede aplicar
+a una unión finita para generar una función recursiva.
 \begin{align*}
   P(A_1 \cup A_2) &= P(A_1) + P(A_2) - P(A_1 \cap A_2)\\[10pt]
   P\left(\bigcup_{i=1}^{n+1} A_i\right)
   &= P(A_{n+1}) + P\left(\bigcup_{i=1}^n A_i\right) -
     P\left(\bigcup_{i=1}^n (A_{n+1}\cap A_i)\right)
 \end{align*}
-Lo que se quiere es resolver esta función de recursión. Para esto,
-se evaluaran unos cuantos de sus resultados.
+Para obtener una expresión más explícita, se desarrolla la recursión
+hasta $n=4$. Claramente se omiten los resultados para $n=1$ y $n=2$.
 
 \begin{longderivation}
     & {P(A_1 \cup A_2\cup A_3)}\\
