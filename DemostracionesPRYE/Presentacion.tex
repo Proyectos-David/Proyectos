@@ -9,6 +9,7 @@
 \usepackage{mathrsfs}
 \usepackage{thmtools}
 \usepackage{marvosym}
+\usepackage{tipa}
 \usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
 \usetheme{Warsaw}
 \setbeamercovered{transparent}
@@ -85,19 +86,213 @@
 
   \section{Distribuciones Discretas}
   \begin{frame}{Binomial}
-    \[X\sim B(n,p)\]
+    \only<1-2>{
+      \[X\sim B(n,p)\]
+    }
+    \only<3>{
+      \[(x+y)^n = \sum_{k=0}^n\binom{n}{k}x^ky^{n-k}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
     \[f(x)=P(X=x)=\binom{n}{x}p^x(1-p)^{n-x}\qquad(0\leq x\leq n)\]
     \onslide<2>{
       \begin{enumerate}
         \item Para todo $x\in\Z$ con $0\leq x\leq n$, $P(X=x) \geq 0$.
-        \item $\sum_{x\in\Z}P(X=x) = 1$.
+        \item $\sum_{x=0}^nP(X=x) = 1$.
         \item $\text{E}[X] = np$.
         \item $\text{Var}[X]=np(1-p)$.
       \end{enumerate}
     }
   \end{frame}
+  \begin{frame}{Geometrica}
+    \only<1-2>{
+      \[X\sim\text{Geom}(p)\]
+    }
+    \only<3>{
+      \[\sum_{k=0}^np^k = \frac{1-p^{n+1}}{1-p}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+    \[f(x)=P(X=x)=p(1-p)^{x-1}\qquad(x\in\Z^+)\]
+    \onslide<2>{
+      \begin{enumerate}
+        \item Para todo $x\in\Z^+$, $P(X=x)\geq0$.
+        \item $\sum_{x\in\Z^+}P(X=x)=1$.
+        \item $\text{E}[X]=\frac{1}{p}$.
+        \item $\text{Var}[X]=\frac{1-p}{p^2}$.
+      \end{enumerate}
+    }
+  \end{frame}
+  
+  \begin{frame}{Hipergeométrica}
+    \only<1-2>{
+      \[X\sim Hg(N,K,n)\]
+    }
+    \only<3>{
+      \[\binom{m+n}{k}=\sum_{r=0}^k\binom{m}{r}\binom{n}{k-r}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+    \begin{align*}
+      f(x)=P(X=x)=\dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\\
+      (\max\{0,n+K-N\} \leq x \leq \min\{K,n\})
+    \end{align*}
+    \onslide<2>{
+      \begin{enumerate}
+        \item para todo $x\in\Z$ con $0\leq x\leq n$, $P(X=x) \geq 0$.
+        \item $\sum_{x\in\Z}P(X=x) = 1$.
+        \item $\text{E}[X]=\frac{nK}{N}$.
+        \item $\text{Var}[X] = \frac{n\,K(N-K)(N-n)}{N^2(N-1)}$.
+      \end{enumerate}
+    }
+  \end{frame}
+  \begin{frame}{Poisson}
+    \only<1-2>{
+      \[X\sim\text{Pois}(\lambda)\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+    \only<3>{
+      \[e^x=\sum_{n=0}^{\infty}\frac{x^n}{n!}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+      }
+      \[f(x)=P(X=x)=\frac{\lambda^xe^{-\lambda}}{x!}\qquad(x\in\N)\]
+    \onslide<2>{
+      \begin{enumerate}
+        \item Para todo $x\in\N$, $P(X=x)\geq0$.
+        \item $\sum_{x\in\N}P(X=x)=1$.
+        \item $\text{E}[X] = \lambda$.
+        \item $\text{Var}[X]=\lambda$.
+      \end{enumerate}
+    }
+  \end{frame}
+\section{Distribuciones Continuas}
+  \begin{frame}{Normal}
+    \only<1-2>{
+      $X\sim N(\mu,\sigma^2)$
+    }
+    \only<3>{
+      \[\int_\R e^{-x^2}\diff{x} = \sqrt{\pi}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+  \[
+    f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}}
+    e^{-\nicefrac{(x-\mu)^2}{\left(2\sigma^2\right)}}
+    \qquad (x\in\R)
+  \]
+    \onslide<2>{
+      \begin{enumerate}
+        \item Para todo $x\in\R$, $f(x) \geq 0$.
+        \item $\int_{\R}{f(x)}\diff{x} = 1$.
+        \item $\text{E}[X] = \mu$.
+        \item $\text{Var}[X] = \sigma^2$.
+      \end{enumerate}
+    }
+  \end{frame}
+  \begin{frame}{Chi-Cuadrado}
+    \only<1-2>{
+      \[X\sim\chi^2(v)\]
+    }
+    \only<3>{
+      \[\Gamma(x+1)=x\Gamma(x)\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+    \[
+        f(x) = \frac{1}{2^{\nicefrac{v}{2}}\Gamma\left(\frac{v}{2}\right)}
+        x^{\left(\nicefrac{v}{2}\right)-1}e^{\nicefrac{-x}{2}} \qquad(x\geq0)
+    \]
+    \onslide<2>{
+      \begin{enumerate}
+        \item para todo $x\in \R$, $f(x)\geq0$
+        \item $\int_{-\infty}^{\infty}f(x)\diff{x}\geq0$
+        \item $\text{E}[X]= v \qquad(v\geq0)$
+        \item $\text{Var}[X]= 2v \qquad(v\geq0)$
+      \end{enumerate}
+    }
+  \end{frame}
+  \begin{frame}{f}
+    \only<1-3>{
+      \[F\sim\text{\texthtbardotlessj}\]
+    }
+    \only<4>{
+      \[B(x,y)=\frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+    \only<1>{
+      \[f(x)=
+      \dfrac{\Gamma\left(\frac{u+v}{2}\right)\left(\frac{u}{v}\right)^{\nicefrac{u}{2}}}
+      {\Gamma\left(\frac{u}{2}\right)\Gamma\left(\frac{v}{2}\right)}
+      \dfrac{x^{(\nicefrac{u}{2})-1}}
+      {\left(1 + \frac{u}{v}x\right)^{\nicefrac{(u+v)}{2}}}
+      \qquad (x\in\R^+)\]
+    }
+    \only<2->{
+      \[f(x)=
+      \dfrac{\left(\frac{u}{v}\right)^{\nicefrac{u}{2}}}
+      {B\left(\frac{u}{2},\frac{v}{2}\right)}
+      \dfrac{x^{(\nicefrac{u}{2})-1}}
+      {\left(1 + \frac{u}{v}x\right)^{\nicefrac{(u+v)}{2}}}
+      \qquad (x\in\R^+)
+      \]
+    }
+    \onslide<3>{
+      \begin{enumerate}
+        \item Para todo $x\in\R$, $f(x) \geq 0$.
+        \item $\int_{\R}f(x)\mathrm{d}x=1$.
+        \item $\text{E}[F]=\frac{v}{v-2} \qquad(v>2)$
+        \item $\text{Var}[F]=\frac{2v^2(u+v-2)}{u(v-2)^2(v-4)}\qquad(v>4)$
+      \end{enumerate}
+    }
+  \end{frame}
 
-  \section{Distribuciones Continuas}
-
-  \section{Teoremas de Aproximación}
+  \begin{frame}{Gamma}
+    \only<1-2>{
+      \[X\sim\text{Gamma}(\alpha,\beta)\]
+    }
+    \only<3>{
+      \[\Gamma(\alpha) = \int_0^{\infty}t^{\alpha-1}e^{-t}\diff{t}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+    \[
+    f(x)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}
+    \qquad (x\in\R^+)
+    \]
+    \onslide<2>{
+      \begin{enumerate}
+        \item Para todo $x\in\R$, $f(x) \geq 0$.
+        \item $\int_{\R}f(x)\mathrm{d}x=1$.
+        \item $\text{E}[X]=\frac{\alpha}{\beta}$
+        \item $\text{Var}[X]=\frac{\alpha}{\beta^2}$
+      \end{enumerate}
+    }
+  \end{frame}
+\section{Teoremas de Aproximación}
+\begin{frame}{Hipergeométrica a Binomial}
+  Sea $X\sim Hg(N,K,n)$. Para $n$ fijo, si $N,K$ cumplen que
+  \begin{align*}
+    \frac{x-1}{K}         &< \epsilon_1\\
+    \frac{n-x-1}{N-K}     &< \epsilon_2\\
+    \frac{n-1}{N - n + 1} &< \epsilon_3
+  \end{align*}
+  Entonces,
+  \[
+    \left|\dfrac{Hg(N,K,n)(x)}{B\left(n,\frac{K}{N}\right)(x)} - 1\right| 
+    < (\epsilon_1 + 1)^{x}(\epsilon_2 + 1)^{n-x}(\epsilon_3 + 1)^{n} - 1
+    \qquad\text{\Coffeecup}
+  \]
+\end{frame}
 \end{document}

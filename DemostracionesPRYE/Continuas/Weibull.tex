@@ -1,0 +1,75 @@
+\subsubsection{Distribución Weibull}
+\begin{Def}
+  Sea $X$ una variable aleatoria continua. $X$ tiene distribución Weibull
+  de parámetros $\lambda,\alpha\in\R^+$ cuando su función de densidad
+  es
+  \[
+    f(x) = \lambda^\alpha\alpha x^{\alpha-1}e^{-(\lambda x)^\alpha}
+    \qquad (x > 0)
+  \]
+\end{Def}
+\begin{Teo}
+  Sean $X$ una variable aleatoria continua con distribución Weibull de parámetros
+  $\lambda,\alpha\in\R^+$ y $f$ su función de densidad. Entonces,
+  \begin{enumerate}
+    \item Para todo $x\in\R$, $f(x)\geq0$.
+    \item $\int_{\R}f(x)\diff{x}=1$.
+    \item $\text{E}[X]=\frac{1}{\lambda\alpha}
+    \Gamma\left(\frac{1}{\alpha}\right)$.
+    \item $\text{Var}[X]=\frac{1}{\lambda^2\alpha}\left(
+      2\Gamma\left(\frac{2}{\alpha}\right)
+      + \frac{1}{\alpha}\Gamma^2\left(\frac{1}{\alpha}\right)
+    \right)$.
+  \end{enumerate}
+\end{Teo}
+\begin{Demo}~
+  \begin{enumerate}
+    \item Dado que los términos en la definición de $f$ son no negativos,
+    se concluye que, para todo $x\in\R$, $f(x)\geq0$.
+    \item~
+    \begin{longderivation}
+        & \int_0^{\infty}\lambda^\alpha\alpha x^{\alpha-1}
+        e^{-(\lambda x)^\alpha}\diff{x}\\
+      \why[=]{Tomando $t=(\lambda x)^{\alpha}$}\\
+        & \int_0^{\infty}e^{-t}\diff{t}\\
+      =\\
+        & 1
+    \end{longderivation}
+    \item~
+    \begin{longderivation}
+        & \text{E}[X]\\
+      =\\
+        & \int_0^{\infty}\lambda^\alpha\alpha x^{\alpha}
+        e^{-(\lambda x)^\alpha}\diff{x}\\
+      \why[=]{Tomando $t=(\lambda x)^{\alpha}$, $x=\frac{t^{1/\alpha}}{\lambda}$}\\
+        & \frac{1}{\lambda}\int_0^{\infty}t^{1/\alpha}e^{-t}\diff{t}\\
+      =\\
+        & \frac{1}{\lambda}\Gamma\left(\frac{1}{\alpha}+1\right)\\
+      =\\
+        & \frac{1}{\lambda\alpha}\Gamma\left(\frac{1}{\alpha}\right)
+    \end{longderivation}
+    \item~
+    \begin{longderivation}
+        & \text{Var}[X]\\
+      =\\
+        & \text{E}[X^2] - \text{E}^2[X]\\
+      =\\
+        & \int_0^{\infty}\lambda^\alpha\alpha x^{\alpha+1}
+        e^{-(\lambda x)^\alpha}\diff{x}
+        - \frac{1}{\lambda^2\alpha^2}\Gamma^2\left(\frac{1}{\alpha}\right)\\
+      \why[=]{Tomando $t=(\lambda x)^{\alpha}$, $x=\frac{t^{1/\alpha}}{\lambda}$}\\
+        & \int_0^{\infty}\frac{t^{2/\alpha}}{\lambda^2}e^{-t}\diff{t}
+        - \frac{1}{\lambda^2\alpha^2}\Gamma^2\left(\frac{1}{\alpha}\right)\\
+      =\\
+        & \frac{1}{\lambda^2}\left(
+          \Gamma\left(1 + \frac{2}{\alpha}\right) -
+          \frac{1}{\alpha^2}\Gamma^2\left(\frac{1}{\alpha}\right)
+        \right)\\
+      =\\
+        & \frac{1}{\lambda^2\alpha}\left(
+          2\Gamma\left(\frac{2}{\alpha}\right) -
+          \frac{1}{\alpha}\Gamma^2\left(\frac{1}{\alpha}\right)
+        \right)
+    \end{longderivation}
+  \end{enumerate}
+\end{Demo}
