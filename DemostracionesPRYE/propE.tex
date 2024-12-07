@@ -10,98 +10,107 @@
               entonces E[$\alpha g(X) + \beta h(X)$]$= \alpha$E[$g(X)$]$+ \beta$E[$h(X)$]
         \item Si $g$ y $h$ son funciones tales que $g(X)$ y $h(X)$ son variables aleatorias
               cuyos valores esperados existen y $g(x)\leq h(x)$ para todo $x$, entonces 
-              E$[g(X)$]$\leq$E[$h(X)$]  
+              E$[g(X)$]$\leq$E[$h(X)$]
+        \item Sean $Y$ una variable aleatoria independiente de $X$ y $g,h$ funciones
+        tales que $g(X)$ y $g(Y)$ sean variables aleatorias cuyos valores esperados
+        existen. Entonces, $text{E}[g(X)h(Y)]=\text{E}[g(X)]\text{E}[h(Y)]$.
     \end{enumerate}
 \end{Teo}
-\begin{Demo} Para hacer la demostración, se hará con variables discretas 
+\begin{Demo} Sean $f,u$ las funciones de distribución para $X$ y $Y$
+    respectivamente. Para hacer la demostración, se hará con variables discretas 
     y variables continuas por aparte.
 
-    \begin{enumerate}
-        \item Para variables discretas:
-        Si $P[X \geq 0]=1$ entonces $P(X < x)=0$, luego:
-        \[
-            \text{E}[X]=\sum_{x=0}^{\infty}xP(X=x) \geq  0
-        \]
-        Debido a que $x\geq0$ y $P(X=x)\geq 0$ para todo x.
-        Similarmente para para variables aleatorias continuas, se tiene
-        que $f(x)=0$ si $x\geq0$. Entonces, como $f(x)\geq0$ para todo $x$,
-        $xf(x)\geq0$, y por tanto, la integral también.
-        \item Para $\alpha$ constante, $P[X=\alpha]=1$, y por tanto el valor
-        esperado es $\alpha$
-        \item Si existe $M\geq0$ tal que $|x|\leq M$ para todo $X$, entonces:
-        
-        Para X variable aleatoria discreta, se tiene:
-        \[
-            \text{E}[X]=\sum_{-M}^{M}xP(X=x)
-        \]
-        y al ser una suma finita, el resultado existe. 
-        
-        Para X variable aleatoria contínua:
-            \begin{longderivation}
-                &\text{E}[X]\\
-                =\\
-                &\int_{-M}^{M}xf(x)\diff{x}\\
-                \leq\\
-                &M\int_{-M}^{M}f(x)\diff{x}
-            \end{longderivation}
-        Dado que $f$ describe el comportamiento de $x$, esa 
-        integral no es otra cosa que la integral total, es decir:
+\begin{enumerate}
+    \item Para variables discretas:
+    Si $P[X \geq 0]=1$ entonces $P(X < x)=0$, luego:
+    \[
+        \text{E}[X]=\sum_{x=0}^{\infty}xP(X=x) \geq  0
+    \]
+    Debido a que $x\geq0$ y $P(X=x)\geq 0$ para todo x.
+    Similarmente para para variables aleatorias continuas, se tiene
+    que $f(x)=0$ si $x\geq0$. Entonces, como $f(x)\geq0$ para todo $x$,
+    $xf(x)\geq0$, y por tanto, la integral también.
+    \item Para $\alpha$ constante, $P[X=\alpha]=1$, y por tanto el valor
+    esperado es $\alpha$
+    \item Si existe $M\geq0$ tal que $|x|\leq M$ para todo $X$, entonces:
+    
+    Para X variable aleatoria discreta, se tiene:
+    \[
+        \text{E}[X]=\sum_{-M}^{M}xP(X=x)
+    \]
+    y al ser una suma finita, el resultado existe. 
+    
+    Para X variable aleatoria contínua:
         \begin{longderivation}
-            &M\int_{-M}^{M}f(x)\diff{x}\\
+            &\text{E}[X]\\
             =\\
-            &M\int_{-\infty}^{\infty}f(x)\diff{x}\\
-            =\\
-            M
-        \end{longderivation}
-        Así pues, E$[X]\leq M$, y por lo tanto existe.
-        \item Para funciones discretas:
-        \begin{longderivation}
-            &\text{E}[\alpha g(x) + \beta h(x)]\\
-            =\\
-            &\sum_{x=-\infty}^{\infty}(\alpha g(x) + \beta h(x))P[X=x]\\
-            =\\
-            &\sum_{-\infty}^{\infty}\alpha g(x) P[X=x] + 
-            \sum_{x=-\infty}^{\infty} \beta h(x)P[X=x]\\
-            =\\
-            &\alpha \sum_{x=-\infty}^{\infty}g(x)P[X=x] + 
-            \beta \sum_{x=-\infty}^{\infty}h(x)P(X=x)\\
-            =\\
-            &\alpha\text{E}[g(x)]+\beta\text{E}[f(x)]
-        \end{longderivation}
-        Para las variables continuas, es un argumento similar
-        \begin{longderivation}
-            &\text{E}[\alpha g(x) + \beta f(x)]\\
-            =\\
-            &\int_{-\infty}^{\infty}(\alpha g(x) + \beta h(x)\diff{x})\\
-            =\\
-            &\int_{-\infty}^{\infty}\alpha g(x)f(x)\diff{x} + 
-            \int_{-\infty}^{\infty} \beta h(x)f(x)\diff{x}\\
-            =\\
-            &\alpha \int_{-\infty}^{\infty}g(x)f(x)\diff{x} + 
-            \beta \int_{-\infty}^{\infty}h(x)f(x)\diff{x}\\
-            =\\
-            &\alpha\text{E}[g(x)]+\beta\text{E}[h(x)]
-        \end{longderivation}
-        \item Para variables aleatorias discretas:
-        \begin{longderivation}
-            &\text{E}[g(x)]\\
-            =\\
-            &\sum_{x=-\infty}^{\infty}g(x)P(X=x)\\
+            &\int_{-M}^{M}xf(x)\diff{x}\\
             \leq\\
-            &\sum_{x=-\infty}^{\infty}h(x)P(X=x)\\
-            =\\
-            &\text{E}[h(x)]
+            &M\int_{-M}^{M}f(x)\diff{x}
         \end{longderivation}
-        De manera similar, con las variables aleatorias continuas
-        \begin{longderivation}
-            &\text{E}[g(x)]\\
-            =\\
-            &\int_{-\infty}^{\infty}g(x)f(x)\diff{x}\\
-            \leq\\
-            &\int_{-\infty}^{\infty}h(x)f(x)\diff{x}\\
-            =\\
-            &\text{E}[h(x)]
-        \end{longderivation}
-        Lo que termina la demostración. 
-    \end{enumerate}
+    Dado que $f$ describe el comportamiento de $x$, esa 
+    integral no es otra cosa que la integral total, es decir:
+    \begin{longderivation}
+        &M\int_{-M}^{M}f(x)\diff{x}\\
+        =\\
+        &M\int_{-\infty}^{\infty}f(x)\diff{x}\\
+        =\\
+        M
+    \end{longderivation}
+    Así pues, E$[X]\leq M$, y por lo tanto existe.
+    \item Para funciones discretas:
+    \begin{longderivation}
+        &\text{E}[\alpha g(x) + \beta h(x)]\\
+        =\\
+        &\sum_{x=-\infty}^{\infty}(\alpha g(x) + \beta h(x))P[X=x]\\
+        =\\
+        &\sum_{-\infty}^{\infty}\alpha g(x) P[X=x] + 
+        \sum_{x=-\infty}^{\infty} \beta h(x)P[X=x]\\
+        =\\
+        &\alpha \sum_{x=-\infty}^{\infty}g(x)P[X=x] + 
+        \beta \sum_{x=-\infty}^{\infty}h(x)P(X=x)\\
+        =\\
+        &\alpha\text{E}[g(x)]+\beta\text{E}[f(x)]
+    \end{longderivation}
+    Para las variables continuas, es un argumento similar
+    \begin{longderivation}
+        &\text{E}[\alpha g(x) + \beta f(x)]\\
+        =\\
+        &\int_{-\infty}^{\infty}(\alpha g(x) + \beta h(x)\diff{x})\\
+        =\\
+        &\int_{-\infty}^{\infty}\alpha g(x)f(x)\diff{x} + 
+        \int_{-\infty}^{\infty} \beta h(x)f(x)\diff{x}\\
+        =\\
+        &\alpha \int_{-\infty}^{\infty}g(x)f(x)\diff{x} + 
+        \beta \int_{-\infty}^{\infty}h(x)f(x)\diff{x}\\
+        =\\
+        &\alpha\text{E}[g(x)]+\beta\text{E}[h(x)]
+    \end{longderivation}
+    \item Para variables aleatorias discretas:
+    \begin{longderivation}
+        &\text{E}[g(x)]\\
+        =\\
+        &\sum_{x=-\infty}^{\infty}g(x)P(X=x)\\
+        \leq\\
+        &\sum_{x=-\infty}^{\infty}h(x)P(X=x)\\
+        =\\
+        &\text{E}[h(x)]
+    \end{longderivation}
+    De manera similar, con las variables aleatorias continuas
+    \begin{longderivation}
+        &\text{E}[g(x)]\\
+        =\\
+        &\int_{-\infty}^{\infty}g(x)f(x)\diff{x}\\
+        \leq\\
+        &\int_{-\infty}^{\infty}h(x)f(x)\diff{x}\\
+        =\\
+        &\text{E}[h(x)]
+    \end{longderivation}
+\item tanto para el caso discreto como continuo, la expresión a sumas o integrar,
+es $g(x)h(y)f(x)u(y)$, donde la expresión se suma o integra sobre el dominio
+de $X$ y $Y$ simultaneamente. Por la naturaleza de las integrales y series, la
+independencia de las expresiones permite separar la operacion en un producto,
+el cual resulta ser E$[g(X)]$E$[h(Y)]$
+Lo que termina la demostración.
+\end{enumerate}
 \end{Demo}
