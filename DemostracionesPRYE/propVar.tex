@@ -1,6 +1,54 @@
 \subsection{Propiedades de varianza}
 \begin{Teo}
+    Sea $X$ una variable aleatoria cuyo valor esperado existe y 
+    $\alpha$, $\beta \in \R$ constantes. Entonces:
+
     \begin{enumerate}
-        \item 
+        \item Var$[X] \geq 0$ 
+        \item Var$[\alpha]$ = 0
+        \item Var$[\alpha X]$ = $\alpha^2$Var[X]
+        \item Var$[X + \beta]$ = Var$[X]$
+        \item Var$[X] = 0$ si y solo si $P(X=E(X))=1$ 
     \end{enumerate}
 \end{Teo}
+\begin{Demo}
+    La demostración se hará en base a que Var$[X] =$ 
+    E$[X^2] -$$\text{E}^2[X] =$E$[(X-E(X))^2]$
+    \begin{enumerate}
+        \item Por propiedad de valor esperado, como $(X-E(x))^2\geq 0$, 
+        entonces E$[(X-E(X))^2]\geq 0$.  
+        \item $\text{Var}[\alpha] = \text{E}[\alpha^2]-\text{E}^2[\alpha]
+        =\alpha^2-\alpha^2=0$
+        \item Se usa la misma propiedad del item anterior.
+        
+        \begin{longderivation}
+        &\text{Var}[\alpha X]\\
+        =\\
+        &\text{E}[\alpha^2X^2] - \text{E}^2[\alpha X]\\
+        =\\
+        &\alpha^2\text{E}[X^2] - (\alpha\text{E}[X])^2\\
+        =\\
+        &\alpha^2(\text{E}[X^2]-\text{E}^2[X])\\
+        =\\
+        &\alpha^2\text{Var}[X]
+        \end{longderivation}
+        
+        \item Por definición de varianza y propiedades del valor esperado
+        \begin{longderivation}
+            &\text{Var}[X+\beta]\\
+            =\\
+            &\text{E}[(X+\beta)^2]-\text{E}^2[x+\beta]\\
+            =\\
+            &\text{E}[X^2+2\beta X + \beta^2]-(\text{E}[X]-\text{E}[\beta])^2\\
+            =\\
+            &\text{Var}[X] + 2\beta\text{E}[X] + \beta^2
+            -2\beta\text{E}[X]-\beta^2\\
+            =\\
+            &\text{Var}[X]
+        \end{longderivation}
+        \item $P(X=\text{E}[X]) =1$ es lo mismo que decir que 
+        $X=\text{E}[X]$, esto es,$X$ es constate. Por el teorema del 
+        valor esperado, E$[\text{E}[X]^2]=\text{E}^2[X]$, y por lo tanto
+        $\text{Var}[X]=\text{E}^2[X]-\text{E}^2[X]=0$
+    \end{enumerate}
+\end{Demo}
