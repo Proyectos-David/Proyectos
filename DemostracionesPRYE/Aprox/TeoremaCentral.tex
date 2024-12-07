@@ -6,41 +6,67 @@ Un ejemplo puede ser simplemente la suma o producto de dos variables
 aleatorias. Uno de los más simples pero a su vez el que llevó
 a uno de los resultados más importantes es el de la media.
 \begin{Teo}
-  Sean $\{X_n\}_{n\in\Z^+}$ una colección de variables aleatorias
-  independientes e igualmente distribuidas, $\mu$ su media y $\sigma^2$
-  su varianza. Sean $\{S_n\}_{n\in\Z^+}=\left\{\sum_{i=1}^nX_i\right\}$
-  y $\{Y_n\}_{n\in\Z^+}=\left\{\dfrac{S_n-n\mu}{\sigma\sqrt{n}}\right\}$.
-  Entonces
-  \[Y_n\to N(0,1)\]
+  Sea $\{X_n\}_{n\in\Z^+}$ una colección de variables aleatorias
+  independientes e igualmente distribuidas, donde $\mu$ es su media y $\sigma^2$
+  su varianza. denotando $\overline{X_n}=\frac{1}{n}\sum_{k=1}^nX_k$, Entonces,
+  \[\sqrt{n}\,\overline{X}_n\longrightarrow N(0,1)\]
+  en distribución.
 \end{Teo}
 \begin{Demo}
-  Sin pérdida de generalidad, supóngase que $\mu=0$. Sea $\phi$ la
-  función característica de los elementos en $\{X_n\}_{n\in\Z^+}$.
-  Entonces,
+  Se define $Z_n = \frac{X_n-\mu}{\sigma}$. Para todo $n\in\Z^+$,
+  \begin{align*}
+    \text{E}[Z_n]&= \text{E}\left[\frac{X_n-\mu}{\sigma}\right]
+    = 0\\
+    \text{Var}[Z_n] &= \text{E}\left[\frac{X_n-\mu}{\sigma}\right]
+    = 1
+  \end{align*}
+  El enunciado del teorema resulta equivalente a mostrar que
+  \[\sqrt{n}\,\overline{Z}_n\longrightarrow N(0,1)\]
+
+  Sea $\phi$ la función característica de $Z_n$ con $n\in\Z^+$.
+  Se mostrará una convergencia puntual de la función
+  característica. Es decir,
+  \[\lim_{n\to\infty}\phi_{\sqrt{n}\overline{Z}_n}(t) = e^{-t^2/2}\]
   \begin{longderivation}
-      & \phi_{Y_n}(t)\\
+      & \phi_{\sqrt{n}\overline{Z}_n}(t)\\
     =\\
       & \text{E}\left[
-        \exp\left(it\frac{X_1+X_2+\dots+X_n}{\sigma\sqrt{n}}\right)
+        \exp\left(it\frac{Z_1 + Z_2 +\dots+Z_n}{\sqrt{n}}\right)
       \right]\\
     =\\
       & \text{E}\left[
-        \prod_{k=1}^n\exp\left(
-          \frac{itX_k}{\sigma\sqrt{n}}
+        \exp\left(
+          \prod_{k=1}^n\exp\left(i\frac{t}{\sqrt{n}}Z_k\right)
         \right)
       \right]\\
-    \why[=]{Dado que las variables $X_k$ son independientes}\\
+    \why[=]{
+      Dado que las variables aleatorias en $\{Z_k\}_{k\in\Z^+}$ son
+      independientes entre si
+    }\\
       & \prod_{k=1}^n\text{E}\left[
-        \exp\left(\frac{itX_k}{\sigma\sqrt{n}}\right)
+        \exp\left(i\frac{t}{\sqrt{n}}Z_k\right)
       \right]\\
     =\\
-      & \prod_{k=1}^n\phi\left(\frac{t}{\sigma\sqrt{n}}\right)\\
+      & \prod_{k=1}^n\phi\left(\frac{t}{\sqrt{n}}\right)\\
     =\\
-      & \left[\phi\left(\frac{t}{\sigma\sqrt{n}}\right)\right]^n
+      & \left[\phi\left(\frac{t}{\sqrt{n}}\right)\right]^n\\
+    =\\
+      & \exp\left[
+        n\text{Log}\left(\phi\left(\frac{t}{\sqrt{n}}\right)\right)
+      \right]
   \end{longderivation}
 
-  Recordando las \hyperref[Teo:prop_carac]{propiedades de $\phi$} y cómo
-  se calcula el valor esperado y varianza, se pueden obtener los
-  primeros términos de su expansión en serie de Mclaurin.
-  \[\phi(t) = 1 + 0 + i^2\frac{\sigma^2t^2}{2} + \dots\]
+  Considerando únicamente el argumento de la exponencial. Se garantiza
+  la existencia del límite para $n\in\Z^+$ si se extiende a
+  $n\in\R^+$. Tomando ahora $y=\frac{1}{\sqrt{n}}$, se obtiene
+  \begin{longderivation}
+      & \lim_{y\to0}\frac{\text{Log}\left(\phi(yt)\right)}{y^2}\\
+    \why[=]{Recordando que $\phi(0)=0$, se puede aplicar L'Hôpital}\\
+      & \lim_{y\to0}\frac{\phi'(yt)t}{2y\phi(yt)}\\
+    \why[=]{Nuevamente, $\phi(0)=0$, con lo que se puede separar el límite
+    y aplicando L'Hôpital}\\
+      & \lim_{y\to0}\frac{t^2\phi''(yt)}{2}\\
+    \why[=]{Recordando que $\phi''(0) = -\text{Var}[Z_n]+\text{E}^2[Z_n]$}\\
+      & -\frac{t^2}{2}
+  \end{longderivation}
 \end{Demo}
