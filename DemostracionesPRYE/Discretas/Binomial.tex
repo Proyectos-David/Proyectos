@@ -12,7 +12,7 @@ Entonces
 \[P(X=x) = \binom{n}{x}p^x(1-p)^{n-x}\]
 \begin{Def}
   Sea $X$ una variable aleatoria discreta. $X$ sigue una distribución
-  binomial con parámetros $n$ y $p$ ($n\in\Z^+, p\in[0,1]$), denotada por $B(n,p)$,
+  binomial con parámetros $n$ y $p$ ($n\in\Z^+, p\in(0,1)$), denotada por $B(n,p)$,
   cuando su función de masa es
   \[f(x) = P(X=x) = B(n,p)(x) = \binom{n}{x}p^x(1-p)^{n-x}
   \qquad(0\leq x \leq n)\]
@@ -21,19 +21,51 @@ Entonces
 \begin{Teo}
   Sea $X\sim B(n,p)$. Entonces
   \begin{enumerate}
-    \item Para todo $x\in\Z$ con $0\leq x\leq n$, $P(X=x) \geq 0$.
+    \item Para todo $x\in\Z$ con $0\leq x\leq n$, $0 \leq P(X=x) \leq 1$.
     \item $\sum_{x\in\Z}P(X=x) = 1$.
     \item $\text{E}[X] = np$.
     \item $\text{Var}[X]=np(1-p)$.
   \end{enumerate}
 \end{Teo}
-\begin{Demo}
-  Desarrollando ambos valores, y recordando el teorema del binomio\dots
+\begin{Demo}~
   \begin{enumerate}
     \item Sea $x\in\Z$ con $0\leq x\leq n$. Recordando que
     \[P(X=x) = \binom{n}{x}p^x(1-p)^{n-x}\]
     Dado todos los términos de la expresión son no negativos, se concluye que
-    $P(X=x)\geq0$
+    $P(X=x)\geq0$.
+    Para la otra parte de la desigualdad,
+    \begin{longderivation}
+        & \binom{n}{x}p^x(1-p)^{n-x} \leq 1\\
+      \iff\\
+        & \dfrac{n!}{(n-x)!\,x!}p^x(1-p)^{n-x} \leq 1\\
+      \iff\\
+        & n!\,p^x(1-p)^n \leq (n-x)!\,x!\,(1-p)^x
+    \end{longderivation}
+
+    Procediendo por inducción sobre $n$
+
+    Caso base, $n=1$: 
+    \[p^x(1-p)^n \leq (1-x)!x!(1-p)^x\]
+    En este caso $x\in\{0,1\}$ y las desigualdades
+    respectivas son $1\leq1$ y $p\leq1$.
+
+    Paso inductivo:\\
+    Supóngase que la propiedad se mantiene para algún $n\in\Z^+$.
+    Para $0\leq x\leq n$, se tiene entonces que
+    \begin{longderivation}
+        & n!\,p^x(1-p)^n \leq (n-x)!\,x!\,(1-p)^x\\
+      \why{
+        Usando el hecho de que $n+1\geq n+1-x$. Multiplicando miembro a
+        miembro
+      }\\
+        & (n+1)!\,p^x(1-p)^n \leq (n+1-x)!\,x!\,(1-p)^x\\
+      \why{Como $p\in(0,1)$, entonces, $(1-p)^{n+1}\leq (1-p)^n$. Por
+      transitividad}\\
+        & (n+1)!\,p^x(1-p)^{n+1} \leq (n+1-x)!\,x!\,(1-p)^x
+    \end{longderivation}
+    Para $x=n+1$, se obtiene que
+    \[(n+1)!\leq0\]
+    Así, para todo $x\in\Z$ con $0\leq x\leq n$, $0\leq P(X=x)\leq1$.
     \item~
     \begin{longderivation}
         & \sum_{x=0}^nP(X=x)\\
