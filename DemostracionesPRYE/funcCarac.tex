@@ -1,0 +1,46 @@
+\section{Funciones Características}
+\begin{Def}
+  Sean $X$ una variable aleatoria y $f$ su función de densidad o de masa
+  (dependiendo si $X$ es continua o discreta). Se define la
+  \emph{función característica} de $X$ como
+  \[\phi_X(t) := \text{E}[e^{itX}] = \text{E}[\cos(tX)] + i\text{E}[\sin(tX)]\]
+\end{Def}
+
+\begin{Teo}
+  La función característica existe para todo $t\in\R$ para
+  toda variable aleatoria
+  tanto discreta como absolutamente continua ($|A|\leq|\N|\To P(X\in A)=0$).
+\end{Teo}
+\begin{Demo}
+  Sean $X$ una variable aleatoria y $f$ su función de densidad o de masa.
+  Entonces, para todo $x$ en el dominio de $X$, $f(x)\geq0$,  luego,
+  para todo $t\in\R$ y $x$ en el dominio de $X$,
+  $|\cos(tx)f(x)|\leq f(x)$ y $|\sin(tx)f(x)|\leq f(x)$.
+  Por criterio de convergencia absoluta, la serie o integral que
+  define la función característica, converge para todo $t\in\R$.
+\end{Demo}
+
+\begin{Teo}\label{Teo:prop_carac}
+  Sea $X$ una variable aleatoria. Entonces
+  \begin{enumerate}
+    \item $\phi_X(0)=1$.
+    \item Para todo $t\in\R$, $|\phi_X(t)\leq 1$.
+    \item Sea $k\in\Z^+$. Si $\text{E}[X^k]$ existe, entonces,
+    $\text{E}[X^k]=\left.\odv*[k]{\phi_X(t)}{t}\right|_{t=0}$
+  \end{enumerate}
+\end{Teo}
+Solo se demostrará el primer enunciado
+\begin{Demo}
+  Sea $f$ la función de densidad o masa de $X$. En las expresiones que
+  definen $\phi_X$, evaluadas en $0$, se obtiene
+  $\cos(0x)f(x)=f(x)$ y $\sin(0x)f(x)=0$.
+  Se sigue que la serie o integral resultante tenga como
+  integrando únicamente a $f$, luego $\phi_X(0)=1$.
+\end{Demo}
+Por último, se deja enunciado el siguiente teorema
+\begin{Teo}\label{Teo:biy_carac}
+  Sean $X,Y$ dos variables aleatorias independientes. Si
+  para todo $t\in\R$,
+  \[\phi_X(t)=\phi_Y(t)\]
+  entonces, $X$ y $Y$ tienen la misma distribución
+\end{Teo}

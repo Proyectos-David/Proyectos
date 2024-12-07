@@ -11,7 +11,7 @@ cumple la definición de función de masa, obteniendo la siguiente distribución
 \begin{Teo}
   Sea $X\sim\text{Pois}(\lambda)$. Entonces,
   \begin{enumerate}
-    \item Para todo $x\in\Z$, $P(X=x)\geq0$.
+    \item Para todo $x\in\Z$, $0\leq P(X=x)\leq1$.
     \item $\sum_{x\in\Z}P(X=x)=1$.
     \item $\text{E}[X] = \lambda$.
     \item $\text{Var}[X]=\lambda$.
@@ -22,6 +22,13 @@ cumple la definición de función de masa, obteniendo la siguiente distribución
     \item Sea $x\in\N$. Entonces
     \[P(X=x) = \frac{\lambda^xe^{-\lambda}}{x!}\]
     Como los términos involucrados son no negativos, se concluye que $P(X=x)\geq0$.
+    Para la otra parte de la desigualdad, dado que, para todo $\lambda\in\R$,
+    \[e^{\lambda} = \sum_{n=0}^{\infty}\frac{\lambda^n}{n!}\]
+    y la serie presentada es de términos no negativos para $\lambda\in\R^+$, se sigue
+    que, para todo $x\in\N$,
+    \[\frac{\lambda^x}{x!} \leq e^{\lambda}\]
+    Así, para todo $x\in\N$,
+    \[0\leq P(X=x)\leq1\]
     \item~
     \begin{longderivation}<1>
         & \sum_{x=0}^\infty\frac{\lambda^xe^{-\lambda}}{x!}\\

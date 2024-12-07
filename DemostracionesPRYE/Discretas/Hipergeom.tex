@@ -46,13 +46,18 @@ sobre la combinatoria.
   Esta identidad tiene sentido tomando la convención mencionada anteriormente.
 \end{Lema}
 \begin{Demo}
-  La demostración se hará por inducción sobre $m$, tomando $k,n$ como
-  enteros no negativos arbitrarios. Caso base ($m=0$):
-  \[\binom{0+n}{k} = \sum_{r=0}^k\binom{0}{r}\binom{n}{k-r}=\binom{n}{k}\]
-  Paso inductivo: sea $k\in\Z$ con $k\geq1$ y supóngase que la propiedad se mantiene
-  para todo entero no negativo hasta $k$. (Para $k=0$ la propiedad es trivial)
+  La demostración se hará por inducción sobre $n$, tomando $m,k$ como
+  enteros no negativos arbitrarios. Si $k\geq n+m$, la propiedad
+  resulta trivial. Supóngase que $0\leq k\leq n+m$.\\
+  Caso base ($n=0$):
+  \[\binom{m+0}{k} = \sum_{r=0}^k\binom{m}{r}\binom{0}{k-r}=\binom{m}{k}\]
+  Paso inductivo:\\
+  Nótese que para $k=0$, la identidad resulta en
+  \[1 = \sum_{r=0}^0\binom{m}{r}\binom{n}{0-r}\]
+  lo cual es cierto para todo $n,m\in\Z^+$. Supóngase que $k\geq1$,
+  y que la identidad se mantiene para $m\geq0$. Entonces,
   \begin{longderivation}
-      & \binom{m+n}{k+1}\\
+      & \binom{m+n+1}{k+1}\\
     =\\
       & \binom{m+n}{k} + \binom{m+n}{k-1}\\
     =\\
@@ -64,14 +69,14 @@ sobre la combinatoria.
     =\\
       & \binom{m}{n} + \sum_{k=0}^{k-1}\binom{m}{r}\binom{n}{k-r}\\
     =\\
-      & \sum_{k=0}^k \binom{m}{k}\binom{n}{k-r}
+      & \sum_{k=0}^k \binom{m}{k}\binom{n+1}{k-r}
   \end{longderivation}
 \end{Demo}
 
 \begin{Teo}
   Sea $X\sim Hg(N,K,n)$. Entonces,
   \begin{enumerate}
-    \item para todo $x\in\Z$ con $0\leq x\leq n$, $P(X=x) \geq 0$.
+    \item para todo $x\in\Z$ con $0\leq x\leq n$, $0\leq P(X=x)\leq1$.
     \item $\sum_{x\in\Z}P(X=x) = 1$.
     \item $\text{E}[X]=\frac{nK}{N}$.
     \item $\text{Var}[X] = \frac{n\,K(N-K)(N-n)}{N^2(N-1)}$.
@@ -82,7 +87,13 @@ sobre la combinatoria.
     \item Sea $x\in\Z$ con $0\leq x\leq n$. Recordando que
     \[P(X=x) = \dfrac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}}\]
     dado que todos los términos de la expresión son no negativos, se
-    concluye que $P(X=x)\geq0$
+    concluye que $P(X=x)\geq0$.
+    Para la otra parte de la desigualdad, recordando la identidad de Vandermonde,
+    se tiene que
+    \[\binom{N}{n} = \sum_{x=0}^n\binom{K}{x}\binom{N-K}{n-x}\]
+    Dado que la suma presentada es de términos no negativos, entonces,
+    para todo $x\in\Z$ con $0\leq x\leq n$, se tiene que
+    \[\binom{N}{n} \geq \binom{K}{x}\binom{N-K}{n-x}\]
     \item ~
     \begin{longderivation}
         & \sum_{x=0}^nP(X=x)\\

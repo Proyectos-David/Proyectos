@@ -1,0 +1,46 @@
+\subsubsection{Teorema Central del Límite}
+Es de interés conocer la distribución de una variable aleatoria la
+cual se puede escribir como combinación de varias variables
+aleatorias. Estas combinaciones son llamadas \emph{estadísticos}.
+Un ejemplo puede ser simplemente la suma o producto de dos variables
+aleatorias. Uno de los más simples pero a su vez el que llevó
+a uno de los resultados más importantes es el de la media.
+\begin{Teo}
+  Sean $\{X_n\}_{n\in\Z^+}$ una colección de variables aleatorias
+  independientes e igualmente distribuidas, $\mu$ su media y $\sigma^2$
+  su varianza. Sean $\{S_n\}_{n\in\Z^+}=\left\{\sum_{i=1}^nX_i\right\}$
+  y $\{Y_n\}_{n\in\Z^+}=\left\{\dfrac{S_n-n\mu}{\sigma\sqrt{n}}\right\}$.
+  Entonces
+  \[Y_n\to N(0,1)\]
+\end{Teo}
+\begin{Demo}
+  Sin pérdida de generalidad, supóngase que $\mu=0$. Sea $\phi$ la
+  función característica de los elementos en $\{X_n\}_{n\in\Z^+}$.
+  Entonces,
+  \begin{longderivation}
+      & \phi_{Y_n}(t)\\
+    =\\
+      & \text{E}\left[
+        \exp\left(it\frac{X_1+X_2+\dots+X_n}{\sigma\sqrt{n}}\right)
+      \right]\\
+    =\\
+      & \text{E}\left[
+        \prod_{k=1}^n\exp\left(
+          \frac{itX_k}{\sigma\sqrt{n}}
+        \right)
+      \right]\\
+    \why[=]{Dado que las variables $X_k$ son independientes}\\
+      & \prod_{k=1}^n\text{E}\left[
+        \exp\left(\frac{itX_k}{\sigma\sqrt{n}}\right)
+      \right]\\
+    =\\
+      & \prod_{k=1}^n\phi\left(\frac{t}{\sigma\sqrt{n}}\right)\\
+    =\\
+      & \left[\phi\left(\frac{t}{\sigma\sqrt{n}}\right)\right]^n
+  \end{longderivation}
+
+  Recordando las \hyperref[Teo:prop_carac]{propiedades de $\phi$} y cómo
+  se calcula el valor esperado y varianza, se pueden obtener los
+  primeros términos de su expansión en serie de Mclaurin.
+  \[\phi(t) = 1 + 0 + i^2\frac{\sigma^2t^2}{2} + \dots\]
+\end{Demo}
