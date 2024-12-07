@@ -8,6 +8,7 @@
 \usepackage{amsfonts}
 \usepackage{upgreek}
 \usepackage{mathrsfs}
+\usepackage{letltxmacro}
 \usepackage{amsthm}
 \usepackage{thmtools}
 \usepackage{etoolbox}
@@ -95,6 +96,17 @@
 \renewcommand{\iff}{\Leftrightarrow}
 \doublespacing
 \hyphenpenalty=1000
+
+\makeatletter
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{%
+\setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.2\ht0
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2}}
+\makeatother
 
 \begin{document}
 \begin{titlepage}
