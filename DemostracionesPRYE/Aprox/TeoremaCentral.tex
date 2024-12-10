@@ -12,6 +12,60 @@ a uno de los resultados más importantes es el de la media.
   \[\sqrt{n}\,\overline{X}_n\longrightarrow N(0,1)\]
   en distribución.
 \end{Teo}
+
+Antes de continuar con la demostración, se presenta un resultado sobre suceciones.
+\begin{Lema}
+  Sean $x_n,y_n$ sucesiones complejas y $M\in\R^+$ tal que, para todo
+  $n\in\Z^+$,
+  \begin{align*}
+    |x_n| &\leq M\\
+    |y_n| &\leq M
+  \end{align*}
+  Entonces, para $n\in\Z^+$,
+  \[
+    \left|\prod_{k=1}^n x_k - \prod_{j=1}^n y_j\right| \leq 
+    M^{n-1}\sum_{k=1}^n |x_k - y_k|
+  \]
+\end{Lema}
+\begin{Demo}
+  Sean $x_n$ y $y_n$ sucesiones con las condiciones enunciadas. La
+  demostración se hará por inducción.
+  
+  Caso base ($n=1$):
+  \[|x_1-y_1| \leq |x_1-y_1|\]
+
+  Paso inductivo:\\
+  Supóngase que la propiedad se mantiene para algún $n\in\Z^+$.
+  \begin{longderivation}
+      & \left|\prod_{k=1}^{n+1} x_k - \prod_{j=1}^{n+1} y_j\right|\\
+    =\\
+      & \frac{1}{2}\left|
+        (x_{n+1}-y_{n+1})\left(
+          \prod_{k=1}^n x_k + \prod_{j=1}^n y_j
+        \right)
+        + (x_{n+1}+y_{n+1})\left(
+          \prod_{k=1}^n x_k - \prod_{j=1}^n y_j
+        \right)
+      \right|\\
+    \leq\\
+      & \frac{1}{2}|x_{n+1}-y_{n+1}|\left(
+        \prod_{k=1}^n |x_k| - \prod_{j=1}^n |y_j|
+      \right)
+      + \frac{1}{2}(|x_{n+1} + y_{n+1})\left|
+        \prod_{k=1}^n x_k - \prod_{j=1}^n y_j
+      \right|\\
+    \leq\\
+      & \frac{1}{2}|x_{n+1}-y_{n+1}|\left(
+        2M^n
+      \right)
+      + \frac{1}{2}(2M)
+        M^{n-1}\sum_{k=1}^n |x_k - y_k|\\
+    =\\
+      & M^n\sum_{k=1}^{n+1} |x_k - y_k|
+  \end{longderivation}
+\end{Demo}
+
+Procediendo con la demostración del teorema.
 \begin{Demo}
   Se define $Z_n = \frac{X_n-\mu}{\sigma}$. Para todo $n\in\Z^+$,
   \begin{align*}
@@ -50,23 +104,60 @@ a uno de los resultados más importantes es el de la media.
       & \prod_{k=1}^n\phi\left(\frac{t}{\sqrt{n}}\right)\\
     =\\
       & \left[\phi\left(\frac{t}{\sqrt{n}}\right)\right]^n\\
-    =\\
-      & \exp\left[
-        n\text{Log}\left(\phi\left(\frac{t}{\sqrt{n}}\right)\right)
-      \right]
   \end{longderivation}
 
-  Considerando únicamente el argumento de la exponencial. Se garantiza
-  la existencia del límite para $n\in\Z^+$ si se extiende a
-  $n\in\R^+$. Tomando ahora $y=\frac{1}{\sqrt{n}}$, se obtiene
-  \begin{longderivation}
-      & \lim_{y\to0}\frac{\text{Log}\left(\phi(yt)\right)}{y^2}\\
-    \why[=]{Recordando que $\phi(0)=0$, se puede aplicar L'Hôpital}\\
-      & \lim_{y\to0}\frac{\phi'(yt)t}{2y\phi(yt)}\\
-    \why[=]{Nuevamente, $\phi(0)=0$, con lo que se puede separar el límite
-    y aplicando L'Hôpital}\\
-      & \lim_{y\to0}\frac{t^2\phi''(yt)}{2}\\
-    \why[=]{Recordando que $\phi''(0) = -\text{Var}[Z_n]+\text{E}^2[Z_n]$}\\
-      & -\frac{t^2}{2}
-  \end{longderivation}
+Dado que el valor esperado y la varianza de las variables $Z_n$
+existen, se tiene por las
+\hyperref[Teo:prop_carac]{propiedades de la función característica}
+que $\phi(0)=1$, $\phi'(0)=0$ y $\phi''(0) = -1$.
+Por el teorema de Taylor, se tiene que para algún $\xi\in\R$
+\[\phi\left(\frac{t}{\sqrt{n}}\right) = 
+1 -\frac{t^2}{2n} + \frac{\phi'''(\xi)}{3!}\left(\frac{t}{\sqrt{n}}\right)^3\]
+
+Tomando $f_n(t) = \frac{t^2}{2} + \frac{\phi'''(\xi)}{3!}\frac{t^3}{\sqrt{n}}$,
+hace falta mostrar que, puntualmente,
+\[\left(1 - \frac{f_n(t)}{n}\right)^n \longrightarrow e^{-\nicefrac{t^2}{2}}\]
+
+Nótese que, puntualmente, $f_n$ converge a $\frac{t^2}{2}$ y es acotada.
+Sean $t\in\R$ y $\epsilon>0$, entonces, por lo mencionado anteriormente, existe
+$N\in\Z^+$ tal que para todo $n\geq N$,
+\begin{align*}
+  \left|f_n(t) - \frac{t^2}{2}\right| &< \epsilon\\
+  \left|1 - \frac{f_n(t)}{n}\right|
+    &\leq 1 + \frac{\underset{n\in\Z^+}{\sup} |f_n(t)|}{n}\\
+  \left|
+    \left(1 - \frac{t^2}{2n}\right)^n - e^{-\nicefrac{t^2}{2}}
+  \right| &< \epsilon
+\end{align*}
+Entonces,
+\begin{longderivation}
+    & \left|
+      \left(1 - \frac{f_n(t)}{n}\right)^n - e^{-\nicefrac{t^2}{2}}
+    \right|\\
+  =\\
+    & \left|
+      \left(1 - \frac{f_n(t)}{n}\right)^n - \left(1 - \frac{t^2}{2n}\right)^n
+      + \left(1 - \frac{t^2}{2n}\right)^n - e^{-\nicefrac{t^2}{2}}
+    \right|\\
+  \leq\\
+    & \left|
+      \left(1 - \frac{f_n(t)}{n}\right)^n - \left(1 - \frac{t^2}{2n}\right)^n
+    \right| + \left|
+      \left(1 - \frac{t^2}{2n}\right)^n - e^{-\nicefrac{t^2}{2}}
+    \right|\\
+  \why[<]{Usando el lema presentado anteriormente}\\
+    & \left(1 + \frac{\underset{n\in\Z^+}{\sup} |f_n(t)|}{n}\right)^n
+    \sum_{k=1}^{n-1}\frac{|f_n(t)-\nicefrac{t^2}{2}|}{n}
+    + \epsilon\\
+  <\\
+    & \left(1 + \frac{\underset{n\in\Z^+}{\sup} |f_n(t)|}{n}\right)^n
+    \left(1 + \frac{\underset{n\in\Z^+}{\sup} |f_n(t)|}{n}\right)^{-1}
+  \epsilon + \epsilon\\
+\end{longderivation}
+En el sumando izquierdo, fuera del factor $\epsilon$, hay dos sucesiones
+numéricas, una de estas es creciente y converge a una exponencial.
+La otra es decreciente y converge a $1$. Es decir, ambos valores son finitos.
+Así, se tiene que puntualmente
+\[\phi_{\sqrt{n}\overline{Z}_n}(t)\longrightarrow e^{-\nicefrac{t^2}{2}}\]
+Por unicidad de la función característica, se concluye la demostración.
 \end{Demo}
