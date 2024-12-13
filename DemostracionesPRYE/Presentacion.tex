@@ -9,10 +9,22 @@
 \usepackage{mathrsfs}
 \usepackage{thmtools}
 \usepackage{marvosym}
+\usepackage{letltxmacro}
 \usepackage[spanish, es-noquoting, es-lcroman, es-noshorthands]{babel}
 \usetheme{Warsaw}
 \setbeamercovered{transparent}
 
+\makeatletter
+\let\oldr@@t\r@@t
+\def\r@@t#1#2{%
+\setbox0=\hbox{$\oldr@@t#1{#2\,}$}\dimen0=\ht0
+\advance\dimen0-0.2\ht0
+\setbox2=\hbox{\vrule height\ht0 depth -\dimen0}%
+{\box0\lower0.4pt\box2}}
+\LetLtxMacro{\oldsqrt}{\sqrt}
+\renewcommand*{\sqrt}[2][\ ]{\oldsqrt[#1]{#2}}
+\makeatother
+\renewcommand{\epsilon}{\upvarepsilon}
 
 \title{Demostraciones de PRYE}
 \author[David G., Laura R.]{David Gómez, Laura Rincón}
@@ -174,7 +186,7 @@
 \section{Distribuciones Continuas}
   \begin{frame}{Normal}
     \only<1-2>{
-      $X\sim N(\mu,\sigma^2)$
+      \[X\sim N(\mu,\sigma^2)\]
     }
     \only<3>{
       \[\int_\R e^{-x^2}\diff{x} = \sqrt{\pi}\]
@@ -193,6 +205,29 @@
         \item $\int_{\R}{f(x)}\diff{x} = 1$.
         \item $\text{E}[X] = \mu$.
         \item $\text{Var}[X] = \sigma^2$.
+      \end{enumerate}
+    }
+  \end{frame}
+  \begin{frame}{Gamma}
+    \only<1-2>{
+      \[X\sim\text{Gamma}(\alpha,\beta)\]
+    }
+    \only<3>{
+      \[\Gamma(\alpha) = \int_0^{\infty}t^{\alpha-1}e^{-t}\diff{t}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+    \[
+    f(x)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}
+    \qquad (x\in\R^+)
+    \]
+    \onslide<2>{
+      \begin{enumerate}
+        \item Para todo $x\in\R$, $f(x) \geq 0$.
+        \item $\int_{\R}f(x)\mathrm{d}x=1$.
+        \item $\text{E}[X]=\frac{\alpha}{\beta}$
+        \item $\text{Var}[X]=\frac{\alpha}{\beta^2}$
       \end{enumerate}
     }
   \end{frame}
@@ -256,29 +291,6 @@
     }
   \end{frame}
 
-  \begin{frame}{Gamma}
-    \only<1-2>{
-      \[X\sim\text{Gamma}(\alpha,\beta)\]
-    }
-    \only<3>{
-      \[\Gamma(\alpha) = \int_0^{\infty}t^{\alpha-1}e^{-t}\diff{t}\]
-      \begin{center}
-        \Coffeecup
-      \end{center}
-    }
-    \[
-    f(x)=\frac{\beta^{\alpha}}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x}
-    \qquad (x\in\R^+)
-    \]
-    \onslide<2>{
-      \begin{enumerate}
-        \item Para todo $x\in\R$, $f(x) \geq 0$.
-        \item $\int_{\R}f(x)\mathrm{d}x=1$.
-        \item $\text{E}[X]=\frac{\alpha}{\beta}$
-        \item $\text{Var}[X]=\frac{\alpha}{\beta^2}$
-      \end{enumerate}
-    }
-  \end{frame}
 \section{Teoremas de Aproximación}
 \begin{frame}{Hipergeométrica a Binomial}
   Sea $X\sim Hg(N,K,n)$. Para $n$ fijo, si $N,K$ cumplen que
@@ -293,5 +305,33 @@
     < (\epsilon_1 + 1)^{x}(\epsilon_2 + 1)^{n-x}(\epsilon_3 + 1)^{n} - 1
     \qquad\text{\Coffeecup}
   \]
+\end{frame}
+\begin{frame}{Teorema Central del Límite}
+  Sea $\{X_n\}_{n\in\Z^+}$ una colección de variables aleatorias independientes,
+  igualmente distribuidas, con media y varianza iguales ($\mu$ y $\sigma$
+  respectivamente). Entonces, cuando $n\longrightarrow\infty$,
+  \[\sqrt{n}\,\overline{X}_n\longrightarrow N(0,1)\]
+  \only<2>{
+    \begin{center}
+      \begin{tabular}{ccc}
+        $
+        \begin{matrix*}
+          |x_n| &\leq M\\
+          |y_n| &\leq M
+        \end{matrix*}
+        $
+        &
+        $\To$
+        &
+        \(
+          \left|\prod_{k=1}^n x_k - \prod_{j=1}^n y_j\right| \leq 
+          M^{n-1}\sum_{k=1}^n |x_k - y_k|
+        \)
+      \end{tabular}
+    \end{center}
+    \begin{center}
+      \Coffeecup
+    \end{center}
+  }
 \end{frame}
 \end{document}
