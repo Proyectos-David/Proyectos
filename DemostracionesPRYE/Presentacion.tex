@@ -94,6 +94,33 @@
         }
   \end{frame}
   \section{Varianza y Valor esperado}
+  \begin{frame}{Valor Esperado}
+    \begin{enumerate}
+      \item Si $P(X \geq 0) = 1$ y E$[X]$ existe entonces E[$X$]$\geq 0$
+      \item E[$\alpha$]$= \alpha$ para $\alpha$ constante
+      \item Si existe $M \geq 0$ tal que P($|X| \leq M$)$=1$ entonces E[$X$] existe. 
+      \item Si $\alpha$ y $\beta$ son constantes, y si $g$ y $h$ son funciones tales que 
+            $g(X)$ y $h(X)$ son variables aleatorias cuyos valores esperados existen, 
+            entonces E[$\alpha g(X) + \beta h(X)$]$= \alpha$E[$g(X)$]$+ \beta$E[$h(X)$]
+      \item Si $g$ y $h$ son funciones tales que $g(X)$ y $h(X)$ son variables aleatorias
+            cuyos valores esperados existen y $g(x)\leq h(x)$ para todo $x$, entonces 
+            E$[g(X)$]$\leq$E[$h(X)$]
+      \item Sean $Y$ una variable aleatoria independiente de $X$ y $g,h$ funciones
+      tales que $g(X)$ y $g(Y)$ sean variables aleatorias cuyos valores esperados
+      existen. Entonces, $text{E}[g(X)h(Y)]=\text{E}[g(X)]\text{E}[h(Y)]$.
+  \end{enumerate}
+  \end{frame}
+  \begin{frame}{Varianza}
+    Sea $X$ una variable aleatoria cuyo valor esperado existe y 
+    $\alpha$, $\beta \in \R$ constantes
+    \begin{enumerate}
+      \item Var$[X] \geq 0$ 
+      \item Var$[\alpha]$ = 0
+      \item Var$[\alpha X]$ = $\alpha^2$Var[X]
+      \item Var$[X + \beta]$ = Var$[X]$
+      \item Var$[X] = 0$ si y solo si $P(X=E(X))=1$ 
+  \end{enumerate}
+  \end{frame}
 
   \section{Distribuciones Discretas}
   \begin{frame}{Binomial}
@@ -254,6 +281,37 @@
       \end{enumerate}
     }
   \end{frame}
+  \begin{frame}{Distribución t}
+    \only<1-3>{
+      \[T\sim\mathbf{t}(v)\]
+    }
+    \only<4>{
+      \[B(x,y)=\frac{\Gamma(x)\Gamma(y)}{\Gamma(x+y)}\]
+      \begin{center}
+        \Coffeecup
+      \end{center}
+    }
+    \only<1>{
+      \[f(x)=\frac{\Gamma\left(\frac{v+1}{2}\right)}
+      {\sqrt{v\pi}\Gamma\left(\frac{v}{2}\right)}
+      \left(1+\frac{x^2}{v}\right)^{-\nicefrac{(v+1)}{2}} \qquad(x \in \R)
+      \]
+    }
+    \only<2->{
+      \[f(x) = \frac{1}{\sqrt{v}B\left(\frac{1}{2}\text{,}\frac{v}{2}\right)}
+      \left(1+\frac{x^2}{v}\right)^{-\nicefrac{(v+1)}{2}}
+      \qquad (x \in \R)
+      \]
+    }
+    \onslide<3>{
+      \begin{enumerate}
+        \item Para todo $x\in\R$, $f(x) \geq 0$.
+        \item $\int_{\R}f(x)\mathrm{d}x=1$.
+        \item $\text{E}[F]=0 \qquad (v > 1)$
+        \item $\text{Var}[F]=\frac{v}{v-2}\qquad(v>2)$
+      \end{enumerate}
+    }
+    \end{frame}
   \begin{frame}{f}
     \only<1-3>{
       \[F\sim\mathbf{f}(u,v)\]

@@ -1,0 +1,140 @@
+\subsubsection{Distribución t}
+\begin{Def}
+    Sea $T$ una variable aleatoria continua. $T$ tiene distribución t
+    de parámetro $v \in \R^+$ cuando su función de densidad es:
+    \[
+        f(x)=\frac{\Gamma\left(\frac{v+1}{2}\right)}
+        {\sqrt{v\pi}\Gamma\left(\frac{v}{2}\right)}
+        \left(1+\frac{x^2}{v}\right)^{-\nicefrac{(v+1)}{2}}
+        =
+        \frac{1}{\sqrt{v}B\left(\frac{1}{2}\text{,}\frac{v}{2}\right)}
+        \left(1+\frac{x^2}{v}\right)^{-\nicefrac{(v+1)}{2}}
+        \qquad (x \in \R)
+    \]
+    Esto se va a denotar como $T\sim t(v)$
+\end{Def}
+\begin{Teo}
+    Sea $T\sim t(v)$ y $f$ su función de densidad. Entonces:
+    \begin{enumerate}
+        \item Para todo $x\in\R$, $f(x) \geq 0$.
+        \item $\int_{\R}f(x)\diff{x}=1$.
+        \item $\text{E}[F]=0$
+        \item $\text{Var}[F]=\frac{v}{v-2}$
+    \end{enumerate}
+\end{Teo}
+\begin{Demo}~
+    \begin{enumerate}
+        \item Dado que $\Gamma(x)\geq 0$ para todo $x$, y 
+        $(1+x^2)^v \geq 0$ para todo $x$ y $v\geq 0$, entonces
+        $f(x)\geq 0$ para todo $x$
+
+        \item Para demostrarlo, basta con demostrar que:
+        \[
+            \int_{-\infty}^{\infty} \left(1+\frac{x^2}{v}\right)^   
+            {-\nicefrac{(v+1)}{2}}\diff{x}
+            =
+            \sqrt{v}B\left(\frac{1}{v}\text{,}\frac{v}{2}\right)
+        \]
+        Dado que $f$ es una función par
+        \[
+            \int_{-\infty}^{\infty}\left(1+\frac{x^2}{v}\right)^
+            {-\nicefrac{(v+1)}{2}}\diff{x}
+            =2\int_{0}^{\infty}\left(1+\frac{x^2}{v}\right)^
+            {-\nicefrac{(v+1)}{2}}\diff{x}
+        \]
+        Haciendo la sustitución $\frac{x}{v}=\tan(\theta)$. Cuando
+        $x=0$, $\theta=0$ y cuando $x \to \infty$, $\theta \to \frac{\pi}{2}$. Como 
+        $\odv*{\tan(\theta)}{\theta}=\sec^2(\theta)$ la expresión resulta igual a
+        \begin{longderivation}
+            &2\sqrt{v}\int_{0}^{\frac{\pi}{2}}(1+\tan^2(\theta))^{-\nicefrac{(v+1)}{2}}
+            \sec^2(\theta)\diff{\theta}\\
+            =\\
+            &2\sqrt{v}\int_{0}^{\frac{\pi}{2}}(\sec^2(\theta))^{-\nicefrac{(v+1)}{2}}
+            \sec^2(\theta)\diff{\theta}\\
+            =\\
+            &2\sqrt{v}\int_{0}^{\frac{\pi}{2}}
+            (\sec(\theta))^{-v+1}\diff{\theta}\\
+            =\\
+            &2\sqrt{v}\int_{0}^{\frac{\pi}{2}}
+            (\cos(\theta))^{v-1}\diff{\theta}
+        \end{longderivation}
+        Haciendo la sustitución $u=\sin(\theta)$. Cuando
+        $\theta=0$, $u=0$ y cuando $\theta = \frac{\pi}{2}$, $u=1$. Como 
+        $\odv*{\sin(\theta)}{\theta}=\cos(\theta)$ y $\cos(\theta) = 
+        (1-u^2)^{\nicefrac{1}{2}}$ cuando $\left(0 \leq \theta \leq \frac{\pi}{2}\right)$, 
+        la expresión resulta igual a
+        \[
+            2\sqrt{v}\int_{0}^{1}(1-u^2)^{(\nicefrac{v}{2})-1}\diff{u}
+        \]
+        Y como última sustitución, $t=u^2$. Cuando $u=1$, $t=1$ y cuando
+        $u=0$, $t=0$. Como $\odv*{u^2}{u}=2u$ entonces $\diff{u} = 
+        \frac{\diff{t}}{2\sqrt{t}}$, y la expresión resultante es
+        \begin{longderivation}
+            &\sqrt{v}\int_{0}^{1}t^{\nicefrac{1}{2}-1}
+            (1-t)^{\nicefrac{v}{2}-1}\diff{t}\\
+            =\\
+            &\sqrt{v}B\left(\frac{1}{2}\text{,}\frac{v}{2}\right)
+        \end{longderivation} 
+        \item Dado que $f(x)=x(1+\frac{x^2}{v})^{-\nicefrac{(v+1)}{2}}$
+        es un función impar 
+        \begin{longderivation}
+            &\lim_{R\to\infty}\int_{-R}^{R}f(x)\diff{x}\\
+            =\\
+            &\lim_{R\to\infty}\int_{-R}^{0}f(x)\diff{x}
+            + \int_{0}^{R}f(x)\diff{x}\\
+            =\\
+            &\lim_{R\to\infty}-\int_{R}^{0}f(x)\diff{x}
+            +\int_{R}^{0}f(x)\diff{x}\\
+            =\\
+            &0
+        \end{longderivation}
+        \item Denotando
+        \[
+            A = \frac{\Gamma\left(\frac{v+1}{2}\right)}
+            {\sqrt{v\pi}\Gamma\left(\frac{v}{2}\right)}
+        \]
+        Se van a hacer las mismas secuencias de sustituciones que
+        en el item (ii)
+        \begin{longderivation}
+            &\text{Var}[X]\\
+            =\\
+            &\int_{-\infty}^{\infty}f(x)\diff{x}\\
+            =\\
+            &2A \int_{0}^{\infty}x^2\left(1+\frac{x^2}{v}\right)^
+            {-\nicefrac{(v+1)}{2}}\\
+            \why[=]{$\frac{x}{\sqrt{v}}=\tan(\theta)$}\\
+            &2vA\sqrt{v}\int_{0}^{\frac{\pi}{2}}
+            \tan^2(\theta)(1+\tan^2(\theta))^{-\nicefrac{(v+1)}{2}}
+            \sec^2(\theta)\diff{\theta}\\
+            =\\
+            &2Av^{\nicefrac{3}{2}}\int_{0}^{\frac{\pi}{2}}
+            \tan^2(\theta)\cos^{v-1}(\theta)\diff{\theta}\\
+            =\\
+            &2Av^{\nicefrac{3}{2}}\int_{0}^{\frac{\pi}{2}}
+            \sin^2(\theta)\cos^{v-3}(\theta)\diff{\theta}\\
+            \why[=]{$u=\sin(\theta)$}\\
+            &2Av^{\nicefrac{3}{2}}\int_{0}^{1}
+            u^2(1-u^2)^{\nicefrac{v-4}{2}}\diff{u}\\
+            \why[=]{$u^2=t$}\\
+            &Av^{\nicefrac{3}{2}}\int_{0}^{1}
+            t^{\nicefrac{1}{2}}(1-t)^{(\nicefrac{v}{2})-2}\diff{t}\\
+            \why[=]{Expansión de A}\\
+            &\frac{\Gamma\left(\frac{v+1}{2}\right)}
+            {\sqrt{v\pi}\Gamma\left(\frac{v}{2}\right)}
+            \frac{\Gamma\left(\frac{3}{2}\right)\Gamma\left(\frac{v}{2}-1\right)}
+            {\Gamma\left(\frac{v+1}{2}\right)}v^{\nicefrac{3}{2}}\\
+            =\\
+            &\frac{v}{2\sqrt{\pi}}
+            \frac
+            {\Gamma\left(\frac{1}{2}\right)\Gamma\left(\frac{v}{2}-1\right)}
+            {\left(\frac{v}{2}-1\right)\Gamma\left(\frac{v}{2}-1\right)}\\
+            =\\
+            &\frac{v\sqrt{\pi}}{2\sqrt{\pi}\left(\frac{v-2}{2}\right)}\\
+            =\\
+            &\frac{\frac{v}{2}}{\frac{v-2}{2}}\\
+            =\\
+            &\frac{v}{v-2}
+        \end{longderivation}
+        Con lo que finaliza la demostración.
+    \end{enumerate}
+\end{Demo}
